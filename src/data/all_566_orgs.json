@@ -1,0 +1,6324 @@
+[
+  {
+    "id": "ap",
+    "name": "АП",
+    "fullName": "Администрация Президента Республики Казахстан",
+    "parentId": null,
+    "level": "central",
+    "scope": "(всего — 55803) АП",
+    "questions": [
+      {
+        "id": "q-ap-1",
+        "topic": "Помилование и гражданство",
+        "description": "Рассмотрение ходатайств о помиловании и выходе/приеме в гражданство РК.",
+        "keywords": [
+          "помилование",
+          "гражданство",
+          "указ"
+        ]
+      },
+      {
+        "id": "q-ap-2",
+        "topic": "Жалобы на министров и акимов",
+        "description": "Контроль за исполнением стратегических поручений Главы государства.",
+        "keywords": [
+          "жалоба",
+          "аким",
+          "поручение"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "arrfr",
+    "name": "АРРФР",
+    "fullName": "Агентство по регулированию и развитию финансового рынка",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 95514) АРРФР (85320/2,3813%)",
+    "questions": [
+      {
+        "id": "q-arrfr-1",
+        "topic": "Кредиты и действия коллекторов",
+        "description": "Жалобы на неправомерные процентные ставки МФО, преследования коллекторских агентств, навязанные страховки.",
+        "keywords": [
+          "кредит",
+          "мфо",
+          "коллектор",
+          "банк",
+          "просрочка",
+          "пеня"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "banki-mfo",
+    "name": "Банки, МФО",
+    "fullName": "Банки, МФО",
+    "parentId": "arrfr",
+    "level": "district",
+    "scope": "326 Банки, МФО",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "adgs",
+    "name": "АДГС",
+    "fullName": "Агентство по делам государственной службы",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 21764) АДГС — (2477/0,0691%)",
+    "questions": [
+      {
+        "id": "q-adgs-1",
+        "topic": "Государственная служба и этика",
+        "description": "Конкурсы на занятие административных госнолжностей, этический кодекс госслужащих.",
+        "keywords": [
+          "госслужба",
+          "конкурс",
+          "этика",
+          "чиновник",
+          "тестирование"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-territorii",
+    "name": "Областных территорий",
+    "fullName": "Областных территорий",
+    "parentId": "adgs",
+    "level": "district",
+    "scope": "20 областных территорий — (7465/0,2084%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "akademiya-gosudarstvennogo-upravleniya",
+    "name": "Академия государственного управления",
+    "fullName": "Академия государственного управления",
+    "parentId": "adgs",
+    "level": "regional",
+    "scope": "Академия государственного управления — (145/0,0040%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-territorii-2",
+    "name": "Областных территорий",
+    "fullName": "Областных территорий",
+    "parentId": "akademiya-gosudarstvennogo-upravleniya",
+    "level": "district",
+    "scope": "20 областных территорий — (21/0,0006%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-nacionalnyi-centr-po-upravleniyu-personal",
+    "name": "АО Национальный центр по управлению персоналом государственной службы",
+    "fullName": "АО Национальный центр по управлению персоналом государственной службы",
+    "parentId": "adgs",
+    "level": "regional",
+    "scope": "АО Национальный центр по управлению персоналом государственной службы-0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "afm",
+    "name": "АФМ",
+    "fullName": "Агентство по финансовому мониторингу",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего - 17840) АФМ — (1998/0,0558%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-territorii-3",
+    "name": "Областных территорий",
+    "fullName": "Областных территорий",
+    "parentId": "afm",
+    "level": "district",
+    "scope": "20 областных территорий - (7961/0,2222%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kinologicheskii-centr",
+    "name": "Кинологический центр",
+    "fullName": "Кинологический центр",
+    "parentId": "afm",
+    "level": "district",
+    "scope": "Кинологический центр — (19/0,0005%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "aspir",
+    "name": "АСПИР",
+    "fullName": "Агентство по стратегическому планированию и реформам",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 2410) АСПИР — (48/0,0013%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "byuro-nac-statistiki",
+    "name": "Бюро нац статистики",
+    "fullName": "Бюро нац статистики",
+    "parentId": "aspir",
+    "level": "district",
+    "scope": "Бюро нац статистики — (468/0,0131%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-territorii-4",
+    "name": "Областных территорий",
+    "fullName": "Областных территорий",
+    "parentId": "byuro-nac-statistiki",
+    "level": "district",
+    "scope": "20 областных территорий — (2265/0,0632%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "azrk",
+    "name": "АЗРК",
+    "fullName": "Агентство по защите и развитию конкуренции",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 4317) АЗРК — (924/0,0258%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-territorii-5",
+    "name": "Областных территорий",
+    "fullName": "Областных территорий",
+    "parentId": "azrk",
+    "level": "district",
+    "scope": "20 областных территорий - (1020/0,0285%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "analiticheskii-issledovatelskii-centr-razvit",
+    "name": "Аналитический исследовательский центр развития конкуренции",
+    "fullName": "Аналитический исследовательский центр развития конкуренции",
+    "parentId": "azrk",
+    "level": "district",
+    "scope": "Аналитический исследовательский центр развития конкуренции — (2/0,0001%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "agentstvo-atomnoi-energii",
+    "name": "Агентство атомной энергии",
+    "fullName": "Агентство атомной энергии",
+    "parentId": "ap",
+    "level": "agency",
+    "scope": "(всего — 669) Агентство атомной энергии — (157/0,0044%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-atomnogo-nadzora-i-kontrolya",
+    "name": "Комитет атомного надзора и контроля",
+    "fullName": "Комитет атомного надзора и контроля",
+    "parentId": "agentstvo-atomnoi-energii",
+    "level": "regional",
+    "scope": "Комитет атомного надзора и контроля - (200/0,0056%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "institut-yadernoi-fiziki",
+    "name": "Институт ядерной физики",
+    "fullName": "Институт ядерной физики",
+    "parentId": "agentstvo-atomnoi-energii",
+    "level": "district",
+    "scope": "Институт ядерной физики — (52/0,0015%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "aksai-skii-filial",
+    "name": "Аксайский филиал",
+    "fullName": "Аксайский филиал",
+    "parentId": "institut-yadernoi-fiziki",
+    "level": "district",
+    "scope": "Аксайский филиал — (6/0,0002%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "astaninskii-filial",
+    "name": "Астанинский филиал",
+    "fullName": "Астанинский филиал",
+    "parentId": "institut-yadernoi-fiziki",
+    "level": "district",
+    "scope": "Астанинский филиал — (7/0,0002%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-kazahstanskie-atomnye-elektricheskie-sta",
+    "name": "ТОО Казахстанские атомные электрические станции",
+    "fullName": "ТОО Казахстанские атомные электрические станции",
+    "parentId": "agentstvo-atomnoi-energii",
+    "level": "district",
+    "scope": "ТОО Казахстанские атомные электрические станции — (22/0,0006%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-yadernyi-centr",
+    "name": "Национальный ядерный центр",
+    "fullName": "Национальный ядерный центр",
+    "parentId": "agentstvo-atomnoi-energii",
+    "level": "district",
+    "scope": "Национальный ядерный центр — (44/0,0012%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "vap",
+    "name": "ВАП",
+    "fullName": "Высшая аудиторская палата",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 713) ВАП — (408/0,0114%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-centr-issledovanii-analiza-i-ocenki-effe",
+    "name": "ТОО Центр исследований, анализа и оценки эффективности",
+    "fullName": "ТОО Центр исследований, анализа и оценки эффективности",
+    "parentId": "vap",
+    "level": "district",
+    "scope": "ТОО Центр исследований, анализа и оценки эффективности - 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-delami-prezidenta",
+    "name": "Управление делами Президента",
+    "fullName": "Управление делами Президента",
+    "parentId": "ap",
+    "level": "central",
+    "scope": "(всего — 1485) Управление делами Президента — (274/0,0076%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "prezidentskii-centr",
+    "name": "Президентский центр",
+    "fullName": "Президентский центр",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "central",
+    "scope": "Президентский центр — (296/0,0083%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "medicinskii-centr",
+    "name": "Медицинский центр",
+    "fullName": "Медицинский центр",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Медицинский центр — (715/0,0200%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "medicinskii-centr",
+    "level": "district",
+    "scope": "7 подведомки",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-kazstroi-sistema",
+    "name": "ТОО Казстройсистема",
+    "fullName": "ТОО Казстройсистема",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "ТОО Казстройсистема — (4/0,0001%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "direkciya-gosudarstvennyh-rezidencii",
+    "name": "Дирекция государственных резиденций",
+    "fullName": "Дирекция государственных резиденций",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Дирекция государственных резиденций — (45/0,0013%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "teleradiokompleks",
+    "name": "Телерадиокомплекс",
+    "fullName": "Телерадиокомплекс",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Телерадиокомплекс — (34/0,0009%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "avtohozyai-stvo",
+    "name": "Автохозяйство",
+    "fullName": "Автохозяйство",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Автохозяйство — (26/0,0007%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "direkciya-adm-zdanii",
+    "name": "Дирекция адм зданий",
+    "fullName": "Дирекция адм зданий",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Дирекция адм зданий — (69/0,0019%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "almatinskii-filial",
+    "name": "Алматинский филиал",
+    "fullName": "Алматинский филиал",
+    "parentId": "direkciya-adm-zdanii",
+    "level": "district",
+    "scope": "Алматинский филиал — (10/0,0003%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-burabai-damu",
+    "name": "ТОО Бурабай даму",
+    "fullName": "ТОО Бурабай даму",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "ТОО Бурабай даму — 12",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "itc",
+    "name": "ИТЦ",
+    "fullName": "ИТЦ",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "ИТЦ — 16",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "aviakompaniya-berkut",
+    "name": "Авиакомпания Беркут",
+    "fullName": "Авиакомпания Беркут",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Авиакомпания Беркут — 13",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gf-astana-20",
+    "name": "ГФ Астана 20",
+    "fullName": "ГФ Астана 20",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "ГФ Астана 20 - 20",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nac-park-burabai",
+    "name": "Нац парк Бурабай",
+    "fullName": "Нац парк Бурабай",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Нац парк Бурабай - 167",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gf-astana-20-2",
+    "name": "ГФ Астана 20",
+    "fullName": "ГФ Астана 20",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "ГФ Астана 20 - 20",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nac-park-burabai-2",
+    "name": "Нац парк Бурабай",
+    "fullName": "Нац парк Бурабай",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Нац парк Бурабай - 167",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otel-alatau",
+    "name": "Отель Алатау",
+    "fullName": "Отель Алатау",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "Отель Алатау - 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "umto",
+    "name": "УМТО",
+    "fullName": "УМТО",
+    "parentId": "upravlenie-delami-prezidenta",
+    "level": "district",
+    "scope": "УМТО — (24/0,0007%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki-2",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "umto",
+    "level": "district",
+    "scope": "4 подведомки — (23/0,0004%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "knb",
+    "name": "КНБ",
+    "fullName": "Комитет национальной безопасности",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 35031) КНБ (1766/0,0493%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-territorii-6",
+    "name": "Областных территорий",
+    "fullName": "Областных территорий",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "20 — областных территорий (5270/0,1471%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sluzhba-po-protivodei-stviyu-korrupcii",
+    "name": "Служба по противодействию коррупции",
+    "fullName": "Служба по противодействию коррупции",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Служба по противодействию коррупции (647/0,0181%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sledstvennyi-izolyator",
+    "name": "Следственный изолятор",
+    "fullName": "Следственный изолятор",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "4 Следственный изолятор (172/0,0048%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "pogranichnaya-sluzhba",
+    "name": "Пограничная служба",
+    "fullName": "Пограничная служба",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Пограничная служба (3995/0,1115%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "pogranichnaya-sluzhba",
+    "level": "district",
+    "scope": "14 территории (3610/0,1008%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenii",
+    "name": "Управлений",
+    "fullName": "Управлений",
+    "parentId": "pogranichnaya-sluzhba",
+    "level": "regional",
+    "scope": "8 управлений (2287/0,0638%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sluzhba-vneshnei-razvedki",
+    "name": "Служба внешней разведки",
+    "fullName": "Служба внешней разведки",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Служба внешней разведки (16/0,0004%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sluzhba-pravitelstvennoi-svyazi",
+    "name": "Служба правительственной связи",
+    "fullName": "Служба правительственной связи",
+    "parentId": "knb",
+    "level": "central",
+    "scope": "Служба правительственной связи (29/0,0008%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "akademiya",
+    "name": "Академия",
+    "fullName": "Академия",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Академия (41/0,0011%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-tehnicheskoi-zaschity-informacii-i-pod",
+    "name": "Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
+    "fullName": "Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов (7/0,0002%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskii-centr-kazimpeks",
+    "name": "Республиканский центр \"Казимпэкс",
+    "fullName": "Республиканский центр \"Казимпэкс",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Республиканский центр \"Казимпэкс (7/0,0002%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "aviacionnaya-sluzhba",
+    "name": "Авиационная служба",
+    "fullName": "Авиационная служба",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Авиационная служба (69/0,0019%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-gts",
+    "name": "АО ГТС",
+    "fullName": "АО ГТС",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "АО ГТС (141/0,0039%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "rgp-almas",
+    "name": "РГП Алмас",
+    "fullName": "РГП Алмас",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "РГП Алмас",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "pogranichnaya-akademiya",
+    "name": "Пограничная академия",
+    "fullName": "Пограничная академия",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Пограничная академия",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-kazimpeks",
+    "name": "ТОО Казимпэкс",
+    "fullName": "ТОО Казимпэкс",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "ТОО Казимпэкс",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gospital",
+    "name": "Госпиталь",
+    "fullName": "Госпиталь",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "3 Госпиталь",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-tehnicheskoi-zaschity-informacii-i-pod-2",
+    "name": "Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
+    "fullName": "Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sluzhba-specialnogo-naznacheniya",
+    "name": "Служба специального назначения",
+    "fullName": "Служба специального назначения",
+    "parentId": "knb",
+    "level": "district",
+    "scope": "Служба специального назначения (31/0,0009%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "generalnaya-prokuratura",
+    "name": "Генеральная прокуратура",
+    "fullName": "Генеральная прокуратура",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 176554) Генеральная прокуратура (19771/0,5518%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kpsisu",
+    "name": "КПСиСУ",
+    "fullName": "КПСиСУ",
+    "parentId": "generalnaya-prokuratura",
+    "level": "district",
+    "scope": "КПСиСУ (1069/0,0298%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastye",
+    "name": "Областые",
+    "fullName": "Областые",
+    "parentId": "kpsisu",
+    "level": "district",
+    "scope": "22-областые (11070/0,3090%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kzpi",
+    "name": "КЗПИ",
+    "fullName": "КЗПИ",
+    "parentId": "generalnaya-prokuratura",
+    "level": "district",
+    "scope": "КЗПИ (215/0,0060%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apo",
+    "name": "АПО",
+    "fullName": "АПО",
+    "parentId": "generalnaya-prokuratura",
+    "level": "district",
+    "scope": "АПО (158/0,0044%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gvp",
+    "name": "ГВП",
+    "fullName": "ГВП",
+    "parentId": "generalnaya-prokuratura",
+    "level": "district",
+    "scope": "ГВП (466/0,0130%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastye-2",
+    "name": "Областые",
+    "fullName": "Областые",
+    "parentId": "gvp",
+    "level": "district",
+    "scope": "22-областые (445/0,0124%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gtp",
+    "name": "ГТП",
+    "fullName": "ГТП",
+    "parentId": "generalnaya-prokuratura",
+    "level": "district",
+    "scope": "ГТП (255/0,0071%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastye-3",
+    "name": "Областые",
+    "fullName": "Областые",
+    "parentId": "gtp",
+    "level": "district",
+    "scope": "22-областые (291/0,0081%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-prokuratur",
+    "name": "Областных прокуратур",
+    "fullName": "Областных прокуратур",
+    "parentId": "generalnaya-prokuratura",
+    "level": "district",
+    "scope": "20-Областных прокуратур (39586/0,1049%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gorrai-prokuratury",
+    "name": "Горрай прокуратуры",
+    "fullName": "Горрай прокуратуры",
+    "parentId": "oblastnyh-prokuratur",
+    "level": "district",
+    "scope": "244-Горрай прокуратуры (40147/1,1205%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sudebnaya-administraciya",
+    "name": "Судебная администрация",
+    "fullName": "Судебная администрация",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 59094) Судебная администрация (5195/0,1450%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnye",
+    "name": "Областные",
+    "fullName": "Областные",
+    "parentId": "sudebnaya-administraciya",
+    "level": "district",
+    "scope": "20-областные (7556/0,21%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gorrai-sudy",
+    "name": "Горрайсуды",
+    "fullName": "Горрайсуды",
+    "parentId": "oblastnye",
+    "level": "district",
+    "scope": "368-горрайсуды (37971/1,0570%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kassacionnyi-sud",
+    "name": "Кассационный суд",
+    "fullName": "Кассационный суд",
+    "parentId": "sudebnaya-administraciya",
+    "level": "district",
+    "scope": "Кассационный суд (1431/0,0399%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "voennyi-sud",
+    "name": "Военный суд",
+    "fullName": "Военный суд",
+    "parentId": "sudebnaya-administraciya",
+    "level": "district",
+    "scope": "Военный суд (54/0,0015%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh",
+    "name": "Областных",
+    "fullName": "Областных",
+    "parentId": "voennyi-sud",
+    "level": "district",
+    "scope": "6-областных (229/0,0064%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "akademiya-2",
+    "name": "Академия",
+    "fullName": "Академия",
+    "parentId": "sudebnaya-administraciya",
+    "level": "district",
+    "scope": "Академия (124/0,0035%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-po-pravam-cheloveka",
+    "name": "Национальный центр по правам человека",
+    "fullName": "Национальный центр по правам человека",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 5042) Национальный центр по правам человека (5032/0,1404%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apparat-konstitucionnogo-suda",
+    "name": "Аппарат Конституционного Суда",
+    "fullName": "Аппарат Конституционного Суда",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 15964) Аппарат Конституционного Суда (15740/0,4393%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apparat-vysshego-sudebnogo-soveta",
+    "name": "Аппарат Высшего Судебного Совета",
+    "fullName": "Аппарат Высшего Судебного Совета",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 2992) Аппарат Высшего Судебного Совета (897/0,0250%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-bank",
+    "name": "Национальный Банк",
+    "fullName": "Национальный Банк",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 28681) Национальный Банк (2344/0,0654%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-kvazik",
+    "name": "Филиалов, квазик",
+    "fullName": "Филиалов, квазик",
+    "parentId": "nacionalnyi-bank",
+    "level": "district",
+    "scope": "33-филиалов, квазик (19240/0,54%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apparat-mazhilisa",
+    "name": "Аппарат Мажилиса",
+    "fullName": "Аппарат Мажилиса",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 25510) Аппарат Мажилиса (8327/0,2324%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "arhiv-prezidenta",
+    "name": "Архив Президента",
+    "fullName": "Архив Президента",
+    "parentId": "ap",
+    "level": "central",
+    "scope": "Архив Президента (1164/0,0325%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "senat-parlamenta",
+    "name": "Сенат Парламента",
+    "fullName": "Сенат Парламента",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 7646) Сенат Парламента (1819/0,0508%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sluzhba-gos-ohrany",
+    "name": "Служба гос. охраны",
+    "fullName": "Служба гос. охраны",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 626) Служба гос. охраны (590/0,0165%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "prezidentskii-orkestr",
+    "name": "Президентский оркестр",
+    "fullName": "Президентский оркестр",
+    "parentId": "sluzhba-gos-ohrany",
+    "level": "central",
+    "scope": "Президентский оркестр",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "chast-0111",
+    "name": "Часть 0111",
+    "fullName": "Часть 0111",
+    "parentId": "sluzhba-gos-ohrany",
+    "level": "district",
+    "scope": "Часть 0111 (9/0,0003%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "chast-0116",
+    "name": "Часть 0116",
+    "fullName": "Часть 0116",
+    "parentId": "sluzhba-gos-ohrany",
+    "level": "district",
+    "scope": "Часть 0116 (9/0,0003%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "chast-0112",
+    "name": "Часть 0112",
+    "fullName": "Часть 0112",
+    "parentId": "sluzhba-gos-ohrany",
+    "level": "district",
+    "scope": "Часть 0112 (22/0,0006%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahstanskii-institut-strategicheskih-issle",
+    "name": "Казахстанский институт стратегических исследовании при Президенте",
+    "fullName": "Казахстанский институт стратегических исследовании при Президенте",
+    "parentId": "ap",
+    "level": "central",
+    "scope": "Казахстанский институт стратегических исследовании при Президенте (31/0,0009%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sluzhba-centralnyh-kommunikacii",
+    "name": "Служба центральных коммуникаций",
+    "fullName": "Служба центральных коммуникаций",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "Служба центральных коммуникаций (61/0,0017%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "cik",
+    "name": "ЦИК",
+    "fullName": "Центральная избирательная комиссия",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 875) ЦИК (397/0,0111%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "rgp-na-pvh-inzhenerno-tehnicheskii-centr",
+    "name": "РГП на ПВХ Инженерно-технический центр",
+    "fullName": "РГП на ПВХ Инженерно-технический центр",
+    "parentId": "cik",
+    "level": "district",
+    "scope": "РГП на ПВХ Инженерно-технический центр (4/0,0001%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "tik",
+    "name": "ТИК",
+    "fullName": "ТИК",
+    "parentId": "rgp-na-pvh-inzhenerno-tehnicheskii-centr",
+    "level": "district",
+    "scope": "20 ТИК",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "maslihaty",
+    "name": "Маслихаты",
+    "fullName": "Маслихаты",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 6671) 225-Маслихаты (2843/0,0793%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "revizionnaya-komissiya",
+    "name": "Ревизионная комиссия",
+    "fullName": "Ревизионная комиссия",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 1408) 20 Ревизионная комиссия (755/0,0211%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apr",
+    "name": "Апр",
+    "fullName": "Аппарат Правительства Республики Казахстан",
+    "parentId": "ap",
+    "level": "district",
+    "scope": "(всего — 23658) Апр",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "myu",
+    "name": "МЮ",
+    "fullName": "Министерство юстиции",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 189290) МЮ — 1957/0,0546% (к-во орг — 174)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-2",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "myu",
+    "level": "district",
+    "scope": "20 территории — 43177 0,0120%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mezhrai-onnyh-territorialnyh-otdelov-prinudi",
+    "name": "Межрайонных территориальных отделов принудительного исполнения",
+    "fullName": "Межрайонных территориальных отделов принудительного исполнения",
+    "parentId": "territorii-2",
+    "level": "district",
+    "scope": "85 Межрайонных территориальных отделов принудительного исполнения — 7285 0,0808%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-prinuditelnogo-ispolneniya",
+    "name": "Комитет принудительного исполнения",
+    "fullName": "Комитет принудительного исполнения",
+    "parentId": "myu",
+    "level": "regional",
+    "scope": "Комитет принудительного исполнения — 129 0,0036%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-pravam-intellektualnoi-sobstvenno",
+    "name": "Комитет по правам интеллектуальной собственности",
+    "fullName": "Комитет по правам интеллектуальной собственности",
+    "parentId": "myu",
+    "level": "regional",
+    "scope": "Комитет по правам интеллектуальной собственности — 1159 0,0323%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "niis",
+    "name": "НИИС",
+    "fullName": "НИИС",
+    "parentId": "komitet-po-pravam-intellektualnoi-sobstvenno",
+    "level": "district",
+    "scope": "НИИС — 4572 0,1276%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-registracionnoi-sluzhby",
+    "name": "Комитет регистрационной службы",
+    "fullName": "Комитет регистрационной службы",
+    "parentId": "myu",
+    "level": "regional",
+    "scope": "Комитет регистрационной службы — 204 0,0057%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "institut-zakonodatelstva-i-pravovoi-informac",
+    "name": "Институт законодательства и правовой информации",
+    "fullName": "Институт законодательства и правовой информации",
+    "parentId": "myu",
+    "level": "district",
+    "scope": "Институт законодательства и правовой информации — 82 0,0023%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-instituta",
+    "name": "Филиалов института",
+    "fullName": "Филиалов института",
+    "parentId": "institut-zakonodatelstva-i-pravovoi-informac",
+    "level": "district",
+    "scope": "6 филиалов института — 10 0,0040%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskaya-kollegiya-yuridicheskih-kon",
+    "name": "Республиканская коллегия юридических консультантов",
+    "fullName": "Республиканская коллегия юридических консультантов",
+    "parentId": "myu",
+    "level": "district",
+    "scope": "Республиканская коллегия юридических консультантов — 10 0,0008%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki-3",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "respublikanskaya-kollegiya-yuridicheskih-kon",
+    "level": "district",
+    "scope": "13 подведомки — 48 0,0013%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-sudebnyh-ekspertiz",
+    "name": "Центр судебных экспертиз",
+    "fullName": "Центр судебных экспертиз",
+    "parentId": "myu",
+    "level": "district",
+    "scope": "Центр судебных экспертиз — 387 0,0108%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "centr-sudebnyh-ekspertiz",
+    "level": "district",
+    "scope": "20 филиалов — 1186 0,0331%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "chsi",
+    "name": "ЧСИ",
+    "fullName": "ЧСИ",
+    "parentId": "myu",
+    "level": "district",
+    "scope": "ЧСИ — 1709 0,0477%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-2",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "chsi",
+    "level": "district",
+    "scope": "20 филиалов — 37153 0,0370%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "palata-sudebnyh-ekspertov",
+    "name": "Палата судебных экспертов",
+    "fullName": "Палата судебных экспертов",
+    "parentId": "myu",
+    "level": "district",
+    "scope": "Палата судебных экспертов — 9 0,009%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "miicr",
+    "name": "МИИЦР",
+    "fullName": "Министерство искусственного интеллекта и цифрового развития",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 176748) МИИЦР — 1068/0,0298% (к-во орг — 53)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-telekommunikacii",
+    "name": "Комитет телекоммуникаций",
+    "fullName": "Комитет телекоммуникаций",
+    "parentId": "miicr",
+    "level": "regional",
+    "scope": "Комитет телекоммуникаций — 1202 0,0335%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "inspekcii",
+    "name": "Инспекции",
+    "fullName": "Инспекции",
+    "parentId": "komitet-telekommunikacii",
+    "level": "district",
+    "scope": "6 инспекции — 1435 0,0401%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-informacionnoi-bezopasnosti",
+    "name": "Комитет по информационной безопасности",
+    "fullName": "Комитет по информационной безопасности",
+    "parentId": "miicr",
+    "level": "regional",
+    "scope": "Комитет по информационной безопасности — 1159 0,0323%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "aerokosmicheskii-komitet",
+    "name": "Аэрокосмический комитет",
+    "fullName": "Аэрокосмический комитет",
+    "parentId": "miicr",
+    "level": "regional",
+    "scope": "Аэрокосмический комитет",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "bai-konyrbalans",
+    "name": "Байконырбаланс",
+    "fullName": "Байконырбаланс",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "Байконырбаланс — 4 0,001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-institut-ionosfery",
+    "name": "ТОО Институт ионосферы",
+    "fullName": "ТОО Институт ионосферы",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "ТОО Институт ионосферы — 4 0,001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-bai-terek",
+    "name": "АО Байтерек",
+    "fullName": "АО Байтерек",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "АО Байтерек — 5 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-ghalam",
+    "name": "ТОО Ghalam",
+    "fullName": "ТОО Ghalam",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "ТОО Ghalam — 13 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "institut-kosmicheskoi-tehniki-i-tehnologii",
+    "name": "Институт космической техники и технологий",
+    "fullName": "Институт космической техники и технологий",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "Институт космической техники и технологий — 13 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astrofizicheskii-institut",
+    "name": "ТОО Астрофизический институт",
+    "fullName": "ТОО Астрофизический институт",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "ТОО Астрофизический институт — 9 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-qazaqstan-garysh-sapary",
+    "name": "АО Қазақстан Ғарыш Сапары",
+    "fullName": "АО Қазақстан Ғарыш Сапары",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "АО Қазақстан Ғарыш Сапары -46 0,0013%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-kosmicheskih-issledovanii",
+    "name": "Национальный центр космических исследований и технологий",
+    "fullName": "Национальный центр космических исследований и технологий",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "Национальный центр космических исследований и технологий — 13 0.0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "infrakos",
+    "name": "Инфракос",
+    "fullName": "Инфракос",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "Инфракос — 23 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filial",
+    "name": "Филиал",
+    "fullName": "Филиал",
+    "parentId": "infrakos",
+    "level": "district",
+    "scope": "1 Филиал — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskii-centr-kosmicheskoi-svyazi",
+    "name": "Республиканский центр космической связи",
+    "fullName": "Республиканский центр космической связи",
+    "parentId": "aerokosmicheskii-komitet",
+    "level": "district",
+    "scope": "Республиканский центр космической связи — 19 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-cifrovyh-aktivov",
+    "name": "Комитет цифровых активов",
+    "fullName": "Комитет цифровых активов",
+    "parentId": "miicr",
+    "level": "regional",
+    "scope": "Комитет цифровых активов — 310 0,0087%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennyh-uslug",
+    "name": "Комитет государственных услуг",
+    "fullName": "Комитет государственных услуг",
+    "parentId": "miicr",
+    "level": "regional",
+    "scope": "Комитет государственных услуг — 36 0,0010%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-nit",
+    "name": "АО НИТ",
+    "fullName": "АО НИТ",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "АО НИТ — 2757 0,0769%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nao-gk",
+    "name": "НАО ГК",
+    "fullName": "НАО ГК",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "НАО ГК — 13095 0,3655%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-3",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "nao-gk",
+    "level": "district",
+    "scope": "22 филиалов — 113340 3,1634%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gosudarstvennaya-radiochastotnaya-sluzhba",
+    "name": "Государственная радиочастотная служба",
+    "fullName": "Государственная радиочастотная служба",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "Государственная радиочастотная служба — 239 0,0067%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "cpcp",
+    "name": "ЦПЦП",
+    "fullName": "ЦПЦП",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "ЦПЦП — 21 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "astana-hab",
+    "name": "Астана хаб",
+    "fullName": "Астана хаб",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "Астана хаб — 60 0,0017%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-qazinnovations",
+    "name": "АО QazInnovations",
+    "fullName": "АО QazInnovations",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "АО QazInnovations — 36 0,0010%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-geodezii",
+    "name": "Национальный центр геодезии",
+    "fullName": "Национальный центр геодезии",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "Национальный центр геодезии — 41 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-qazexpocongress",
+    "name": "АО QazExpoCongress",
+    "fullName": "АО QazExpoCongress",
+    "parentId": "miicr",
+    "level": "district",
+    "scope": "АО QazExpoCongress — 34 0,0009%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mvd",
+    "name": "МВД",
+    "fullName": "Министерство внутренних дел",
+    "parentId": "apr",
+    "level": "agency",
+    "scope": "(всего — 497 856) МВД — 21 036/0,5871% (к-во орг — 465)",
+    "questions": [
+      {
+        "id": "q-mvd-1",
+        "topic": "Дорожная безопасность и Сергек",
+        "description": "Обжалование предписаний ПДД, регистрация авто.",
+        "keywords": [
+          "сергек",
+          "штраф",
+          "пдд",
+          "права"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "dp",
+    "name": "ДП",
+    "fullName": "ДП",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "21 ДП — 162730 4,5419%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-upr-otdel",
+    "name": "Территории (упр,отдел)",
+    "fullName": "Территории (упр,отдел)",
+    "parentId": "dp",
+    "level": "district",
+    "scope": "241 территории (упр,отдел) — 141629 3,953%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kuis",
+    "name": "КУИС",
+    "fullName": "КУИС",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "КУИС — 2707 0,0756%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-3",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "kuis",
+    "level": "district",
+    "scope": "19 территории — 4705 0,1313%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "uchrezhdenii",
+    "name": "Учреждений",
+    "fullName": "Учреждений",
+    "parentId": "territorii-3",
+    "level": "district",
+    "scope": "99 учреждений — 11428 0,319%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "akademiya-i-uchebnye-centry-mvd",
+    "name": "Академия и учебные центры МВД",
+    "fullName": "Академия и учебные центры МВД",
+    "parentId": "mvd",
+    "level": "agency",
+    "scope": "7 Академия и учебные центры МВД — 687 0,0163%",
+    "questions": [
+      {
+        "id": "q-akademiya-i-uchebnye-centry-mvd-1",
+        "topic": "Дорожная безопасность и Сергек",
+        "description": "Обжалование предписаний ПДД, регистрация авто.",
+        "keywords": [
+          "сергек",
+          "штраф",
+          "пдд",
+          "права"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "alatau",
+    "name": "Алатау",
+    "fullName": "Алатау",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "Алатау — 15 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-spec-sluzhby",
+    "name": "Управление спец службы",
+    "fullName": "Управление спец службы",
+    "parentId": "mvd",
+    "level": "regional",
+    "scope": "20 Управление спец службы — 615 0,0172%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ipc",
+    "name": "ИПЦ",
+    "fullName": "ИПЦ",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "ИПЦ — 474 0,0132%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kinologicheskii-centr-2",
+    "name": "Кинологический центр",
+    "fullName": "Кинологический центр",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "Кинологический центр — 17 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otryad-specialnogo-naznacheniya-sunkar",
+    "name": "Отряд специального назначения \"Сункар",
+    "fullName": "Отряд специального назначения \"Сункар",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "Отряд специального назначения \"Сункар\" — 28 0,0008%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "voenno-sledstvennoe-upravlenie",
+    "name": "Военно-следственное управление",
+    "fullName": "Военно-следственное управление",
+    "parentId": "mvd",
+    "level": "regional",
+    "scope": "4 военно-следственное управление — 343 0,0096%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "baza-voennogo-i-specialnogo-snabzheniya",
+    "name": "База военного и специального снабжения",
+    "fullName": "База военного и специального снабжения",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "2 База военного и специального снабжения — 20 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "predstavitelstvo-mvd-v-gorode-bai-konyr",
+    "name": "Представительство МВД в городе Байконыр",
+    "fullName": "Представительство МВД в городе Байконыр",
+    "parentId": "mvd",
+    "level": "agency",
+    "scope": "Представительство МВД в городе Байконыр — 100 0,0028%",
+    "questions": [
+      {
+        "id": "q-predstavitelstvo-mvd-v-gorode-bai-konyr-1",
+        "topic": "Дорожная безопасность и Сергек",
+        "description": "Обжалование предписаний ПДД, регистрация авто.",
+        "keywords": [
+          "сергек",
+          "штраф",
+          "пдд",
+          "права"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "nacgvardiya",
+    "name": "Нацгвардия",
+    "fullName": "Нацгвардия",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "Нацгвардия — 468 0,0131%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "vch-409-0-0115",
+    "name": "ВЧ — 409 0,0115",
+    "fullName": "ВЧ — 409 0,0115",
+    "parentId": "nacgvardiya",
+    "level": "district",
+    "scope": "10 ВЧ — 409 0,0115",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "vch-739-0-0205",
+    "name": "ВЧ -739 0,0205",
+    "fullName": "ВЧ -739 0,0205",
+    "parentId": "vch-409-0-0115",
+    "level": "district",
+    "scope": "30 ВЧ -739 0,0205",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sanatorii",
+    "name": "Санатории",
+    "fullName": "Санатории",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "2 Санатории — 38 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centralnyi-gospital-s-poliklinikoi",
+    "name": "Центральный госпиталь с поликлиникой",
+    "fullName": "Центральный госпиталь с поликлиникой",
+    "parentId": "mvd",
+    "level": "district",
+    "scope": "Центральный госпиталь с поликлиникой — 31 0,0009%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "media-centr-organov-vnutrennih-del",
+    "name": "Медиа-центр органов внутренних дел",
+    "fullName": "Медиа-центр органов внутренних дел",
+    "parentId": "mvd",
+    "level": "agency",
+    "scope": "Медиа-центр органов внутренних дел — 4 0,0001%",
+    "questions": [
+      {
+        "id": "q-media-centr-organov-vnutrennih-del-1",
+        "topic": "Дорожная безопасность и Сергек",
+        "description": "Обжалование предписаний ПДД, регистрация авто.",
+        "keywords": [
+          "сергек",
+          "штраф",
+          "пдд",
+          "права"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "mti",
+    "name": "МТИ",
+    "fullName": "Министерство торговли и интеграции",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 44595) МТИ — 1206/0,0337% (к-во орг — 50)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-zaschite-prav-potrebitelei",
+    "name": "Комитет по защите прав потребителей",
+    "fullName": "Комитет по защите прав потребителей",
+    "parentId": "mti",
+    "level": "regional",
+    "scope": "Комитет по защите прав потребителей — 774 0,0216%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-tehnicheskogo-regulirovaniya-i-metro",
+    "name": "Комитет технического регулирования и метрологии",
+    "fullName": "Комитет технического регулирования и метрологии",
+    "parentId": "mti",
+    "level": "regional",
+    "scope": "Комитет технического регулирования и метрологии — 826 0,0231%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territori",
+    "name": "Территори",
+    "fullName": "Территори",
+    "parentId": "komitet-tehnicheskogo-regulirovaniya-i-metro",
+    "level": "district",
+    "scope": "20 территори — 806 0,0225%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahstanskii-institut-standartizacii-i-metr",
+    "name": "Казахстанский институт стандартизации и метрологии",
+    "fullName": "Казахстанский институт стандартизации и метрологии",
+    "parentId": "komitet-tehnicheskogo-regulirovaniya-i-metro",
+    "level": "district",
+    "scope": "Казахстанский институт стандартизации и метрологии — 292 0,0081%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filiala",
+    "name": "Филиала",
+    "fullName": "Филиала",
+    "parentId": "kazahstanskii-institut-standartizacii-i-metr",
+    "level": "district",
+    "scope": "4 филиала — 3 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-akkreditacii",
+    "name": "Национальный центр аккредитации",
+    "fullName": "Национальный центр аккредитации",
+    "parentId": "komitet-tehnicheskogo-regulirovaniya-i-metro",
+    "level": "district",
+    "scope": "Национальный центр аккредитации — 337 0,0094%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filial-2",
+    "name": "Филиал",
+    "fullName": "Филиал",
+    "parentId": "nacionalnyi-centr-akkreditacii",
+    "level": "district",
+    "scope": "1 филиал — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-4",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "mti",
+    "level": "district",
+    "scope": "20 территории — 16363 0,4567%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mps",
+    "name": "МПС",
+    "fullName": "Министерство промышленности и строительства",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 39441) МПС — 4361/0,1217% (к-во орг — 57)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-delam-stroitelstva-i-zhkh",
+    "name": "Комитет по делам строительства и ЖКХ",
+    "fullName": "Комитет по делам строительства и ЖКХ",
+    "parentId": "mps",
+    "level": "regional",
+    "scope": "Комитет по делам строительства и ЖКХ — 10356 0,2890%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskii-centr-gosudarstvennogo-grado",
+    "name": "Республиканский центр государственного градостроительного планирования и кадастра",
+    "fullName": "Республиканский центр государственного градостроительного планирования и кадастра",
+    "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
+    "level": "district",
+    "scope": "Республиканский центр государственного градостроительного планирования и кадастра — 94 0,0026%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-4",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "respublikanskii-centr-gosudarstvennogo-grado",
+    "level": "district",
+    "scope": "19 филиалов — 128 0,0036%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gosudarstvennaya-vnevedomstvennaya-ekspertiz",
+    "name": "Государственная вневедомственная экспертиза проектов",
+    "fullName": "Государственная вневедомственная экспертиза проектов",
+    "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
+    "level": "district",
+    "scope": "Государственная вневедомственная экспертиза проектов — 839 0,0234%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-5",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "gosudarstvennaya-vnevedomstvennaya-ekspertiz",
+    "level": "district",
+    "scope": "8 филиалов — 475 0,0133%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahskii-nauchno-issledovatelskii-i-proe",
+    "name": "АО Казахский научно-исследовательский и проектный институт строительства и архитектуры",
+    "fullName": "АО Казахский научно-исследовательский и проектный институт строительства и архитектуры",
+    "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
+    "level": "district",
+    "scope": "АО Казахский научно-исследовательский и проектный институт строительства и архитектуры — 1638 0,0457%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahstanskii-centr-modernizacii-i-razvit",
+    "name": "АО Казахстанский центр модернизации и развития ЖКХ",
+    "fullName": "АО Казахстанский центр модернизации и развития ЖКХ",
+    "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
+    "level": "district",
+    "scope": "АО Казахстанский центр модернизации и развития ЖКХ — 123 0,0034%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-promyshlennosti",
+    "name": "Комитет промышленности",
+    "fullName": "Комитет промышленности",
+    "parentId": "mps",
+    "level": "regional",
+    "scope": "Комитет промышленности — 2032 0,0567%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-tehnologicheskogo-prognozi",
+    "name": "Национальный центр технологического прогнозирования",
+    "fullName": "Национальный центр технологического прогнозирования",
+    "parentId": "komitet-promyshlennosti",
+    "level": "district",
+    "scope": "Национальный центр технологического прогнозирования — 5 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-institut-razvitiya-elektroenergetiki-i-en",
+    "name": "АО Институт развития электроэнергетики и энергосбережения",
+    "fullName": "АО Институт развития электроэнергетики и энергосбережения",
+    "parentId": "komitet-promyshlennosti",
+    "level": "agency",
+    "scope": "АО Институт развития электроэнергетики и энергосбережения — 17 0,0005%",
+    "questions": [
+      {
+        "id": "q-ao-institut-razvitiya-elektroenergetiki-i-en-1",
+        "topic": "Поставки ГСМ и топлива",
+        "description": "Оптовые цены на бензин/дизель, дефицит на заправках.",
+        "keywords": [
+          "гсм",
+          "бензин",
+          "дизель",
+          "топливо"
+        ]
+      },
+      {
+        "id": "q-ao-institut-razvitiya-elektroenergetiki-i-en-2",
+        "topic": "Электроснабжение и аварии на ТЭЦ",
+        "description": "Отключения электроэнергии, перебои подачи света.",
+        "keywords": [
+          "свет",
+          "электроэнергия",
+          "тэц",
+          "авария"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "ao-zhezkazganredmet",
+    "name": "АО Жезказганредмет",
+    "fullName": "АО Жезказганредмет",
+    "parentId": "komitet-promyshlennosti",
+    "level": "district",
+    "scope": "АО Жезказганредмет — 13 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-po-kompleksnoi-pererabotke",
+    "name": "Национальный центр по комплексной переработке минерального сырья",
+    "fullName": "Национальный центр по комплексной переработке минерального сырья",
+    "parentId": "komitet-promyshlennosti",
+    "level": "district",
+    "scope": "Национальный центр по комплексной переработке минерального сырья — 14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-6",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "nacionalnyi-centr-po-kompleksnoi-pererabotke",
+    "level": "district",
+    "scope": "6 филиалов — 39 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-nauchno-proizvodstvennyi-centr-mashinost",
+    "name": "ТОО Научно-производственный центр машиностроения",
+    "fullName": "ТОО Научно-производственный центр машиностроения",
+    "parentId": "komitet-promyshlennosti",
+    "level": "district",
+    "scope": "ТОО Научно-производственный центр машиностроения — 172 0,0048%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-geologii",
+    "name": "Комитет геологии",
+    "fullName": "Комитет геологии",
+    "parentId": "mps",
+    "level": "regional",
+    "scope": "Комитет геологии — 724 0,0202%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mezhregionalnye-departamenty",
+    "name": "Межрегиональные департаменты",
+    "fullName": "Межрегиональные департаменты",
+    "parentId": "komitet-geologii",
+    "level": "regional",
+    "scope": "5 межрегиональные департаменты — 937 0,0262%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-nacionalnaya-geologicheskaya-sluzhba",
+    "name": "АО Национальная геологическая служба",
+    "fullName": "АО Национальная геологическая служба",
+    "parentId": "komitet-geologii",
+    "level": "district",
+    "scope": "АО Национальная геологическая служба — 1044 0,0291%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-upravlyayuschaya-kompaniya-specialnoi-eko",
+    "name": "АО Управляющая компания специальной экономической зоны \"Jibek Joly",
+    "fullName": "АО Управляющая компания специальной экономической зоны \"Jibek Joly",
+    "parentId": "mps",
+    "level": "district",
+    "scope": "АО Управляющая компания специальной экономической зоны \"Jibek Joly\" — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahstan-inzhiniring",
+    "name": "АО Казахстан инжиниринг",
+    "fullName": "АО Казахстан инжиниринг",
+    "parentId": "mps",
+    "level": "district",
+    "scope": "АО Казахстан инжиниринг — 53 0,0015%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki-4",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "ao-kazahstan-inzhiniring",
+    "level": "district",
+    "scope": "2 подведомки — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-qazindustry",
+    "name": "АО QazIndustry",
+    "fullName": "АО QazIndustry",
+    "parentId": "mps",
+    "level": "district",
+    "scope": "АО QazIndustry — 220 0,0061%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mepr",
+    "name": "МЭПР",
+    "fullName": "Министерство экологии и природных ресурсов",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 35185) МЭПР — 1114/ 0,0311% (к-во орг — 99)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "name": "Комитет лесного хозяйства и животного мира",
+    "fullName": "Комитет лесного хозяйства и животного мира",
+    "parentId": "mepr",
+    "level": "regional",
+    "scope": "Комитет лесного хозяйства и животного мира — 6484/0,1810%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorialnaya-inspekciya",
+    "name": "Территориальная инспекция",
+    "fullName": "Территориальная инспекция",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "17 территориальная инспекция — 1407 0,0393%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "prirodnyi-zapovednik",
+    "name": "Природный заповедник",
+    "fullName": "Природный заповедник",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "10 природный заповедник — 70 0,0020%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "prirodnyi-park",
+    "name": "Природный парк",
+    "fullName": "Природный парк",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "14 природный парк — 415 0,0116%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "prirodnyi-rezervat",
+    "name": "Природный резерват",
+    "fullName": "Природный резерват",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "7 природный резерват — 257 0,0072%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "proizvodstvennoe-obedinenie-ohotzooprom",
+    "name": "Производственное объединение \"Охотзоопром",
+    "fullName": "Производственное объединение \"Охотзоопром",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Производственное объединение \"Охотзоопром\" — 242 0,0068%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "institut-botaniki-i-fitointrodukcii",
+    "name": "Институт ботаники и фитоинтродукции",
+    "fullName": "Институт ботаники и фитоинтродукции",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Институт ботаники и фитоинтродукции — 60 0,0017%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "issykskii-gosudarstvennyi-dendrologicheskii",
+    "name": "Иссыкский \"государственный дендрологический парк",
+    "fullName": "Иссыкский \"государственный дендрологический парк",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Иссыкский \"государственный дендрологический парк — 6 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskii-lesnoi-selekcionno-semenovod",
+    "name": "Республиканский лесной селекционно-семеноводческий центр",
+    "fullName": "Республиканский лесной селекционно-семеноводческий центр",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Республиканский лесной селекционно-семеноводческий центр — 2 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahskaya-baza-aviacionnoi-ohrany-lesov-i-o",
+    "name": "Казахская база авиационной охраны лесов и обслуживания лесного хозяйства",
+    "fullName": "Казахская база авиационной охраны лесов и обслуживания лесного хозяйства",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Казахская база авиационной охраны лесов и обслуживания лесного хозяйства — 12 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "zhasyl-ai-ma",
+    "name": "Жасыл Айма",
+    "fullName": "Жасыл Айма",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Жасыл Айма — 35 0,0010%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahskoe-lesoustroitelnoe-predpriyatie",
+    "name": "Казахское лесоустроительное предприятие",
+    "fullName": "Казахское лесоустроительное предприятие",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Казахское лесоустроительное предприятие — 134 0,0037%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahskii-nauchno-issledovatelskii-institut",
+    "name": "Казахский научно-исследовательский институт лесного хозяйства и агролесомелиорации",
+    "fullName": "Казахский научно-исследовательский институт лесного хозяйства и агролесомелиорации",
+    "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
+    "level": "district",
+    "scope": "Казахский научно-исследовательский институт лесного хозяйства и агролесомелиорации — 3 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-ekologicheskogo-regulirovaniya-i-kon",
+    "name": "Комитет экологического регулирования и контроля — 694 0,0194",
+    "fullName": "Комитет экологического регулирования и контроля — 694 0,0194",
+    "parentId": "mepr",
+    "level": "regional",
+    "scope": "Комитет экологического регулирования и контроля — 694 0,0194",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-5",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-ekologicheskogo-regulirovaniya-i-kon",
+    "level": "district",
+    "scope": "20 территории — 4043 0,1128%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-zhasyl-damu",
+    "name": "АО Жасыл даму",
+    "fullName": "АО Жасыл даму",
+    "parentId": "mepr",
+    "level": "district",
+    "scope": "АО Жасыл даму — 3621 0,1025%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazgidromet",
+    "name": "Казгидромет",
+    "fullName": "Казгидромет",
+    "parentId": "mepr",
+    "level": "district",
+    "scope": "Казгидромет — 285 0,0080%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-7",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "kazgidromet",
+    "level": "district",
+    "scope": "15 филиалов — 1037 0,0369%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahskii-nauchno-issledovatelskii-institut-2",
+    "name": "Казахский научно-исследовательский институт Каспийского моря",
+    "fullName": "Казахский научно-исследовательский институт Каспийского моря",
+    "parentId": "mepr",
+    "level": "district",
+    "scope": "Казахский научно-исследовательский институт Каспийского моря — 12 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "informacionno-analiticheskii-centr-ohrany-ok",
+    "name": "Информационно-аналитический центр охраны окружающей среды",
+    "fullName": "Информационно-аналитический центр охраны окружающей среды",
+    "parentId": "mepr",
+    "level": "district",
+    "scope": "Информационно-аналитический центр охраны окружающей среды — 20 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mezhdunarodnyi-centr-zelenyh-tehnologii-i-in",
+    "name": "Международный центр зеленых технологий и инвестиционных проектов",
+    "fullName": "Международный центр зеленых технологий и инвестиционных проектов",
+    "parentId": "mepr",
+    "level": "district",
+    "scope": "Международный центр зеленых технологий и инвестиционных проектов — 43 0,0012%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "me",
+    "name": "МЭ",
+    "fullName": "Министерство энергетики",
+    "parentId": "apr",
+    "level": "agency",
+    "scope": "(всего — 7801) МЭ — 2854/ 0797% (к-во орг — 29)",
+    "questions": [
+      {
+        "id": "q-me-1",
+        "topic": "Поставки ГСМ и топлива",
+        "description": "Оптовые цены на бензин/дизель, дефицит на заправках.",
+        "keywords": [
+          "гсм",
+          "бензин",
+          "дизель",
+          "топливо"
+        ]
+      },
+      {
+        "id": "q-me-2",
+        "topic": "Электроснабжение и аварии на ТЭЦ",
+        "description": "Отключения электроэнергии, перебои подачи света.",
+        "keywords": [
+          "свет",
+          "электроэнергия",
+          "тэц",
+          "авария"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennogo-energeticheskogo-na",
+    "name": "Комитет государственного энергетического надзора и контроля",
+    "fullName": "Комитет государственного энергетического надзора и контроля",
+    "parentId": "me",
+    "level": "agency",
+    "scope": "Комитет государственного энергетического надзора и контроля-148 0,0041%",
+    "questions": [
+      {
+        "id": "q-komitet-gosudarstvennogo-energeticheskogo-na-1",
+        "topic": "Поставки ГСМ и топлива",
+        "description": "Оптовые цены на бензин/дизель, дефицит на заправках.",
+        "keywords": [
+          "гсм",
+          "бензин",
+          "дизель",
+          "топливо"
+        ]
+      },
+      {
+        "id": "q-komitet-gosudarstvennogo-energeticheskogo-na-2",
+        "topic": "Электроснабжение и аварии на ТЭЦ",
+        "description": "Отключения электроэнергии, перебои подачи света.",
+        "keywords": [
+          "свет",
+          "электроэнергия",
+          "тэц",
+          "авария"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "territorii-6",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-gosudarstvennogo-energeticheskogo-na",
+    "level": "district",
+    "scope": "20 территории — 1747 0,0488%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kapitalneftegaz",
+    "name": "Капиталнефтегаз",
+    "fullName": "Капиталнефтегаз",
+    "parentId": "me",
+    "level": "district",
+    "scope": "Капиталнефтегаз — 6 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "yuzhnoe-mezhregionalnoe-upravlenie-gosudarst",
+    "name": "Южное межрегиональное управление государственной инспекции в нефтегазовом комплексе",
+    "fullName": "Южное межрегиональное управление государственной инспекции в нефтегазовом комплексе",
+    "parentId": "me",
+    "level": "regional",
+    "scope": "Южное межрегиональное управление государственной инспекции в нефтегазовом комплексе — 14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "zapadnoe-mezhregionalnoe-upravlenie-gosudars",
+    "name": "Западное межрегиональное управление государственной инспекции в нефтегазовом комплексе",
+    "fullName": "Западное межрегиональное управление государственной инспекции в нефтегазовом комплексе",
+    "parentId": "me",
+    "level": "regional",
+    "scope": "Западное межрегиональное управление государственной инспекции в нефтегазовом комплексе — 18 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-raschetno-finansovyi-centr-po-podderzhke",
+    "name": "ТОО Расчетно-финансовый центр по поддержке возобновляемых источников энергии",
+    "fullName": "ТОО Расчетно-финансовый центр по поддержке возобновляемых источников энергии",
+    "parentId": "me",
+    "level": "district",
+    "scope": "ТОО Расчетно-финансовый центр по поддержке возобновляемых источников энергии — 38 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-nacionalnyi-industrialnyi-neftehimicheski",
+    "name": "АО Национальный индустриальный нефтехимический технопарк",
+    "fullName": "АО Национальный индустриальный нефтехимический технопарк",
+    "parentId": "me",
+    "level": "district",
+    "scope": "АО Национальный индустриальный нефтехимический технопарк — 18 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahstanskii-operator-rynka-elektrichesk",
+    "name": "АО Казахстанский оператор рынка электрической энергии и мощности",
+    "fullName": "АО Казахстанский оператор рынка электрической энергии и мощности",
+    "parentId": "me",
+    "level": "district",
+    "scope": "АО Казахстанский оператор рынка электрической энергии и мощности — 36 0,0010%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "situacionno-analiticheskii-centr-toplivno-en",
+    "name": "Ситуационно-аналитический центр топливно-энергетического комплекса",
+    "fullName": "Ситуационно-аналитический центр топливно-энергетического комплекса",
+    "parentId": "me",
+    "level": "agency",
+    "scope": "Ситуационно-аналитический центр топливно-энергетического комплекса — 27 0,0008%",
+    "questions": [
+      {
+        "id": "q-situacionno-analiticheskii-centr-toplivno-en-1",
+        "topic": "Поставки ГСМ и топлива",
+        "description": "Оптовые цены на бензин/дизель, дефицит на заправках.",
+        "keywords": [
+          "гсм",
+          "бензин",
+          "дизель",
+          "топливо"
+        ]
+      },
+      {
+        "id": "q-situacionno-analiticheskii-centr-toplivno-en-2",
+        "topic": "Электроснабжение и аварии на ТЭЦ",
+        "description": "Отключения электроэнергии, перебои подачи света.",
+        "keywords": [
+          "свет",
+          "электроэнергия",
+          "тэц",
+          "авария"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "mtszn",
+    "name": "МТСЗН",
+    "fullName": "Министерство труда и социальной защиты населения",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 132397) МТСЗН — 8351/ 0,2331% (к-во орг — 80)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennoi-inspekcii-truda",
+    "name": "Комитет государственной инспекции труда",
+    "fullName": "Комитет государственной инспекции труда",
+    "parentId": "mtszn",
+    "level": "regional",
+    "scope": "Комитет государственной инспекции труда — 971 0,0271%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-7",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-gosudarstvennoi-inspekcii-truda",
+    "level": "district",
+    "scope": "20 территории — 26286 0,7487%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-migracii",
+    "name": "Комитет по миграции",
+    "fullName": "Комитет по миграции",
+    "parentId": "mtszn",
+    "level": "regional",
+    "scope": "Комитет по миграции — 228 0,0064%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-regulirovaniya-i-kontrolya-v-sfere-s",
+    "name": "Комитет регулирования и контроля в сфере социальной защиты населения",
+    "fullName": "Комитет регулирования и контроля в сфере социальной защиты населения",
+    "parentId": "mtszn",
+    "level": "regional",
+    "scope": "Комитет регулирования и контроля в сфере социальной защиты населения — 472 0,0132%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-8",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-regulirovaniya-i-kontrolya-v-sfere-s",
+    "level": "district",
+    "scope": "20 территории — 13635 0,3806%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-nauchnyi-centr-razvitiya-sfery-s",
+    "name": "Национальный научный центр развития сферы социальной защиты",
+    "fullName": "Национальный научный центр развития сферы социальной защиты",
+    "parentId": "mtszn",
+    "level": "district",
+    "scope": "Национальный научный центр развития сферы социальной защиты — 13 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-8",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "nacionalnyi-nauchnyi-centr-razvitiya-sfery-s",
+    "level": "district",
+    "scope": "11 филиалов — 77 0,0021%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gfss",
+    "name": "ГФСС",
+    "fullName": "ГФСС",
+    "parentId": "mtszn",
+    "level": "district",
+    "scope": "ГФСС — 2196 0,0613%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-9",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "gfss",
+    "level": "district",
+    "scope": "20 филиалов — 7295 0,2036%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskii-nauchno-issledovatelskii-ins",
+    "name": "Республиканский научно-исследовательский институт по охране труда",
+    "fullName": "Республиканский научно-исследовательский институт по охране труда",
+    "parentId": "mtszn",
+    "level": "district",
+    "scope": "Республиканский научно-исследовательский институт по охране труда — 91 0,0025%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-centr-razvitiya-trudovyh-resursov",
+    "name": "АО Центр развития трудовых ресурсов",
+    "fullName": "АО Центр развития трудовых ресурсов",
+    "parentId": "mtszn",
+    "level": "district",
+    "scope": "АО Центр развития трудовых ресурсов — 839 0,0234%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kompaniya-po-strahovaniyu-zhizni-gosudars",
+    "name": "АО Компания по страхованию жизни Государственная аннуитетная компания",
+    "fullName": "АО Компания по страхованию жизни Государственная аннуитетная компания",
+    "parentId": "mtszn",
+    "level": "district",
+    "scope": "АО Компания по страхованию жизни Государственная аннуитетная компания — 21 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mf",
+    "name": "МФ",
+    "fullName": "Министерство финансов",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 318938) МФ — 2063/ 0,0576% (к-во орг — 520)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennogo-kaznachei-stva",
+    "name": "Комитет государственного казначейства",
+    "fullName": "Комитет государственного казначейства",
+    "parentId": "mf",
+    "level": "regional",
+    "scope": "Комитет государственного казначейства — 978 0,0273%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-9",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-gosudarstvennogo-kaznachei-stva",
+    "level": "district",
+    "scope": "20 территории — 735 0,0205%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gor-rai-onnye-upravleniya",
+    "name": "Гор/районные управления",
+    "fullName": "Гор/районные управления",
+    "parentId": "territorii-9",
+    "level": "regional",
+    "scope": "178 гор/районные управления — 468 0,0131%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennyh-dohodov",
+    "name": "Комитет государственных доходов",
+    "fullName": "Комитет государственных доходов",
+    "parentId": "mf",
+    "level": "regional",
+    "scope": "Комитет государственных доходов — 16105 0,4495%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-10",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-gosudarstvennyh-dohodov",
+    "level": "district",
+    "scope": "20 территории — 82052 2,2901%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gor-rai-onnye-upravleniya-2",
+    "name": "Гор/районные управления",
+    "fullName": "Гор/районные управления",
+    "parentId": "territorii-10",
+    "level": "regional",
+    "scope": "229 гор/районные управления — 155042 4,3273%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-vnutrennego-gosudarstvennogo-audita",
+    "name": "Комитет внутреннего государственного аудита",
+    "fullName": "Комитет внутреннего государственного аудита",
+    "parentId": "mf",
+    "level": "regional",
+    "scope": "Комитет внутреннего государственного аудита — 1534 0,0428%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-11",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-vnutrennego-gosudarstvennogo-audita",
+    "level": "district",
+    "scope": "20 территории — 7009 0,1956%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennogo-imuschestva-i-priva",
+    "name": "Комитет государственного имущества и приватизации",
+    "fullName": "Комитет государственного имущества и приватизации",
+    "parentId": "mf",
+    "level": "regional",
+    "scope": "Комитет государственного имущества и приватизации — 194 0,0054%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "departamentov",
+    "name": "Департаментов",
+    "fullName": "Департаментов",
+    "parentId": "komitet-gosudarstvennogo-imuschestva-i-priva",
+    "level": "regional",
+    "scope": "21 департаментов — 471 0,0131%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-ai-t-otel",
+    "name": "АО Айт- Отель",
+    "fullName": "АО Айт- Отель",
+    "parentId": "komitet-gosudarstvennogo-imuschestva-i-priva",
+    "level": "district",
+    "scope": "АО Айт- Отель — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-kompaniya-po-upravleniyu-vozvraschennymi",
+    "name": "ТОО Компания по управлению возвращенными активами",
+    "fullName": "ТОО Компания по управлению возвращенными активами",
+    "parentId": "komitet-gosudarstvennogo-imuschestva-i-priva",
+    "level": "regional",
+    "scope": "ТОО Компания по управлению возвращенными активами — 25 0,0007%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-fond-problemnyh-kreditov",
+    "name": "АО Фонд проблемных кредитов",
+    "fullName": "АО Фонд проблемных кредитов",
+    "parentId": "mf",
+    "level": "district",
+    "scope": "АО Фонд проблемных кредитов — 198 0,0055%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-centr-elektronnyh-finansov",
+    "name": "АО Центр электронных финансов",
+    "fullName": "АО Центр электронных финансов",
+    "parentId": "mf",
+    "level": "district",
+    "scope": "АО Центр электронных финансов — 2012 0,0562%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nao-fond-socialnogo-medicinskogo-strahovaniy",
+    "name": "НАО Фонд социального медицинского страхования",
+    "fullName": "НАО Фонд социального медицинского страхования",
+    "parentId": "mf",
+    "level": "district",
+    "scope": "НАО Фонд социального медицинского страхования — 1572 0,0426%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-10",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "nao-fond-socialnogo-medicinskogo-strahovaniy",
+    "level": "district",
+    "scope": "20 филиалов — 2315 0,0646%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-finansovyi-centr",
+    "name": "АО Финансовый центр",
+    "fullName": "АО Финансовый центр",
+    "parentId": "mf",
+    "level": "district",
+    "scope": "АО Финансовый центр — 874 0,0244%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-informacionno-uchetnyi-centr",
+    "name": "АО Информационно-учетный центр",
+    "fullName": "АО Информационно-учетный центр",
+    "parentId": "mf",
+    "level": "district",
+    "scope": "АО Информационно-учетный центр — 791 0,0221%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mo",
+    "name": "МО",
+    "fullName": "Министерство обороны",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 19288) МО — 1552/ 0,0433% (к-во орг — 433)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-12",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "20 территории — 879 0,0245%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenii-i-otdelov",
+    "name": "Управлений и отделов",
+    "fullName": "Управлений и отделов",
+    "parentId": "territorii-12",
+    "level": "regional",
+    "scope": "195 управлений и отделов — 8 633 0,241%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "voennyi-kolledzh-institut-shkola",
+    "name": "Военный колледж/институт/школа",
+    "fullName": "Военный колледж/институт/школа",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "101 Военный колледж/институт/школа — 416 0,0115%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "voi-skovaya-chast",
+    "name": "Войсковая часть",
+    "fullName": "Войсковая часть",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "14 Войсковая часть — 313 0,0088%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "chasti-i-gospitali",
+    "name": "Части и госпитали",
+    "fullName": "Части и госпитали",
+    "parentId": "voi-skovaya-chast",
+    "level": "district",
+    "scope": "37 части и госпитали — 353 0,0099%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centralnyi-arhiv",
+    "name": "Центральный архив",
+    "fullName": "Центральный архив",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "Центральный архив — 432 0,0121%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahstan-gis-centr",
+    "name": "АО Казахстан ГИС Центр",
+    "fullName": "АО Казахстан ГИС Центр",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "АО Казахстан ГИС Центр — 29 0,0008%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "glavnoe-upravlenie-voennoi-policii-vs",
+    "name": "Главное управление военной полиции ВС",
+    "fullName": "Главное управление военной полиции ВС",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Главное управление военной полиции ВС — 32 0,0009%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdelenii",
+    "name": "Отделений",
+    "fullName": "Отделений",
+    "parentId": "glavnoe-upravlenie-voennoi-policii-vs",
+    "level": "district",
+    "scope": "20 отделений — 359 0,0101%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-glavnokomanduyuschego-voenno-mors",
+    "name": "Управление главнокомандующего Военно-морскими силами",
+    "fullName": "Управление главнокомандующего Военно-морскими силами",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Управление главнокомандующего Военно-морскими силами — 17 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-nachalnika-tyla",
+    "name": "Управление начальника Тыла",
+    "fullName": "Управление начальника Тыла",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Управление начальника Тыла — 40 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-komanduyuschego-voenno-vozdushnym",
+    "name": "Управление командующего Военно-воздушными силами",
+    "fullName": "Управление командующего Военно-воздушными силами",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Управление командующего Военно-воздушными силами — 55 0,0015%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-komanduyuschego-voi-skami-regiona",
+    "name": "Управление командующего войсками регионального командования",
+    "fullName": "Управление командующего войсками регионального командования",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "4 Управление командующего войсками регионального командования — 279 0,0078%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-glavnokomanduyuschego-silami-vozd",
+    "name": "Управление главнокомандующего Силами воздушной обороны",
+    "fullName": "Управление главнокомандующего Силами воздушной обороны",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Управление главнокомандующего Силами воздушной обороны — 95 0,0027%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-komanduyuschego-desantno-shturmov",
+    "name": "Управление командующего Десантно-штурмовыми войсками",
+    "fullName": "Управление командующего Десантно-штурмовыми войсками",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Управление командующего Десантно-штурмовыми войсками — 64 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-glavnokomanduyuschego-suhoputnymi",
+    "name": "Управление главнокомандующего Сухопутными войсками",
+    "fullName": "Управление главнокомандующего Сухопутными войсками",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Управление главнокомандующего Сухопутными войсками — 67 0,0019%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-centr-voenno-strategicheskih-issledovanii",
+    "name": "АО Центр военно-стратегических исследований",
+    "fullName": "АО Центр военно-стратегических исследований",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "АО Центр военно-стратегических исследований — 6 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-askeri-qurylys",
+    "name": "АО Әскери құрылыс",
+    "fullName": "АО Әскери құрылыс",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "АО Әскери құрылыс — 26 0,0007%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-komanduyuschego-voi-skami-protivo",
+    "name": "Управление командующего войсками противовоздушной обороны Сил воздушной обороны",
+    "fullName": "Управление командующего войсками противовоздушной обороны Сил воздушной обороны",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Управление командующего войсками противовоздушной обороны Сил воздушной обороны — 140 0,0039%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-pensionnogo-obespecheniya",
+    "name": "Центр пенсионного обеспечения",
+    "fullName": "Центр пенсионного обеспечения",
+    "parentId": "mo",
+    "level": "district",
+    "scope": "Центр пенсионного обеспечения — 399 0,0111%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "glavnoe-upravlenie-voennoi-infrastruktury",
+    "name": "Главное управление военной инфраструктуры",
+    "fullName": "Главное управление военной инфраструктуры",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Главное управление военной инфраструктуры — 64 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ekspl-uchastkov-629-0-0176",
+    "name": "Экспл участков — 629 0,0176",
+    "fullName": "Экспл участков — 629 0,0176",
+    "parentId": "glavnoe-upravlenie-voennoi-infrastruktury",
+    "level": "district",
+    "scope": "25 экспл участков — 629 0,0176",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennogo-oboronnogo-zakaza",
+    "name": "Комитет государственного оборонного заказа",
+    "fullName": "Комитет государственного оборонного заказа",
+    "parentId": "mo",
+    "level": "regional",
+    "scope": "Комитет государственного оборонного заказа — 123 0,0034%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazspeceksport",
+    "name": "Казспецэкспорт",
+    "fullName": "Казспецэкспорт",
+    "parentId": "komitet-gosudarstvennogo-oboronnogo-zakaza",
+    "level": "district",
+    "scope": "Казспецэкспорт — 32 0,0009%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mki",
+    "name": "МКИ",
+    "fullName": "Министерство культуры и информации",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 7676) МКИ — 447/ 0,0125% (к-во орг — 79)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-razvitiyu-mezhetnicheskih-otnoshe",
+    "name": "Комитет по развитию межэтнических отношений",
+    "fullName": "Комитет по развитию межэтнических отношений",
+    "parentId": "mki",
+    "level": "regional",
+    "scope": "Комитет по развитию межэтнических отношений — 3 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "qogamdyq-kelisim",
+    "name": "Қоғамдық келісім",
+    "fullName": "Қоғамдық келісім",
+    "parentId": "komitet-po-razvitiyu-mezhetnicheskih-otnoshe",
+    "level": "district",
+    "scope": "Қоғамдық келісім — 3 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-delam-molodezhi-i-semi",
+    "name": "Комитет по делам молодежи и семьи",
+    "fullName": "Комитет по делам молодежи и семьи",
+    "parentId": "mki",
+    "level": "regional",
+    "scope": "Комитет по делам молодежи и семьи — 11 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-arhivov-dokumentacii-i-knizhnogo-del",
+    "name": "Комитет архивов, документации и книжного дела",
+    "fullName": "Комитет архивов, документации и книжного дела",
+    "parentId": "mki",
+    "level": "regional",
+    "scope": "Комитет архивов, документации и книжного дела — 109 0,0030%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centrov",
+    "name": "Центров",
+    "fullName": "Центров",
+    "parentId": "komitet-arhivov-dokumentacii-i-knizhnogo-del",
+    "level": "district",
+    "scope": "10 центров — 456 0,0127%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-kultury",
+    "name": "Комитет культуры",
+    "fullName": "Комитет культуры",
+    "parentId": "mki",
+    "level": "regional",
+    "scope": "Комитет культуры — 84 0,0023%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki-5",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "komitet-kultury",
+    "level": "district",
+    "scope": "33 подведомки — 333 0,0093%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-informacii",
+    "name": "Комитет информации",
+    "fullName": "Комитет информации",
+    "parentId": "mki",
+    "level": "regional",
+    "scope": "Комитет информации — 209 0,0058%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-analiza-i-informacii",
+    "name": "Центр анализа и информации",
+    "fullName": "Центр анализа и информации",
+    "parentId": "komitet-informacii",
+    "level": "district",
+    "scope": "Центр анализа и информации — 3 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-delam-religii",
+    "name": "Комитет по делам религий",
+    "fullName": "Комитет по делам религий",
+    "parentId": "mki",
+    "level": "regional",
+    "scope": "Комитет по делам религий — 86 0,0024%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-delam-grazhdanskogo-obschestva",
+    "name": "Комитет по делам гражданского общества",
+    "fullName": "Комитет по делам гражданского общества",
+    "parentId": "mki",
+    "level": "regional",
+    "scope": "Комитет по делам гражданского общества — 64 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-teleradiokorporaciya-kazahstan-qazaq-auen",
+    "name": "АО телерадиокорпорация \"Казахстан/қазақ әуендер/казахфильм/хабар/казконтент",
+    "fullName": "АО телерадиокорпорация \"Казахстан/қазақ әуендер/казахфильм/хабар/казконтент",
+    "parentId": "mki",
+    "level": "district",
+    "scope": "5 АО телерадиокорпорация \"Казахстан/қазақ әуендер/казахфильм/хабар/казконтент — 383 0,0107%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mezhdunarodnyi-centr-mezhkonfessionalnogo-i",
+    "name": "Международный центр межконфессионального и межрелигиозного диалога",
+    "fullName": "Международный центр межконфессионального и межрелигиозного диалога",
+    "parentId": "mki",
+    "level": "district",
+    "scope": "Международный центр межконфессионального и межрелигиозного диалога — 5 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-institut-centr-balet-gazet",
+    "name": "ТОО Институт/центр/балет/газет",
+    "fullName": "ТОО Институт/центр/балет/газет",
+    "parentId": "mki",
+    "level": "district",
+    "scope": "5 ТОО Институт/центр/балет/газет — 42 0,0012%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nao-centr-podderzhki-nacionalnogo-kino-insti",
+    "name": "НАО центр поддержки nationalного кино/институт/Астана Опера",
+    "fullName": "НАО центр поддержки nationalного кино/институт/Астана Опера",
+    "parentId": "mki",
+    "level": "district",
+    "scope": "4 НАО центр поддержки nationalного кино/институт/Астана Опера — 78 0,0023%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "uchebnye-uchrezhd",
+    "name": "Учебные учрежд",
+    "fullName": "Учебные учрежд",
+    "parentId": "mki",
+    "level": "district",
+    "scope": "10 Учебные учрежд — 318 0,0089%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahskaya-nacionalnaya-akademiya-horeografi",
+    "name": "Казахская национальная академия хореографии",
+    "fullName": "Казахская национальная академия хореографии",
+    "parentId": "mki",
+    "level": "district",
+    "scope": "Казахская национальная академия хореографии - 24 0,0007%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mts",
+    "name": "МТС",
+    "fullName": "Министерство туризма и спорта",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 4324) МТС — 199 / 0,0056% (к-во орг — 24)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-delam-sporta-i-fizicheskoi-kultur",
+    "name": "Комитет по делам спорта и физической культуры",
+    "fullName": "Комитет по делам спорта и физической культуры",
+    "parentId": "mts",
+    "level": "regional",
+    "scope": "Комитет по делам спорта и физической культуры — 329 0,0092%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centrov-i-podvedomki",
+    "name": "Центров и подведомки",
+    "fullName": "Центров и подведомки",
+    "parentId": "komitet-po-delam-sporta-i-fizicheskoi-kultur",
+    "level": "district",
+    "scope": "17 центров и подведомки — 237 0,0067%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-regulirovaniyu-igornogo-biznesa-i",
+    "name": "Комитет по регулированию игорного бизнеса и лотереи",
+    "fullName": "Комитет по регулированию игорного бизнеса и лотереи",
+    "parentId": "mts",
+    "level": "regional",
+    "scope": "Комитет по регулированию игорного бизнеса и лотереи — 480 0,0134%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-centr-monitoringa-i-analiza-azartnyh-igr",
+    "name": "ТОО Центр мониторинга и анализа азартных игр",
+    "fullName": "ТОО Центр мониторинга и анализа азартных игр",
+    "parentId": "komitet-po-regulirovaniyu-igornogo-biznesa-i",
+    "level": "district",
+    "scope": "ТОО Центр мониторинга и анализа азартных игр — 47 0,0013%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-industrii-turizma",
+    "name": "Комитет индустрии туризма",
+    "fullName": "Комитет индустрии туризма",
+    "parentId": "mts",
+    "level": "regional",
+    "scope": "Комитет индустрии туризма — 208 0,0058%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazakh-tourism",
+    "name": "АО Kazakh Tourism",
+    "fullName": "АО Kazakh Tourism",
+    "parentId": "komitet-industrii-turizma",
+    "level": "district",
+    "scope": "АО Kazakh Tourism — 61 0,0017%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nao-mezhdunarodnyi-universitet-turizma-i-gos",
+    "name": "НАО Международный университет туризма и гостеприимства",
+    "fullName": "НАО Международный университет туризма и гостеприимства",
+    "parentId": "komitet-industrii-turizma",
+    "level": "district",
+    "scope": "НАО Международный университет туризма и гостеприимства — 11 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mz",
+    "name": "МЗ",
+    "fullName": "Министерство здравоохранения",
+    "parentId": "apr",
+    "level": "agency",
+    "scope": "(всего — 101673) МЗ — 6241/0,1742% (к-во орг — 344)",
+    "questions": [
+      {
+        "id": "q-mz-1",
+        "topic": "ОСМС и бесплатные лекарства",
+        "description": "Отказ в медуслугах по страховке, квоты, поликлиники.",
+        "keywords": [
+          "осмс",
+          "лекарства",
+          "поликлиника",
+          "квота"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "komitet-medicinskogo-i-farmacevticheskogo-ko",
+    "name": "Комитет медицинского и фармацевтического контроля",
+    "fullName": "Комитет медицинского и фармацевтического контроля",
+    "parentId": "mz",
+    "level": "regional",
+    "scope": "Комитет медицинского и фармацевтического контроля — 3535 0,0987%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-13",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-medicinskogo-i-farmacevticheskogo-ko",
+    "level": "district",
+    "scope": "20 территории — 7579 0,2115%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-ekspertizy-lekarstvennyh-s",
+    "name": "Национальный центр экспертизы лекарственных средств и медицинских изделий",
+    "fullName": "Национальный центр экспертизы лекарственных средств и медицинских изделий",
+    "parentId": "komitet-medicinskogo-i-farmacevticheskogo-ko",
+    "level": "district",
+    "scope": "Национальный центр экспертизы лекарственных средств и медицинских изделий — 733 0,0205%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-sanitarno-epidemiologicheskogo-kontr",
+    "name": "Комитет санитарно-эпидемиологического контроля",
+    "fullName": "Комитет санитарно-эпидемиологического контроля",
+    "parentId": "mz",
+    "level": "regional",
+    "scope": "Комитет санитарно-эпидемиологического контроля — 1108 0,0309%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-14",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
+    "level": "district",
+    "scope": "20 территории — 4086 0,1140%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gor-rai-onnye-upravlenii",
+    "name": "Гор/районные управлении",
+    "fullName": "Гор/районные управлении",
+    "parentId": "territorii-14",
+    "level": "regional",
+    "scope": "218 гор/районные управлении — 10704 0,2988%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "departament-sanitarno-epidemiologicheskogo-k",
+    "name": "Департамент санитарно-эпидемиологического контроля на транспорте",
+    "fullName": "Департамент санитарно-эпидемиологического контроля на транспорте",
+    "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
+    "level": "regional",
+    "scope": "Департамент санитарно-эпидемиологического контроля на транспорте — 54 0,0015%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenii-2",
+    "name": "Управлении",
+    "fullName": "Управлении",
+    "parentId": "departament-sanitarno-epidemiologicheskogo-k",
+    "level": "regional",
+    "scope": "16 управлении - 124 0,0035%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "protivochumnaya-stanciya",
+    "name": "Противочумная станция",
+    "fullName": "Противочумная станция",
+    "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
+    "level": "district",
+    "scope": "9 противочумная станция - 1 0%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-ekspertizy",
+    "name": "Национальный центр экспертизы",
+    "fullName": "Национальный центр экспертизы",
+    "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
+    "level": "district",
+    "scope": "Национальный центр экспертизы - 79 0,0022%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-11",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "nacionalnyi-centr-ekspertizy",
+    "level": "district",
+    "scope": "21 филиалов — 435 0,0121%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nauchnye-centry",
+    "name": "Научные центры",
+    "fullName": "Научные центры",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "8 Научные центры — 761 0,0212%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "detskii-klinicheskii-sanatorii-reabilitaciya",
+    "name": "Детский клинический санаторий/ реабилитация",
+    "fullName": "Детский клинический санаторий/ реабилитация",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "3 Детский клинический санаторий/ реабилитация — 110 0,0028%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nao-turar-healthcae",
+    "name": "НАО Turar Healthcaе",
+    "fullName": "НАО Turar Healthcaе",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "НАО Turar Healthcaе — 2 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazmedteh",
+    "name": "АО \"КазМедТех",
+    "fullName": "АО \"КазМедТех",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "АО \"КазМедТех\" -14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskie-centr-y-i-bolnicy",
+    "name": "Республиканские центр ы и больницы",
+    "fullName": "Республиканские центр ы и больницы",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "8 Республиканские центр ы и больницы — 563 0,0157%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-gigieny-truda-i-profession",
+    "name": "Национальный центр гигиены труда и профессиональных заболеваний",
+    "fullName": "Национальный центр гигиены труда и профессиональных заболеваний",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "Национальный центр гигиены труда и профессиональных заболеваний — 37 0,0010%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazahskii-respublikanskii-leprozorii",
+    "name": "Казахский республиканский лепрозорий",
+    "fullName": "Казахский республиканский лепрозорий",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "Казахский республиканский лепрозорий — 24 0,0007%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "med-univery",
+    "name": "Мед универы",
+    "fullName": "Мед универы",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "5 Мед универы — 711 0,0199%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-qazbiopharm",
+    "name": "АО QazBioPharm",
+    "fullName": "АО QazBioPharm",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "АО QazBioPharm — 75 0,0021%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-obschestvennogo-zdravoohra",
+    "name": "Национальный центр общественного здравоохранения",
+    "fullName": "Национальный центр общественного здравоохранения",
+    "parentId": "mz",
+    "level": "agency",
+    "scope": "Национальный центр общественного здравоохранения — 63 0,0018%",
+    "questions": [
+      {
+        "id": "q-nacionalnyi-centr-obschestvennogo-zdravoohra-1",
+        "topic": "ОСМС и бесплатные лекарства",
+        "description": "Отказ в медуслугах по страховке, квоты, поликлиники.",
+        "keywords": [
+          "осмс",
+          "лекарства",
+          "поликлиника",
+          "квота"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "filial-3",
+    "name": "Филиал",
+    "fullName": "Филиал",
+    "parentId": "nacionalnyi-centr-obschestvennogo-zdravoohra",
+    "level": "district",
+    "scope": "1 филиал — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nauchno-iscledovatelskii-institut-kurortolog",
+    "name": "Научно-исcледовательский институт курортологии и медицинской реабилитации",
+    "fullName": "Научно-исcледовательский институт курортологии и медицинской реабилитации",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "Научно-исcледовательский институт курортологии и медицинской реабилитации — 21 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "respublikanskii-centr-elektronnogo-zdravoohr",
+    "name": "Республиканский центр электронного здравоохранения",
+    "fullName": "Республиканский центр электронного здравоохранения",
+    "parentId": "mz",
+    "level": "agency",
+    "scope": "Республиканский центр электронного здравоохранения — 257 0,0072%",
+    "questions": [
+      {
+        "id": "q-respublikanskii-centr-elektronnogo-zdravoohr-1",
+        "topic": "ОСМС и бесплатные лекарства",
+        "description": "Отказ в медуслугах по страховке, квоты, поликлиники.",
+        "keywords": [
+          "осмс",
+          "лекарства",
+          "поликлиника",
+          "квота"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "too-sk-farmaciya",
+    "name": "ТОО \"СК-Фармация",
+    "fullName": "ТОО \"СК-Фармация",
+    "parentId": "mz",
+    "level": "district",
+    "scope": "ТОО \"СК-Фармация\" — 830 0,0232%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mt",
+    "name": "МТ",
+    "fullName": "Министерство транспорта",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 45368) МТ — 393/0,0110% (к-во орг — 109)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-avtomobilnogo-transporta-i-transport",
+    "name": "Комитет автомобильного транспорта и транспортного контроля",
+    "fullName": "Комитет автомобильного транспорта и транспортного контроля",
+    "parentId": "mt",
+    "level": "regional",
+    "scope": "Комитет автомобильного транспорта и транспортного контроля — 3568 0,0996%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "inspekcii-2",
+    "name": "Инспекции",
+    "fullName": "Инспекции",
+    "parentId": "komitet-avtomobilnogo-transporta-i-transport",
+    "level": "district",
+    "scope": "20 инспекции — 10985 0,3066%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-zheleznodorozhnogo-i-vodnogo-transpo",
+    "name": "Комитет железнодорожного и водного транспорта",
+    "fullName": "Комитет железнодорожного и водного транспорта",
+    "parentId": "mt",
+    "level": "regional",
+    "scope": "Комитет железнодорожного и водного транспорта — 128 0,036%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "morskaya-administraciya-portov",
+    "name": "Морская администрация портов",
+    "fullName": "Морская администрация портов",
+    "parentId": "komitet-zheleznodorozhnogo-i-vodnogo-transpo",
+    "level": "district",
+    "scope": "Морская администрация портов — 935 0,0261%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "qazaqstan-su-zholdary",
+    "name": "Қазақстан су жолдары",
+    "fullName": "Қазақстан су жолдары",
+    "parentId": "komitet-zheleznodorozhnogo-i-vodnogo-transpo",
+    "level": "district",
+    "scope": "Қазақстан су жолдары — 9 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-12",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "qazaqstan-su-zholdary",
+    "level": "district",
+    "scope": "9 филиалов — 29 0,0008%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-avtomobilnyh-dorog",
+    "name": "Комитет автомобильных дорог",
+    "fullName": "Комитет автомобильных дорог",
+    "parentId": "mt",
+    "level": "regional",
+    "scope": "Комитет автомобильных дорог — 143 0,0040%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahstanskii-dorozhnyi-nauchno-issledova",
+    "name": "АО Казахстанский дорожный научно-исследовательский институт",
+    "fullName": "АО Казахстанский дорожный научно-исследовательский институт",
+    "parentId": "komitet-avtomobilnyh-dorog",
+    "level": "district",
+    "scope": "АО Казахстанский дорожный научно-исследовательский институт — 37 0,0010%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filial-4",
+    "name": "Филиал",
+    "fullName": "Филиал",
+    "parentId": "ao-kazahstanskii-dorozhnyi-nauchno-issledova",
+    "level": "district",
+    "scope": "1 филиал — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nacionalnyi-centr-kachestva-dorozhnyh-aktivo",
+    "name": "Национальный центр качества дорожных активов",
+    "fullName": "Национальный центр качества дорожных активов",
+    "parentId": "komitet-avtomobilnyh-dorog",
+    "level": "district",
+    "scope": "Национальный центр качества дорожных активов — 51 0,0014%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-13",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "nacionalnyi-centr-kachestva-dorozhnyh-aktivo",
+    "level": "district",
+    "scope": "20 филиалов — 156 0,0044%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-grazhdanskoi-aviacii",
+    "name": "Комитет гражданской авиации",
+    "fullName": "Комитет гражданской авиации",
+    "parentId": "mt",
+    "level": "regional",
+    "scope": "Комитет гражданской авиации — 789 0,0220%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-aviacionnaya-administraciya-kazahstana",
+    "name": "АО Авиационная администрация Казахстана",
+    "fullName": "АО Авиационная администрация Казахстана",
+    "parentId": "komitet-grazhdanskoi-aviacii",
+    "level": "district",
+    "scope": "АО Авиационная администрация Казахстана — 14449 0,4033%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazaeronavigaciya",
+    "name": "Казаэронавигация",
+    "fullName": "Казаэронавигация",
+    "parentId": "komitet-grazhdanskoi-aviacii",
+    "level": "district",
+    "scope": "Казаэронавигация — 296 0,0083%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-14",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "kazaeronavigaciya",
+    "level": "district",
+    "scope": "19 филиалов — 125 0,0035%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mezhregionalnaya-inspekciya-v-sfere-grazhdan",
+    "name": "Межрегиональная инспекция в сфере гражданской авиации",
+    "fullName": "Межрегиональная инспекция в сфере гражданской авиации",
+    "parentId": "komitet-grazhdanskoi-aviacii",
+    "level": "district",
+    "scope": "Межрегиональная инспекция в сфере гражданской авиации — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-centr-po-rassledovaniyu-transportnyh-proi",
+    "name": "АО Центр по расследованию транспортных происшествий и инцидентов",
+    "fullName": "АО Центр по расследованию транспортных происшествий и инцидентов",
+    "parentId": "mt",
+    "level": "district",
+    "scope": "АО Центр по расследованию транспортных происшествий и инцидентов — 2 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-qazavtozhol-685-0-0191",
+    "name": "АО ҚазАвтоЖол — 685 0,0191",
+    "fullName": "АО ҚазАвтоЖол — 685 0,0191",
+    "parentId": "mt",
+    "level": "district",
+    "scope": "АО ҚазАвтоЖол — 685 0,0191",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-15",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "ao-qazavtozhol-685-0-0191",
+    "level": "district",
+    "scope": "18 филиалов — 5486 0,1531%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-kazhservis",
+    "name": "ТОО Кажсервис",
+    "fullName": "ТОО Кажсервис",
+    "parentId": "ao-qazavtozhol-685-0-0191",
+    "level": "district",
+    "scope": "ТОО Кажсервис — 38 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-16",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "too-kazhservis",
+    "level": "district",
+    "scope": "17 филиалов — 245 0,0068%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mne",
+    "name": "МНЭ",
+    "fullName": "Министерство национальной экономики",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 23892) МНЭ — 3017/0,0842% (к-во орг — 34)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-regulirovaniyu-estestvennyh-monop",
+    "name": "Комитет по регулированию естественных монополий",
+    "fullName": "Комитет по регулированию естественных монополий",
+    "parentId": "mne",
+    "level": "regional",
+    "scope": "Комитет по регулированию естественных монополий — 479 0,0134%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "territorii-15",
+    "name": "Территории",
+    "fullName": "Территории",
+    "parentId": "komitet-po-regulirovaniyu-estestvennyh-monop",
+    "level": "district",
+    "scope": "20 территории — 3266 0,0912%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-specialnyh-programm",
+    "name": "Комитет специальных программ",
+    "fullName": "Комитет специальных программ",
+    "parentId": "mne",
+    "level": "regional",
+    "scope": "Комитет специальных программ — 8 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nauchno-issledovatelskii-institut-mikrografi",
+    "name": "Научно-исследовательский институт микрографии",
+    "fullName": "Научно-исследовательский институт микрографии",
+    "parentId": "mne",
+    "level": "district",
+    "scope": "Научно-исследовательский институт микрографии — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahstanskii-centr-gosudarstvenno-chastn",
+    "name": "АО Казахстанский центр государственно-частного партнерства",
+    "fullName": "АО Казахстанский центр государственно-частного партнерства",
+    "parentId": "mne",
+    "level": "district",
+    "scope": "АО Казахстанский центр государственно-частного партнерства — 15 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-institut-ekonomicheskih-issledovanii",
+    "name": "АО Институт экономических исследований",
+    "fullName": "АО Институт экономических исследований",
+    "parentId": "mne",
+    "level": "district",
+    "scope": "АО Институт экономических исследований — 20 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nih-bai-terek",
+    "name": "НИХ Байтерек",
+    "fullName": "НИХ Байтерек",
+    "parentId": "mne",
+    "level": "district",
+    "scope": "НИХ Байтерек — 298 0,0083%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "zhssb-otbasy-bank",
+    "name": "ЖССБ Отбасы банк",
+    "fullName": "ЖССБ Отбасы банк",
+    "parentId": "nih-bai-terek",
+    "level": "district",
+    "scope": "ЖССБ Отбасы банк — 7454 0,2080%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-qazaqstan-investment-corporation",
+    "name": "АО Qazaqstan Investment Corporation",
+    "fullName": "АО Qazaqstan Investment Corporation",
+    "parentId": "nih-bai-terek",
+    "level": "district",
+    "scope": "АО Qazaqstan Investment Corporation — 33 0,0009%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-eksportno-kreditnoe-agentstvo-kazahstana",
+    "name": "АО Экспортно-кредитное агентство Казахстана",
+    "fullName": "АО Экспортно-кредитное агентство Казахстана",
+    "parentId": "nih-bai-terek",
+    "level": "agency",
+    "scope": "АО Экспортно-кредитное агентство Казахстана — 25 0,0007%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-agrarnaya-kreditnaya-korporaciya",
+    "name": "АО Аграрная кредитная корпорация",
+    "fullName": "АО Аграрная кредитная корпорация",
+    "parentId": "nih-bai-terek",
+    "level": "district",
+    "scope": "АО Аграрная кредитная корпорация — 403 0,0112%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-bank-razvitiya-kazahstana",
+    "name": "АО Банк Развития Казахстана",
+    "fullName": "АО Банк Развития Казахстана",
+    "parentId": "nih-bai-terek",
+    "level": "district",
+    "scope": "АО Банк Развития Казахстана — 110 0,0031%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-fond-razvitiya-predprinimatelstva-damu",
+    "name": "АО Фонд развития предпринимательства \"Даму",
+    "fullName": "АО Фонд развития предпринимательства \"Даму",
+    "parentId": "nih-bai-terek",
+    "level": "district",
+    "scope": "АО Фонд развития предпринимательства \"Даму\" — 367 0,0102%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-kazahstanskaya-zhilischnaya-kompaniya",
+    "name": "АО Казахстанская Жилищная Компания",
+    "fullName": "АО Казахстанская Жилищная Компания",
+    "parentId": "nih-bai-terek",
+    "level": "district",
+    "scope": "АО Казахстанская Жилищная Компания — 296 0,0083%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mvri",
+    "name": "МВРИ",
+    "fullName": "Министерство водных ресурсов и ирригации",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 8756) МВРИ — 537/0,0150% (к-во орг — 44)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-vodnogo-hozyai-stva",
+    "name": "Комитет водного хозяйства",
+    "fullName": "Комитет водного хозяйства",
+    "parentId": "mvri",
+    "level": "regional",
+    "scope": "Комитет водного хозяйства — 122 0,0034%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-regulirovaniyu-ohrane-i-ispolzova",
+    "name": "Комитет по регулированию, охране и использованию водных ресурсов",
+    "fullName": "Комитет по регулированию, охране и использованию водных ресурсов",
+    "parentId": "mvri",
+    "level": "regional",
+    "scope": "Комитет по регулированию, охране и использованию водных ресурсов — 106 0,0030%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "inspekcii-3",
+    "name": "Инспекции",
+    "fullName": "Инспекции",
+    "parentId": "komitet-po-regulirovaniyu-ohrane-i-ispolzova",
+    "level": "district",
+    "scope": "8 инспекции — 4488 0,1253%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gidrogeologo-meliorativnyi-centr",
+    "name": "Гидрогеолого-мелиоративный центр",
+    "fullName": "Гидрогеолого-мелиоративный центр",
+    "parentId": "mvri",
+    "level": "district",
+    "scope": "3 гидрогеолого-мелиоративный центр — 4 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-kazahskii-nauchno-issledovatelskii-incti",
+    "name": "ТОО Казахский научно-исследовательский инcтитут водного хозяйства",
+    "fullName": "ТОО Казахский научно-исследовательский инcтитут водного хозяйства",
+    "parentId": "mvri",
+    "level": "district",
+    "scope": "ТОО Казахский научно-исследовательский инcтитут водного хозяйства — 7 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-sk-water-solutions",
+    "name": "ТОО SK Water Solutions",
+    "fullName": "ТОО SK Water Solutions",
+    "parentId": "mvri",
+    "level": "district",
+    "scope": "ТОО SK Water Solutions — 14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nao-kazgidrogeologiya",
+    "name": "НАО Казгидрогеология",
+    "fullName": "НАО Казгидрогеология",
+    "parentId": "mvri",
+    "level": "district",
+    "scope": "НАО Казгидрогеология — 19 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filiala-2",
+    "name": "Филиала",
+    "fullName": "Филиала",
+    "parentId": "nao-kazgidrogeologiya",
+    "level": "district",
+    "scope": "3 филиала — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "nao-informacionno-analiticheskii-centr-vodny",
+    "name": "НАО Информационно-аналитический центр водных ресурсов",
+    "fullName": "НАО Информационно-аналитический центр водных ресурсов",
+    "parentId": "mvri",
+    "level": "district",
+    "scope": "НАО Информационно-аналитический центр водных ресурсов — 11 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kazvodhoz",
+    "name": "Казводхоз",
+    "fullName": "Казводхоз",
+    "parentId": "mvri",
+    "level": "district",
+    "scope": "Казводхоз — 182 0,0051%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filial-5",
+    "name": "Филиал",
+    "fullName": "Филиал",
+    "parentId": "kazvodhoz",
+    "level": "district",
+    "scope": "22 филиал — 853 0,0238%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mnvo",
+    "name": "МНВО",
+    "fullName": "Министерство науки и высшего образования",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего —8628) МНВО — 4580/0,1278% (к-во орг — 70)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "vuz",
+    "name": "ВУЗ",
+    "fullName": "ВУЗ",
+    "parentId": "mnvo",
+    "level": "district",
+    "scope": "35 ВУЗ — 6044 0,1684%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "til-qazyna",
+    "name": "Тіл-Қазына",
+    "fullName": "Тіл-Қазына",
+    "parentId": "vuz",
+    "level": "district",
+    "scope": "Тіл-Қазына — 11 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "institutov-i-centrov",
+    "name": "Институтов и центров",
+    "fullName": "Институтов и центров",
+    "parentId": "vuz",
+    "level": "district",
+    "scope": "33 институтов и центров — 270 0,0076%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mid",
+    "name": "МИД",
+    "fullName": "Министерство иностранных дел",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 3719) МИД — (3139/0,0876%) (к-во орг — 4)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik",
+    "name": "Квазик",
+    "fullName": "Квазик",
+    "parentId": "mid",
+    "level": "district",
+    "scope": "3-квазик (277/0,0077%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mp",
+    "name": "МП",
+    "fullName": "Министерство просвещения",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 22360) МП — (7256/0,2025%) (к-во орг — 16)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik-2",
+    "name": "Квазик",
+    "fullName": "Квазик",
+    "parentId": "mp",
+    "level": "district",
+    "scope": "15-квазик (580/0,0163%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "msh",
+    "name": "МСХ",
+    "fullName": "Министерство сельского хозяйства",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 33861) МСХ — (1700/0,0474%) (к-во орг — 383)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-upravleniyu-zemelnymi-resursami",
+    "name": "Комитет по управлению земельными ресурсами",
+    "fullName": "Комитет по управлению земельными ресурсами",
+    "parentId": "msh",
+    "level": "regional",
+    "scope": "Комитет по управлению земельными ресурсами (1326/0,0370%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-departamentov",
+    "name": "Областных департаментов",
+    "fullName": "Областных департаментов",
+    "parentId": "komitet-po-upravleniyu-zemelnymi-resursami",
+    "level": "regional",
+    "scope": "20-областных департаментов (8752/0,2443%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik-3",
+    "name": "Квазик",
+    "fullName": "Квазик",
+    "parentId": "komitet-po-upravleniyu-zemelnymi-resursami",
+    "level": "district",
+    "scope": "2-квазик (42/0,0011%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-veterinarnogo-kontrolya-i-nadzora",
+    "name": "Комитет ветеринарного контроля и надзора",
+    "fullName": "Комитет ветеринарного контроля и надзора",
+    "parentId": "msh",
+    "level": "regional",
+    "scope": "Комитет ветеринарного контроля и надзора (459/0,0128%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-inspekcii",
+    "name": "Областных инспекций",
+    "fullName": "Областных инспекций",
+    "parentId": "komitet-veterinarnogo-kontrolya-i-nadzora",
+    "level": "district",
+    "scope": "20-областных инспекций (516/0,0144%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gorrai-inspekcii",
+    "name": "Горрай инспекции",
+    "fullName": "Горрай инспекции",
+    "parentId": "oblastnyh-inspekcii",
+    "level": "district",
+    "scope": "179-горрай инспекции (736/0,0208%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik-4",
+    "name": "Квазик",
+    "fullName": "Квазик",
+    "parentId": "komitet-veterinarnogo-kontrolya-i-nadzora",
+    "level": "district",
+    "scope": "3-квазик (62/0,0017%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-rybnogo-hozyai-stva",
+    "name": "Комитет рыбного хозяйства",
+    "fullName": "Комитет рыбного хозяйства",
+    "parentId": "msh",
+    "level": "regional",
+    "scope": "Комитет рыбного хозяйства (198/0,0055%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mezhoblastnaya-inspekciya",
+    "name": "Межобластная инспекция",
+    "fullName": "Межобластная инспекция",
+    "parentId": "komitet-rybnogo-hozyai-stva",
+    "level": "district",
+    "scope": "8-межобластная инспекция (393/0,0110%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik-5",
+    "name": "Квазик",
+    "fullName": "Квазик",
+    "parentId": "komitet-rybnogo-hozyai-stva",
+    "level": "district",
+    "scope": "4 — квазик (39/0,0011%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-gosudarstvennoi-inspekcii-v-agroprom",
+    "name": "Комитет государственной инспекции в агропромышленном комплексе",
+    "fullName": "Комитет государственной инспекции в агропромышленном комплексе",
+    "parentId": "msh",
+    "level": "regional",
+    "scope": "Комитет государственной инспекции в агропромышленном комплексе (148/0,0041%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-inspekcii-2",
+    "name": "Областных инспекций",
+    "fullName": "Областных инспекций",
+    "parentId": "komitet-gosudarstvennoi-inspekcii-v-agroprom",
+    "level": "district",
+    "scope": "20-областных инспекций (241/0,0067%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gorrai-inspekcii-2",
+    "name": "Горрай инспекции",
+    "fullName": "Горрай инспекции",
+    "parentId": "oblastnyh-inspekcii-2",
+    "level": "district",
+    "scope": "115-горрай инспекции (353/0,0099%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik-respublikanskii-centr-karantina-raste",
+    "name": "Квазик Республиканский центр карантина растений",
+    "fullName": "Квазик Республиканский центр карантина растений",
+    "parentId": "komitet-gosudarstvennoi-inspekcii-v-agroprom",
+    "level": "district",
+    "scope": "3-квазик Республиканский центр карантина растений (79/0,0022%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik-6",
+    "name": "Квазик",
+    "fullName": "Квазик",
+    "parentId": "msh",
+    "level": "district",
+    "scope": "4 — квазик (183/0,005%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "mchs",
+    "name": "МЧС",
+    "fullName": "Министерство по чрезвычайным ситуациям",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "(всего — 31530) МЧС — (695/0,0194%) (к-во орг — 296)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "oblastnyh-departamentov-2",
+    "name": "Областных департаментов",
+    "fullName": "Областных департаментов",
+    "parentId": "mchs",
+    "level": "regional",
+    "scope": "20-областных департаментов (13602/0,3796%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gorrai-chs",
+    "name": "Горрай ЧС",
+    "fullName": "Горрай ЧС",
+    "parentId": "oblastnyh-departamentov-2",
+    "level": "district",
+    "scope": "228-горрай ЧС (7602/0,2122%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-promyshlennoi-bezopasnosti",
+    "name": "Комитет промышленной безопасности",
+    "fullName": "Комитет промышленной безопасности",
+    "parentId": "mchs",
+    "level": "regional",
+    "scope": "Комитет промышленной безопасности (2685/0,0749%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "rgu-respublikanskaya-sluzhba-spaseniya-barys",
+    "name": "РГУ Республиканская служба спасения \"Барыс",
+    "fullName": "РГУ Республиканская служба спасения \"Барыс",
+    "parentId": "mchs",
+    "level": "district",
+    "scope": "РГУ Республиканская служба спасения \"Барыс\" (10/0,0003%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-preduprezhdeniya-chrezvychai-nyh-sit",
+    "name": "Комитет предупреждения чрезвычайных ситуаций",
+    "fullName": "Комитет предупреждения чрезвычайных ситуаций",
+    "parentId": "mchs",
+    "level": "regional",
+    "scope": "Комитет предупреждения чрезвычайных ситуаций (1/0%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-gosudarstvennym-materialnym-rezer",
+    "name": "Комитет по государственным материальным резервам",
+    "fullName": "Комитет по государственным материальным резервам",
+    "parentId": "mchs",
+    "level": "regional",
+    "scope": "Комитет по государственным материальным резервам (35/0,0010%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "rgp-rezerv-30-0-0008",
+    "name": "РГП \"Резерв\" (30/0,0008)",
+    "fullName": "РГП \"Резерв\" (30/0,0008)",
+    "parentId": "komitet-po-gosudarstvennym-materialnym-rezer",
+    "level": "district",
+    "scope": "РГП \"Резерв\" (30/0,0008)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gosudarstvennoe-uchrezhdenie-centr-mediciny",
+    "name": "Государственное учреждение Центр медицины катастроф",
+    "fullName": "Государственное учреждение Центр медицины катастроф",
+    "parentId": "mchs",
+    "level": "district",
+    "scope": "Государственное учреждение Центр медицины катастроф (29/0,0008%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "regionalnyh-filialov",
+    "name": "Региональных филиалов",
+    "fullName": "Региональных филиалов",
+    "parentId": "gosudarstvennoe-uchrezhdenie-centr-mediciny",
+    "level": "district",
+    "scope": "20-региональных филиалов (100/0,0028%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gu-akademiya-grazhdanskoi-zaschity-imeni-mal",
+    "name": "ГУ \"Академия гражданской защиты имени Малика Габдуллина",
+    "fullName": "ГУ \"Академия гражданской защиты имени Малика Габдуллина",
+    "parentId": "mchs",
+    "level": "district",
+    "scope": "ГУ \"Академия гражданской защиты имени Малика Габдуллина \" (27/0,0008%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-protivopozharnoi-sluzhby",
+    "name": "Комитет противопожарной службы",
+    "fullName": "Комитет противопожарной службы",
+    "parentId": "mchs",
+    "level": "regional",
+    "scope": "Комитет противопожарной службы (180/0,0050%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "komitet-po-grazhdanskoi-oborone-i-voinskim-c",
+    "name": "Комитет по гражданской обороне и воинским частям",
+    "fullName": "Комитет по гражданской обороне и воинским частям",
+    "parentId": "mchs",
+    "level": "regional",
+    "scope": "Комитет по гражданской обороне и воинским частям (11/ 0,0003%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "voinskoi-chasti",
+    "name": "Воинской части",
+    "fullName": "Воинской части",
+    "parentId": "komitet-po-grazhdanskoi-oborone-i-voinskim-c",
+    "level": "district",
+    "scope": "4- Воинской части (62/0,0017%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gu-kazselezaschita",
+    "name": "ГУ \"Казселезащита",
+    "fullName": "ГУ \"Казселезащита",
+    "parentId": "mchs",
+    "level": "district",
+    "scope": "ГУ \"Казселезащита (30/0,0008%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filialov-17",
+    "name": "Филиалов",
+    "fullName": "Филиалов",
+    "parentId": "gu-kazselezaschita",
+    "level": "district",
+    "scope": "7-филиалов (56/0,0016%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "voinskaya-chast-55209-7-0-0002",
+    "name": "Воинская часть 55209 (7/0,0002)",
+    "fullName": "Воинская часть 55209 (7/0,0002)",
+    "parentId": "mchs",
+    "level": "district",
+    "scope": "Воинская часть 55209 (7/0,0002)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "kvazik-7",
+    "name": "Квазик",
+    "fullName": "Квазик",
+    "parentId": "mchs",
+    "level": "district",
+    "scope": "5-квазик (139/0,0038%)",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "akimat-astana",
+    "name": "Акимат Астана",
+    "fullName": "Акимат Астана",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "Акимат Астана — 1152 0,0322% (к-во орг — 413)",
+    "questions": [
+      {
+        "id": "q-akimat-astana-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-rai-ona-saryarka",
+    "name": "Аппарат акима района \"Сарыарка",
+    "fullName": "Аппарат акима района \"Сарыарка",
+    "parentId": "akimat-astana",
+    "level": "district",
+    "scope": "Аппарат акима района \"Сарыарка\" — 1571 0,0438%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-rai-ona-saryarka-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-rai-ona-esil",
+    "name": "Аппарат акима района \"Есиль",
+    "fullName": "Аппарат акима района \"Есиль",
+    "parentId": "akimat-astana",
+    "level": "district",
+    "scope": "Аппарат акима района \"Есиль\" — 1566 0,0437%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-rai-ona-esil-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-rai-ona-nura",
+    "name": "Аппарат акима района \"Нұра",
+    "fullName": "Аппарат акима района \"Нұра",
+    "parentId": "akimat-astana",
+    "level": "district",
+    "scope": "Аппарат акима района \"Нұра\" — 2388 0,0667%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-rai-ona-nura-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-rai-ona-almaty",
+    "name": "Аппарат акима района \"Алматы",
+    "fullName": "Аппарат акима района \"Алматы",
+    "parentId": "akimat-astana",
+    "level": "district",
+    "scope": "Аппарат акима района \"Алматы\" — 1192 0,0333%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-rai-ona-almaty-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-rai-ona-bai-qonyr",
+    "name": "Аппарат акима района \"Байқоңыр",
+    "fullName": "Аппарат акима района \"Байқоңыр",
+    "parentId": "akimat-astana",
+    "level": "district",
+    "scope": "Аппарат акима района \"Байқоңыр\" — 1178 0,0329%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-rai-ona-bai-qonyr-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-rai-ona-sarai-shyq",
+    "name": "Аппарат акима района \"Сарайшық",
+    "fullName": "Аппарат акима района \"Сарайшық",
+    "parentId": "akimat-astana",
+    "level": "district",
+    "scope": "Аппарат акима района \"Сарайшық\" — 807 0,0225%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-rai-ona-sarai-shyq-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
+    "name": "Управление жилья и жилищной инспекции",
+    "fullName": "Управление жилья и жилищной инспекции",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление жилья и жилищной инспекции — 5479 0,1529%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "zhilischnyi-fond",
+    "name": "Жилищный фонд",
+    "fullName": "Жилищный фонд",
+    "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
+    "level": "district",
+    "scope": "Жилищный фонд — 211 0,0059%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astana-ornek",
+    "name": "ТОО Астана-Орнек",
+    "fullName": "ТОО Астана-Орнек",
+    "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
+    "level": "district",
+    "scope": "ТОО Астана-Орнек — 6 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-orken-qala",
+    "name": "ТОО Өркен қала",
+    "fullName": "ТОО Өркен қала",
+    "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
+    "level": "district",
+    "scope": "ТОО Өркен қала — 70 0,0020%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gorodskaya-nedvizhimost",
+    "name": "Городская недвижимость",
+    "fullName": "Городская недвижимость",
+    "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
+    "level": "district",
+    "scope": "Городская недвижимость — 73 0,0020%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-arhitektury-gradostroitelstva-i-z",
+    "name": "Управление архитектуры, градостроительства и земельных отношений",
+    "fullName": "Управление архитектуры, градостроительства и земельных отношений",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление архитектуры, градостроительства и земельных отношений — 7482 0,2088%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-centr-urbanistiki-goroda-astany",
+    "name": "ТОО «Центр урбанистики города Астаны",
+    "fullName": "ТОО «Центр урбанистики города Астаны",
+    "parentId": "upravlenie-arhitektury-gradostroitelstva-i-z",
+    "level": "district",
+    "scope": "ТОО «Центр урбанистики города Астаны — 640 0,0179%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-nauchno-issledovatelskii-proektnyi-insti",
+    "name": "ТОО Научно-исследовательский проектный институт \"Астанагенплан",
+    "fullName": "ТОО Научно-исследовательский проектный институт \"Астанагенплан",
+    "parentId": "upravlenie-arhitektury-gradostroitelstva-i-z",
+    "level": "district",
+    "scope": "ТОО Научно-исследовательский проектный институт \"Астанагенплан\" — 246 0,0069%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-transporta-i-razvitiya-dorozhno-t",
+    "name": "Управление транспорта и развития дорожно-транспортной инфраструктуры",
+    "fullName": "Управление транспорта и развития дорожно-транспортной инфраструктуры",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление транспорта и развития дорожно-транспортной инфраструктуры — 3553 0,0464%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-centr-organizacii-dorozhnogo-dvizheniya",
+    "name": "ТОО Центр организации дорожного движения города Астана",
+    "fullName": "ТОО Центр организации дорожного движения города Астана",
+    "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
+    "level": "district",
+    "scope": "ТОО Центр организации дорожного движения города Астана — 67 0,0019%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-direkciya-po-stroitelstvu-lrt",
+    "name": "ТОО Дирекция по строительству LRT",
+    "fullName": "ТОО Дирекция по строительству LRT",
+    "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
+    "level": "district",
+    "scope": "ТОО Дирекция по строительству LRT — 21 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-avtobusnyi-park-no1",
+    "name": "АО \"Автобусный парк №1",
+    "fullName": "АО \"Автобусный парк №1",
+    "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
+    "level": "district",
+    "scope": "АО \"Автобусный парк №1\" — 239 0,0067%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-mezhdunarodnyi-aeroport-nursultan-nazarba",
+    "name": "АО \"Международный аэропорт Нурсултан Назарбаев",
+    "fullName": "АО \"Международный аэропорт Нурсултан Назарбаев",
+    "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
+    "level": "district",
+    "scope": "АО \"Международный аэропорт Нурсултан Назарбаев\" — 1034 0,0289%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "filial-ao-mezhdunarodnyi-aeroport-nursultan",
+    "name": "Филиал АО \"Международный аэропорт Нурсултан Назарбаев\" - \"Аэропорт Кокшетау",
+    "fullName": "Филиал АО \"Международный аэропорт Нурсултан Назарбаев\" - \"Аэропорт Кокшетау",
+    "parentId": "ao-mezhdunarodnyi-aeroport-nursultan-nazarba",
+    "level": "district",
+    "scope": "Филиал АО \"Международный аэропорт Нурсултан Назарбаев\" - \"Аэропорт Кокшетау\" — 29 0,0008%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-zhezkiik",
+    "name": "АО \"Жезкиік",
+    "fullName": "АО \"Жезкиік",
+    "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
+    "level": "district",
+    "scope": "АО \"Жезкиік\" — 5 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-city-transportation-systems",
+    "name": "ТОО \"City Transportation Systems",
+    "fullName": "ТОО \"City Transportation Systems",
+    "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
+    "level": "district",
+    "scope": "ТОО \"City Transportation Systems\" — 623 0,0174%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-gosudarstvennogo-arhitekturno-str",
+    "name": "Управление государственного архитектурно-строительного контроля",
+    "fullName": "Управление государственного архитектурно-строительного контроля",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление государственного архитектурно-строительного контроля — 2810 0,0784%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-elorda-qurylys-kompaniyasy",
+    "name": "ТОО \"Елорда құрылыс компаниясы",
+    "fullName": "ТОО \"Елорда құрылыс компаниясы",
+    "parentId": "upravlenie-gosudarstvennogo-arhitekturno-str",
+    "level": "district",
+    "scope": "ТОО \"Елорда құрылыс компаниясы\" — 314 0,0088%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-obschestvennogo-zdravoohraneniya",
+    "name": "Управление общественного здравоохранения",
+    "fullName": "Управление общественного здравоохранения",
+    "parentId": "akimat-astana",
+    "level": "agency",
+    "scope": "Управление общественного здравоохранения — 1554 0,0434%",
+    "questions": [
+      {
+        "id": "q-upravlenie-obschestvennogo-zdravoohraneniya-1",
+        "topic": "ОСМС и бесплатные лекарства",
+        "description": "Отказ в медуслугах по страховке, квоты, поликлиники.",
+        "keywords": [
+          "осмс",
+          "лекарства",
+          "поликлиника",
+          "квота"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "polikliniki-bolnicy",
+    "name": "Поликлиники/больницы",
+    "fullName": "Поликлиники/больницы",
+    "parentId": "upravlenie-obschestvennogo-zdravoohraneniya",
+    "level": "district",
+    "scope": "30 поликлиники/больницы — 2196 0,0613%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
+    "name": "Управление охраны окружающей среды и природопользования",
+    "fullName": "Управление охраны окружающей среды и природопользования",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление охраны окружающей среды и природопользования - 4663 0,1301%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astana-ormany",
+    "name": "ТОО Астана орманы",
+    "fullName": "ТОО Астана орманы",
+    "parentId": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
+    "level": "district",
+    "scope": "ТОО Астана орманы — 12 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "astana-vetservis",
+    "name": "Астана ветсервис",
+    "fullName": "Астана ветсервис",
+    "parentId": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
+    "level": "district",
+    "scope": "Астана ветсервис — 65 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astana-zelenstroi",
+    "name": "ТОО АСТАНА-ЗЕЛЕНСТРОЙ",
+    "fullName": "ТОО АСТАНА-ЗЕЛЕНСТРОЙ",
+    "parentId": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
+    "level": "district",
+    "scope": "ТОО АСТАНА-ЗЕЛЕНСТРОЙ — 94 0,0026%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-obrazovaniya",
+    "name": "Управление образования",
+    "fullName": "Управление образования",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление образования — 4941 0,1379%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "obrazov-uchrezhd",
+    "name": "Образов учрежд",
+    "fullName": "Образов учрежд",
+    "parentId": "upravlenie-obrazovaniya",
+    "level": "district",
+    "scope": "267 образов учрежд — 6103 0,1703%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-stroitelstva",
+    "name": "Управление строительства",
+    "fullName": "Управление строительства",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление строительства — 1050 0,0293%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-elorda-damu",
+    "name": "ТОО Елорда даму",
+    "fullName": "ТОО Елорда даму",
+    "parentId": "upravlenie-stroitelstva",
+    "level": "district",
+    "scope": "ТОО Елорда даму — 19 0,0050%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-kommunalnogo-hozyai-stva",
+    "name": "Управление коммунального хозяйства",
+    "fullName": "Управление коммунального хозяйства",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление коммунального хозяйства — 380 0,0106%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "astana-su-arnasy",
+    "name": "Астана су арнасы",
+    "fullName": "Астана су арнасы",
+    "parentId": "upravlenie-kommunalnogo-hozyai-stva",
+    "level": "district",
+    "scope": "Астана су арнасы — 15705 0,4383%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astana-byuro-specialnogo-obsluzhivaniya",
+    "name": "ТОО Астана-Бюро специального обслуживания",
+    "fullName": "ТОО Астана-Бюро специального обслуживания",
+    "parentId": "upravlenie-kommunalnogo-hozyai-stva",
+    "level": "district",
+    "scope": "ТОО Астана-Бюро специального обслуживания — 9 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astana-tazalyq",
+    "name": "ТОО Астана Тазалық",
+    "fullName": "ТОО Астана Тазалық",
+    "parentId": "upravlenie-kommunalnogo-hozyai-stva",
+    "level": "district",
+    "scope": "ТОО Астана Тазалық — 113 0,0032%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "elorda-eco-system",
+    "name": "Elorda Eco System",
+    "fullName": "Elorda Eco System",
+    "parentId": "upravlenie-kommunalnogo-hozyai-stva",
+    "level": "district",
+    "scope": "Elorda Eco System — 379 0,0106%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-zanyatosti-i-socialnoi-zaschity",
+    "name": "Управление занятости и социальной защиты",
+    "fullName": "Управление занятости и социальной защиты",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление занятости и социальной защиты — 3243 0,0905%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centrov-2",
+    "name": "Центров",
+    "fullName": "Центров",
+    "parentId": "upravlenie-zanyatosti-i-socialnoi-zaschity",
+    "level": "district",
+    "scope": "11 центров — 618 0,0175%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-po-razvitiyu-yazykov-i-arhivnogo",
+    "name": "Управление по развитию языков и архивного дела",
+    "fullName": "Управление по развитию языков и архивного дела",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление по развитию языков и архивного дела — 770 0,0215%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gosudarstvennyi-arhiv",
+    "name": "Государственный архив",
+    "fullName": "Государственный архив",
+    "parentId": "upravlenie-po-razvitiyu-yazykov-i-arhivnogo",
+    "level": "district",
+    "scope": "Государственный архив — 445 0,0124%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ruhaniyat",
+    "name": "Руханият",
+    "fullName": "Руханият",
+    "parentId": "upravlenie-po-razvitiyu-yazykov-i-arhivnogo",
+    "level": "district",
+    "scope": "Руханият — 2 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-hozyai-stvennoe-upravlenie-astany",
+    "name": "ТОО \"Хозяйственное управление Астаны",
+    "fullName": "ТОО \"Хозяйственное управление Астаны",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "ТОО \"Хозяйственное управление Астаны\" — 15 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-po-mobilizacionnoi-podgotovke-ter",
+    "name": "Управление по мобилизационной подготовке, территориальной и гражданской обороне",
+    "fullName": "Управление по мобилизационной подготовке, территориальной и гражданской обороне",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление по мобилизационной подготовке, территориальной и гражданской обороне— 8 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-po-obespecheniyu-grazhdanskoi-oborony",
+    "name": "Центр по обеспечению гражданской обороны",
+    "fullName": "Центр по обеспечению гражданской обороны",
+    "parentId": "upravlenie-po-mobilizacionnoi-podgotovke-ter",
+    "level": "district",
+    "scope": "Центр по обеспечению гражданской обороны — 19 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-po-delam-religii",
+    "name": "Управление по делам религий",
+    "fullName": "Управление по делам религий",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление по делам религий — 49 0,0014%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomka",
+    "name": "Подведомка",
+    "fullName": "Подведомка",
+    "parentId": "upravlenie-po-delam-religii",
+    "level": "district",
+    "scope": "1 подведомка — 0",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-ekonomiki-i-byudzhetnogo-planirov",
+    "name": "Управление экономики и бюджетного планирования",
+    "fullName": "Управление экономики и бюджетного планирования",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление экономики и бюджетного планирования — 35 0,0010%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-vnutrennei-politiki",
+    "name": "Управление внутренней политики",
+    "fullName": "Управление внутренней политики",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление внутренней политики — 227 0,0063%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "qogamdyq-kelisim-2",
+    "name": "Қоғамдық келісім",
+    "fullName": "Қоғамдық келісім",
+    "parentId": "upravlenie-vnutrennei-politiki",
+    "level": "district",
+    "scope": "Қоғамдық келісім — 11 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "sluzhba-kommunikacii",
+    "name": "Служба коммуникаций",
+    "fullName": "Служба коммуникаций",
+    "parentId": "upravlenie-vnutrennei-politiki",
+    "level": "district",
+    "scope": "Служба коммуникаций — 1 0%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-elorda-aqparat",
+    "name": "ТОО Elorda Aqparat",
+    "fullName": "ТОО Elorda Aqparat",
+    "parentId": "upravlenie-vnutrennei-politiki",
+    "level": "district",
+    "scope": "ТОО Elorda Aqparat — 14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-finansov",
+    "name": "Управление финансов",
+    "fullName": "Управление финансов",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление финансов — 5 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-energetiki",
+    "name": "Управление энергетики",
+    "fullName": "Управление энергетики",
+    "parentId": "akimat-astana",
+    "level": "agency",
+    "scope": "Управление энергетики — 593 0,0166%",
+    "questions": [
+      {
+        "id": "q-upravlenie-energetiki-1",
+        "topic": "Поставки ГСМ и топлива",
+        "description": "Оптовые цены на бензин/дизель, дефицит на заправках.",
+        "keywords": [
+          "гсм",
+          "бензин",
+          "дизель",
+          "топливо"
+        ]
+      },
+      {
+        "id": "q-upravlenie-energetiki-2",
+        "topic": "Электроснабжение и аварии на ТЭЦ",
+        "description": "Отключения электроэнергии, перебои подачи света.",
+        "keywords": [
+          "свет",
+          "электроэнергия",
+          "тэц",
+          "авария"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "ao-astana-regionalnaya-elektrosetevaya-kompa",
+    "name": "АО Астана - Региональная Электросетевая Компания",
+    "fullName": "АО Астана - Региональная Электросетевая Компания",
+    "parentId": "upravlenie-energetiki",
+    "level": "district",
+    "scope": "АО Астана - Региональная Электросетевая Компания — 3833 0,1070%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-astana-teplotranzit",
+    "name": "АО Астана-Теплотранзит",
+    "fullName": "АО Астана-Теплотранзит",
+    "parentId": "upravlenie-energetiki",
+    "level": "district",
+    "scope": "АО Астана-Теплотранзит — 1922 0,0536%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astana-qalalyq-zharyq",
+    "name": "ТОО Астана қалалық жарық",
+    "fullName": "ТОО Астана қалалық жарық",
+    "parentId": "upravlenie-energetiki",
+    "level": "district",
+    "scope": "ТОО Астана қалалық жарық — 7 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-astana-energiya",
+    "name": "АО Астана-Энергия",
+    "fullName": "АО Астана-Энергия",
+    "parentId": "upravlenie-energetiki",
+    "level": "district",
+    "scope": "АО Астана-Энергия — 47 0,0013%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-po-investiciyam-i-razvitiyu-predp",
+    "name": "Управление по инвестициям и развитию предпринимательства",
+    "fullName": "Управление по инвестициям и развитию предпринимательства",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление по инвестициям и развитию предпринимательства — 426 0,0119%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-centr-razvitiya-turizma-astana-tourism",
+    "name": "ТОО Центр развития туризма \"Astana Tourism",
+    "fullName": "ТОО Центр развития туризма \"Astana Tourism",
+    "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
+    "level": "district",
+    "scope": "ТОО Центр развития туризма \"Astana Tourism\" — 14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-centr-razvitiya-astany",
+    "name": "ТОО Центр развития Астаны",
+    "fullName": "ТОО Центр развития Астаны",
+    "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
+    "level": "district",
+    "scope": "ТОО Центр развития Астаны — 24 0,0007%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-spk-astana",
+    "name": "АО СПК \"Astana",
+    "fullName": "АО СПК \"Astana",
+    "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
+    "level": "district",
+    "scope": "АО СПК \"Astana\" — 248 0,0069%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-gorodskoi-centr-razvitiya-investicii-ast",
+    "name": "ТОО \"Городской центр развития инвестиций \"AstanaInvest",
+    "fullName": "ТОО \"Городской центр развития инвестиций \"AstanaInvest",
+    "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
+    "level": "district",
+    "scope": "ТОО \"Городской центр развития инвестиций \"AstanaInvest\" — 64 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-po-voprosam-molodezhnoi-politiki",
+    "name": "Управление по вопросам молодежной политики",
+    "fullName": "Управление по вопросам молодежной политики",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление по вопросам молодежной политики — 21 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "molodezhnyi-resursnyi-centr-astana-zhastary",
+    "name": "Молодежный ресурсный центр \"Астана жастары",
+    "fullName": "Молодежный ресурсный центр \"Астана жастары",
+    "parentId": "upravlenie-po-voprosam-molodezhnoi-politiki",
+    "level": "district",
+    "scope": "Молодежный ресурсный центр \"Астана жастары\" — 22 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-cifrovizacii-i-gosudarstvennyh-us",
+    "name": "Управление цифровизации и государственных услуг",
+    "fullName": "Управление цифровизации и государственных услуг",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление цифровизации и государственных услуг — 257 0,0072%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "gorodskoi-centr-monitoringa-i-operativnogo-r",
+    "name": "Городской центр мониторинга и оперативного реагирования",
+    "fullName": "Городской центр мониторинга и оперативного реагирования",
+    "parentId": "upravlenie-cifrovizacii-i-gosudarstvennyh-us",
+    "level": "district",
+    "scope": "Городской центр мониторинга и оперативного реагирования — 103 0,0029%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "ao-astana-innovations",
+    "name": "АО Астана Innovations",
+    "fullName": "АО Астана Innovations",
+    "parentId": "upravlenie-cifrovizacii-i-gosudarstvennyh-us",
+    "level": "district",
+    "scope": "АО Астана Innovations — 40 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-fizicheskoi-kultury-i-sporta",
+    "name": "Управление физической культуры и спорта",
+    "fullName": "Управление физической культуры и спорта",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление физической культуры и спорта — 342 0,0095%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki-6",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "upravlenie-fizicheskoi-kultury-i-sporta",
+    "level": "district",
+    "scope": "19 подведомки — 142 0,0040%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-kultury",
+    "name": "Управление культуры",
+    "fullName": "Управление культуры",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление культуры — 268 0,0075%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki-7",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "upravlenie-kultury",
+    "level": "district",
+    "scope": "14 подведомки — 201 0,0328%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-po-zaschite-prav-detei",
+    "name": "Управление по защите прав детей",
+    "fullName": "Управление по защите прав детей",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление по защите прав детей — 221 0,0062%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "upravlenie-aktivov-i-gosudarstvennyh-zakupok",
+    "name": "Управление активов и государственных закупок",
+    "fullName": "Управление активов и государственных закупок",
+    "parentId": "akimat-astana",
+    "level": "regional",
+    "scope": "Управление активов и государственных закупок — 560 0,0156%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "too-astana-venue-management",
+    "name": "ТОО \"Astana Venue Management",
+    "fullName": "ТОО \"Astana Venue Management",
+    "parentId": "upravlenie-aktivov-i-gosudarstvennyh-zakupok",
+    "level": "district",
+    "scope": "ТОО \"Astana Venue Management\" — 5 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "almatinskaya-oblast",
+    "name": "Алматинская область",
+    "fullName": "Алматинская область",
+    "parentId": "apr",
+    "level": "district",
+    "scope": "Алматинская область — 709 0,0198%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-karasai-skogo-rai-ona",
+    "name": "Аппарат Акима Карасайского района",
+    "fullName": "Аппарат Акима Карасайского района",
+    "parentId": "almatinskaya-oblast",
+    "level": "district",
+    "scope": "Аппарат Акима Карасайского района — 247 0,0069%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-karasai-skogo-rai-ona-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-irgelinskogo-selskogo-okruga",
+    "name": "Аппарат акима Иргелинского сельского округа",
+    "fullName": "Аппарат акима Иргелинского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Иргелинского сельского округа — 485 0,0135%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-irgelinskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-goroda-kaskelen",
+    "name": "Аппарат акима города Каскелен",
+    "fullName": "Аппарат акима города Каскелен",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима города Каскелен — 602 0,0168%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-goroda-kaskelen-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-rai-ymbekskogo-selskogo-okruga",
+    "name": "Аппарат акима Райымбекского сельского округа",
+    "fullName": "Аппарат акима Райымбекского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Райымбекского сельского округа — 530 0,0148%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-rai-ymbekskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-zhambylskogo-selskogo-okruga",
+    "name": "Аппарат акима Жамбылского сельского округа",
+    "fullName": "Аппарат акима Жамбылского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Жамбылского сельского округа — 110 0,0031%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-zhambylskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-umtylskogo-selskogo-okruga",
+    "name": "Аппарат акима Умтылского сельского округа",
+    "fullName": "Аппарат акима Умтылского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Умтылского сельского округа — 143 0,0040%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-umtylskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-zhandosovskogo-selskogo-okruga",
+    "name": "Аппарат акима Жандосовского сельского округа",
+    "fullName": "Аппарат акима Жандосовского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Жандосовского сельского округа — 86 0,0024%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-zhandosovskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-selskogo-okruga-zhibek-zholy",
+    "name": "Аппарат акима сельского округа Жибек Жолы",
+    "fullName": "Аппарат акима сельского округа Жибек Жолы",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима сельского округа Жибек Жолы — 180 0,0050%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-selskogo-okruga-zhibek-zholy-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-pervomai-skogo-selskogo-okruga",
+    "name": "Аппарат акима Первомайского сельского округа",
+    "fullName": "Аппарат акима Первомайского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Первомайского сельского округа — 62 0,0017%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-pervomai-skogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-shamalganskogo-selskogo-okruga",
+    "name": "Аппарат акима Шамалганского сельского округа",
+    "fullName": "Аппарат акима Шамалганского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Шамалганского сельского округа — 131 0,0037%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-shamalganskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-eltai-skogo-selskogo-okruga",
+    "name": "Аппарат акима Ельтайского сельского округа",
+    "fullName": "Аппарат акима Ельтайского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Ельтайского сельского округа - 262 0,0073%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-eltai-skogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-ai-tei-skogo-selskogo-okruga",
+    "name": "Аппарат акима Айтейского сельского округа",
+    "fullName": "Аппарат акима Айтейского сельского округа",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Айтейского сельского округа — 83 0,0023%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-ai-tei-skogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "otdel-arhitektury-i-gradostroitelstva",
+    "name": "Отдел архитектуры и градостроительства",
+    "fullName": "Отдел архитектуры и градостроительства",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел архитектуры и градостроительства — 2302 0,0643%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-zhilischno-kommunalnogo-hozyai-stva-i",
+    "name": "Отдел жилищно-коммунального хозяйства и жилищной инспекции",
+    "fullName": "Отдел жилищно-коммунального хозяйства и жилищной инспекции",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел жилищно-коммунального хозяйства и жилищной инспекции — 484 0,0135%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-vnutrennei-politiki",
+    "name": "Отдел внутренней политики",
+    "fullName": "Отдел внутренней политики",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел внутренней политики — 5 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-provedeniya-sportivno-massovyh-meropri",
+    "name": "Центр проведения спортивно-массовых мероприятий Карасайского района",
+    "fullName": "Центр проведения спортивно-массовых мероприятий Карасайского района",
+    "parentId": "otdel-vnutrennei-politiki",
+    "level": "district",
+    "scope": "Центр проведения спортивно-массовых мероприятий Карасайского района — 1 0%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "rai-onnyi-dom-kultury",
+    "name": "Районный дом культуры",
+    "fullName": "Районный дом культуры",
+    "parentId": "otdel-vnutrennei-politiki",
+    "level": "district",
+    "scope": "Районный дом культуры — 1 0%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "folklorno-etnograficheskii-ansambl-ushkonyr",
+    "name": "Фольклорно-этнографический ансамбль \"Ушконыр",
+    "fullName": "Фольклорно-этнографический ансамбль \"Ушконыр",
+    "parentId": "otdel-vnutrennei-politiki",
+    "level": "district",
+    "scope": "Фольклорно-этнографический ансамбль \"Ушконыр\" — 3 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-kultury-razvitiya-yazykov-fizicheskoi",
+    "name": "Отдел культуры, развития языков, физической культуры и спорта",
+    "fullName": "Отдел культуры, развития языков, физической культуры и спорта",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел культуры, развития языков, физической культуры и спорта — 19 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "karasai-skaya-rai-onnaya-biblioteka",
+    "name": "Карасайская районная библиотека",
+    "fullName": "Карасайская районная библиотека",
+    "parentId": "otdel-kultury-razvitiya-yazykov-fizicheskoi",
+    "level": "district",
+    "scope": "Карасайская районная библиотека — 4 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-predprinimatelstva-karasai-skogo-rai-o",
+    "name": "Отдел предпринимательства Карасайского района",
+    "fullName": "Отдел предпринимательства Карасайского района",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел предпринимательства Карасайского района — 65 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-stroitelstva-karasai-skogo-rai-ona",
+    "name": "Отдел строительства Карасайского района",
+    "fullName": "Отдел строительства Карасайского района",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел строительства Карасайского района — 41 0,0011%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-zanyatosti-i-socialnyh-programm",
+    "name": "Отдел занятости и социальных программ",
+    "fullName": "Отдел занятости и социальных программ",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел занятости и социальных программ — 51 0,0014%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "centr-podderzhki-semi-zhanuya",
+    "name": "Центр поддержки семьи \"Жанұя",
+    "fullName": "Центр поддержки семьи \"Жанұя",
+    "parentId": "otdel-zanyatosti-i-socialnyh-programm",
+    "level": "district",
+    "scope": "Центр поддержки семьи \"Жанұя\" — 3 0,0001%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-passazhirskogo-transporta-i-avtomobiln",
+    "name": "Отдел пассажирского транспорта и автомобильных дорог",
+    "fullName": "Отдел пассажирского транспорта и автомобильных дорог",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел пассажирского транспорта и автомобильных дорог — 318 0,0089%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-selskogo-hozyai-stva",
+    "name": "Отдел сельского хозяйства",
+    "fullName": "Отдел сельского хозяйства",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел сельского хозяйства — 61 0,0017%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-ekonomiki-i-finansov",
+    "name": "Отдел экономики и финансов",
+    "fullName": "Отдел экономики и финансов",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел экономики и финансов — 14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-zemelnyh-otnoshenii",
+    "name": "Отдел земельных отношений",
+    "fullName": "Отдел земельных отношений",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел земельных отношений — 366 0,0102%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "tausamaly-kyzmet",
+    "name": "Таусамалы Кызмет",
+    "fullName": "Таусамалы Кызмет",
+    "parentId": "apparat-akima-karasai-skogo-rai-ona",
+    "level": "district",
+    "scope": "Таусамалы Кызмет — 11 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-talgarskogo-rai-ona",
+    "name": "Аппарат акима Талгарского района",
+    "fullName": "Аппарат акима Талгарского района",
+    "parentId": "almatinskaya-oblast",
+    "level": "district",
+    "scope": "Аппарат акима Талгарского района - 203 0,0057%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-talgarskogo-rai-ona-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-tuzdybastauskogo-selskogo-okru",
+    "name": "Аппарат акима Туздыбастауского сельского округа",
+    "fullName": "Аппарат акима Туздыбастауского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Туздыбастауского сельского округа - 500 0,0140%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-tuzdybastauskogo-selskogo-okru-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-guldalinskogo-selskogo-okruga",
+    "name": "Аппарат акима Гулдалинского сельского округа",
+    "fullName": "Аппарат акима Гулдалинского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Гулдалинского сельского округа — 187 0,0052%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-guldalinskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-panfilovskogo-selskogo-okruga",
+    "name": "Аппарат акима Панфиловского сельского округа",
+    "fullName": "Аппарат акима Панфиловского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Панфиловского сельского округа - 648 0,0181%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-panfilovskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-besagashskogo-selskogo-okruga",
+    "name": "Аппарат акима Бесагашского сельского округа",
+    "fullName": "Аппарат акима Бесагашского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Бесагашского сельского округа - 284 0,0079%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-besagashskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-belbulakskogo-selskogo-okruga",
+    "name": "Аппарат акима Белбулакского сельского округа",
+    "fullName": "Аппарат акима Белбулакского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Белбулакского сельского округа - 474 0,0132%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-belbulakskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-goroda-talgar",
+    "name": "Аппарат акима города Талгар",
+    "fullName": "Аппарат акима города Талгар",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима города Талгар - 428 0,0119%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-goroda-talgar-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "too-talgar-turgyn-ui",
+    "name": "ТОО Талгар тұрғын үй",
+    "fullName": "ТОО Талгар тұрғын үй",
+    "parentId": "apparat-akima-goroda-talgar",
+    "level": "district",
+    "scope": "ТОО Талгар тұрғын үй— 65 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-kendalinskogo-selskogo-okruga",
+    "name": "Аппарат акима Кендалинского сельского округа",
+    "fullName": "Аппарат акима Кендалинского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Кендалинского сельского округа - 147 0,0041%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-kendalinskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-nurinskogo-selskogo-okruga",
+    "name": "Аппарат акима Нуринского сельского округа",
+    "fullName": "Аппарат акима Нуринского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Нуринского сельского округа - 106 0,0030%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-nurinskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-alatauskogo-selskogo-okruga",
+    "name": "Аппарат акима Алатауского сельского округа",
+    "fullName": "Аппарат акима Алатауского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Алатауского сельского округа - 161 0,0045%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-alatauskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-kai-narskogo-selskogo-okruga",
+    "name": "Аппарат акима Кайнарского сельского округа",
+    "fullName": "Аппарат акима Кайнарского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Кайнарского сельского округа - 250 0,0070%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-kai-narskogo-selskogo-okruga-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "apparat-akima-beskai-narskogo-selskogo-okrug",
+    "name": "Аппарат акима Бескайнарского сельского округа",
+    "fullName": "Аппарат акима Бескайнарского сельского округа",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Аппарат акима Бескайнарского сельского округа - 61 0,0017%",
+    "questions": [
+      {
+        "id": "q-apparat-akima-beskai-narskogo-selskogo-okrug-1",
+        "topic": "ЖКХ, дороги и благоустройство",
+        "description": "Уборка улиц, состояние дорог, теплоснабжение, мусор.",
+        "keywords": [
+          "жкх",
+          "дорога",
+          "снег",
+          "мусор",
+          "двор"
+        ]
+      }
+    ],
+    "version": 1
+  },
+  {
+    "id": "otdel-arhitektury-i-gradostroitelstva-2",
+    "name": "Отдел архитектуры и градостроительства",
+    "fullName": "Отдел архитектуры и градостроительства",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел архитектуры и градостроительства — 729 0,0203%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-vnutrennei-politiki-2",
+    "name": "Отдел внутренней политики",
+    "fullName": "Отдел внутренней политики",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел внутренней политики — 7 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-ekonomiki-i-finansov-2",
+    "name": "Отдел экономики и финансов",
+    "fullName": "Отдел экономики и финансов",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел экономики и финансов - 19 0,0005%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-kultury-razvitiya-yazykov-fizicheskoi-2",
+    "name": "Отдел культуры, развития языков, физической культуры и спорта",
+    "fullName": "Отдел культуры, развития языков, физической культуры и спорта",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел культуры, развития языков, физической культуры и спорта — 22 0,0006%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "podvedomki-8",
+    "name": "Подведомки",
+    "fullName": "Подведомки",
+    "parentId": "otdel-kultury-razvitiya-yazykov-fizicheskoi-2",
+    "level": "district",
+    "scope": "3 подведомки — 7 0,0002%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-predprinimatelstva",
+    "name": "Отдел предпринимательства",
+    "fullName": "Отдел предпринимательства",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел предпринимательства — 14 0,0004%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-stroitelstva",
+    "name": "Отдел строительства",
+    "fullName": "Отдел строительства",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел строительства — 67 0,0019%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-selskogo-hozyai-stva-2",
+    "name": "Отдел сельского хозяйства",
+    "fullName": "Отдел сельского хозяйства",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел сельского хозяйства — 59 0,0016%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-passazhirskogo-transporta-i-avtomobiln-2",
+    "name": "Отдел пассажирского транспорта и автомобильных дорог",
+    "fullName": "Отдел пассажирского транспорта и автомобильных дорог",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел пассажирского транспорта и автомобильных дорог — 64 0,0018%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-zhilischno-kommunalnogo-hozyai-stva-i-2",
+    "name": "Отдел жилищно-коммунального хозяйства и жилищной инспекции",
+    "fullName": "Отдел жилищно-коммунального хозяйства и жилищной инспекции",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел жилищно-коммунального хозяйства и жилищной инспекции — 420 0,0117%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-zanyatosti-i-socialnyh-programm-2",
+    "name": "Отдел занятости и социальных программ",
+    "fullName": "Отдел занятости и социальных программ",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел занятости и социальных программ - 44 0,0012%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "cent-podderzhki-semi",
+    "name": "ЦЕНТ ПОДДЕРЖКИ СЕМЬИ",
+    "fullName": "ЦЕНТ ПОДДЕРЖКИ СЕМЬИ",
+    "parentId": "otdel-zanyatosti-i-socialnyh-programm-2",
+    "level": "district",
+    "scope": "ЦЕНТ ПОДДЕРЖКИ СЕМЬИ— 11 0,0003%",
+    "questions": [],
+    "version": 1
+  },
+  {
+    "id": "otdel-zemelnyh-otnoshenii-2",
+    "name": "Отдел земельных отношений",
+    "fullName": "Отдел земельных отношений",
+    "parentId": "apparat-akima-talgarskogo-rai-ona",
+    "level": "district",
+    "scope": "Отдел земельных отношений — 999 0,0279%",
+    "questions": [],
+    "version": 1
+  }
+]
