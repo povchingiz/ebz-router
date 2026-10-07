@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { GovOrg, OrgQuestion, User, ROLE_PERMISSIONS, JurisdictionLevel } from '@/types';
 import { QuestionModal } from './QuestionModal';
 import { QuestionCsvModal } from './QuestionCsvModal';
+import { CreateChildOrgModal } from './CreateChildOrgModal';
 import {
   X,
   Lock,
@@ -24,6 +25,7 @@ import {
   ShieldCheck,
   Minimize2,
   FileSpreadsheet,
+  Edit3,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -33,6 +35,8 @@ interface OrgDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   onSaveContent: (updatedData: {
+    name?: string;
+    fullName?: string;
     scope: string;
     theme?: string;
     locationAddress?: string;
@@ -41,6 +45,14 @@ interface OrgDrawerProps {
     questions: OrgQuestion[];
   }) => Promise<void>;
   onReparent: (newParentId: string | null) => Promise<void>;
+  onCreateOrg?: (newOrgData: {
+    name: string;
+    fullName: string;
+    parentId: string | null;
+    scope: string;
+    locationAddress: string;
+    jurisdiction: JurisdictionLevel;
+  }) => Promise<void>;
 }
 
 const JURISDICTION_OPTIONS: {
@@ -88,8 +100,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   onClose,
   onSaveContent,
   onReparent,
+  onCreateOrg,
 }) => {
   const [activeTab, setActiveTab] = useState<'info' | 'questions' | 'admin'>('info');
+
+  // Наименования
+  const [orgName, setOrgName] = useState('');
+  const [orgFullName, setOrgFullName] = useState('');
+  const [isEditingNames, setIsEditingNames] = useState(false);
 
   // Поля сведений
   const [scope, setScope] = useState('');
@@ -104,6 +122,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [questionsViewMode, setQuestionsViewMode] = useState<'cards' | 'table'>('cards');
   const [isAddQuestionModalOpen, setIsAddQuestionModalOpen] = useState(false);
   const [isCsvQuestionModalOpen, setIsCsvQuestionModalOpen] = useState(false);
+  const [isCreateChildModalOpen, setIsCreateChildModalOpen] = useState(false);
 
   // Подотчетность
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
@@ -115,6 +134,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   // Синхронизация при открытии карточки
   useEffect(() => {
     if (org) {
+      setOrgName(org.name || '');
+      setOrgFullName(org.fullName || '');
+      setIsEditingNames(false);
       setScope(org.scope || '');
       setTheme(org.theme || '');
       setLocationAddress(org.locationAddress || '');
@@ -127,6 +149,12 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setStatusMsg(null);
     }
   }, [org]);
+
+  // Список прямых подотчетных (детей)
+  const directChildren = useMemo(() => {
+    if (!org) return [];
+    return allOrgs.filter((o) => o.parentId === org.id);
+  }, [allOrgs, org]);
 
   // Потокеновый поиск вопросов
   const filteredQuestions = useMemo(() => {
@@ -172,6 +200,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     setStatusMsg(null);
     try {
       await onSaveContent({
+        name: orgName,
+        fullName: orgFullName,
         scope,
         theme,
         locationAddress,
@@ -179,6 +209,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         legalBasis,
         questions,
       });
+      setIsEditingNames(false);
       setStatusMsg({ text: 'Сведения и компетенции ведомства успешно сохранены!' });
     } catch (err: any) {
       setStatusMsg({ text: err.message || 'Ошибка сохранения', error: true });
@@ -234,6 +265,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 v{org.version}
               </span>
 
+              {permissions.canChangeStructure && onCreateOrg && (
+                <button
+                  type="button"
+                  onClick={() => setIsCreateChildModalOpen(true)}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs"
+                  title="Создать подотчетную организацию под этим ведомством"
+                >
+                  <Plus className="w-3.5 h-3.5" /> Создать дочку
+                </button>
+              )}
+
               {isLockedByOther && (
                 <span className="flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-100 dark:bg-amber-950 px-2 py-0.5 rounded-lg">
                   <Lock className="w-3 h-3" /> {org.lockedBy?.userName}
@@ -253,12 +295,46 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           </div>
 
-          <h2 className="text-lg font-black text-slate-900 dark:text-white leading-tight">
-            {org.name}
-          </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">
-            {org.fullName}
-          </p>
+          {permissions.canChangeStructure && isEditingNames ? (
+            <div className="space-y-1.5 my-1.5 p-2.5 rounded-2xl bg-blue-50/50 dark:bg-slate-800 border border-blue-200 dark:border-slate-700">
+              <label className="text-[10px] font-bold text-slate-500 uppercase">Редактирование названий органа:</label>
+              <input
+                type="text"
+                value={orgName}
+                onChange={(e) => setOrgName(e.target.value)}
+                placeholder="Краткое наименование"
+                className="w-full p-2 text-sm font-black rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 outline-none"
+              />
+              <input
+                type="text"
+                value={orgFullName}
+                onChange={(e) => setOrgFullName(e.target.value)}
+                placeholder="Полное официальное наименование"
+                className="w-full p-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 outline-none"
+              />
+            </div>
+          ) : (
+            <div className="group relative mt-1">
+              <div className="flex items-center gap-2">
+                <h2 className="text-lg font-black text-slate-900 dark:text-white leading-tight">
+                  {orgName || org.name}
+                </h2>
+                {permissions.canChangeStructure && (
+                  <button
+                    type="button"
+                    onClick={() => setIsEditingNames(true)}
+                    className="p-1 rounded text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    title="Переименовать организацию"
+                  >
+                    <Edit3 className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">
+                {orgFullName || org.fullName}
+              </p>
+            </div>
+          )}
 
           {parentOrg && (
             <div className="flex items-center gap-1.5 mt-2.5 text-xs text-slate-600 dark:text-slate-300 font-medium bg-blue-50/50 dark:bg-blue-950/40 p-2 rounded-xl border border-blue-100 dark:border-blue-900/50">
@@ -695,9 +771,52 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* ВКЛАДКА 3: Подотчетность (Смена родителя с потокеновым автокомплитом) */}
+          {/* ВКЛАДКА 3: Подотчетность (Смена родителя и создание дочерних структур) */}
           {activeTab === 'admin' && permissions.canChangeStructure && (
             <div className="space-y-4">
+              {/* Секция: Подотчетные организации (Дочерние структуры) */}
+              <div className="p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/90 dark:border-slate-800 space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
+                    <Building2 className="w-4 h-4 text-blue-600" />
+                    <span>Подотчетные организации ({directChildren.length})</span>
+                  </div>
+                  {onCreateOrg && (
+                    <button
+                      type="button"
+                      onClick={() => setIsCreateChildModalOpen(true)}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all"
+                    >
+                      <Plus className="w-3.5 h-3.5" /> Создать дочку
+                    </button>
+                  )}
+                </div>
+
+                {directChildren.length > 0 ? (
+                  <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1 divide-y divide-slate-100 dark:divide-slate-800">
+                    {directChildren.map((c) => (
+                      <div
+                        key={c.id}
+                        className="pt-1.5 first:pt-0 flex items-center justify-between text-xs"
+                      >
+                        <div className="min-w-0 pr-2">
+                          <span className="font-bold text-slate-900 dark:text-white truncate block">
+                            {c.name}
+                          </span>
+                          <span className="text-[10px] text-slate-500 truncate block">
+                            {c.fullName}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-4 text-center text-xs text-slate-400 bg-white dark:bg-slate-900 rounded-xl border border-dashed border-slate-200 dark:border-slate-800">
+                    У данной организации пока нет подотчетных дочерних структур. Нажмите «Создать дочку», чтобы добавить.
+                  </div>
+                )}
+              </div>
+
               <div className="p-3.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 leading-relaxed font-medium">
                 Перепривязка родителя изменит положение ведомства в графе структуры. Дочерние ведомства переместятся вместе с ним.
               </div>
@@ -822,6 +941,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           setQuestions((prev) => [...importedQuestions, ...prev]);
         }}
       />
+
+      {/* Модальное окно создания дочерней организации */}
+      {onCreateOrg && (
+        <CreateChildOrgModal
+          isOpen={isCreateChildModalOpen}
+          onClose={() => setIsCreateChildModalOpen(false)}
+          parentOrg={org}
+          allOrgs={allOrgs}
+          onCreate={onCreateOrg}
+        />
+      )}
     </>
   );
 };

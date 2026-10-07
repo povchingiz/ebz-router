@@ -33,8 +33,10 @@ function HomeContent({
 
   const { inspectorOrg, closeInspector, openInspector, navigateToOrg } = useNavigation();
 
-  // Сохранение сведений (компетенции, локация, юрисдикция, вопросы)
+  // Сохранение сведений (компетенции, локация, юрисдикция, вопросы, наименования)
   const handleSaveContent = async (updatedData: {
+    name?: string;
+    fullName?: string;
     scope: string;
     theme?: string;
     locationAddress?: string;
@@ -57,6 +59,32 @@ function HomeContent({
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Ошибка при сохранении');
     setOrgs((prev) => prev.map((o) => (o.id === inspectorOrg.id ? data.org : o)));
+  };
+
+  // Создание новой подотчетной организации
+  const handleCreateOrg = async (newOrgData: {
+    name: string;
+    fullName: string;
+    parentId: string | null;
+    scope: string;
+    locationAddress: string;
+    jurisdiction: JurisdictionLevel;
+  }) => {
+    const res = await fetch('/api/mutate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'create_org',
+        user: currentUser,
+        payload: newOrgData,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Ошибка создания организации');
+
+    setOrgs((prev) => [...prev, data.org]);
+    navigateToOrg(data.org.id, true);
+    openInspector(data.org.id);
   };
 
   // Смена подотчетности
@@ -202,6 +230,7 @@ function HomeContent({
         onClose={closeInspector}
         onSaveContent={handleSaveContent}
         onReparent={handleReparent}
+        onCreateOrg={handleCreateOrg}
       />
 
       {/* Модальное окно импорта CSV */}

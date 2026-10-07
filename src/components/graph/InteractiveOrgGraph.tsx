@@ -41,6 +41,17 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
     consumeCameraTarget,
   } = useNavigation();
 
+  // Единое состояние для выпадающего списка: только один список может быть открыт
+  const [activeDropdownOrgId, setActiveDropdownOrgId] = React.useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveDropdownOrgId(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   // Построение графа узлов и связей на основе детерминированного состояния
   const { flowNodes, flowEdges } = useMemo(() => {
     const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
@@ -80,10 +91,22 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
           isSelected: isFocused,
           hiddenCount: hiddenChildren.length,
           hiddenChildren,
-          onToggleExpand: () => toggleExpandParent(org.id),
-          onOpenDetails: () => openInspector(org.id),
-          onSelectChildFromDropdown: (child: GovOrg) =>
-            selectChildInCenter(org.id, child.id),
+          isDropdownOpen: activeDropdownOrgId === org.id,
+          onToggleDropdown: () =>
+            setActiveDropdownOrgId((prev) => (prev === org.id ? null : org.id)),
+          onCloseDropdown: () => setActiveDropdownOrgId(null),
+          onToggleExpand: () => {
+            setActiveDropdownOrgId(null);
+            toggleExpandParent(org.id);
+          },
+          onOpenDetails: () => {
+            setActiveDropdownOrgId(null);
+            openInspector(org.id);
+          },
+          onSelectChildFromDropdown: (child: GovOrg) => {
+            setActiveDropdownOrgId(null);
+            selectChildInCenter(org.id, child.id);
+          },
         },
       });
 
@@ -112,6 +135,7 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
     hiddenChildrenMap,
     navState.expandedIds,
     navState.focusedOrgId,
+    activeDropdownOrgId,
     toggleExpandParent,
     openInspector,
     selectChildInCenter,
@@ -168,6 +192,8 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
         nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onPaneClick={() => setActiveDropdownOrgId(null)}
+        onMoveStart={() => setActiveDropdownOrgId(null)}
         minZoom={0.15}
         maxZoom={2.5}
         zoomOnScroll={true}

@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { action, orgId, user, payload, version } = body as {
-      action: 'lock' | 'unlock' | 'update_content' | 'reparent' | 'import_csv';
+      action: 'lock' | 'unlock' | 'update_content' | 'reparent' | 'create_org' | 'import_csv';
       orgId?: string;
       user: User;
       payload?: any;
@@ -52,6 +52,14 @@ export async function POST(req: Request) {
 
     if (action === 'reparent' && orgId) {
       const result = orgStore.reparent(orgId, payload.newParentId, version ?? 1, user);
+      if (!result.success) {
+        return NextResponse.json({ error: result.error }, { status: 400 });
+      }
+      return NextResponse.json({ success: true, org: result.org });
+    }
+
+    if (action === 'create_org') {
+      const result = orgStore.createOrg(payload, user);
       if (!result.success) {
         return NextResponse.json({ error: result.error }, { status: 400 });
       }

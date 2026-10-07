@@ -12,6 +12,9 @@ export interface OrgNodeData {
   isSelected: boolean;
   hiddenCount?: number;
   hiddenChildren?: GovOrg[];
+  isDropdownOpen?: boolean;
+  onToggleDropdown?: () => void;
+  onCloseDropdown?: () => void;
   onToggleExpand: (id: string, e: React.MouseEvent) => void;
   onOpenDetails: (org: GovOrg) => void;
   onSelectChildFromDropdown?: (org: GovOrg) => void;
@@ -25,35 +28,30 @@ export const OrgFlowCard = ({ data, selected }: any) => {
     childrenCount,
     hiddenCount = 0,
     hiddenChildren = [],
+    isDropdownOpen = false,
+    onToggleDropdown,
+    onCloseDropdown,
     onToggleExpand,
     onOpenDetails,
     onSelectChildFromDropdown,
   } = data as OrgNodeData;
   const config = LEVEL_CONFIG[org.level] || LEVEL_CONFIG.agency;
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Закрытие выпадающего списка при клике вне его или нажатии Escape
+  // Закрытие выпадающего списка при клике вне его
   React.useEffect(() => {
     if (!isDropdownOpen) return;
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    }
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        setIsDropdownOpen(false);
+        onCloseDropdown?.();
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isDropdownOpen]);
+  }, [isDropdownOpen, onCloseDropdown]);
 
   const filteredHidden = hiddenChildren.filter((c) =>
     c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -145,7 +143,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                setIsDropdownOpen(!isDropdownOpen);
+                onToggleDropdown?.();
               }}
               className="inline-flex items-center gap-1 px-2 py-1 rounded-xl text-[10px] font-black bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 hover:bg-indigo-100 transition-colors border border-indigo-200 dark:border-indigo-800"
             >
@@ -179,7 +177,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
                       key={child.id}
                       onClick={() => {
                         onSelectChildFromDropdown(child);
-                        setIsDropdownOpen(false);
+                        onCloseDropdown?.();
                       }}
                       className="p-2 hover:bg-blue-50 dark:hover:bg-blue-950/60 rounded-xl cursor-pointer transition-colors flex items-center justify-between gap-1 group"
                     >

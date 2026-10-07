@@ -54,11 +54,13 @@ class OrgStore {
   }
 
   /**
-   * Обновление содержания (scope, questions) — доступно для Superadmin и Methodologist
+   * Обновление содержания (scope, questions, name, fullName) — доступно для Superadmin и Methodologist
    */
   public updateContent(
     orgId: string,
     updates: {
+      name?: string;
+      fullName?: string;
       scope?: string;
       theme?: string;
       locationAddress?: string;
@@ -85,6 +87,8 @@ class OrgStore {
       };
     }
 
+    if (updates.name !== undefined && updates.name.trim()) org.name = updates.name.trim();
+    if (updates.fullName !== undefined) org.fullName = updates.fullName.trim();
     if (updates.scope !== undefined) org.scope = updates.scope;
     if (updates.theme !== undefined) org.theme = updates.theme;
     if (updates.locationAddress !== undefined) org.locationAddress = updates.locationAddress;
@@ -96,6 +100,50 @@ class OrgStore {
     org.lockedBy = null; // сбрасываем soft lock после сохранения
 
     return { success: true, org: { ...org } };
+  }
+
+  /**
+   * Создание новой организации / дочерней структуры
+   */
+  public createOrg(
+    data: {
+      name: string;
+      fullName?: string;
+      parentId: string | null;
+      level?: 'central' | 'agency' | 'regional' | 'district';
+      scope?: string;
+      theme?: string;
+      locationAddress?: string;
+      jurisdiction?: 'republican' | 'regional' | 'district' | 'local';
+      legalBasis?: string;
+    },
+    user: User
+  ): { success: boolean; org?: GovOrg; error?: string } {
+    if (user.role !== 'superadmin') {
+      return { success: false, error: 'Только администратор имеет право создавать новые организации' };
+    }
+    if (!data.name || !data.name.trim()) {
+      return { success: false, error: 'Укажите краткое наименование организации' };
+    }
+
+    const id = `org-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+    const newOrg: GovOrg = {
+      id,
+      name: data.name.trim(),
+      fullName: (data.fullName && data.fullName.trim()) || data.name.trim(),
+      parentId: data.parentId || null,
+      level: data.level || (data.parentId ? 'district' : 'central'),
+      scope: data.scope || '',
+      theme: data.theme || data.scope || '',
+      locationAddress: data.locationAddress || '',
+      jurisdiction: data.jurisdiction || 'republican',
+      legalBasis: data.legalBasis || '',
+      questions: [],
+      version: 1,
+    };
+
+    this.orgs.set(id, newOrg);
+    return { success: true, org: { ...newOrg } };
   }
 
   /**
