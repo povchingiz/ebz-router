@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { GovOrg, OrgQuestion, User, UserRole } from '../types';
 import { InteractiveOrgGraph } from '../components/graph/InteractiveOrgGraph';
 import { ListView } from '../components/ListView';
+import { SidebarNav } from '../components/SidebarNav';
 import { OrgDrawer } from '../components/OrgDrawer';
 import { CsvModal } from '../components/CsvModal';
 import {
@@ -210,26 +211,42 @@ export default function HomePage() {
       </header>
 
       {/* Основной контент */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6">
-        {isLoading ? (
-          <div className="flex flex-col items-center justify-center min-h-[50vh] text-slate-400 gap-2">
-            <RotateCw className="w-7 h-7 animate-spin text-blue-600" />
-            <span className="text-xs font-semibold">Загрузка базы знаний...</span>
+      <main className="flex-1 max-w-[1600px] w-full mx-auto p-4 sm:p-6 flex gap-6">
+        {/* Левая треть экрана: Навигатор ведомств */}
+        {!isLoading && (
+          <div className="hidden lg:block">
+            <SidebarNav
+              allOrgs={orgs}
+              selectedOrgId={selectedOrgId}
+              onSelectOrg={(org) => setSelectedOrgId(org.id)}
+              onOpenDetails={(org) => setActiveModalOrg(org)}
+              searchQuery={searchQuery}
+            />
           </div>
-        ) : viewMode === 'graph' ? (
-          <InteractiveOrgGraph
-            allOrgs={orgs}
-            onOpenDetails={(org) => setActiveModalOrg(org)}
-            selectedOrgId={selectedOrgId}
-            onSelectOrg={(org) => setSelectedOrgId(org.id)}
-          />
-        ) : (
-          <ListView
-            allOrgs={orgs}
-            onOpenDetails={(org) => setActiveModalOrg(org)}
-            searchQuery={searchQuery}
-          />
         )}
+
+        {/* Правая часть: Интерактивный граф или Список */}
+        <div className="flex-1 min-w-0">
+          {isLoading ? (
+            <div className="flex flex-col items-center justify-center min-h-[50vh] text-slate-400 gap-2">
+              <RotateCw className="w-7 h-7 animate-spin text-blue-600" />
+              <span className="text-xs font-semibold">Загрузка базы знаний...</span>
+            </div>
+          ) : viewMode === 'graph' ? (
+            <InteractiveOrgGraph
+              allOrgs={orgs}
+              onOpenDetails={(org) => setActiveModalOrg(org)}
+              selectedOrgId={selectedOrgId}
+              onSelectOrg={(org) => setSelectedOrgId(org.id)}
+            />
+          ) : (
+            <ListView
+              allOrgs={orgs}
+              onOpenDetails={(org) => setActiveModalOrg(org)}
+              searchQuery={searchQuery}
+            />
+          )}
+        </div>
       </main>
 
       {/* Боковое меню сведений об организации (Slide-out Drawer) */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Handle, Position, NodeProps } from '@xyflow/react';
+import { Handle, Position } from '@xyflow/react';
 import { GovOrg } from '../../types';
 import { LEVEL_CONFIG } from '../OrgCard';
 import { ChevronDown, ChevronUp, Lock, FileText } from 'lucide-react';
@@ -21,8 +21,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
 
   return (
     <div
-      onClick={() => onOpenDetails(org)}
-      className={`group relative w-[310px] rounded-2xl border-2 bg-white dark:bg-slate-900 shadow-md transition-all duration-200 select-none p-4 flex flex-col justify-between cursor-pointer hover:shadow-xl hover:-translate-y-0.5 ${
+      className={`group relative w-[310px] rounded-2xl border-2 bg-white dark:bg-slate-900 shadow-md transition-all duration-150 select-none p-4 flex flex-col justify-between ${
         selected
           ? 'border-blue-600 ring-4 ring-blue-500/20 shadow-blue-500/10'
           : `${config.borderClass}`
@@ -52,16 +51,24 @@ export const OrgFlowCard = ({ data, selected }: any) => {
           {config.label}
         </span>
 
-        {/* Кнопка сбоку "Карточка" */}
-        <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 group-hover:underline flex items-center gap-1">
+        {/* Кнопка "Сведения" (Явное открытие карточки только по кнопке!) */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenDetails(org);
+          }}
+          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs"
+          title="Открыть сведения о ведомстве"
+        >
           <FileText className="w-3.5 h-3.5" />
-          Карточка
-        </span>
+          <span>Сведения</span>
+        </button>
       </div>
 
       {/* Название и описание */}
       <div className="my-1">
-        <h4 className="text-base font-extrabold text-slate-900 dark:text-white leading-snug group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <h4 className="text-base font-extrabold text-slate-900 dark:text-white leading-snug">
           {org.name}
         </h4>
         <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mt-1 leading-relaxed">
@@ -80,7 +87,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
           <button
             type="button"
             onClick={(e) => {
-              e.stopPropagation(); // Не открывать карточку, а именно раскрыть детей
+              e.stopPropagation();
               onToggleExpand(org.id, e);
             }}
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs ${
@@ -97,7 +104,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
             ) : (
               <>
                 <ChevronDown className="w-3.5 h-3.5" />
-                <span>+{childrenCount} подвед.</span>
+                <span>+ Подчиненные</span>
               </>
             )}
           </button>

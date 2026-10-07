@@ -13,7 +13,7 @@ import '@xyflow/react/dist/style.css';
 import { GovOrg } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
 import { getDagreLayout } from './layout';
-import { Minimize2, Plus, Sparkles } from 'lucide-react';
+import { Minimize2 } from 'lucide-react';
 
 interface InteractiveOrgGraphProps {
   allOrgs: GovOrg[];
@@ -32,8 +32,7 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
   selectedOrgId,
   onSelectOrg,
 }) => {
-  // На старте НИ ОДНА ветка НЕ развернута (пустой Set)!
-  // Отображается ТОЛЬКО главный узел (АП), сохраняя идеальный масштаб 100%!
+  // На старте НИ ОДНА ветка НЕ развернута
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const handleToggleExpand = useCallback((id: string, e: React.MouseEvent) => {
@@ -43,7 +42,6 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
       if (next.has(id)) {
         next.delete(id);
       } else {
-        // Разворачиваем только этот узел
         next.add(id);
       }
       return next;
@@ -65,7 +63,7 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
 
     const visibleNodeIds = new Set<string>();
 
-    // Корневые органы видны всегда (по умолчанию АП)
+    // Корневые органы видны всегда
     allOrgs.filter((o) => !o.parentId).forEach((r) => visibleNodeIds.add(r.id));
 
     // Добавляем детей раскрытых веток
@@ -122,7 +120,6 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
     return { visibleNodesList: flowNodes, visibleEdgesList: flowEdges };
   }, [allOrgs, expandedIds, selectedOrgId, handleToggleExpand, onOpenDetails]);
 
-  // Вычисляем DAG layout через Dagre
   const layouted = useMemo(() => {
     return getDagreLayout(visibleNodesList, visibleEdgesList, 'TB');
   }, [visibleNodesList, visibleEdgesList]);
@@ -135,34 +132,25 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
     setEdges(layouted.edges);
   }, [layouted, setNodes, setEdges]);
 
-  // Свернуть все к корню
   const handleCollapseAll = () => {
     setExpandedIds(new Set());
   };
 
   return (
     <div className="relative w-full h-[calc(100vh-140px)] min-h-[550px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-inner">
-      {/* Подсказка для пользователя вверху */}
-      <div className="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-2.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md text-xs">
-        <span className="font-semibold text-slate-700 dark:text-slate-300">
-          На экране: {nodes.length} ведомств
-        </span>
-
-        {expandedIds.size > 0 && (
+      {/* Кнопка сброса веток */}
+      {expandedIds.size > 0 && (
+        <div className="absolute top-4 left-4 z-10">
           <button
             type="button"
             onClick={handleCollapseAll}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all shadow-md border border-slate-200 dark:border-slate-800"
           >
-            <Minimize2 className="w-3.5 h-3.5" />
+            <Minimize2 className="w-4 h-4" />
             Свернуть всё к началу
           </button>
-        )}
-
-        <span className="text-[11px] text-slate-400 pl-2 border-l border-slate-200 dark:border-slate-700 hidden sm:inline">
-          💡 Кликните по карточке, чтобы открыть меню сведений
-        </span>
-      </div>
+        </div>
+      )}
 
       <ReactFlow
         nodes={nodes}
@@ -171,9 +159,14 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
-        fitViewOptions={{ padding: 0.25, duration: 500 }}
-        minZoom={0.2}
-        maxZoom={1.5}
+        fitViewOptions={{ padding: 0.25, duration: 250 }}
+        minZoom={0.15}
+        maxZoom={2.0}
+        zoomOnScroll={true}
+        zoomOnPinch={true}
+        panOnScroll={false}
+        zoomActivationKeyCode={null}
+        elementsSelectable={true}
       >
         <Background color="#cbd5e1" gap={24} size={1.5} />
         <Controls className="!bg-white dark:!bg-slate-900 !border-slate-200 dark:!border-slate-800 !rounded-xl !shadow-md" />
