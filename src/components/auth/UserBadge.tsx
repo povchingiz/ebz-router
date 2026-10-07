@@ -95,8 +95,15 @@ export const UserBadge: React.FC = () => {
 
       {/* Выпадающее меню профиля и быстрого переключения */}
       {isMenuOpen && (
-        <div className="absolute right-0 top-full mt-2 w-72 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-2.5 z-50 animate-fadeIn">
-          <div className="p-2 border-b border-slate-100 dark:border-slate-800 mb-2">
+        <>
+          {/* Невидимый оверлей на весь экран: перехватывает клики и предотвращает случайные нажатия на кнопки панели под меню */}
+          <div
+            className="fixed inset-0 z-[60] bg-black/10 dark:bg-black/30 backdrop-blur-[1px]"
+            onClick={() => setIsMenuOpen(false)}
+          />
+
+          <div className="absolute right-0 top-full mt-2 w-72 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border-2 border-slate-200 dark:border-slate-800 p-2.5 z-[70] animate-fadeIn ring-4 ring-slate-900/10">
+            <div className="p-2 border-b border-slate-100 dark:border-slate-800 mb-2">
             <div className="text-xs font-black text-slate-900 dark:text-white truncate">
               {user.fullName}
             </div>
@@ -207,6 +214,7 @@ export const UserBadge: React.FC = () => {
             </button>
           </div>
         </div>
+        </>
       )}
 
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />

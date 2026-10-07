@@ -18,7 +18,7 @@ import { GovOrg } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
 import { getDagreLayout } from './layout';
 import { useNavigation } from '../../lib/NavigationContext';
-import { Minimize2 } from 'lucide-react';
+import { Minimize2, RotateCcw } from 'lucide-react';
 import { dropdownCoordinator } from './dropdownCoordinator';
 
 interface InteractiveOrgGraphProps {
@@ -157,16 +157,17 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
 
   return (
     <div className="relative w-full h-[calc(100vh-140px)] min-h-[580px] rounded-3xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm">
-      {/* Кнопка сброса дерева */}
-      {navState.expandedIds.size > 0 && (
+      {/* Кнопка сброса дерева / очистки доски на графе */}
+      {(navState.expandedIds.size > 0 || navState.focusedOrgId !== 'ap' || navState.inspector.isOpen) && (
         <div className="absolute top-4 left-4 z-10">
           <button
             type="button"
             onClick={collapseAll}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-black transition-all shadow-md border-2 border-slate-200 dark:border-slate-800"
+            title="Очистить доску и свернуть все открытые карточки к корню (АП)"
           >
-            <Minimize2 className="w-3.5 h-3.5" />
-            <span>Свернуть ветви</span>
+            <RotateCcw className="w-3.5 h-3.5 text-blue-600" />
+            <span>Очистить доску</span>
           </button>
         </div>
       )}

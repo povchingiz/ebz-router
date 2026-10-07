@@ -9,6 +9,7 @@ import {
   computeVisibleGraph,
   getDescendantIds,
 } from './navigationStore';
+import { dropdownCoordinator } from '../components/graph/dropdownCoordinator';
 
 interface NavigationContextType {
   navState: NavigationState;
@@ -175,6 +176,7 @@ export const NavigationProvider: React.FC<{
 
   // 6. Свернуть все к корню (АП)
   const collapseAll = useCallback(() => {
+    dropdownCoordinator.close();
     setNavState(collapseToRootAction());
     updateUrl('ap');
   }, [updateUrl]);

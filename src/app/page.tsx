@@ -15,6 +15,7 @@ import {
   List,
   FileSpreadsheet,
   RotateCw,
+  RotateCcw,
 } from 'lucide-react';
 
 function HomeContent({
@@ -33,7 +34,7 @@ function HomeContent({
   const [viewMode, setViewMode] = useState<'graph' | 'list'>('graph');
   const [isCsvModalOpen, setIsCsvModalOpen] = useState(false);
 
-  const { inspectorOrg, closeInspector, openInspector, navigateToOrg } = useNavigation();
+  const { inspectorOrg, closeInspector, openInspector, navigateToOrg, collapseAll } = useNavigation();
   const { user: authUser, canManageOrg } = useAuth();
 
   const effectiveUser: User = authUser
@@ -152,7 +153,7 @@ function HomeContent({
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Верхняя панель навигации */}
-      <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b-2 border-slate-200/80 dark:border-slate-800">
+      <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b-2 border-slate-200/80 dark:border-slate-800">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 h-18 py-3 flex items-center justify-between gap-4">
           {/* Логотип */}
           <div className="flex items-center gap-3 shrink-0">
@@ -174,6 +175,17 @@ function HomeContent({
 
           {/* Действия и тулбар */}
           <div className="flex items-center gap-3 shrink-0">
+            {/* Кнопка сброса/очистки доски (Свернуть все ветви к корню) */}
+            <button
+              type="button"
+              onClick={collapseAll}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-bold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-all shadow-xs active:scale-95 border border-slate-200/80 dark:border-slate-700"
+              title="Очистить доску и свернуть все открытые карточки к корню (АП)"
+            >
+              <RotateCcw className="w-3.5 h-3.5 text-blue-600" />
+              <span>Очистить доску</span>
+            </button>
+
             {/* Переключатель режимов: Граф / Список */}
             <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl text-xs">
               <button

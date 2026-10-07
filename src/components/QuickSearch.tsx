@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { GovOrg } from '../types';
 import { useNavigation } from '../lib/NavigationContext';
-import { Search, Building2, X, Sparkles } from 'lucide-react';
+import { Search, Building2, X, Sparkles, FileText } from 'lucide-react';
 
 interface QuickSearchProps {
   allOrgs: GovOrg[];
@@ -93,7 +93,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
               <div
                 key={org.id}
                 onClick={() => {
-                  navigateToOrg(org.id);
+                  navigateToOrg(org.id, false);
                   if (onSelectOrg) onSelectOrg(org);
                   setQuery('');
                   setIsOpen(false);
@@ -115,14 +115,16 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    openInspector(org.id);
+                    navigateToOrg(org.id, true);
                     if (onOpenDetails) onOpenDetails(org);
                     setQuery('');
                     setIsOpen(false);
                   }}
-                  className="px-2.5 py-1 text-xs font-bold text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-blue-600 hover:text-white transition-all shrink-0 shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50/70 dark:bg-blue-950/60 rounded-xl border border-blue-200 dark:border-blue-800 hover:bg-blue-600 hover:text-white transition-all shrink-0 shadow-xs"
+                  title="Отобразить на доске и открыть сведения"
                 >
-                  Карточка
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Сведения</span>
                 </button>
               </div>
             ))
