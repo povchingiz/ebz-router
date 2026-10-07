@@ -23,8 +23,17 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
         setIsOpen(false);
       }
     }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    }
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const results = useMemo(() => {
@@ -83,6 +92,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                 key={org.id}
                 onClick={() => {
                   onSelectOrg(org);
+                  setQuery('');
                   setIsOpen(false);
                 }}
                 className="p-3.5 hover:bg-blue-50 dark:hover:bg-blue-950/50 cursor-pointer transition-colors flex items-center justify-between gap-3 group"
@@ -112,6 +122,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                   onClick={(e) => {
                     e.stopPropagation();
                     onOpenDetails(org);
+                    setQuery('');
                     setIsOpen(false);
                   }}
                   className="px-2.5 py-1 text-xs font-bold text-blue-600 dark:text-blue-400 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-blue-600 hover:text-white transition-all shrink-0 shadow-xs"

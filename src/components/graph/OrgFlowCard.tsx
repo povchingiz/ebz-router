@@ -32,6 +32,28 @@ export const OrgFlowCard = ({ data, selected }: any) => {
   const config = LEVEL_CONFIG[org.level] || LEVEL_CONFIG.agency;
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  // Закрытие выпадающего списка при клике вне его или нажатии Escape
+  React.useEffect(() => {
+    if (!isDropdownOpen) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isDropdownOpen]);
 
   const filteredHidden = hiddenChildren.filter((c) =>
     c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -128,7 +150,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
 
         {/* Интерактивный выпадающий список прямо на карточке органа */}
         {hasChildren && isExpanded && hiddenCount > 0 && onSelectChildFromDropdown && (
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button
               type="button"
               onClick={(e) => {
@@ -144,7 +166,8 @@ export const OrgFlowCard = ({ data, selected }: any) => {
             {isDropdownOpen && (
               <div
                 onClick={(e) => e.stopPropagation()}
-                className="absolute right-0 bottom-full mb-2 w-64 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 p-2.5 text-left animate-fadeIn"
+                onWheel={(e) => e.stopPropagation()}
+                className="nowheel nodrag nopan absolute right-0 bottom-full mb-2 w-64 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 p-2.5 text-left animate-fadeIn"
               >
                 <div className="text-[10px] font-extrabold uppercase text-slate-400 px-1 mb-1.5">
                   Выбрать ведомство в центр:
@@ -157,7 +180,10 @@ export const OrgFlowCard = ({ data, selected }: any) => {
                   className="w-full px-2.5 py-1 text-[11px] rounded-lg bg-slate-100 dark:bg-slate-800 border-none outline-none font-medium mb-1.5"
                   autoFocus
                 />
-                <div className="max-h-48 overflow-y-auto space-y-1">
+                <div
+                  className="max-h-48 overflow-y-auto space-y-1 nowheel nodrag"
+                  onWheel={(e) => e.stopPropagation()}
+                >
                   {filteredHidden.map((child) => (
                     <div
                       key={child.id}

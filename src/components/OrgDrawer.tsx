@@ -125,11 +125,44 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     }
   }, [org]);
 
+  // Потокеновый поиск вопросов
+  const filteredQuestions = useMemo(() => {
+    if (!org || !questionSearch.trim()) return questions;
+    const tokens = questionSearch
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((t) => t.length > 0);
+
+    return questions.filter((q) => {
+      const searchTarget = `${q.topic} ${q.description} ${(q.keywords || []).join(' ')}`.toLowerCase();
+      return tokens.every((token) => searchTarget.includes(token));
+    });
+  }, [org, questions, questionSearch]);
+
+  // Фильтрация организаций для смены родителя (потокеновый автокомплит)
+  const filteredParentCandidates = useMemo(() => {
+    if (!org) return [];
+    const list = allOrgs.filter((o) => o.id !== org.id);
+    if (!parentSearchQuery.trim()) return list.slice(0, 8);
+    const tokens = parentSearchQuery
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((t) => t.length > 0);
+
+    return list
+      .filter((o) => {
+        const target = `${o.name} ${o.fullName}`.toLowerCase();
+        return tokens.every((token) => target.includes(token));
+      })
+      .slice(0, 15);
+  }, [allOrgs, org, parentSearchQuery]);
+
   if (!isOpen || !org) return null;
 
   const permissions = ROLE_PERMISSIONS[currentUser.role];
   const isLockedByOther = org.lockedBy && org.lockedBy.userId !== currentUser.id;
   const parentOrg = allOrgs.find((o) => o.id === org.parentId);
+  const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
   const handleSaveContent = async () => {
     setIsSubmitting(true);
@@ -178,39 +211,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const removeQuestion = (id: string) => {
     setQuestions(questions.filter((q) => q.id !== id));
   };
-
-  // Потокеновый поиск вопросов
-  const filteredQuestions = useMemo(() => {
-    if (!questionSearch.trim()) return questions;
-    const tokens = questionSearch
-      .toLowerCase()
-      .split(/\s+/)
-      .filter((t) => t.length > 0);
-
-    return questions.filter((q) => {
-      const searchTarget = `${q.topic} ${q.description} ${q.keywords.join(' ')}`.toLowerCase();
-      return tokens.every((token) => searchTarget.includes(token));
-    });
-  }, [questions, questionSearch]);
-
-  // Фильтрация организаций для смены родителя (потокеновый автокомплит)
-  const filteredParentCandidates = useMemo(() => {
-    const list = allOrgs.filter((o) => o.id !== org.id);
-    if (!parentSearchQuery.trim()) return list.slice(0, 8);
-    const tokens = parentSearchQuery
-      .toLowerCase()
-      .split(/\s+/)
-      .filter((t) => t.length > 0);
-
-    return list
-      .filter((o) => {
-        const target = `${o.name} ${o.fullName}`.toLowerCase();
-        return tokens.every((token) => target.includes(token));
-      })
-      .slice(0, 15);
-  }, [allOrgs, org.id, parentSearchQuery]);
-
-  const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
   return (
     <>

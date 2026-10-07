@@ -116,6 +116,13 @@ export default function HomePage() {
     await loadOrgs();
   };
 
+  const handleSelectOrg = (org: GovOrg) => {
+    setSelectedOrgId(null);
+    setTimeout(() => {
+      setSelectedOrgId(org.id);
+    }, 10);
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Верхняя панель навигации */}
@@ -138,7 +145,7 @@ export default function HomePage() {
           <div className="flex-1 max-w-xl mx-4">
             <QuickSearch
               allOrgs={orgs}
-              onSelectOrg={(org) => setSelectedOrgId(org.id)}
+              onSelectOrg={handleSelectOrg}
               onOpenDetails={(org) => setActiveModalOrg(org)}
             />
           </div>
@@ -220,7 +227,8 @@ export default function HomePage() {
               allOrgs={orgs}
               onOpenDetails={(org) => setActiveModalOrg(org)}
               selectedOrgId={selectedOrgId}
-              onSelectOrg={(org) => setSelectedOrgId(org.id)}
+              onSelectOrg={handleSelectOrg}
+              onClearSelection={() => setSelectedOrgId(null)}
             />
           ) : (
             <ListView
