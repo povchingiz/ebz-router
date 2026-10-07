@@ -83,15 +83,8 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </div>
       )}
 
-      {/* Верх: Ранг + Кнопка Сведения */}
-      <div className="flex items-center justify-between gap-1 mb-1.5">
-        <span
-          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold border truncate max-w-[170px] ${config.badgeClass}`}
-        >
-          {config.icon}
-          <span className="truncate">{config.label}</span>
-        </span>
-
+      {/* Верх: Кнопка Сведения */}
+      <div className="flex items-center justify-end gap-1 mb-1.5">
         <button
           type="button"
           onClick={(e) => {
@@ -99,7 +92,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
             onOpenDetails(org);
           }}
           className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs shrink-0"
-          title="Открыть сведения о ведомстве"
+          title="Открыть сведения об организации"
         >
           <FileText className="w-3 h-3" />
           <span>Сведения</span>
@@ -118,7 +111,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
 
       {/* Нижняя панель действий */}
       <div className="pt-2 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
-        {/* Кнопка Развернуть/Свернуть подчиненных */}
+        {/* Кнопка Развернуть/Свернуть подотчетных */}
         {hasChildren ? (
           <button
             type="button"
@@ -140,7 +133,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
             ) : (
               <>
                 <ChevronDown className="w-3 h-3" />
-                <span>+ Подчиненные</span>
+                <span>+ Подотчетные</span>
               </>
             )}
           </button>

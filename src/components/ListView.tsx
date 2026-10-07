@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { GovOrg } from '@/types';
-import { LEVEL_CONFIG } from './OrgCard';
 import { useNavigation } from '@/lib/NavigationContext';
 import { getAncestryPath } from '@/lib/navigationStore';
 import {
@@ -74,7 +73,6 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
     const hasChildren = children.length > 0 && !activeQuery;
     const isExpanded = navState.expandedIds.has(org.id);
     const isFocused = navState.focusedOrgId === org.id;
-    const config = LEVEL_CONFIG[org.level] || LEVEL_CONFIG.agency;
 
     // Расчет цепочки хлебных крошек
     const ancestryIds = getAncestryPath(org.id, orgMap);
@@ -110,7 +108,7 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
                     ? 'bg-blue-600 text-white shadow-xs'
                     : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500'
                 }`}
-                title={isExpanded ? 'Свернуть подчиненных' : 'Развернуть подчиненных'}
+                title={isExpanded ? 'Свернуть подотчетных' : 'Развернуть подотчетных'}
               >
                 {isExpanded ? (
                   <ChevronDown className="w-4 h-4" />
@@ -125,10 +123,10 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
             )}
 
             <div className="flex flex-col min-w-0">
-              {/* Хлебные крошки подчинения (родители) */}
+              {/* Хлебные крошки подотчетности (вышестоящие) */}
               {parentNames.length > 0 && (
                 <div className="flex items-center gap-1 text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-0.5 truncate">
-                  <span>Подчинение:</span>
+                  <span>Подотчетность:</span>
                   {parentNames.map((pName, idx) => (
                     <React.Fragment key={idx}>
                       <span className="text-slate-600 dark:text-slate-400 font-extrabold">{pName}</span>
@@ -142,10 +140,6 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
               <div className="flex items-center gap-2">
                 <span className="text-sm font-black text-slate-900 dark:text-white truncate group-hover:text-blue-600 transition-colors">
                   {org.name}
-                </span>
-
-                <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold border truncate ${config.badgeClass}`}>
-                  {config.label}
                 </span>
               </div>
 

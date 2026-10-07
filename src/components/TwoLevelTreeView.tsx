@@ -121,7 +121,7 @@ export const TwoLevelTreeView: React.FC<TwoLevelTreeViewProps> = ({
         <div className="w-full flex flex-col items-center">
           <div className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-3 flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5" />
-            Уровень 2: Подведомственные органы ({childrenOrgs.length})
+            Уровень 2: Подотчетные органы ({childrenOrgs.length})
           </div>
 
           {childrenOrgs.length > 0 ? (
@@ -138,7 +138,7 @@ export const TwoLevelTreeView: React.FC<TwoLevelTreeViewProps> = ({
             </div>
           ) : (
             <div className="p-8 text-center text-sm text-slate-400 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-dashed border-slate-200 dark:border-slate-800 w-full max-w-md">
-              У данного ведомства нет подчиненных органов следующего уровня.
+              У данной организации нет подотчетных органов следующего уровня.
             </div>
           )}
         </div>

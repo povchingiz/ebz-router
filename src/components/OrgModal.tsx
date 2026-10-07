@@ -51,7 +51,7 @@ export const OrgModal: React.FC<OrgModalProps> = ({
     setStatusMsg(null);
     try {
       await onReparent(selectedParentId);
-      setStatusMsg({ text: 'Подчиненность ведомства успешно обновлена' });
+      setStatusMsg({ text: 'Подотчетность ведомства успешно обновлена' });
     } catch (err: any) {
       setStatusMsg({ text: err.message || 'Ошибка смены родителя', error: true });
     } finally {
@@ -141,7 +141,7 @@ export const OrgModal: React.FC<OrgModalProps> = ({
               }`}
             >
               <GitFork className="w-4 h-4" />
-              Подчинение (Админ)
+              Подотчетность (Админ)
             </button>
           )}
         </div>
@@ -276,7 +276,7 @@ export const OrgModal: React.FC<OrgModalProps> = ({
                 disabled={isSubmitting}
                 className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-colors disabled:opacity-50"
               >
-                {isSubmitting ? 'Обновление...' : 'Применить переподчинение'}
+                {isSubmitting ? 'Обновление...' : 'Применить смену подотчетности'}
               </button>
             </div>
           )}

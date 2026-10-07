@@ -59,7 +59,7 @@ function HomeContent({
     setOrgs((prev) => prev.map((o) => (o.id === inspectorOrg.id ? data.org : o)));
   };
 
-  // Смена подчиненности
+  // Смена подотчетности
   const handleReparent = async (newParentId: string | null) => {
     if (!inspectorOrg) return;
     const res = await fetch('/api/mutate', {
@@ -74,7 +74,7 @@ function HomeContent({
       }),
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Ошибка смены подчинения');
+    if (!res.ok) throw new Error(data.error || 'Ошибка смены подотчетности');
     setOrgs((prev) => prev.map((o) => (o.id === inspectorOrg.id ? data.org : o)));
     // Гарантированно перенаправляем навигацию на ведомство в его новой ветке
     navigateToOrg(data.org.id, true);

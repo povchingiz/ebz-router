@@ -105,15 +105,6 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                     <span className="text-xs font-black text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors truncate">
                       {org.name}
                     </span>
-                    <span className="text-[10px] px-2 py-0.5 rounded font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                      {org.level === 'central'
-                        ? 'Высший'
-                        : org.level === 'agency'
-                        ? 'Министерство'
-                        : org.level === 'regional'
-                        ? 'Акимат'
-                        : 'Ведомство'}
-                    </span>
                   </div>
                   <p className="text-[11px] text-slate-500 truncate mt-0.5">
                     {org.fullName}

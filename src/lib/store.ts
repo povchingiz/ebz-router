@@ -99,7 +99,7 @@ class OrgStore {
   }
 
   /**
-   * Смена подчиненности (parentId) — доступно ТОЛЬКО Superadmin.
+   * Смена подотчетности (parentId) — доступно ТОЛЬКО Superadmin.
    * Валидация циклических связей!
    */
   public reparent(
@@ -109,7 +109,7 @@ class OrgStore {
     user: User
   ): { success: boolean; org?: GovOrg; error?: string } {
     if (user.role !== 'superadmin') {
-      return { success: false, error: 'Только Суперадминистратор имеет право менять структуру подчинения ведомств' };
+      return { success: false, error: 'Только Суперадминистратор имеет право менять структуру подотчетности ведомств' };
     }
 
     const org = this.orgs.get(orgId);
@@ -128,7 +128,7 @@ class OrgStore {
       let currentCheck: string | null = newParentId;
       while (currentCheck) {
         if (currentCheck === orgId) {
-          return { success: false, error: 'Ошибка структуры: циклическая зависимость. Нельзя подчинить ведомство его же дочернему органу!' };
+          return { success: false, error: 'Ошибка структуры: циклическая зависимость. Нельзя передать ведомство в подотчетность его же дочернему органу!' };
         }
         const parentNode = this.orgs.get(currentCheck);
         currentCheck = parentNode ? parentNode.parentId : null;

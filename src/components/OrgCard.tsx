@@ -61,15 +61,6 @@ export const OrgCard: React.FC<OrgCardProps> = ({
       } ${org.lockedBy ? 'border-amber-400 bg-amber-50/20 ring-1 ring-amber-400/50' : ''}`}
     >
       <div>
-        <div className="flex items-center justify-between gap-2 mb-2">
-          <span
-            className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[11px] font-medium border ${config.badgeClass}`}
-          >
-            {config.icon}
-            {config.label}
-          </span>
-        </div>
-
         <h4 className="text-base font-semibold text-slate-900 dark:text-white leading-tight mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {org.name}
         </h4>

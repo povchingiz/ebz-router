@@ -30,10 +30,10 @@ export const MoreChildrenCard = ({ data }: any) => {
 
       <div className="flex flex-col items-center">
         <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1">
-          Подчиненные ведомства
+          Подотчетные организации
         </span>
         <h4 className="text-sm font-extrabold text-slate-800 dark:text-slate-200">
-          Еще +{hiddenChildren.length} ведомств
+          Еще +{hiddenChildren.length} организаций
         </h4>
         <p className="text-[11px] text-slate-500 mt-0.5">
           в ведении «{parentName}»
@@ -45,7 +45,7 @@ export const MoreChildrenCard = ({ data }: any) => {
         onClick={() => setIsOpen(!isOpen)}
         className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all"
       >
-        <span>Выбрать ведомство</span>
+        <span>Выбрать организацию</span>
         <ChevronDown className="w-3.5 h-3.5" />
       </button>
 

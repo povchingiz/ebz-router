@@ -105,7 +105,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [isAddQuestionModalOpen, setIsAddQuestionModalOpen] = useState(false);
   const [isCsvQuestionModalOpen, setIsCsvQuestionModalOpen] = useState(false);
 
-  // Подчиненность
+  // Подотчетность
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
   const [parentSearchQuery, setParentSearchQuery] = useState('');
 
@@ -192,9 +192,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     setStatusMsg(null);
     try {
       await onReparent(selectedParentId);
-      setStatusMsg({ text: 'Иерархия подчиненности успешно изменена в структуре!' });
+      setStatusMsg({ text: 'Иерархия подотчетности успешно изменена в структуре!' });
     } catch (err: any) {
-      setStatusMsg({ text: err.message || 'Ошибка смены подчинения', error: true });
+      setStatusMsg({ text: err.message || 'Ошибка смены подотчетности', error: true });
     } finally {
       setIsSubmitting(false);
     }
@@ -309,7 +309,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
               }`}
             >
               <GitFork className="w-4 h-4" />
-              Подчиненность
+              Подотчетность
             </button>
           )}
         </div>
@@ -695,7 +695,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* ВКЛАДКА 3: Подчиненность (Смена родителя с потокеновым автокомплитом) */}
+          {/* ВКЛАДКА 3: Подотчетность (Смена родителя с потокеновым автокомплитом) */}
           {activeTab === 'admin' && permissions.canChangeStructure && (
             <div className="space-y-4">
               <div className="p-3.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 leading-relaxed font-medium">
@@ -736,7 +736,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                       : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50'
                   }`}
                 >
-                  <span>(Без родителя / Корневой высший орган)</span>
+                  <span>(Без родителя / Корневой уровень)</span>
                   {selectedParentId === null && <Check className="w-4 h-4 text-indigo-600" />}
                 </div>
 
@@ -770,7 +770,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </div>
               </div>
 
-              {/* Кнопка подтверждения смены подчиненности */}
+              {/* Кнопка подтверждения смены подотчетности */}
               <button
                 type="button"
                 onClick={handleReparent}
@@ -781,7 +781,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   ? 'Применение изменений...'
                   : selectedParentId === org.parentId
                   ? 'Родитель не изменен'
-                  : `Подчинить органу: ${candidateParent ? candidateParent.name : 'Корневой уровень'}`}
+                  : `Определить подотчетным органу: ${candidateParent ? candidateParent.name : 'Корневой уровень'}`}
               </button>
             </div>
           )}
