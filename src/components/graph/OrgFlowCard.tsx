@@ -109,10 +109,10 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </p>
       </div>
 
-      {/* Нижняя панель действий */}
-      <div className="pt-2 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
-        {/* Кнопка Развернуть/Свернуть подотчетных */}
-        {hasChildren ? (
+      {/* Нижняя панель действий (только если есть подотчетные) */}
+      {hasChildren && (
+        <div className="pt-2 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
+          {/* Кнопка Развернуть/Свернуть подотчетных */}
           <button
             type="button"
             onClick={(e) => {
@@ -137,9 +137,6 @@ export const OrgFlowCard = ({ data, selected }: any) => {
               </>
             )}
           </button>
-        ) : (
-          <span className="text-[10px] text-slate-400">Конечный орган</span>
-        )}
 
         {/* Интерактивный выпадающий список прямо на карточке органа */}
         {hasChildren && isExpanded && hiddenCount > 0 && onSelectChildFromDropdown && (
@@ -208,13 +205,16 @@ export const OrgFlowCard = ({ data, selected }: any) => {
           </div>
         )}
       </div>
+    )}
 
-      {/* Ручка связи снизу */}
+    {/* Ручка связи снизу */}
+    {hasChildren && (
       <Handle
         type="source"
         position={Position.Bottom}
         className="!w-2.5 !h-2.5 !bg-blue-600 !border-2 !border-white dark:!border-slate-900 !-bottom-1.5"
       />
+    )}
     </div>
   );
 };
