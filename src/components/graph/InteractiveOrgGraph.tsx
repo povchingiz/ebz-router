@@ -14,11 +14,10 @@ import {
 import '@xyflow/react/dist/style.css';
 import { GovOrg } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
-import { MoreChildrenCard } from './MoreChildrenCard';
 import { getDagreLayout } from './layout';
 import { Minimize2 } from 'lucide-react';
 
-const MAX_VISIBLE_CHILDREN = 6;
+const MAX_DEFAULT_CHILDREN = 6;
 
 interface InteractiveOrgGraphProps {
   allOrgs: GovOrg[];
@@ -29,7 +28,6 @@ interface InteractiveOrgGraphProps {
 
 const nodeTypes = {
   orgCard: OrgFlowCard,
-  moreChildrenCard: MoreChildrenCard,
 };
 
 function GraphInner({
@@ -38,37 +36,39 @@ function GraphInner({
   selectedOrgId,
   onSelectOrg,
 }: InteractiveOrgGraphProps) {
-  const { setCenter, getNode } = useReactFlow();
+  const { setCenter } = useReactFlow();
 
   // Набор ID организаций, ветви которых раскрыты
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
-  // Индивидуально добавленные дети из выпадающего списка "Еще N"
-  const [explicitlyAddedChildIds, setExplicitlyAddedChildIds] = useState<Set<string>>(new Set());
+  // Выбранные в центр организации для родителей (parentId -> selectedChildId)
+  const [featuredChildMap, setFeaturedChildMap] = useState<Map<string, string>>(new Map());
 
-  // Запоминаем последний кликнутый узел для плавного фокуса камеры без улетания
+  // Целевой узел для камеры
   const lastTargetNodeId = useRef<string | null>(null);
 
-  // Когда выбран узел через поиск в шапке:
-  // Раскрываем ТОЛЬКО цепочку предков от корня до этого узла
+  // Когда выбран узел через Быстрый Поиск в шапке (Пункт 3 и 5):
+  // 1. Находим полную цепочку предков от корня до этого узла.
+  // 2. Раскрываем ТОЛЬКО родителей этой цепочки.
+  // 3. Фиксируем выбранный узел как центральный/единственный в своей ветке!
   useEffect(() => {
     if (selectedOrgId) {
       const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
       const nextExpanded = new Set<string>();
-      const nextExplicit = new Set(explicitlyAddedChildIds);
+      const nextFeatured = new Map<string, string>();
 
       let curr = orgMap.get(selectedOrgId);
-      // Добавляем выбранный узел как явно отображаемый
-      nextExplicit.add(selectedOrgId);
+      lastTargetNodeId.current = selectedOrgId;
 
       while (curr && curr.parentId) {
         nextExpanded.add(curr.parentId);
+        // Этот ребенок становится ключевым для своего родителя (в центре!)
+        nextFeatured.set(curr.parentId, curr.id);
         curr = orgMap.get(curr.parentId);
       }
 
       setExpandedIds(nextExpanded);
-      setExplicitlyAddedChildIds(nextExplicit);
-      lastTargetNodeId.current = selectedOrgId;
+      setFeaturedChildMap(nextFeatured);
     }
   }, [selectedOrgId, allOrgs]);
 
@@ -86,12 +86,14 @@ function GraphInner({
     });
   }, []);
 
-  const handleSelectChildFromMore = useCallback((child: GovOrg) => {
-    setExplicitlyAddedChildIds((prev) => new Set(prev).add(child.id));
+  // Выбор конкретного ребенка из дропдауна "+ Еще N" на карточке родителя
+  // Выбранный орган ставится в центр под родителем!
+  const handleSelectChildFromDropdown = useCallback((parentId: string, child: GovOrg) => {
+    setFeaturedChildMap((prev) => new Map(prev).set(parentId, child.id));
     lastTargetNodeId.current = child.id;
   }, []);
 
-  // Формируем ограниченный набор видимых узлов и связей
+  // Формируем чистый граф узлов и связей
   const { visibleNodesList, visibleEdgesList } = useMemo(() => {
     const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
     const childrenMap = new Map<string, GovOrg[]>();
@@ -104,59 +106,41 @@ function GraphInner({
       }
     });
 
-    const flowNodes: Node[] = [];
-    const flowEdges: Edge[] = [];
+    const visibleNodeIds = new Set<string>();
 
-    // 1. Корневые узлы (АП)
+    // Корневые органы (АП) всегда видимы
     const rootOrgs = allOrgs.filter((o) => !o.parentId);
-    const visibleNodeIds = new Set<string>(rootOrgs.map((r) => r.id));
+    rootOrgs.forEach((r) => visibleNodeIds.add(r.id));
 
-    // 2. Для каждого раскрытого узла берем первые MAX_VISIBLE_CHILDREN + явные
+    // Для каждого раскрытого родителя определяем видимых детей
+    const hiddenChildrenMap = new Map<string, GovOrg[]>();
+
     expandedIds.forEach((parentId) => {
       const allChildren = childrenMap.get(parentId) || [];
       if (allChildren.length === 0) return;
 
-      const parentOrg = orgMap.get(parentId);
+      const featuredChildId = featuredChildMap.get(parentId);
 
-      // Первые N детей
-      const primaryChildren = allChildren.slice(0, MAX_VISIBLE_CHILDREN);
-      primaryChildren.forEach((c) => visibleNodeIds.add(c.id));
-
-      // Явно добавленные из дропдауна
-      allChildren.forEach((c) => {
-        if (explicitlyAddedChildIds.has(c.id)) {
-          visibleNodeIds.add(c.id);
+      // Если родитель раскрыт через поиск или дропдаун — показываем выбранного ребенка в центре!
+      if (featuredChildId) {
+        visibleNodeIds.add(featuredChildId);
+        // Остальные прячем в дропдаун
+        const hidden = allChildren.filter((c) => c.id !== featuredChildId);
+        hiddenChildrenMap.set(parentId, hidden);
+      } else {
+        // Обычное раскрытие: показываем первые MAX_DEFAULT_CHILDREN
+        const primary = allChildren.slice(0, MAX_DEFAULT_CHILDREN);
+        primary.forEach((c) => visibleNodeIds.add(c.id));
+        const hidden = allChildren.slice(MAX_DEFAULT_CHILDREN);
+        if (hidden.length > 0) {
+          hiddenChildrenMap.set(parentId, hidden);
         }
-      });
-
-      // Если детей больше, чем MAX_VISIBLE_CHILDREN — создаем карточку "Еще N"
-      const hiddenChildren = allChildren.filter((c) => !visibleNodeIds.has(c.id));
-      if (hiddenChildren.length > 0 && parentOrg) {
-        const moreNodeId = `more-${parentId}`;
-        flowNodes.push({
-          id: moreNodeId,
-          type: 'moreChildrenCard',
-          position: { x: 0, y: 0 },
-          data: {
-            parentId,
-            parentName: parentOrg.name,
-            hiddenChildren,
-            onSelectChild: handleSelectChildFromMore,
-          },
-        });
-
-        flowEdges.push({
-          id: `e-${parentId}-${moreNodeId}`,
-          source: parentId,
-          target: moreNodeId,
-          type: 'smoothstep',
-          animated: false,
-          style: { stroke: '#94a3b8', strokeWidth: 1.5, strokeDasharray: '4 4' },
-        });
       }
     });
 
-    // Создаем карточки реальных узлов
+    const flowNodes: Node[] = [];
+    const flowEdges: Edge[] = [];
+
     visibleNodeIds.forEach((id) => {
       const org = orgMap.get(id);
       if (!org) return;
@@ -164,6 +148,7 @@ function GraphInner({
       const children = childrenMap.get(id) || [];
       const hasChildren = children.length > 0;
       const isExpanded = expandedIds.has(id);
+      const hiddenChildren = hiddenChildrenMap.get(id) || [];
 
       flowNodes.push({
         id: org.id,
@@ -176,8 +161,12 @@ function GraphInner({
           hasChildren,
           childrenCount: children.length,
           isSelected: org.id === selectedOrgId,
+          hiddenCount: hiddenChildren.length,
+          hiddenChildren,
           onToggleExpand: handleToggleExpand,
           onOpenDetails,
+          onSelectChildFromDropdown: (child: GovOrg) =>
+            handleSelectChildFromDropdown(org.id, child),
         },
       });
 
@@ -203,14 +192,13 @@ function GraphInner({
   }, [
     allOrgs,
     expandedIds,
-    explicitlyAddedChildIds,
+    featuredChildMap,
     selectedOrgId,
     handleToggleExpand,
-    handleSelectChildFromMore,
+    handleSelectChildFromDropdown,
     onOpenDetails,
   ]);
 
-  // Вычисляем стабильный Dagre layout
   const layouted = useMemo(() => {
     return getDagreLayout(visibleNodesList, visibleEdgesList, 'TB');
   }, [visibleNodesList, visibleEdgesList]);
@@ -222,13 +210,12 @@ function GraphInner({
     setNodes(layouted.nodes);
     setEdges(layouted.edges);
 
-    // Плавное мягкое центрирование на целевом узле без улетания в угол
+    // Плавное мягкое центрирование на целевом узле без улетания
     if (lastTargetNodeId.current) {
       const target = layouted.nodes.find((n) => n.id === lastTargetNodeId.current);
       if (target) {
-        // Плавно сдвигаем камеру к целевой организации
-        setCenter(target.position.x + 155, target.position.y + 75, {
-          duration: 350,
+        setCenter(target.position.x + 135, target.position.y + 65, {
+          duration: 300,
           zoom: 0.95,
         });
       }
@@ -237,7 +224,7 @@ function GraphInner({
 
   const handleCollapseAll = () => {
     setExpandedIds(new Set());
-    setExplicitlyAddedChildIds(new Set());
+    setFeaturedChildMap(new Map());
     lastTargetNodeId.current = 'ap';
   };
 
