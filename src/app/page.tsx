@@ -188,11 +188,7 @@ function HomeContent({
           {viewMode === 'graph' ? (
             <InteractiveOrgGraph allOrgs={orgs} />
           ) : (
-            <ListView
-              allOrgs={orgs}
-              onOpenDetails={(org) => openInspector(org.id)}
-              searchQuery=""
-            />
+            <ListView allOrgs={orgs} />
           )}
         </div>
       </main>
