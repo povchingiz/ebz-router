@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { GovOrg } from '../types';
+import { useNavigation } from '../lib/NavigationContext';
 import { Search, Building2, X, Sparkles } from 'lucide-react';
 
 interface QuickSearchProps {
   allOrgs: GovOrg[];
-  onSelectOrg: (org: GovOrg) => void;
-  onOpenDetails: (org: GovOrg) => void;
+  onSelectOrg?: (org: GovOrg) => void;
+  onOpenDetails?: (org: GovOrg) => void;
 }
 
 export const QuickSearch: React.FC<QuickSearchProps> = ({
@@ -13,6 +14,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
   onSelectOrg,
   onOpenDetails,
 }) => {
+  const { navigateToOrg, openInspector } = useNavigation();
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -91,7 +93,8 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
               <div
                 key={org.id}
                 onClick={() => {
-                  onSelectOrg(org);
+                  navigateToOrg(org.id);
+                  if (onSelectOrg) onSelectOrg(org);
                   setQuery('');
                   setIsOpen(false);
                 }}
@@ -121,7 +124,8 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    onOpenDetails(org);
+                    openInspector(org.id);
+                    if (onOpenDetails) onOpenDetails(org);
                     setQuery('');
                     setIsOpen(false);
                   }}

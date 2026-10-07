@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { GovOrg, OrgQuestion, User, UserRole, JurisdictionLevel } from '../types';
+import { NavigationProvider, useNavigation } from '../lib/NavigationContext';
 import { InteractiveOrgGraph } from '../components/graph/InteractiveOrgGraph';
 import { ListView } from '../components/ListView';
 import { QuickSearch } from '../components/QuickSearch';
@@ -14,46 +15,25 @@ import {
   RotateCw,
 } from 'lucide-react';
 
-export default function HomePage() {
-  const [orgs, setOrgs] = useState<GovOrg[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+function HomeContent({
+  orgs,
+  setOrgs,
+  loadOrgs,
+  currentUser,
+  setCurrentUser,
+}: {
+  orgs: GovOrg[];
+  setOrgs: React.Dispatch<React.SetStateAction<GovOrg[]>>;
+  loadOrgs: () => Promise<void>;
+  currentUser: User;
+  setCurrentUser: React.Dispatch<React.SetStateAction<User>>;
+}) {
   const [viewMode, setViewMode] = useState<'graph' | 'list'>('graph');
-
-  // Текущий выбранный узел
-  const [selectedOrgId, setSelectedOrgId] = useState<string | null>(null);
-
-  // Модальные окна
-  const [activeModalOrg, setActiveModalOrg] = useState<GovOrg | null>(null);
   const [isCsvModalOpen, setIsCsvModalOpen] = useState(false);
 
-  // Текущий пользователь
-  const [currentUser, setCurrentUser] = useState<User>({
-    id: 'user-admin',
-    name: 'Асет Сериков',
-    role: 'superadmin',
-  });
+  const { inspectorOrg, closeInspector, openInspector, navigateToOrg } = useNavigation();
 
-  // Загрузка организаций
-  const loadOrgs = async () => {
-    setIsLoading(true);
-    try {
-      const res = await fetch('/api/orgs');
-      const json = await res.json();
-      if (json.data) {
-        setOrgs(json.data);
-      }
-    } catch (err) {
-      console.error('Failed to load orgs:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadOrgs();
-  }, []);
-
-  // Мутации данных
+  // Сохранение сведений (компетенции, локация, юрисдикция, вопросы)
   const handleSaveContent = async (updatedData: {
     scope: string;
     theme?: string;
@@ -62,43 +42,42 @@ export default function HomePage() {
     legalBasis?: string;
     questions: OrgQuestion[];
   }) => {
-    if (!activeModalOrg) return;
+    if (!inspectorOrg) return;
     const res = await fetch('/api/mutate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'update_content',
-        orgId: activeModalOrg.id,
+        orgId: inspectorOrg.id,
         user: currentUser,
-        version: activeModalOrg.version,
+        version: inspectorOrg.version,
         payload: updatedData,
       }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Ошибка при сохранении');
-    setOrgs((prev) => prev.map((o) => (o.id === activeModalOrg.id ? data.org : o)));
-    setActiveModalOrg(data.org);
+    setOrgs((prev) => prev.map((o) => (o.id === inspectorOrg.id ? data.org : o)));
   };
 
+  // Смена подчиненности
   const handleReparent = async (newParentId: string | null) => {
-    if (!activeModalOrg) return;
+    if (!inspectorOrg) return;
     const res = await fetch('/api/mutate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'reparent',
-        orgId: activeModalOrg.id,
+        orgId: inspectorOrg.id,
         user: currentUser,
-        version: activeModalOrg.version,
+        version: inspectorOrg.version,
         payload: { newParentId },
       }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Ошибка смены подчинения');
-    setOrgs((prev) => prev.map((o) => (o.id === activeModalOrg.id ? data.org : o)));
-    setActiveModalOrg(data.org);
-    // Сразу фокусируем граф на обновленном органе в новой ветке
-    setSelectedOrgId(data.org.id);
+    setOrgs((prev) => prev.map((o) => (o.id === inspectorOrg.id ? data.org : o)));
+    // Гарантированно перенаправляем навигацию на ведомство в его новой ветке
+    navigateToOrg(data.org.id, true);
   };
 
   const handleImportCsv = async (items: GovOrg[]) => {
@@ -114,13 +93,6 @@ export default function HomePage() {
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Ошибка импорта');
     await loadOrgs();
-  };
-
-  const handleSelectOrg = (org: GovOrg) => {
-    setSelectedOrgId(null);
-    setTimeout(() => {
-      setSelectedOrgId(org.id);
-    }, 10);
   };
 
   return (
@@ -143,11 +115,7 @@ export default function HomePage() {
 
           {/* Быстрый сквозной поиск организаций по центру (Автокомплит) */}
           <div className="flex-1 max-w-xl mx-4">
-            <QuickSearch
-              allOrgs={orgs}
-              onSelectOrg={handleSelectOrg}
-              onOpenDetails={(org) => setActiveModalOrg(org)}
-            />
+            <QuickSearch allOrgs={orgs} />
           </div>
 
           {/* Действия и тулбар */}
@@ -217,23 +185,12 @@ export default function HomePage() {
       {/* Основной контент */}
       <main className="flex-1 max-w-[1600px] w-full mx-auto p-4 sm:p-6">
         <div className="w-full">
-          {isLoading ? (
-            <div className="flex flex-col items-center justify-center min-h-[50vh] text-slate-400 gap-2">
-              <RotateCw className="w-7 h-7 animate-spin text-blue-600" />
-              <span className="text-xs font-semibold">Загрузка базы знаний...</span>
-            </div>
-          ) : viewMode === 'graph' ? (
-            <InteractiveOrgGraph
-              allOrgs={orgs}
-              onOpenDetails={(org) => setActiveModalOrg(org)}
-              selectedOrgId={selectedOrgId}
-              onSelectOrg={handleSelectOrg}
-              onClearSelection={() => setSelectedOrgId(null)}
-            />
+          {viewMode === 'graph' ? (
+            <InteractiveOrgGraph allOrgs={orgs} />
           ) : (
             <ListView
               allOrgs={orgs}
-              onOpenDetails={(org) => setActiveModalOrg(org)}
+              onOpenDetails={(org) => openInspector(org.id)}
               searchQuery=""
             />
           )}
@@ -242,11 +199,11 @@ export default function HomePage() {
 
       {/* Боковое меню сведений об организации (Slide-out Drawer) */}
       <OrgDrawer
-        org={activeModalOrg}
+        org={inspectorOrg}
         allOrgs={orgs}
         currentUser={currentUser}
-        isOpen={Boolean(activeModalOrg)}
-        onClose={() => setActiveModalOrg(null)}
+        isOpen={Boolean(inspectorOrg)}
+        onClose={closeInspector}
         onSaveContent={handleSaveContent}
         onReparent={handleReparent}
       />
@@ -259,5 +216,57 @@ export default function HomePage() {
         onImport={handleImportCsv}
       />
     </div>
+  );
+}
+
+export default function HomePage() {
+  const [orgs, setOrgs] = useState<GovOrg[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Текущий пользователь
+  const [currentUser, setCurrentUser] = useState<User>({
+    id: 'user-admin',
+    name: 'Асет Сериков',
+    role: 'superadmin',
+  });
+
+  const loadOrgs = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch('/api/orgs');
+      const json = await res.json();
+      if (json.data) {
+        setOrgs(json.data);
+      }
+    } catch (err) {
+      console.error('Failed to load orgs:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadOrgs();
+  }, []);
+
+  if (isLoading || orgs.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-slate-400 gap-2 bg-slate-50 dark:bg-slate-950">
+        <RotateCw className="w-7 h-7 animate-spin text-blue-600" />
+        <span className="text-xs font-semibold">Загрузка базы знаний...</span>
+      </div>
+    );
+  }
+
+  return (
+    <NavigationProvider allOrgs={orgs}>
+      <HomeContent
+        orgs={orgs}
+        setOrgs={setOrgs}
+        loadOrgs={loadOrgs}
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+      />
+    </NavigationProvider>
   );
 }
