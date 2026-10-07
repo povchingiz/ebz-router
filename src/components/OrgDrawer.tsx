@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { GovOrg, OrgQuestion, User, ROLE_PERMISSIONS, JurisdictionLevel } from '@/types';
 import { QuestionModal } from './QuestionModal';
+import { QuestionCsvModal } from './QuestionCsvModal';
 import {
   X,
   Lock,
@@ -22,6 +23,7 @@ import {
   ChevronRight,
   ShieldCheck,
   Minimize2,
+  FileSpreadsheet,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -101,6 +103,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [questionSearch, setQuestionSearch] = useState('');
   const [questionsViewMode, setQuestionsViewMode] = useState<'cards' | 'table'>('cards');
   const [isAddQuestionModalOpen, setIsAddQuestionModalOpen] = useState(false);
+  const [isCsvQuestionModalOpen, setIsCsvQuestionModalOpen] = useState(false);
 
   // Подчиненность
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
@@ -329,31 +332,34 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           {/* ВКЛАДКА 1: Компетенции и статус */}
           {activeTab === 'info' && (
             <div className="space-y-4">
-              {/* Секция 1: Тематика и вопросы обращений */}
+              {/* Объединенная секция: Полномочия, задачи и компетенции ведомства */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <FileText className="w-4 h-4 text-blue-600" />
-                  <span>Предметная тематика и обращения граждан</span>
+                  <span>Полномочия, задачи и компетенции ведомства</span>
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Какими вопросами занимается орган, какие типовые жалобы и обращения граждан решает.
+                  Сфера ответственности, типовые вопросы, предметная тематика обращений граждан и задачи органа.
                 </p>
                 {permissions.canEditContent && !isLockedByOther ? (
                   <textarea
-                    rows={3}
-                    value={theme}
-                    onChange={(e) => setTheme(e.target.value)}
-                    placeholder="Например: вопросы тарифов ЖКХ, лицензирование недропользователей, распределение квот..."
+                    rows={6}
+                    value={scope || theme}
+                    onChange={(e) => {
+                      setScope(e.target.value);
+                      setTheme(e.target.value);
+                    }}
+                    placeholder="Например: выработка государственной политики в сфере недропользования, вопросы тарифов ЖКХ, контроль лицензирования, рассмотрение обращений граждан..."
                     className="w-full p-3 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none leading-relaxed"
                   />
                 ) : (
-                  <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
-                    {theme || 'Предметная тематика не заполнена.'}
+                  <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-100 dark:border-slate-800 leading-relaxed whitespace-pre-wrap">
+                    {scope || theme || 'Полномочия и компетенции не указаны.'}
                   </div>
                 )}
               </div>
 
-              {/* Секция 2: Зона ответственности (Масштаб полномочий) */}
+              {/* Временно скрыто: Зона ответственности (Масштаб юрисдикции)
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2.5">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <Globe className="w-4 h-4 text-indigo-600" />
@@ -362,7 +368,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 <p className="text-[11px] text-slate-500">
                   Территориальный уровень охвата и действия компетенций ведомства.
                 </p>
-
                 {permissions.canEditContent && !isLockedByOther ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                     {JURISDICTION_OPTIONS.map((opt) => {
@@ -404,8 +409,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 )}
               </div>
+              */}
 
-              {/* Секция 3: Фактическое местонахождение (Локация) */}
+              {/* Секция: Фактическое местонахождение (Локация) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <MapPin className="w-4 h-4 text-emerald-600" />
@@ -429,7 +435,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* Секция 4: Нормативно-правовая база */}
+              {/* Временно скрыто: Нормативно-правовая база
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <Scale className="w-4 h-4 text-purple-600" />
@@ -452,27 +458,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 )}
               </div>
-
-              {/* Секция 5: Общие полномочия и описание */}
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                  <Building2 className="w-4 h-4 text-slate-600" />
-                  <span>Общие полномочия и задачи</span>
-                </div>
-                {permissions.canEditContent && !isLockedByOther ? (
-                  <textarea
-                    rows={4}
-                    value={scope}
-                    onChange={(e) => setScope(e.target.value)}
-                    placeholder="Подробное описание функций..."
-                    className="w-full p-3 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none leading-relaxed"
-                  />
-                ) : (
-                  <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-100 dark:border-slate-800 leading-relaxed">
-                    {scope || 'Описание отсутствует.'}
-                  </div>
-                )}
-              </div>
+              */}
             </div>
           )}
 
@@ -521,13 +507,23 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </div>
 
                 {permissions.canEditContent && !isLockedByOther && (
-                  <button
-                    type="button"
-                    onClick={() => setIsAddQuestionModalOpen(true)}
-                    className="inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all shrink-0"
-                  >
-                    <Plus className="w-3.5 h-3.5" /> Добавить
-                  </button>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setIsCsvQuestionModalOpen(true)}
+                      className="inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
+                      title="Импорт вопросов и ответов из CSV файла или таблицы"
+                    >
+                      <FileSpreadsheet className="w-3.5 h-3.5" /> Импорт CSV
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsAddQuestionModalOpen(true)}
+                      className="inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all"
+                    >
+                      <Plus className="w-3.5 h-3.5" /> Добавить
+                    </button>
+                  </div>
                 )}
               </div>
 
@@ -816,6 +812,15 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         isOpen={isAddQuestionModalOpen}
         onClose={() => setIsAddQuestionModalOpen(false)}
         onSave={handleAddNewQuestion}
+      />
+
+      {/* Модальное окно CSV импорта вопросов */}
+      <QuestionCsvModal
+        isOpen={isCsvQuestionModalOpen}
+        onClose={() => setIsCsvQuestionModalOpen(false)}
+        onImport={(importedQuestions) => {
+          setQuestions((prev) => [...importedQuestions, ...prev]);
+        }}
       />
     </>
   );

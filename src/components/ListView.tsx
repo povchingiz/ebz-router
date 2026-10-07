@@ -147,12 +147,6 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
                 <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold border truncate ${config.badgeClass}`}>
                   {config.label}
                 </span>
-
-                {isFocused && (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-black bg-blue-600 text-white shadow-xs">
-                    <Sparkles className="w-2.5 h-2.5" /> В фокусе
-                  </span>
-                )}
               </div>
 
               <span className="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5">

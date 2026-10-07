@@ -120,8 +120,8 @@ function HomeContent({
 
           {/* Действия и тулбар */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* Импорт CSV */}
-            {currentUser.role === 'superadmin' && (
+            {/* Импорт CSV (скрыт из шапки, сохранен на будущее) */}
+            {/* currentUser.role === 'superadmin' && (
               <button
                 type="button"
                 onClick={() => setIsCsvModalOpen(true)}
@@ -130,7 +130,7 @@ function HomeContent({
                 <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
                 Импорт CSV
               </button>
-            )}
+            ) */}
 
             {/* Переключатель режимов: Граф / Список */}
             <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl text-xs">
