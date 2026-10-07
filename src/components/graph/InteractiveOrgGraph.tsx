@@ -35,6 +35,20 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
   // На старте НИ ОДНА ветка НЕ развернута
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
+  // Если выбран узел через быстрый поиск — раскрываем путь до него
+  useEffect(() => {
+    if (selectedOrgId) {
+      const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
+      const idsToExpand = new Set(expandedIds);
+      let curr = orgMap.get(selectedOrgId);
+      while (curr && curr.parentId) {
+        idsToExpand.add(curr.parentId);
+        curr = orgMap.get(curr.parentId);
+      }
+      setExpandedIds(idsToExpand);
+    }
+  }, [selectedOrgId]);
+
   const handleToggleExpand = useCallback((id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     setExpandedIds((prev) => {
@@ -137,17 +151,17 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-140px)] min-h-[550px] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 shadow-inner">
+    <div className="relative w-full h-[calc(100vh-140px)] min-h-[580px] rounded-3xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm">
       {/* Кнопка сброса веток */}
       {expandedIds.size > 0 && (
         <div className="absolute top-4 left-4 z-10">
           <button
             type="button"
             onClick={handleCollapseAll}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all shadow-md border border-slate-200 dark:border-slate-800"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-black transition-all shadow-md border-2 border-slate-200 dark:border-slate-800"
           >
             <Minimize2 className="w-4 h-4" />
-            Свернуть всё к началу
+            Свернуть дерево к началу
           </button>
         </div>
       )}
@@ -159,9 +173,9 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         fitView
-        fitViewOptions={{ padding: 0.25, duration: 250 }}
-        minZoom={0.15}
-        maxZoom={2.0}
+        fitViewOptions={{ padding: 0.25, duration: 150 }}
+        minZoom={0.1}
+        maxZoom={2.5}
         zoomOnScroll={true}
         zoomOnPinch={true}
         panOnScroll={false}
@@ -169,7 +183,7 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
         elementsSelectable={true}
       >
         <Background color="#cbd5e1" gap={24} size={1.5} />
-        <Controls className="!bg-white dark:!bg-slate-900 !border-slate-200 dark:!border-slate-800 !rounded-xl !shadow-md" />
+        <Controls className="!bg-white dark:!bg-slate-900 !border-slate-200 dark:!border-slate-800 !rounded-2xl !shadow-md" />
       </ReactFlow>
     </div>
   );
