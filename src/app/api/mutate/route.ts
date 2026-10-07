@@ -33,7 +33,14 @@ export async function POST(req: Request) {
     if (action === 'update_content' && orgId) {
       const result = orgStore.updateContent(
         orgId,
-        { scope: payload.scope, questions: payload.questions },
+        {
+          scope: payload.scope,
+          theme: payload.theme,
+          locationAddress: payload.locationAddress,
+          jurisdiction: payload.jurisdiction,
+          legalBasis: payload.legalBasis,
+          questions: payload.questions,
+        },
         version ?? 1,
         user
       );

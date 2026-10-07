@@ -58,7 +58,14 @@ class OrgStore {
    */
   public updateContent(
     orgId: string,
-    updates: { scope?: string; questions?: OrgQuestion[] },
+    updates: {
+      scope?: string;
+      theme?: string;
+      locationAddress?: string;
+      jurisdiction?: 'republican' | 'regional' | 'district' | 'local';
+      legalBasis?: string;
+      questions?: OrgQuestion[];
+    },
     expectedVersion: number,
     user: User
   ): { success: boolean; org?: GovOrg; error?: string } {
@@ -79,6 +86,10 @@ class OrgStore {
     }
 
     if (updates.scope !== undefined) org.scope = updates.scope;
+    if (updates.theme !== undefined) org.theme = updates.theme;
+    if (updates.locationAddress !== undefined) org.locationAddress = updates.locationAddress;
+    if (updates.jurisdiction !== undefined) org.jurisdiction = updates.jurisdiction;
+    if (updates.legalBasis !== undefined) org.legalBasis = updates.legalBasis;
     if (updates.questions !== undefined) org.questions = updates.questions;
 
     org.version += 1;

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { GovOrg, OrgQuestion, User, UserRole } from '../types';
+import { GovOrg, OrgQuestion, User, UserRole, JurisdictionLevel } from '../types';
 import { InteractiveOrgGraph } from '../components/graph/InteractiveOrgGraph';
 import { ListView } from '../components/ListView';
 import { QuickSearch } from '../components/QuickSearch';
@@ -54,7 +54,14 @@ export default function HomePage() {
   }, []);
 
   // Мутации данных
-  const handleSaveContent = async (scope: string, questions: OrgQuestion[]) => {
+  const handleSaveContent = async (updatedData: {
+    scope: string;
+    theme?: string;
+    locationAddress?: string;
+    jurisdiction?: JurisdictionLevel;
+    legalBasis?: string;
+    questions: OrgQuestion[];
+  }) => {
     if (!activeModalOrg) return;
     const res = await fetch('/api/mutate', {
       method: 'POST',
@@ -64,7 +71,7 @@ export default function HomePage() {
         orgId: activeModalOrg.id,
         user: currentUser,
         version: activeModalOrg.version,
-        payload: { scope, questions },
+        payload: updatedData,
       }),
     });
     const data = await res.json();
@@ -90,6 +97,8 @@ export default function HomePage() {
     if (!res.ok) throw new Error(data.error || 'Ошибка смены подчинения');
     setOrgs((prev) => prev.map((o) => (o.id === activeModalOrg.id ? data.org : o)));
     setActiveModalOrg(data.org);
+    // Сразу фокусируем граф на обновленном органе в новой ветке
+    setSelectedOrgId(data.org.id);
   };
 
   const handleImportCsv = async (items: GovOrg[]) => {

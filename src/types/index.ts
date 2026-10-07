@@ -53,6 +53,8 @@ export interface OrgQuestion {
   sampleResponse?: string; // Типовой ответ / регламент
 }
 
+export type JurisdictionLevel = 'republican' | 'regional' | 'district' | 'local';
+
 export interface GovOrg {
   id: string;
   name: string;             // Краткое (Минэнерго РК)
@@ -60,6 +62,10 @@ export interface GovOrg {
   parentId: string | null;  // Идентификатор вышестоящего органа
   level: OrgLevel;          // Ранг органа
   scope: string;            // Сфера ведения / чем занимается (кратко)
+  theme?: string;           // Предметная тематика / вопросы обращений граждан
+  locationAddress?: string; // Фактическое местонахождение (адрес/город)
+  jurisdiction?: JurisdictionLevel; // Зона ответственности (Республиканский, Областной, Районный, Сельский)
+  legalBasis?: string;      // Нормативно-правовая база (указ/положение/закон)
   questions: OrgQuestion[]; // Вопросы и компетенции (для маршрутизатора)
   version: number;          // Для оптимистической блокировки
   lockedBy?: {              // Для soft lock (подсветка одновременного редактирования)
