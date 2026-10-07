@@ -7,6 +7,7 @@ import {
   navigateToOrgAction,
   collapseToRootAction,
   computeVisibleGraph,
+  getDescendantIds,
 } from './navigationStore';
 
 interface NavigationContextType {
@@ -75,36 +76,80 @@ export const NavigationProvider: React.FC<{
     [allOrgs, updateUrl]
   );
 
-  // 2. Раскрыть/свернуть родителя
+  // 2. Раскрыть/свернуть родителя с автоматической очисткой старых потомков
   const toggleExpandParent = useCallback((parentId: string) => {
     setNavState((prev) => {
       const nextExpanded = new Set(prev.expandedIds);
+      const nextFeatured = new Map(prev.featuredChildMap);
+      let nextFocused = prev.focusedOrgId;
+
       if (nextExpanded.has(parentId)) {
+        // Сворачиваем родителя: удаляем его и ВСЕХ его потомков из expandedIds и featuredChildMap!
         nextExpanded.delete(parentId);
+        nextFeatured.delete(parentId);
+
+        const descendants = getDescendantIds(parentId, allOrgs);
+        descendants.forEach((dId) => {
+          nextExpanded.delete(dId);
+          nextFeatured.delete(dId);
+        });
+
+        // Если фокус был внутри свернутой ветки — возвращаем фокус на свернутого родителя!
+        if (descendants.has(prev.focusedOrgId) || prev.focusedOrgId === parentId) {
+          nextFocused = parentId;
+          updateUrl(parentId);
+        }
       } else {
+        // Раскрываем родителя
         nextExpanded.add(parentId);
+        nextFocused = parentId;
+        updateUrl(parentId);
       }
+
       return {
         ...prev,
+        focusedOrgId: nextFocused,
         expandedIds: nextExpanded,
+        featuredChildMap: nextFeatured,
         cameraTargetId: parentId,
       };
     });
-  }, []);
+  }, [allOrgs, updateUrl]);
 
-  // 3. Выбор ребенка из дропдауна в центр
+  // 3. Выбор ребенка из дропдауна в центр: старая ветка мгновенно очищается!
   const selectChildInCenter = useCallback((parentId: string, childId: string) => {
     setNavState((prev) => {
       const nextFeatured = new Map(prev.featuredChildMap);
+      const nextExpanded = new Set(prev.expandedIds);
+
+      // Если ранее у этого родителя был выбран ДРУГОЙ ребенок — отсекаем его и всех его потомков!
+      const oldFeaturedId = prev.featuredChildMap.get(parentId);
+      if (oldFeaturedId && oldFeaturedId !== childId) {
+        nextExpanded.delete(oldFeaturedId);
+        nextFeatured.delete(oldFeaturedId);
+        const oldDescendants = getDescendantIds(oldFeaturedId, allOrgs);
+        oldDescendants.forEach((dId) => {
+          nextExpanded.delete(dId);
+          nextFeatured.delete(dId);
+        });
+      }
+
+      // Родитель гарантированно открыт
+      nextExpanded.add(parentId);
+      // Устанавливаем нового ребенка в центр
       nextFeatured.set(parentId, childId);
+
+      updateUrl(childId);
+
       return {
         ...prev,
         focusedOrgId: childId,
+        expandedIds: nextExpanded,
         featuredChildMap: nextFeatured,
         cameraTargetId: childId,
       };
     });
-  }, []);
+  }, [allOrgs, updateUrl]);
 
   // 4. Открыть инспектор (Сведения)
   const openInspector = useCallback((orgId: string) => {
@@ -148,14 +193,18 @@ export const NavigationProvider: React.FC<{
     return target;
   }, []);
 
-  // Расчет видимых узлов
+  // Расчет видимых узлов: строго по дереву BFS
   const { visibleNodeIds, hiddenChildrenMap } = useMemo(() => {
     return computeVisibleGraph(allOrgs, navState.expandedIds, navState.featuredChildMap);
   }, [allOrgs, navState.expandedIds, navState.featuredChildMap]);
 
+  // Гарантия: фокус ТОЛЬКО на видимом органе
   const activeOrg = useMemo(() => {
-    return allOrgs.find((o) => o.id === navState.focusedOrgId) || null;
-  }, [allOrgs, navState.focusedOrgId]);
+    if (visibleNodeIds.has(navState.focusedOrgId)) {
+      return allOrgs.find((o) => o.id === navState.focusedOrgId) || null;
+    }
+    return allOrgs.find((o) => !o.parentId) || null;
+  }, [allOrgs, navState.focusedOrgId, visibleNodeIds]);
 
   const inspectorOrg = useMemo(() => {
     if (!navState.inspector.isOpen || !navState.inspector.orgId) return null;

@@ -38,12 +38,37 @@ export function getAncestryPath(orgId: string, orgMap: Map<string, GovOrg>): str
 }
 
 /**
- * Детерминированный расчет видимых узлов и связей графа
- * Гарантирует:
- * - Всегда виден корень (АП)
- * - Всегда видна вся цепочка предков выбранного органа
- * - Выбранный орган стоит ровно по центру под родителем
- * - Общее число активных карточек в DOM строго ограничено (макс. 15-20)
+ * Получение всех ID потомков для заданного узла (рекурсивно)
+ */
+export function getDescendantIds(nodeId: string, allOrgs: GovOrg[]): Set<string> {
+  const childrenMap = new Map<string, string[]>();
+  allOrgs.forEach((o) => {
+    if (o.parentId) {
+      const list = childrenMap.get(o.parentId) || [];
+      list.push(o.id);
+      childrenMap.set(o.parentId, list);
+    }
+  });
+
+  const descendants = new Set<string>();
+  const queue = [nodeId];
+  while (queue.length > 0) {
+    const curr = queue.shift()!;
+    const children = childrenMap.get(curr) || [];
+    children.forEach((c) => {
+      descendants.add(c);
+      queue.push(c);
+    });
+  }
+  return descendants;
+}
+
+/**
+ * Строгий древовидный расчет видимых узлов и связей графа (BFS от корня).
+ * ГАРАНТИИ:
+ * 1. Никаких «висячих» сирот — узел может быть видим ТОЛЬКО если его родитель видим и раскрыт.
+ * 2. При смене выбранного ведомства неактивные ветви автоматически отсекаются.
+ * 3. В DOM никогда не попадает мусор от прошлых переходов.
  */
 export function computeVisibleGraph(
   allOrgs: GovOrg[],
@@ -66,35 +91,45 @@ export function computeVisibleGraph(
   });
 
   const visibleNodeIds = new Set<string>();
-
-  // 1. Корневые органы всегда видимы
-  const roots = allOrgs.filter((o) => !o.parentId);
-  roots.forEach((r) => visibleNodeIds.add(r.id));
-
-  // 2. Раскрытые родители
   const hiddenChildrenMap = new Map<string, GovOrg[]>();
 
-  expandedIds.forEach((parentId) => {
-    const allChildren = childrenMap.get(parentId) || [];
-    if (allChildren.length === 0) return;
+  // 1. Корневые органы ВСЕГДА видимы (АП)
+  const queue: string[] = allOrgs.filter((o) => !o.parentId).map((o) => o.id);
+  queue.forEach((rId) => visibleNodeIds.add(rId));
 
-    const featuredChildId = featuredChildMap.get(parentId);
+  // 2. Рекурсивный обход сверху вниз: только подтвержденные потомки
+  let head = 0;
+  while (head < queue.length) {
+    const parentId = queue[head++];
 
-    if (featuredChildId) {
-      // Если есть выбранный орган — показываем его в центре
-      visibleNodeIds.add(featuredChildId);
-      const hidden = allChildren.filter((c) => c.id !== featuredChildId);
-      hiddenChildrenMap.set(parentId, hidden);
-    } else {
-      // Иначе показываем первые N
-      const primary = allChildren.slice(0, maxDefaultChildren);
-      primary.forEach((c) => visibleNodeIds.add(c.id));
-      const hidden = allChildren.slice(maxDefaultChildren);
-      if (hidden.length > 0) {
+    if (expandedIds.has(parentId)) {
+      const allChildren = childrenMap.get(parentId) || [];
+      if (allChildren.length === 0) continue;
+
+      const featuredChildId = featuredChildMap.get(parentId);
+
+      if (featuredChildId && orgMap.has(featuredChildId)) {
+        // Выбран конкретный ребенок в центр — показываем ТОЛЬКО его!
+        visibleNodeIds.add(featuredChildId);
+        queue.push(featuredChildId);
+
+        const hidden = allChildren.filter((c) => c.id !== featuredChildId);
         hiddenChildrenMap.set(parentId, hidden);
+      } else {
+        // Показываем первые N детей
+        const primary = allChildren.slice(0, maxDefaultChildren);
+        primary.forEach((c) => {
+          visibleNodeIds.add(c.id);
+          queue.push(c.id);
+        });
+
+        const hidden = allChildren.slice(maxDefaultChildren);
+        if (hidden.length > 0) {
+          hiddenChildrenMap.set(parentId, hidden);
+        }
       }
     }
-  });
+  }
 
   return { visibleNodeIds, hiddenChildrenMap };
 }
@@ -112,7 +147,6 @@ export function navigateToOrgAction(
   const targetOrg = orgMap.get(targetOrgId);
 
   if (!targetOrg) {
-    // Безопасный фоллбэк: если орган не найден, центрируем на АП
     return {
       ...currentState,
       focusedOrgId: 'ap',
@@ -120,7 +154,7 @@ export function navigateToOrgAction(
     };
   }
 
-  // Строим цепочку родителей: при поиске фокусируемся исключительно на пути до искомой организации
+  // Строим чистый путь: разворачиваем исключительно родителей искомого ведомства
   const ancestry = getAncestryPath(targetOrgId, orgMap);
   const nextExpanded = new Set<string>();
   const nextFeatured = new Map<string, string>();
