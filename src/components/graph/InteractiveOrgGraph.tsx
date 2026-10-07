@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState, useEffect } from 'react';
+import React, { useMemo, useCallback, useState, useEffect, useRef } from 'react';
 import {
   ReactFlow,
   Controls,
@@ -8,12 +8,17 @@ import {
   Node,
   Edge,
   MarkerType,
+  useReactFlow,
+  ReactFlowProvider,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { GovOrg } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
+import { MoreChildrenCard } from './MoreChildrenCard';
 import { getDagreLayout } from './layout';
 import { Minimize2 } from 'lucide-react';
+
+const MAX_VISIBLE_CHILDREN = 6;
 
 interface InteractiveOrgGraphProps {
   allOrgs: GovOrg[];
@@ -24,33 +29,52 @@ interface InteractiveOrgGraphProps {
 
 const nodeTypes = {
   orgCard: OrgFlowCard,
+  moreChildrenCard: MoreChildrenCard,
 };
 
-export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
+function GraphInner({
   allOrgs,
   onOpenDetails,
   selectedOrgId,
   onSelectOrg,
-}) => {
-  // На старте НИ ОДНА ветка НЕ развернута
+}: InteractiveOrgGraphProps) {
+  const { setCenter, getNode } = useReactFlow();
+
+  // Набор ID организаций, ветви которых раскрыты
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
-  // Если выбран узел через быстрый поиск — раскрываем путь до него
+  // Индивидуально добавленные дети из выпадающего списка "Еще N"
+  const [explicitlyAddedChildIds, setExplicitlyAddedChildIds] = useState<Set<string>>(new Set());
+
+  // Запоминаем последний кликнутый узел для плавного фокуса камеры без улетания
+  const lastTargetNodeId = useRef<string | null>(null);
+
+  // Когда выбран узел через поиск в шапке:
+  // Раскрываем ТОЛЬКО цепочку предков от корня до этого узла
   useEffect(() => {
     if (selectedOrgId) {
       const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
-      const idsToExpand = new Set(expandedIds);
+      const nextExpanded = new Set<string>();
+      const nextExplicit = new Set(explicitlyAddedChildIds);
+
       let curr = orgMap.get(selectedOrgId);
+      // Добавляем выбранный узел как явно отображаемый
+      nextExplicit.add(selectedOrgId);
+
       while (curr && curr.parentId) {
-        idsToExpand.add(curr.parentId);
+        nextExpanded.add(curr.parentId);
         curr = orgMap.get(curr.parentId);
       }
-      setExpandedIds(idsToExpand);
+
+      setExpandedIds(nextExpanded);
+      setExplicitlyAddedChildIds(nextExplicit);
+      lastTargetNodeId.current = selectedOrgId;
     }
-  }, [selectedOrgId]);
+  }, [selectedOrgId, allOrgs]);
 
   const handleToggleExpand = useCallback((id: string, e: React.MouseEvent) => {
     e.stopPropagation();
+    lastTargetNodeId.current = id;
     setExpandedIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -62,7 +86,12 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
     });
   }, []);
 
-  // Вычисляем видимые узлы и связи строго по expandedIds
+  const handleSelectChildFromMore = useCallback((child: GovOrg) => {
+    setExplicitlyAddedChildIds((prev) => new Set(prev).add(child.id));
+    lastTargetNodeId.current = child.id;
+  }, []);
+
+  // Формируем ограниченный набор видимых узлов и связей
   const { visibleNodesList, visibleEdgesList } = useMemo(() => {
     const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
     const childrenMap = new Map<string, GovOrg[]>();
@@ -75,20 +104,59 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
       }
     });
 
-    const visibleNodeIds = new Set<string>();
-
-    // Корневые органы видны всегда
-    allOrgs.filter((o) => !o.parentId).forEach((r) => visibleNodeIds.add(r.id));
-
-    // Добавляем детей раскрытых веток
-    expandedIds.forEach((parentId) => {
-      const children = childrenMap.get(parentId) || [];
-      children.forEach((c) => visibleNodeIds.add(c.id));
-    });
-
     const flowNodes: Node[] = [];
     const flowEdges: Edge[] = [];
 
+    // 1. Корневые узлы (АП)
+    const rootOrgs = allOrgs.filter((o) => !o.parentId);
+    const visibleNodeIds = new Set<string>(rootOrgs.map((r) => r.id));
+
+    // 2. Для каждого раскрытого узла берем первые MAX_VISIBLE_CHILDREN + явные
+    expandedIds.forEach((parentId) => {
+      const allChildren = childrenMap.get(parentId) || [];
+      if (allChildren.length === 0) return;
+
+      const parentOrg = orgMap.get(parentId);
+
+      // Первые N детей
+      const primaryChildren = allChildren.slice(0, MAX_VISIBLE_CHILDREN);
+      primaryChildren.forEach((c) => visibleNodeIds.add(c.id));
+
+      // Явно добавленные из дропдауна
+      allChildren.forEach((c) => {
+        if (explicitlyAddedChildIds.has(c.id)) {
+          visibleNodeIds.add(c.id);
+        }
+      });
+
+      // Если детей больше, чем MAX_VISIBLE_CHILDREN — создаем карточку "Еще N"
+      const hiddenChildren = allChildren.filter((c) => !visibleNodeIds.has(c.id));
+      if (hiddenChildren.length > 0 && parentOrg) {
+        const moreNodeId = `more-${parentId}`;
+        flowNodes.push({
+          id: moreNodeId,
+          type: 'moreChildrenCard',
+          position: { x: 0, y: 0 },
+          data: {
+            parentId,
+            parentName: parentOrg.name,
+            hiddenChildren,
+            onSelectChild: handleSelectChildFromMore,
+          },
+        });
+
+        flowEdges.push({
+          id: `e-${parentId}-${moreNodeId}`,
+          source: parentId,
+          target: moreNodeId,
+          type: 'smoothstep',
+          animated: false,
+          style: { stroke: '#94a3b8', strokeWidth: 1.5, strokeDasharray: '4 4' },
+        });
+      }
+    });
+
+    // Создаем карточки реальных узлов
     visibleNodeIds.forEach((id) => {
       const org = orgMap.get(id);
       if (!org) return;
@@ -132,8 +200,17 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
     });
 
     return { visibleNodesList: flowNodes, visibleEdgesList: flowEdges };
-  }, [allOrgs, expandedIds, selectedOrgId, handleToggleExpand, onOpenDetails]);
+  }, [
+    allOrgs,
+    expandedIds,
+    explicitlyAddedChildIds,
+    selectedOrgId,
+    handleToggleExpand,
+    handleSelectChildFromMore,
+    onOpenDetails,
+  ]);
 
+  // Вычисляем стабильный Dagre layout
   const layouted = useMemo(() => {
     return getDagreLayout(visibleNodesList, visibleEdgesList, 'TB');
   }, [visibleNodesList, visibleEdgesList]);
@@ -144,10 +221,24 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
   useEffect(() => {
     setNodes(layouted.nodes);
     setEdges(layouted.edges);
-  }, [layouted, setNodes, setEdges]);
+
+    // Плавное мягкое центрирование на целевом узле без улетания в угол
+    if (lastTargetNodeId.current) {
+      const target = layouted.nodes.find((n) => n.id === lastTargetNodeId.current);
+      if (target) {
+        // Плавно сдвигаем камеру к целевой организации
+        setCenter(target.position.x + 155, target.position.y + 75, {
+          duration: 350,
+          zoom: 0.95,
+        });
+      }
+    }
+  }, [layouted, setNodes, setEdges, setCenter]);
 
   const handleCollapseAll = () => {
     setExpandedIds(new Set());
+    setExplicitlyAddedChildIds(new Set());
+    lastTargetNodeId.current = 'ap';
   };
 
   return (
@@ -172,9 +263,7 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
         nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        fitView
-        fitViewOptions={{ padding: 0.25, duration: 150 }}
-        minZoom={0.1}
+        minZoom={0.15}
         maxZoom={2.5}
         zoomOnScroll={true}
         zoomOnPinch={true}
@@ -186,5 +275,13 @@ export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = ({
         <Controls className="!bg-white dark:!bg-slate-900 !border-slate-200 dark:!border-slate-800 !rounded-2xl !shadow-md" />
       </ReactFlow>
     </div>
+  );
+}
+
+export const InteractiveOrgGraph: React.FC<InteractiveOrgGraphProps> = (props) => {
+  return (
+    <ReactFlowProvider>
+      <GraphInner {...props} />
+    </ReactFlowProvider>
   );
 };
