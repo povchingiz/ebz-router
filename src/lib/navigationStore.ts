@@ -120,10 +120,10 @@ export function navigateToOrgAction(
     };
   }
 
-  // Строим цепочку родителей
+  // Строим цепочку родителей: при поиске фокусируемся исключительно на пути до искомой организации
   const ancestry = getAncestryPath(targetOrgId, orgMap);
-  const nextExpanded = new Set(currentState.expandedIds);
-  const nextFeatured = new Map(currentState.featuredChildMap);
+  const nextExpanded = new Set<string>();
+  const nextFeatured = new Map<string, string>();
 
   for (let i = 0; i < ancestry.length - 1; i++) {
     const parentId = ancestry[i];

@@ -29,7 +29,7 @@ const nodeTypes = {
 };
 
 function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
-  const { setCenter } = useReactFlow();
+  const { fitView } = useReactFlow();
   const {
     navState,
     visibleNodeIds,
@@ -128,18 +128,23 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
     setNodes(layouted.nodes);
     setEdges(layouted.edges);
 
-    // Однократное центрирование на целевом узле
-    const targetId = consumeCameraTarget();
-    if (targetId) {
-      const target = layouted.nodes.find((n) => n.id === targetId);
-      if (target && target.position && !isNaN(target.position.x)) {
-        setCenter(target.position.x + 135, target.position.y + 65, {
-          duration: 300,
-          zoom: 0.95,
-        });
-      }
-    }
-  }, [layouted, setNodes, setEdges, setCenter, consumeCameraTarget]);
+    // Плавное адаптивное центрирование графа в видимой области:
+    // Если открыт инспектор сведений справа — центрируем в левой рабочей области, чтобы карточки не перекрывались
+    const timer = setTimeout(() => {
+      fitView({
+        padding: {
+          top: 0.15,
+          bottom: 0.15,
+          left: 0.1,
+          right: navState.inspector.isOpen ? 0.45 : 0.1,
+        },
+        duration: 350,
+        maxZoom: 1.0,
+      });
+    }, 40);
+
+    return () => clearTimeout(timer);
+  }, [layouted, navState.inspector.isOpen, fitView, setNodes, setEdges]);
 
   return (
     <div className="relative w-full h-[calc(100vh-140px)] min-h-[580px] rounded-3xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm">

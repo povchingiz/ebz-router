@@ -1103,7 +1103,7 @@
     "fullName": "Министерство юстиции",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МЮ 1957/0,0546% (к-во орг 174)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1113,7 +1113,7 @@
     "fullName": "Территории",
     "parentId": "myu",
     "level": "district",
-    "scope": "территории 43177 0,0120%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1123,7 +1123,7 @@
     "fullName": "Межрайонных территориальных отделов принудительного исполнения",
     "parentId": "territorii-2",
     "level": "district",
-    "scope": "Межрайонных территориальных отделов принудительного исполнения 7285 0,0808%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1133,7 +1133,7 @@
     "fullName": "Комитет принудительного исполнения",
     "parentId": "myu",
     "level": "district",
-    "scope": "Комитет принудительного исполнения 129 0,0036%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1143,7 +1143,7 @@
     "fullName": "Комитет по правам интеллектуальной собственности",
     "parentId": "myu",
     "level": "district",
-    "scope": "Комитет по правам интеллектуальной собственности 1159 0,0323%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1153,7 +1153,7 @@
     "fullName": "НИИС",
     "parentId": "komitet-po-pravam-intellektualnoi-sobstvenno",
     "level": "district",
-    "scope": "НИИС 4572 0,1276%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1163,7 +1163,7 @@
     "fullName": "Комитет регистрационной службы",
     "parentId": "myu",
     "level": "district",
-    "scope": "Комитет регистрационной службы 204 0,0057%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1173,7 +1173,7 @@
     "fullName": "Институт законодательства и правовой информации",
     "parentId": "myu",
     "level": "district",
-    "scope": "Институт законодательства и правовой информации 82 0,0023%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1183,7 +1183,7 @@
     "fullName": "Филиалов института",
     "parentId": "institut-zakonodatelstva-i-pravovoi-informac",
     "level": "district",
-    "scope": "филиалов института 10 0,0040%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1193,7 +1193,7 @@
     "fullName": "Республиканская коллегия юридических консультантов",
     "parentId": "myu",
     "level": "district",
-    "scope": "Республиканская коллегия юридических консультантов 10 0,0008%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1203,7 +1203,7 @@
     "fullName": "Подведомки",
     "parentId": "respublikanskaya-kollegiya-yuridicheskih-kon",
     "level": "district",
-    "scope": "подведомки 48 0,0013%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1213,7 +1213,7 @@
     "fullName": "Центр судебных экспертиз",
     "parentId": "myu",
     "level": "district",
-    "scope": "Центр судебных экспертиз 387 0,0108%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1223,7 +1223,7 @@
     "fullName": "Филиалов",
     "parentId": "centr-sudebnyh-ekspertiz",
     "level": "district",
-    "scope": "филиалов 1186 0,0331%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1233,7 +1233,7 @@
     "fullName": "ЧСИ",
     "parentId": "myu",
     "level": "district",
-    "scope": "ЧСИ 1709 0,0477%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1243,7 +1243,7 @@
     "fullName": "Филиалов",
     "parentId": "chsi",
     "level": "district",
-    "scope": "филиалов 37153 0,0370%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1253,7 +1253,7 @@
     "fullName": "Палата судебных экспертов",
     "parentId": "myu",
     "level": "district",
-    "scope": "Палата судебных экспертов 9 0,009%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1263,7 +1263,7 @@
     "fullName": "Министерство искусственного интеллекта и цифрового развития",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МИИЦР 1068/0,0298% (к-во орг 53)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1273,7 +1273,7 @@
     "fullName": "Комитет телекоммуникаций",
     "parentId": "miicr",
     "level": "district",
-    "scope": "Комитет телекоммуникаций 1202 0,0335%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1283,7 +1283,7 @@
     "fullName": "Инспекции",
     "parentId": "komitet-telekommunikacii",
     "level": "district",
-    "scope": "инспекции 1435 0,0401%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1293,7 +1293,7 @@
     "fullName": "Комитет по информационной безопасности",
     "parentId": "miicr",
     "level": "district",
-    "scope": "Комитет по информационной безопасности 1159 0,0323%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1313,7 +1313,7 @@
     "fullName": "Байконырбаланс",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "Байконырбаланс 4 0,001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1323,7 +1323,7 @@
     "fullName": "ТОО Институт ионосферы",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "ТОО Институт ионосферы 4 0,001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1333,7 +1333,7 @@
     "fullName": "АО Байтерек",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "АО Байтерек 5 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1343,7 +1343,7 @@
     "fullName": "ТОО Ghalam",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "ТОО Ghalam 13 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1353,7 +1353,7 @@
     "fullName": "Институт космической техники и технологий",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "Институт космической техники и технологий 13 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1363,7 +1363,7 @@
     "fullName": "ТОО Астрофизический институт",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "ТОО Астрофизический институт 9 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1373,7 +1373,7 @@
     "fullName": "АО Қазақстан Ғарыш Сапары",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "АО Қазақстан Ғарыш Сапары -46 0,0013%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1383,7 +1383,7 @@
     "fullName": "Национальный центр космических исследований и технологий",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "Национальный центр космических исследований и технологий 13 0.0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1393,7 +1393,7 @@
     "fullName": "Инфракос",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "Инфракос 23 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1413,7 +1413,7 @@
     "fullName": "Республиканский центр космической связи",
     "parentId": "aerokosmicheskii-komitet",
     "level": "district",
-    "scope": "Республиканский центр космической связи 19 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1423,7 +1423,7 @@
     "fullName": "Комитет цифровых активов",
     "parentId": "miicr",
     "level": "district",
-    "scope": "Комитет цифровых активов 310 0,0087%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1433,7 +1433,7 @@
     "fullName": "Комитет государственных услуг",
     "parentId": "miicr",
     "level": "district",
-    "scope": "Комитет государственных услуг 36 0,0010%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1443,7 +1443,7 @@
     "fullName": "АО НИТ",
     "parentId": "miicr",
     "level": "district",
-    "scope": "АО НИТ 2757 0,0769%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1453,7 +1453,7 @@
     "fullName": "НАО ГК",
     "parentId": "miicr",
     "level": "district",
-    "scope": "НАО ГК 13095 0,3655%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1463,7 +1463,7 @@
     "fullName": "Филиалов",
     "parentId": "nao-gk",
     "level": "district",
-    "scope": "филиалов 113340 3,1634%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1473,7 +1473,7 @@
     "fullName": "Государственная радиочастотная служба",
     "parentId": "miicr",
     "level": "agency",
-    "scope": "Государственная радиочастотная служба 239 0,0067%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1483,7 +1483,7 @@
     "fullName": "ЦПЦП",
     "parentId": "miicr",
     "level": "district",
-    "scope": "ЦПЦП 21 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1493,7 +1493,7 @@
     "fullName": "Астана хаб",
     "parentId": "miicr",
     "level": "district",
-    "scope": "Астана хаб 60 0,0017%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1503,7 +1503,7 @@
     "fullName": "АО QazInnovations",
     "parentId": "miicr",
     "level": "district",
-    "scope": "АО QazInnovations 36 0,0010%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1513,7 +1513,7 @@
     "fullName": "Национальный центр геодезии",
     "parentId": "miicr",
     "level": "district",
-    "scope": "Национальный центр геодезии 41 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1523,7 +1523,7 @@
     "fullName": "АО QazExpoCongress",
     "parentId": "miicr",
     "level": "district",
-    "scope": "АО QazExpoCongress 34 0,0009%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1533,7 +1533,7 @@
     "fullName": "Министерство внутренних дел",
     "parentId": "apr",
     "level": "agency",
-    "scope": "(всего 497 856) МВД 21 036/0,5871% (к-во орг 465)",
+    "scope": "",
     "questions": [
       {
         "id": "q-mvd-1",
@@ -1555,7 +1555,7 @@
     "fullName": "ДП",
     "parentId": "mvd",
     "level": "district",
-    "scope": "ДП 162730 4,5419%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1565,7 +1565,7 @@
     "fullName": "Территории (упр,отдел)",
     "parentId": "dp",
     "level": "district",
-    "scope": "территории (упр,отдел) 141629 3,953%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1575,7 +1575,7 @@
     "fullName": "КУИС",
     "parentId": "mvd",
     "level": "district",
-    "scope": "КУИС 2707 0,0756%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1585,7 +1585,7 @@
     "fullName": "Территории",
     "parentId": "kuis",
     "level": "district",
-    "scope": "территории 4705 0,1313%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1595,7 +1595,7 @@
     "fullName": "Учреждений",
     "parentId": "territorii-3",
     "level": "district",
-    "scope": "учреждений 11428 0,319%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1605,7 +1605,7 @@
     "fullName": "Академия и учебные центры МВД",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Академия и учебные центры МВД 687 0,0163%",
+    "scope": "",
     "questions": [
       {
         "id": "q-akademiya-i-uchebnye-centry-mvd-1",
@@ -1627,7 +1627,7 @@
     "fullName": "Алатау",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Алатау 15 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1637,7 +1637,7 @@
     "fullName": "Управление спец службы",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Управление спец службы 615 0,0172%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1647,7 +1647,7 @@
     "fullName": "ИПЦ",
     "parentId": "mvd",
     "level": "district",
-    "scope": "ИПЦ 474 0,0132%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1657,7 +1657,7 @@
     "fullName": "Кинологический центр",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Кинологический центр 17 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1667,7 +1667,7 @@
     "fullName": "Отряд специального назначения \"Сункар",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Отряд специального назначения \"Сункар\" 28 0,0008%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1677,7 +1677,7 @@
     "fullName": "Военно-следственное управление",
     "parentId": "mvd",
     "level": "district",
-    "scope": "военно-следственное управление 343 0,0096%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1687,7 +1687,7 @@
     "fullName": "База военного и специального снабжения",
     "parentId": "mvd",
     "level": "district",
-    "scope": "База военного и специального снабжения 20 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1697,7 +1697,7 @@
     "fullName": "Представительство МВД в городе Байконыр",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Представительство МВД в городе Байконыр 100 0,0028%",
+    "scope": "",
     "questions": [
       {
         "id": "q-predstavitelstvo-mvd-v-gorode-bai-konyr-1",
@@ -1719,7 +1719,7 @@
     "fullName": "Нацгвардия",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Нацгвардия 468 0,0131%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1749,7 +1749,7 @@
     "fullName": "Санатории",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Санатории 38 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1759,7 +1759,7 @@
     "fullName": "Центральный госпиталь с поликлиникой",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Центральный госпиталь с поликлиникой 31 0,0009%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1769,7 +1769,7 @@
     "fullName": "Медиа-центр органов внутренних дел",
     "parentId": "mvd",
     "level": "district",
-    "scope": "Медиа-центр органов внутренних дел 4 0,0001%",
+    "scope": "",
     "questions": [
       {
         "id": "q-media-centr-organov-vnutrennih-del-1",
@@ -1791,7 +1791,7 @@
     "fullName": "Министерство торговли и интеграции",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МТИ 1206/0,0337% (к-во орг 50)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1801,7 +1801,7 @@
     "fullName": "Комитет по защите прав потребителей",
     "parentId": "mti",
     "level": "district",
-    "scope": "Комитет по защите прав потребителей 774 0,0216%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1811,7 +1811,7 @@
     "fullName": "Комитет технического регулирования и метрологии",
     "parentId": "mti",
     "level": "district",
-    "scope": "Комитет технического регулирования и метрологии 826 0,0231%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1821,7 +1821,7 @@
     "fullName": "Территори",
     "parentId": "komitet-tehnicheskogo-regulirovaniya-i-metro",
     "level": "district",
-    "scope": "территори 806 0,0225%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1831,7 +1831,7 @@
     "fullName": "Казахстанский институт стандартизации и метрологии",
     "parentId": "komitet-tehnicheskogo-regulirovaniya-i-metro",
     "level": "district",
-    "scope": "Казахстанский институт стандартизации и метрологии 292 0,0081%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1841,7 +1841,7 @@
     "fullName": "Филиала",
     "parentId": "kazahstanskii-institut-standartizacii-i-metr",
     "level": "district",
-    "scope": "филиала 3 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1851,7 +1851,7 @@
     "fullName": "Национальный центр аккредитации",
     "parentId": "komitet-tehnicheskogo-regulirovaniya-i-metro",
     "level": "district",
-    "scope": "Национальный центр аккредитации 337 0,0094%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1871,7 +1871,7 @@
     "fullName": "Территории",
     "parentId": "mti",
     "level": "district",
-    "scope": "территории 16363 0,4567%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1881,7 +1881,7 @@
     "fullName": "Министерство промышленности и строительства",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МПС 4361/0,1217% (к-во орг 57)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1891,7 +1891,7 @@
     "fullName": "Комитет по делам строительства и ЖКХ",
     "parentId": "mps",
     "level": "district",
-    "scope": "Комитет по делам строительства и ЖКХ 10356 0,2890%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1901,7 +1901,7 @@
     "fullName": "Республиканский центр государственного градостроительного планирования и кадастра",
     "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
     "level": "district",
-    "scope": "Республиканский центр государственного градостроительного планирования и кадастра 94 0,0026%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1911,7 +1911,7 @@
     "fullName": "Филиалов",
     "parentId": "respublikanskii-centr-gosudarstvennogo-grado",
     "level": "district",
-    "scope": "филиалов 128 0,0036%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1921,7 +1921,7 @@
     "fullName": "Государственная вневедомственная экспертиза проектов",
     "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
     "level": "district",
-    "scope": "Государственная вневедомственная экспертиза проектов 839 0,0234%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1931,7 +1931,7 @@
     "fullName": "Филиалов",
     "parentId": "gosudarstvennaya-vnevedomstvennaya-ekspertiz",
     "level": "district",
-    "scope": "филиалов 475 0,0133%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1941,7 +1941,7 @@
     "fullName": "АО Казахский научно-исследовательский и проектный институт строительства и архитектуры",
     "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
     "level": "district",
-    "scope": "АО Казахский научно-исследовательский и проектный институт строительства и архитектуры 1638 0,0457%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1951,7 +1951,7 @@
     "fullName": "АО Казахстанский центр модернизации и развития ЖКХ",
     "parentId": "komitet-po-delam-stroitelstva-i-zhkh",
     "level": "district",
-    "scope": "АО Казахстанский центр модернизации и развития ЖКХ 123 0,0034%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1961,7 +1961,7 @@
     "fullName": "Комитет промышленности",
     "parentId": "mps",
     "level": "district",
-    "scope": "Комитет промышленности 2032 0,0567%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1971,7 +1971,7 @@
     "fullName": "Национальный центр технологического прогнозирования",
     "parentId": "komitet-promyshlennosti",
     "level": "district",
-    "scope": "Национальный центр технологического прогнозирования 5 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -1981,7 +1981,7 @@
     "fullName": "АО Институт развития электроэнергетики и энергосбережения",
     "parentId": "komitet-promyshlennosti",
     "level": "district",
-    "scope": "АО Институт развития электроэнергетики и энергосбережения 17 0,0005%",
+    "scope": "",
     "questions": [
       {
         "id": "q-ao-institut-razvitiya-elektroenergetiki-i-en-1",
@@ -2014,7 +2014,7 @@
     "fullName": "АО Жезказганредмет",
     "parentId": "komitet-promyshlennosti",
     "level": "district",
-    "scope": "АО Жезказганредмет 13 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2024,7 +2024,7 @@
     "fullName": "Национальный центр по комплексной переработке минерального сырья",
     "parentId": "komitet-promyshlennosti",
     "level": "district",
-    "scope": "Национальный центр по комплексной переработке минерального сырья 14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2034,7 +2034,7 @@
     "fullName": "Филиалов",
     "parentId": "nacionalnyi-centr-po-kompleksnoi-pererabotke",
     "level": "district",
-    "scope": "филиалов 39 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2044,7 +2044,7 @@
     "fullName": "ТОО Научно-производственный центр машиностроения",
     "parentId": "komitet-promyshlennosti",
     "level": "district",
-    "scope": "ТОО Научно-производственный центр машиностроения 172 0,0048%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2054,7 +2054,7 @@
     "fullName": "Комитет геологии",
     "parentId": "mps",
     "level": "district",
-    "scope": "Комитет геологии 724 0,0202%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2064,7 +2064,7 @@
     "fullName": "Межрегиональные департаменты",
     "parentId": "komitet-geologii",
     "level": "district",
-    "scope": "межрегиональные департаменты 937 0,0262%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2074,7 +2074,7 @@
     "fullName": "АО Национальная геологическая служба",
     "parentId": "komitet-geologii",
     "level": "agency",
-    "scope": "АО Национальная геологическая служба 1044 0,0291%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2094,7 +2094,7 @@
     "fullName": "АО Казахстан инжиниринг",
     "parentId": "mps",
     "level": "district",
-    "scope": "АО Казахстан инжиниринг 53 0,0015%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2114,7 +2114,7 @@
     "fullName": "АО QazIndustry",
     "parentId": "mps",
     "level": "district",
-    "scope": "АО QazIndustry 220 0,0061%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2124,7 +2124,7 @@
     "fullName": "Министерство экологии и природных ресурсов",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МЭПР 1114/ 0,0311% (к-во орг 99)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2134,7 +2134,7 @@
     "fullName": "Комитет лесного хозяйства и животного мира",
     "parentId": "mepr",
     "level": "district",
-    "scope": "Комитет лесного хозяйства и животного мира 6484/0,1810%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2144,7 +2144,7 @@
     "fullName": "Территориальная инспекция",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "территориальная инспекция 1407 0,0393%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2154,7 +2154,7 @@
     "fullName": "Природный заповедник",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "природный заповедник 70 0,0020%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2164,7 +2164,7 @@
     "fullName": "Природный парк",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "природный парк 415 0,0116%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2174,7 +2174,7 @@
     "fullName": "Природный резерват",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "природный резерват 257 0,0072%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2184,7 +2184,7 @@
     "fullName": "Производственное объединение \"Охотзоопром",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Производственное объединение \"Охотзоопром\" 242 0,0068%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2194,7 +2194,7 @@
     "fullName": "Институт ботаники и фитоинтродукции",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Институт ботаники и фитоинтродукции 60 0,0017%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2204,7 +2204,7 @@
     "fullName": "Иссыкский \"государственный дендрологический парк",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Иссыкский \"государственный дендрологический парк 6 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2214,7 +2214,7 @@
     "fullName": "Республиканский лесной селекционно-семеноводческий центр",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Республиканский лесной селекционно-семеноводческий центр 2 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2224,7 +2224,7 @@
     "fullName": "Казахская база авиационной охраны лесов и обслуживания лесного хозяйства",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Казахская база авиационной охраны лесов и обслуживания лесного хозяйства 12 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2234,7 +2234,7 @@
     "fullName": "Жасыл Айма",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Жасыл Айма 35 0,0010%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2244,7 +2244,7 @@
     "fullName": "Казахское лесоустроительное предприятие",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Казахское лесоустроительное предприятие 134 0,0037%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2254,7 +2254,7 @@
     "fullName": "Казахский научно-исследовательский институт лесного хозяйства и агролесомелиорации",
     "parentId": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
     "level": "district",
-    "scope": "Казахский научно-исследовательский институт лесного хозяйства и агролесомелиорации 3 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2274,7 +2274,7 @@
     "fullName": "Территории",
     "parentId": "komitet-ekologicheskogo-regulirovaniya-i-kon",
     "level": "district",
-    "scope": "территории 4043 0,1128%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2284,7 +2284,7 @@
     "fullName": "АО Жасыл даму",
     "parentId": "mepr",
     "level": "district",
-    "scope": "АО Жасыл даму 3621 0,1025%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2294,7 +2294,7 @@
     "fullName": "Казгидромет",
     "parentId": "mepr",
     "level": "district",
-    "scope": "Казгидромет 285 0,0080%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2304,7 +2304,7 @@
     "fullName": "Филиалов",
     "parentId": "kazgidromet",
     "level": "district",
-    "scope": "филиалов 1037 0,0369%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2314,7 +2314,7 @@
     "fullName": "Казахский научно-исследовательский институт Каспийского моря",
     "parentId": "mepr",
     "level": "district",
-    "scope": "Казахский научно-исследовательский институт Каспийского моря 12 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2324,7 +2324,7 @@
     "fullName": "Информационно-аналитический центр охраны окружающей среды",
     "parentId": "mepr",
     "level": "district",
-    "scope": "Информационно-аналитический центр охраны окружающей среды 20 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2334,7 +2334,7 @@
     "fullName": "Международный центр зеленых технологий и инвестиционных проектов",
     "parentId": "mepr",
     "level": "district",
-    "scope": "Международный центр зеленых технологий и инвестиционных проектов 43 0,0012%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2344,7 +2344,7 @@
     "fullName": "Министерство энергетики",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МЭ 2854/ 0797% (к-во орг 29)",
+    "scope": "",
     "questions": [
       {
         "id": "q-me-1",
@@ -2377,7 +2377,7 @@
     "fullName": "Комитет государственного энергетического надзора и контроля",
     "parentId": "me",
     "level": "district",
-    "scope": "Комитет государственного энергетического надзора и контроля-148 0,0041%",
+    "scope": "",
     "questions": [
       {
         "id": "q-komitet-gosudarstvennogo-energeticheskogo-na-1",
@@ -2410,7 +2410,7 @@
     "fullName": "Территории",
     "parentId": "komitet-gosudarstvennogo-energeticheskogo-na",
     "level": "district",
-    "scope": "территории 1747 0,0488%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2420,7 +2420,7 @@
     "fullName": "Капиталнефтегаз",
     "parentId": "me",
     "level": "district",
-    "scope": "Капиталнефтегаз 6 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2430,7 +2430,7 @@
     "fullName": "Южное межрегиональное управление государственной инспекции в нефтегазовом комплексе",
     "parentId": "me",
     "level": "district",
-    "scope": "Южное межрегиональное управление государственной инспекции в нефтегазовом комплексе 14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2440,7 +2440,7 @@
     "fullName": "Западное межрегиональное управление государственной инспекции в нефтегазовом комплексе",
     "parentId": "me",
     "level": "district",
-    "scope": "Западное межрегиональное управление государственной инспекции в нефтегазовом комплексе 18 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2450,7 +2450,7 @@
     "fullName": "ТОО Расчетно-финансовый центр по поддержке возобновляемых источников энергии",
     "parentId": "me",
     "level": "district",
-    "scope": "ТОО Расчетно-финансовый центр по поддержке возобновляемых источников энергии 38 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2460,7 +2460,7 @@
     "fullName": "АО Национальный индустриальный нефтехимический технопарк",
     "parentId": "me",
     "level": "district",
-    "scope": "АО Национальный индустриальный нефтехимический технопарк 18 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2470,7 +2470,7 @@
     "fullName": "АО Казахстанский оператор рынка электрической энергии и мощности",
     "parentId": "me",
     "level": "district",
-    "scope": "АО Казахстанский оператор рынка электрической энергии и мощности 36 0,0010%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2480,7 +2480,7 @@
     "fullName": "Ситуационно-аналитический центр топливно-энергетического комплекса",
     "parentId": "me",
     "level": "district",
-    "scope": "Ситуационно-аналитический центр топливно-энергетического комплекса 27 0,0008%",
+    "scope": "",
     "questions": [
       {
         "id": "q-situacionno-analiticheskii-centr-toplivno-en-1",
@@ -2513,7 +2513,7 @@
     "fullName": "Министерство труда и социальной защиты населения",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МТСЗН 8351/ 0,2331% (к-во орг 80)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2523,7 +2523,7 @@
     "fullName": "Комитет государственной инспекции труда",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "Комитет государственной инспекции труда 971 0,0271%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2533,7 +2533,7 @@
     "fullName": "Территории",
     "parentId": "komitet-gosudarstvennoi-inspekcii-truda",
     "level": "district",
-    "scope": "территории 26286 0,7487%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2543,7 +2543,7 @@
     "fullName": "Комитет по миграции",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "Комитет по миграции 228 0,0064%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2553,7 +2553,7 @@
     "fullName": "Комитет регулирования и контроля в сфере социальной защиты населения",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "Комитет регулирования и контроля в сфере социальной защиты населения 472 0,0132%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2563,7 +2563,7 @@
     "fullName": "Территории",
     "parentId": "komitet-regulirovaniya-i-kontrolya-v-sfere-s",
     "level": "district",
-    "scope": "территории 13635 0,3806%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2573,7 +2573,7 @@
     "fullName": "Национальный научный центр развития сферы социальной защиты",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "Национальный научный центр развития сферы социальной защиты 13 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2583,7 +2583,7 @@
     "fullName": "Филиалов",
     "parentId": "nacionalnyi-nauchnyi-centr-razvitiya-sfery-s",
     "level": "district",
-    "scope": "филиалов 77 0,0021%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2593,7 +2593,7 @@
     "fullName": "ГФСС",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "ГФСС 2196 0,0613%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2603,7 +2603,7 @@
     "fullName": "Филиалов",
     "parentId": "gfss",
     "level": "district",
-    "scope": "филиалов 7295 0,2036%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2613,7 +2613,7 @@
     "fullName": "Республиканский научно-исследовательский институт по охране труда",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "Республиканский научно-исследовательский институт по охране труда 91 0,0025%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2623,7 +2623,7 @@
     "fullName": "АО Центр развития трудовых ресурсов",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "АО Центр развития трудовых ресурсов 839 0,0234%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2633,7 +2633,7 @@
     "fullName": "АО Компания по страхованию жизни Государственная аннуитетная компания",
     "parentId": "mtszn",
     "level": "district",
-    "scope": "АО Компания по страхованию жизни Государственная аннуитетная компания 21 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2643,7 +2643,7 @@
     "fullName": "Министерство финансов",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МФ 2063/ 0,0576% (к-во орг 520)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2653,7 +2653,7 @@
     "fullName": "Комитет государственного казначейства",
     "parentId": "mf",
     "level": "district",
-    "scope": "Комитет государственного казначейства 978 0,0273%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2663,7 +2663,7 @@
     "fullName": "Территории",
     "parentId": "komitet-gosudarstvennogo-kaznachei-stva",
     "level": "district",
-    "scope": "территории 735 0,0205%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2673,7 +2673,7 @@
     "fullName": "Гор/районные управления",
     "parentId": "territorii-9",
     "level": "district",
-    "scope": "гор/районные управления 468 0,0131%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2683,7 +2683,7 @@
     "fullName": "Комитет государственных доходов",
     "parentId": "mf",
     "level": "district",
-    "scope": "Комитет государственных доходов 16105 0,4495%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2693,7 +2693,7 @@
     "fullName": "Территории",
     "parentId": "komitet-gosudarstvennyh-dohodov",
     "level": "district",
-    "scope": "территории 82052 2,2901%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2703,7 +2703,7 @@
     "fullName": "Гор/районные управления",
     "parentId": "territorii-10",
     "level": "district",
-    "scope": "гор/районные управления 155042 4,3273%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2713,7 +2713,7 @@
     "fullName": "Комитет внутреннего государственного аудита",
     "parentId": "mf",
     "level": "district",
-    "scope": "Комитет внутреннего государственного аудита 1534 0,0428%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2723,7 +2723,7 @@
     "fullName": "Территории",
     "parentId": "komitet-vnutrennego-gosudarstvennogo-audita",
     "level": "district",
-    "scope": "территории 7009 0,1956%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2733,7 +2733,7 @@
     "fullName": "Комитет государственного имущества и приватизации",
     "parentId": "mf",
     "level": "district",
-    "scope": "Комитет государственного имущества и приватизации 194 0,0054%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2743,7 +2743,7 @@
     "fullName": "Департаментов",
     "parentId": "komitet-gosudarstvennogo-imuschestva-i-priva",
     "level": "district",
-    "scope": "департаментов 471 0,0131%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2763,7 +2763,7 @@
     "fullName": "ТОО Компания по управлению возвращенными активами",
     "parentId": "komitet-gosudarstvennogo-imuschestva-i-priva",
     "level": "district",
-    "scope": "ТОО Компания по управлению возвращенными активами 25 0,0007%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2773,7 +2773,7 @@
     "fullName": "АО Фонд проблемных кредитов",
     "parentId": "mf",
     "level": "district",
-    "scope": "АО Фонд проблемных кредитов 198 0,0055%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2783,7 +2783,7 @@
     "fullName": "АО Центр электронных финансов",
     "parentId": "mf",
     "level": "district",
-    "scope": "АО Центр электронных финансов 2012 0,0562%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2793,7 +2793,7 @@
     "fullName": "НАО Фонд социального медицинского страхования",
     "parentId": "mf",
     "level": "district",
-    "scope": "НАО Фонд социального медицинского страхования 1572 0,0426%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2803,7 +2803,7 @@
     "fullName": "Филиалов",
     "parentId": "nao-fond-socialnogo-medicinskogo-strahovaniy",
     "level": "district",
-    "scope": "филиалов 2315 0,0646%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2813,7 +2813,7 @@
     "fullName": "АО Финансовый центр",
     "parentId": "mf",
     "level": "district",
-    "scope": "АО Финансовый центр 874 0,0244%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2823,7 +2823,7 @@
     "fullName": "АО Информационно-учетный центр",
     "parentId": "mf",
     "level": "district",
-    "scope": "АО Информационно-учетный центр 791 0,0221%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2833,7 +2833,7 @@
     "fullName": "Министерство обороны",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МО 1552/ 0,0433% (к-во орг 433)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2843,7 +2843,7 @@
     "fullName": "Территории",
     "parentId": "mo",
     "level": "district",
-    "scope": "территории 879 0,0245%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2853,7 +2853,7 @@
     "fullName": "Управлений и отделов",
     "parentId": "territorii-12",
     "level": "district",
-    "scope": "управлений и отделов 8 633 0,241%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2863,7 +2863,7 @@
     "fullName": "Военный колледж/институт/школа",
     "parentId": "mo",
     "level": "district",
-    "scope": "Военный колледж/институт/школа 416 0,0115%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2873,7 +2873,7 @@
     "fullName": "Войсковая часть",
     "parentId": "mo",
     "level": "district",
-    "scope": "Войсковая часть 313 0,0088%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2883,7 +2883,7 @@
     "fullName": "Части и госпитали",
     "parentId": "voi-skovaya-chast",
     "level": "district",
-    "scope": "части и госпитали 353 0,0099%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2893,7 +2893,7 @@
     "fullName": "Центральный архив",
     "parentId": "mo",
     "level": "district",
-    "scope": "Центральный архив 432 0,0121%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2903,7 +2903,7 @@
     "fullName": "АО Казахстан ГИС Центр",
     "parentId": "mo",
     "level": "district",
-    "scope": "АО Казахстан ГИС Центр 29 0,0008%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2913,7 +2913,7 @@
     "fullName": "Главное управление военной полиции ВС",
     "parentId": "mo",
     "level": "district",
-    "scope": "Главное управление военной полиции ВС 32 0,0009%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2923,7 +2923,7 @@
     "fullName": "Отделений",
     "parentId": "glavnoe-upravlenie-voennoi-policii-vs",
     "level": "district",
-    "scope": "отделений 359 0,0101%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2933,7 +2933,7 @@
     "fullName": "Управление главнокомандующего Военно-морскими силами",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление главнокомандующего Военно-морскими силами 17 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2943,7 +2943,7 @@
     "fullName": "Управление начальника Тыла",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление начальника Тыла 40 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2953,7 +2953,7 @@
     "fullName": "Управление командующего Военно-воздушными силами",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление командующего Военно-воздушными силами 55 0,0015%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2963,7 +2963,7 @@
     "fullName": "Управление командующего войсками регионального командования",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление командующего войсками регионального командования 279 0,0078%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2973,7 +2973,7 @@
     "fullName": "Управление главнокомандующего Силами воздушной обороны",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление главнокомандующего Силами воздушной обороны 95 0,0027%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2983,7 +2983,7 @@
     "fullName": "Управление командующего Десантно-штурмовыми войсками",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление командующего Десантно-штурмовыми войсками 64 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -2993,7 +2993,7 @@
     "fullName": "Управление главнокомандующего Сухопутными войсками",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление главнокомандующего Сухопутными войсками 67 0,0019%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3003,7 +3003,7 @@
     "fullName": "АО Центр военно-стратегических исследований",
     "parentId": "mo",
     "level": "district",
-    "scope": "АО Центр военно-стратегических исследований 6 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3013,7 +3013,7 @@
     "fullName": "АО Әскери құрылыс",
     "parentId": "mo",
     "level": "district",
-    "scope": "АО Әскери құрылыс 26 0,0007%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3023,7 +3023,7 @@
     "fullName": "Управление командующего войсками противовоздушной обороны Сил воздушной обороны",
     "parentId": "mo",
     "level": "district",
-    "scope": "Управление командующего войсками противовоздушной обороны Сил воздушной обороны 140 0,0039%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3033,7 +3033,7 @@
     "fullName": "Центр пенсионного обеспечения",
     "parentId": "mo",
     "level": "district",
-    "scope": "Центр пенсионного обеспечения 399 0,0111%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3043,7 +3043,7 @@
     "fullName": "Главное управление военной инфраструктуры",
     "parentId": "mo",
     "level": "district",
-    "scope": "Главное управление военной инфраструктуры 64 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3063,7 +3063,7 @@
     "fullName": "Комитет государственного оборонного заказа",
     "parentId": "mo",
     "level": "district",
-    "scope": "Комитет государственного оборонного заказа 123 0,0034%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3073,7 +3073,7 @@
     "fullName": "Казспецэкспорт",
     "parentId": "komitet-gosudarstvennogo-oboronnogo-zakaza",
     "level": "district",
-    "scope": "Казспецэкспорт 32 0,0009%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3083,7 +3083,7 @@
     "fullName": "Министерство культуры и информации",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МКИ 447/ 0,0125% (к-во орг 79)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3093,7 +3093,7 @@
     "fullName": "Комитет по развитию межэтнических отношений",
     "parentId": "mki",
     "level": "district",
-    "scope": "Комитет по развитию межэтнических отношений 3 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3103,7 +3103,7 @@
     "fullName": "Қоғамдық келісім",
     "parentId": "komitet-po-razvitiyu-mezhetnicheskih-otnoshe",
     "level": "district",
-    "scope": "Қоғамдық келісім 3 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3113,7 +3113,7 @@
     "fullName": "Комитет по делам молодежи и семьи",
     "parentId": "mki",
     "level": "district",
-    "scope": "Комитет по делам молодежи и семьи 11 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3123,7 +3123,7 @@
     "fullName": "Комитет архивов, документации и книжного дела",
     "parentId": "mki",
     "level": "district",
-    "scope": "Комитет архивов, документации и книжного дела 109 0,0030%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3133,7 +3133,7 @@
     "fullName": "Центров",
     "parentId": "komitet-arhivov-dokumentacii-i-knizhnogo-del",
     "level": "district",
-    "scope": "центров 456 0,0127%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3143,7 +3143,7 @@
     "fullName": "Комитет культуры",
     "parentId": "mki",
     "level": "district",
-    "scope": "Комитет культуры 84 0,0023%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3153,7 +3153,7 @@
     "fullName": "Подведомки",
     "parentId": "komitet-kultury",
     "level": "district",
-    "scope": "подведомки 333 0,0093%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3163,7 +3163,7 @@
     "fullName": "Комитет информации",
     "parentId": "mki",
     "level": "district",
-    "scope": "Комитет информации 209 0,0058%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3173,7 +3173,7 @@
     "fullName": "Центр анализа и информации",
     "parentId": "komitet-informacii",
     "level": "district",
-    "scope": "Центр анализа и информации 3 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3183,7 +3183,7 @@
     "fullName": "Комитет по делам религий",
     "parentId": "mki",
     "level": "district",
-    "scope": "Комитет по делам религий 86 0,0024%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3193,7 +3193,7 @@
     "fullName": "Комитет по делам гражданского общества",
     "parentId": "mki",
     "level": "district",
-    "scope": "Комитет по делам гражданского общества 64 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3203,7 +3203,7 @@
     "fullName": "АО телерадиокорпорация \"Казахстан/қазақ әуендер/казахфильм/хабар/казконтент",
     "parentId": "mki",
     "level": "district",
-    "scope": "АО телерадиокорпорация \"Казахстан/қазақ әуендер/казахфильм/хабар/казконтент 383 0,0107%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3213,7 +3213,7 @@
     "fullName": "Международный центр межконфессионального и межрелигиозного диалога",
     "parentId": "mki",
     "level": "district",
-    "scope": "Международный центр межконфессионального и межрелигиозного диалога 5 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3223,7 +3223,7 @@
     "fullName": "ТОО Институт/центр/балет/газет",
     "parentId": "mki",
     "level": "district",
-    "scope": "ТОО Институт/центр/балет/газет 42 0,0012%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3233,7 +3233,7 @@
     "fullName": "НАО центр поддержки nationalного кино/институт/Астана Опера",
     "parentId": "mki",
     "level": "district",
-    "scope": "НАО центр поддержки nationalного кино/институт/Астана Опера 78 0,0023%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3243,7 +3243,7 @@
     "fullName": "Учебные учрежд",
     "parentId": "mki",
     "level": "district",
-    "scope": "Учебные учрежд 318 0,0089%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3253,7 +3253,7 @@
     "fullName": "Казахская национальная академия хореографии",
     "parentId": "mki",
     "level": "district",
-    "scope": "Казахская национальная академия хореографии - 24 0,0007%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3263,7 +3263,7 @@
     "fullName": "Министерство туризма и спорта",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МТС 199 / 0,0056% (к-во орг 24)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3273,7 +3273,7 @@
     "fullName": "Комитет по делам спорта и физической культуры",
     "parentId": "mts",
     "level": "district",
-    "scope": "Комитет по делам спорта и физической культуры 329 0,0092%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3283,7 +3283,7 @@
     "fullName": "Центров и подведомки",
     "parentId": "komitet-po-delam-sporta-i-fizicheskoi-kultur",
     "level": "district",
-    "scope": "центров и подведомки 237 0,0067%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3293,7 +3293,7 @@
     "fullName": "Комитет по регулированию игорного бизнеса и лотереи",
     "parentId": "mts",
     "level": "district",
-    "scope": "Комитет по регулированию игорного бизнеса и лотереи 480 0,0134%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3303,7 +3303,7 @@
     "fullName": "ТОО Центр мониторинга и анализа азартных игр",
     "parentId": "komitet-po-regulirovaniyu-igornogo-biznesa-i",
     "level": "district",
-    "scope": "ТОО Центр мониторинга и анализа азартных игр 47 0,0013%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3313,7 +3313,7 @@
     "fullName": "Комитет индустрии туризма",
     "parentId": "mts",
     "level": "district",
-    "scope": "Комитет индустрии туризма 208 0,0058%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3323,7 +3323,7 @@
     "fullName": "АО Kazakh Tourism",
     "parentId": "komitet-industrii-turizma",
     "level": "district",
-    "scope": "АО Kazakh Tourism 61 0,0017%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3333,7 +3333,7 @@
     "fullName": "НАО Международный университет туризма и гостеприимства",
     "parentId": "komitet-industrii-turizma",
     "level": "district",
-    "scope": "НАО Международный университет туризма и гостеприимства 11 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3343,7 +3343,7 @@
     "fullName": "Министерство здравоохранения",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МЗ 6241/0,1742% (к-во орг 344)",
+    "scope": "",
     "questions": [
       {
         "id": "q-mz-1",
@@ -3365,7 +3365,7 @@
     "fullName": "Комитет медицинского и фармацевтического контроля",
     "parentId": "mz",
     "level": "district",
-    "scope": "Комитет медицинского и фармацевтического контроля 3535 0,0987%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3375,7 +3375,7 @@
     "fullName": "Территории",
     "parentId": "komitet-medicinskogo-i-farmacevticheskogo-ko",
     "level": "district",
-    "scope": "территории 7579 0,2115%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3385,7 +3385,7 @@
     "fullName": "Национальный центр экспертизы лекарственных средств и медицинских изделий",
     "parentId": "komitet-medicinskogo-i-farmacevticheskogo-ko",
     "level": "district",
-    "scope": "Национальный центр экспертизы лекарственных средств и медицинских изделий 733 0,0205%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3395,7 +3395,7 @@
     "fullName": "Комитет санитарно-эпидемиологического контроля",
     "parentId": "mz",
     "level": "district",
-    "scope": "Комитет санитарно-эпидемиологического контроля 1108 0,0309%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3405,7 +3405,7 @@
     "fullName": "Территории",
     "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
     "level": "district",
-    "scope": "территории 4086 0,1140%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3415,7 +3415,7 @@
     "fullName": "Гор/районные управлении",
     "parentId": "territorii-14",
     "level": "district",
-    "scope": "гор/районные управлении 10704 0,2988%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3425,7 +3425,7 @@
     "fullName": "Департамент санитарно-эпидемиологического контроля на транспорте",
     "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
     "level": "district",
-    "scope": "Департамент санитарно-эпидемиологического контроля на транспорте 54 0,0015%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3435,7 +3435,7 @@
     "fullName": "Управлении",
     "parentId": "departament-sanitarno-epidemiologicheskogo-k",
     "level": "district",
-    "scope": "управлении - 124 0,0035%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3445,7 +3445,7 @@
     "fullName": "Противочумная станция",
     "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
     "level": "district",
-    "scope": "противочумная станция - 1 0%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3455,7 +3455,7 @@
     "fullName": "Национальный центр экспертизы",
     "parentId": "komitet-sanitarno-epidemiologicheskogo-kontr",
     "level": "district",
-    "scope": "Национальный центр экспертизы - 79 0,0022%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3465,7 +3465,7 @@
     "fullName": "Филиалов",
     "parentId": "nacionalnyi-centr-ekspertizy",
     "level": "district",
-    "scope": "филиалов 435 0,0121%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3475,7 +3475,7 @@
     "fullName": "Научные центры",
     "parentId": "mz",
     "level": "district",
-    "scope": "Научные центры 761 0,0212%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3485,7 +3485,7 @@
     "fullName": "Детский клинический санаторий/ реабилитация",
     "parentId": "mz",
     "level": "district",
-    "scope": "Детский клинический санаторий/ реабилитация 110 0,0028%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3495,7 +3495,7 @@
     "fullName": "НАО Turar Healthcaе",
     "parentId": "mz",
     "level": "district",
-    "scope": "НАО Turar Healthcaе 2 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3505,7 +3505,7 @@
     "fullName": "АО \"КазМедТех",
     "parentId": "mz",
     "level": "district",
-    "scope": "АО \"КазМедТех\" -14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3515,7 +3515,7 @@
     "fullName": "Республиканские центр ы и больницы",
     "parentId": "mz",
     "level": "district",
-    "scope": "Республиканские центр ы и больницы 563 0,0157%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3525,7 +3525,7 @@
     "fullName": "Национальный центр гигиены труда и профессиональных заболеваний",
     "parentId": "mz",
     "level": "district",
-    "scope": "Национальный центр гигиены труда и профессиональных заболеваний 37 0,0010%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3535,7 +3535,7 @@
     "fullName": "Казахский республиканский лепрозорий",
     "parentId": "mz",
     "level": "district",
-    "scope": "Казахский республиканский лепрозорий 24 0,0007%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3545,7 +3545,7 @@
     "fullName": "Мед универы",
     "parentId": "mz",
     "level": "district",
-    "scope": "Мед универы 711 0,0199%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3555,7 +3555,7 @@
     "fullName": "АО QazBioPharm",
     "parentId": "mz",
     "level": "district",
-    "scope": "АО QazBioPharm 75 0,0021%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3565,7 +3565,7 @@
     "fullName": "Национальный центр общественного здравоохранения",
     "parentId": "mz",
     "level": "district",
-    "scope": "Национальный центр общественного здравоохранения 63 0,0018%",
+    "scope": "",
     "questions": [
       {
         "id": "q-nacionalnyi-centr-obschestvennogo-zdravoohra-1",
@@ -3597,7 +3597,7 @@
     "fullName": "Научно-исcледовательский институт курортологии и медицинской реабилитации",
     "parentId": "mz",
     "level": "district",
-    "scope": "Научно-исcледовательский институт курортологии и медицинской реабилитации 21 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3607,7 +3607,7 @@
     "fullName": "Республиканский центр электронного здравоохранения",
     "parentId": "mz",
     "level": "district",
-    "scope": "Республиканский центр электронного здравоохранения 257 0,0072%",
+    "scope": "",
     "questions": [
       {
         "id": "q-respublikanskii-centr-elektronnogo-zdravoohr-1",
@@ -3629,7 +3629,7 @@
     "fullName": "ТОО \"СК-Фармация",
     "parentId": "mz",
     "level": "district",
-    "scope": "ТОО \"СК-Фармация\" 830 0,0232%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3639,7 +3639,7 @@
     "fullName": "Министерство транспорта",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МТ 393/0,0110% (к-во орг 109)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3649,7 +3649,7 @@
     "fullName": "Комитет автомобильного транспорта и транспортного контроля",
     "parentId": "mt",
     "level": "district",
-    "scope": "Комитет автомобильного транспорта и транспортного контроля 3568 0,0996%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3659,7 +3659,7 @@
     "fullName": "Инспекции",
     "parentId": "komitet-avtomobilnogo-transporta-i-transport",
     "level": "district",
-    "scope": "инспекции 10985 0,3066%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3669,7 +3669,7 @@
     "fullName": "Комитет железнодорожного и водного транспорта",
     "parentId": "mt",
     "level": "district",
-    "scope": "Комитет железнодорожного и водного транспорта 128 0,036%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3679,7 +3679,7 @@
     "fullName": "Морская администрация портов",
     "parentId": "komitet-zheleznodorozhnogo-i-vodnogo-transpo",
     "level": "district",
-    "scope": "Морская администрация портов 935 0,0261%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3689,7 +3689,7 @@
     "fullName": "Қазақстан су жолдары",
     "parentId": "komitet-zheleznodorozhnogo-i-vodnogo-transpo",
     "level": "district",
-    "scope": "Қазақстан су жолдары 9 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3699,7 +3699,7 @@
     "fullName": "Филиалов",
     "parentId": "qazaqstan-su-zholdary",
     "level": "district",
-    "scope": "филиалов 29 0,0008%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3709,7 +3709,7 @@
     "fullName": "Комитет автомобильных дорог",
     "parentId": "mt",
     "level": "district",
-    "scope": "Комитет автомобильных дорог 143 0,0040%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3719,7 +3719,7 @@
     "fullName": "АО Казахстанский дорожный научно-исследовательский институт",
     "parentId": "komitet-avtomobilnyh-dorog",
     "level": "district",
-    "scope": "АО Казахстанский дорожный научно-исследовательский институт 37 0,0010%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3739,7 +3739,7 @@
     "fullName": "Национальный центр качества дорожных активов",
     "parentId": "komitet-avtomobilnyh-dorog",
     "level": "district",
-    "scope": "Национальный центр качества дорожных активов 51 0,0014%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3749,7 +3749,7 @@
     "fullName": "Филиалов",
     "parentId": "nacionalnyi-centr-kachestva-dorozhnyh-aktivo",
     "level": "district",
-    "scope": "филиалов 156 0,0044%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3759,7 +3759,7 @@
     "fullName": "Комитет гражданской авиации",
     "parentId": "mt",
     "level": "district",
-    "scope": "Комитет гражданской авиации 789 0,0220%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3769,7 +3769,7 @@
     "fullName": "АО Авиационная администрация Казахстана",
     "parentId": "komitet-grazhdanskoi-aviacii",
     "level": "district",
-    "scope": "АО Авиационная администрация Казахстана 14449 0,4033%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3779,7 +3779,7 @@
     "fullName": "Казаэронавигация",
     "parentId": "komitet-grazhdanskoi-aviacii",
     "level": "district",
-    "scope": "Казаэронавигация 296 0,0083%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3789,7 +3789,7 @@
     "fullName": "Филиалов",
     "parentId": "kazaeronavigaciya",
     "level": "district",
-    "scope": "филиалов 125 0,0035%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3809,7 +3809,7 @@
     "fullName": "АО Центр по расследованию транспортных происшествий и инцидентов",
     "parentId": "mt",
     "level": "district",
-    "scope": "АО Центр по расследованию транспортных происшествий и инцидентов 2 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3829,7 +3829,7 @@
     "fullName": "Филиалов",
     "parentId": "ao-qazavtozhol-685-0-0191",
     "level": "district",
-    "scope": "филиалов 5486 0,1531%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3839,7 +3839,7 @@
     "fullName": "ТОО Кажсервис",
     "parentId": "ao-qazavtozhol-685-0-0191",
     "level": "district",
-    "scope": "ТОО Кажсервис 38 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3849,7 +3849,7 @@
     "fullName": "Филиалов",
     "parentId": "too-kazhservis",
     "level": "district",
-    "scope": "филиалов 245 0,0068%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3859,7 +3859,7 @@
     "fullName": "Министерство национальной экономики",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МНЭ 3017/0,0842% (к-во орг 34)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3869,7 +3869,7 @@
     "fullName": "Комитет по регулированию естественных монополий",
     "parentId": "mne",
     "level": "district",
-    "scope": "Комитет по регулированию естественных монополий 479 0,0134%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3879,7 +3879,7 @@
     "fullName": "Территории",
     "parentId": "komitet-po-regulirovaniyu-estestvennyh-monop",
     "level": "district",
-    "scope": "территории 3266 0,0912%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3889,7 +3889,7 @@
     "fullName": "Комитет специальных программ",
     "parentId": "mne",
     "level": "district",
-    "scope": "Комитет специальных программ 8 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3909,7 +3909,7 @@
     "fullName": "АО Казахстанский центр государственно-частного партнерства",
     "parentId": "mne",
     "level": "district",
-    "scope": "АО Казахстанский центр государственно-частного партнерства 15 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3919,7 +3919,7 @@
     "fullName": "АО Институт экономических исследований",
     "parentId": "mne",
     "level": "district",
-    "scope": "АО Институт экономических исследований 20 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3929,7 +3929,7 @@
     "fullName": "НИХ Байтерек",
     "parentId": "mne",
     "level": "district",
-    "scope": "НИХ Байтерек 298 0,0083%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3939,7 +3939,7 @@
     "fullName": "ЖССБ Отбасы банк",
     "parentId": "nih-bai-terek",
     "level": "district",
-    "scope": "ЖССБ Отбасы банк 7454 0,2080%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3949,7 +3949,7 @@
     "fullName": "АО Qazaqstan Investment Corporation",
     "parentId": "nih-bai-terek",
     "level": "district",
-    "scope": "АО Qazaqstan Investment Corporation 33 0,0009%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3959,7 +3959,7 @@
     "fullName": "АО Экспортно-кредитное агентство Казахстана",
     "parentId": "nih-bai-terek",
     "level": "agency",
-    "scope": "АО Экспортно-кредитное агентство Казахстана 25 0,0007%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3969,7 +3969,7 @@
     "fullName": "АО Аграрная кредитная корпорация",
     "parentId": "nih-bai-terek",
     "level": "district",
-    "scope": "АО Аграрная кредитная корпорация 403 0,0112%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3979,7 +3979,7 @@
     "fullName": "АО Банк Развития Казахстана",
     "parentId": "nih-bai-terek",
     "level": "district",
-    "scope": "АО Банк Развития Казахстана 110 0,0031%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3989,7 +3989,7 @@
     "fullName": "АО Фонд развития предпринимательства \"Даму",
     "parentId": "nih-bai-terek",
     "level": "district",
-    "scope": "АО Фонд развития предпринимательства \"Даму\" 367 0,0102%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -3999,7 +3999,7 @@
     "fullName": "АО Казахстанская Жилищная Компания",
     "parentId": "nih-bai-terek",
     "level": "district",
-    "scope": "АО Казахстанская Жилищная Компания 296 0,0083%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4009,7 +4009,7 @@
     "fullName": "Министерство водных ресурсов и ирригации",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МВРИ 537/0,0150% (к-во орг 44)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4019,7 +4019,7 @@
     "fullName": "Комитет водного хозяйства",
     "parentId": "mvri",
     "level": "district",
-    "scope": "Комитет водного хозяйства 122 0,0034%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4029,7 +4029,7 @@
     "fullName": "Комитет по регулированию, охране и использованию водных ресурсов",
     "parentId": "mvri",
     "level": "district",
-    "scope": "Комитет по регулированию, охране и использованию водных ресурсов 106 0,0030%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4039,7 +4039,7 @@
     "fullName": "Инспекции",
     "parentId": "komitet-po-regulirovaniyu-ohrane-i-ispolzova",
     "level": "district",
-    "scope": "инспекции 4488 0,1253%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4049,7 +4049,7 @@
     "fullName": "Гидрогеолого-мелиоративный центр",
     "parentId": "mvri",
     "level": "district",
-    "scope": "гидрогеолого-мелиоративный центр 4 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4059,7 +4059,7 @@
     "fullName": "ТОО Казахский научно-исследовательский инcтитут водного хозяйства",
     "parentId": "mvri",
     "level": "district",
-    "scope": "ТОО Казахский научно-исследовательский инcтитут водного хозяйства 7 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4069,7 +4069,7 @@
     "fullName": "ТОО SK Water Solutions",
     "parentId": "mvri",
     "level": "district",
-    "scope": "ТОО SK Water Solutions 14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4079,7 +4079,7 @@
     "fullName": "НАО Казгидрогеология",
     "parentId": "mvri",
     "level": "district",
-    "scope": "НАО Казгидрогеология 19 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4099,7 +4099,7 @@
     "fullName": "НАО Информационно-аналитический центр водных ресурсов",
     "parentId": "mvri",
     "level": "district",
-    "scope": "НАО Информационно-аналитический центр водных ресурсов 11 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4109,7 +4109,7 @@
     "fullName": "Казводхоз",
     "parentId": "mvri",
     "level": "district",
-    "scope": "Казводхоз 182 0,0051%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4119,7 +4119,7 @@
     "fullName": "Филиал",
     "parentId": "kazvodhoz",
     "level": "district",
-    "scope": "филиал 853 0,0238%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4129,7 +4129,7 @@
     "fullName": "Министерство науки и высшего образования",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МНВО 4580/0,1278% (к-во орг 70)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4139,7 +4139,7 @@
     "fullName": "ВУЗ",
     "parentId": "mnvo",
     "level": "district",
-    "scope": "ВУЗ 6044 0,1684%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4149,7 +4149,7 @@
     "fullName": "Тіл-Қазына",
     "parentId": "vuz",
     "level": "district",
-    "scope": "Тіл-Қазына 11 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4159,7 +4159,7 @@
     "fullName": "Институтов и центров",
     "parentId": "vuz",
     "level": "district",
-    "scope": "институтов и центров 270 0,0076%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4169,7 +4169,7 @@
     "fullName": "Министерство иностранных дел",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МИД (к-во орг 4)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4189,7 +4189,7 @@
     "fullName": "Министерство просвещения",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МП (к-во орг 16)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4209,7 +4209,7 @@
     "fullName": "Министерство сельского хозяйства",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МСХ (к-во орг 383)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4369,7 +4369,7 @@
     "fullName": "Министерство по чрезвычайным ситуациям",
     "parentId": "apr",
     "level": "agency",
-    "scope": "МЧС (к-во орг 296)",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4549,7 +4549,7 @@
     "fullName": "Акимат Астана",
     "parentId": "apr",
     "level": "regional",
-    "scope": "Акимат Астана 1152 0,0322% (к-во орг 413)",
+    "scope": "",
     "questions": [
       {
         "id": "q-akimat-astana-1",
@@ -4572,7 +4572,7 @@
     "fullName": "Аппарат акима района \"Сарыарка",
     "parentId": "akimat-astana",
     "level": "regional",
-    "scope": "Аппарат акима района \"Сарыарка\" 1571 0,0438%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-rai-ona-saryarka-1",
@@ -4595,7 +4595,7 @@
     "fullName": "Аппарат акима района \"Есиль",
     "parentId": "akimat-astana",
     "level": "regional",
-    "scope": "Аппарат акима района \"Есиль\" 1566 0,0437%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-rai-ona-esil-1",
@@ -4618,7 +4618,7 @@
     "fullName": "Аппарат акима района \"Нұра",
     "parentId": "akimat-astana",
     "level": "regional",
-    "scope": "Аппарат акима района \"Нұра\" 2388 0,0667%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-rai-ona-nura-1",
@@ -4641,7 +4641,7 @@
     "fullName": "Аппарат акима района \"Алматы",
     "parentId": "akimat-astana",
     "level": "regional",
-    "scope": "Аппарат акима района \"Алматы\" 1192 0,0333%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-rai-ona-almaty-1",
@@ -4664,7 +4664,7 @@
     "fullName": "Аппарат акима района \"Байқоңыр",
     "parentId": "akimat-astana",
     "level": "regional",
-    "scope": "Аппарат акима района \"Байқоңыр\" 1178 0,0329%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-rai-ona-bai-qonyr-1",
@@ -4687,7 +4687,7 @@
     "fullName": "Аппарат акима района \"Сарайшық",
     "parentId": "akimat-astana",
     "level": "regional",
-    "scope": "Аппарат акима района \"Сарайшық\" 807 0,0225%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-rai-ona-sarai-shyq-1",
@@ -4710,7 +4710,7 @@
     "fullName": "Управление жилья и жилищной инспекции",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление жилья и жилищной инспекции 5479 0,1529%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4720,7 +4720,7 @@
     "fullName": "Жилищный фонд",
     "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
     "level": "district",
-    "scope": "Жилищный фонд 211 0,0059%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4730,7 +4730,7 @@
     "fullName": "ТОО Астана-Орнек",
     "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
     "level": "district",
-    "scope": "ТОО Астана-Орнек 6 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4740,7 +4740,7 @@
     "fullName": "ТОО Өркен қала",
     "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
     "level": "district",
-    "scope": "ТОО Өркен қала 70 0,0020%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4750,7 +4750,7 @@
     "fullName": "Городская недвижимость",
     "parentId": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
     "level": "district",
-    "scope": "Городская недвижимость 73 0,0020%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4760,7 +4760,7 @@
     "fullName": "Управление архитектуры, градостроительства и земельных отношений",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление архитектуры, градостроительства и земельных отношений 7482 0,2088%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4770,7 +4770,7 @@
     "fullName": "ТОО «Центр урбанистики города Астаны",
     "parentId": "upravlenie-arhitektury-gradostroitelstva-i-z",
     "level": "district",
-    "scope": "ТОО «Центр урбанистики города Астаны 640 0,0179%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4780,7 +4780,7 @@
     "fullName": "ТОО Научно-исследовательский проектный институт \"Астанагенплан",
     "parentId": "upravlenie-arhitektury-gradostroitelstva-i-z",
     "level": "district",
-    "scope": "ТОО Научно-исследовательский проектный институт \"Астанагенплан\" 246 0,0069%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4790,7 +4790,7 @@
     "fullName": "Управление транспорта и развития дорожно-транспортной инфраструктуры",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление транспорта и развития дорожно-транспортной инфраструктуры 3553 0,0464%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4800,7 +4800,7 @@
     "fullName": "ТОО Центр организации дорожного движения города Астана",
     "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
     "level": "district",
-    "scope": "ТОО Центр организации дорожного движения города Астана 67 0,0019%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4810,7 +4810,7 @@
     "fullName": "ТОО Дирекция по строительству LRT",
     "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
     "level": "district",
-    "scope": "ТОО Дирекция по строительству LRT 21 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4820,7 +4820,7 @@
     "fullName": "АО \"Автобусный парк №1",
     "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
     "level": "district",
-    "scope": "АО \"Автобусный парк №1\" 239 0,0067%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4830,7 +4830,7 @@
     "fullName": "АО \"Международный аэропорт Нурсултан Назарбаев",
     "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
     "level": "district",
-    "scope": "АО \"Международный аэропорт Нурсултан Назарбаев\" 1034 0,0289%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4840,7 +4840,7 @@
     "fullName": "Филиал АО \"Международный аэропорт Нурсултан Назарбаев\" - \"Аэропорт Кокшетау",
     "parentId": "ao-mezhdunarodnyi-aeroport-nursultan-nazarba",
     "level": "district",
-    "scope": "Филиал АО \"Международный аэропорт Нурсултан Назарбаев\" - \"Аэропорт Кокшетау\" 29 0,0008%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4850,7 +4850,7 @@
     "fullName": "АО \"Жезкиік",
     "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
     "level": "district",
-    "scope": "АО \"Жезкиік\" 5 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4860,7 +4860,7 @@
     "fullName": "ТОО \"City Transportation Systems",
     "parentId": "upravlenie-transporta-i-razvitiya-dorozhno-t",
     "level": "district",
-    "scope": "ТОО \"City Transportation Systems\" 623 0,0174%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4870,7 +4870,7 @@
     "fullName": "Управление государственного архитектурно-строительного контроля",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление государственного архитектурно-строительного контроля 2810 0,0784%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4880,7 +4880,7 @@
     "fullName": "ТОО \"Елорда құрылыс компаниясы",
     "parentId": "upravlenie-gosudarstvennogo-arhitekturno-str",
     "level": "district",
-    "scope": "ТОО \"Елорда құрылыс компаниясы\" 314 0,0088%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4890,7 +4890,7 @@
     "fullName": "Управление общественного здравоохранения",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление общественного здравоохранения 1554 0,0434%",
+    "scope": "",
     "questions": [
       {
         "id": "q-upravlenie-obschestvennogo-zdravoohraneniya-1",
@@ -4912,7 +4912,7 @@
     "fullName": "Поликлиники/больницы",
     "parentId": "upravlenie-obschestvennogo-zdravoohraneniya",
     "level": "district",
-    "scope": "поликлиники/больницы 2196 0,0613%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4922,7 +4922,7 @@
     "fullName": "Управление охраны окружающей среды и природопользования",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление охраны окружающей среды и природопользования - 4663 0,1301%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4932,7 +4932,7 @@
     "fullName": "ТОО Астана орманы",
     "parentId": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
     "level": "district",
-    "scope": "ТОО Астана орманы 12 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4942,7 +4942,7 @@
     "fullName": "Астана ветсервис",
     "parentId": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
     "level": "district",
-    "scope": "Астана ветсервис 65 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4952,7 +4952,7 @@
     "fullName": "ТОО АСТАНА-ЗЕЛЕНСТРОЙ",
     "parentId": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
     "level": "district",
-    "scope": "ТОО АСТАНА-ЗЕЛЕНСТРОЙ 94 0,0026%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4962,7 +4962,7 @@
     "fullName": "Управление образования",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление образования 4941 0,1379%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4972,7 +4972,7 @@
     "fullName": "Образов учрежд",
     "parentId": "upravlenie-obrazovaniya",
     "level": "district",
-    "scope": "образов учрежд 6103 0,1703%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4982,7 +4982,7 @@
     "fullName": "Управление строительства",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление строительства 1050 0,0293%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -4992,7 +4992,7 @@
     "fullName": "ТОО Елорда даму",
     "parentId": "upravlenie-stroitelstva",
     "level": "district",
-    "scope": "ТОО Елорда даму 19 0,0050%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5002,7 +5002,7 @@
     "fullName": "Управление коммунального хозяйства",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление коммунального хозяйства 380 0,0106%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5012,7 +5012,7 @@
     "fullName": "Астана су арнасы",
     "parentId": "upravlenie-kommunalnogo-hozyai-stva",
     "level": "district",
-    "scope": "Астана су арнасы 15705 0,4383%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5022,7 +5022,7 @@
     "fullName": "ТОО Астана-Бюро специального обслуживания",
     "parentId": "upravlenie-kommunalnogo-hozyai-stva",
     "level": "district",
-    "scope": "ТОО Астана-Бюро специального обслуживания 9 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5032,7 +5032,7 @@
     "fullName": "ТОО Астана Тазалық",
     "parentId": "upravlenie-kommunalnogo-hozyai-stva",
     "level": "district",
-    "scope": "ТОО Астана Тазалық 113 0,0032%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5042,7 +5042,7 @@
     "fullName": "Elorda Eco System",
     "parentId": "upravlenie-kommunalnogo-hozyai-stva",
     "level": "district",
-    "scope": "Elorda Eco System 379 0,0106%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5052,7 +5052,7 @@
     "fullName": "Управление занятости и социальной защиты",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление занятости и социальной защиты 3243 0,0905%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5062,7 +5062,7 @@
     "fullName": "Центров",
     "parentId": "upravlenie-zanyatosti-i-socialnoi-zaschity",
     "level": "district",
-    "scope": "центров 618 0,0175%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5072,7 +5072,7 @@
     "fullName": "Управление по развитию языков и архивного дела",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление по развитию языков и архивного дела 770 0,0215%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5082,7 +5082,7 @@
     "fullName": "Государственный архив",
     "parentId": "upravlenie-po-razvitiyu-yazykov-i-arhivnogo",
     "level": "district",
-    "scope": "Государственный архив 445 0,0124%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5092,7 +5092,7 @@
     "fullName": "Руханият",
     "parentId": "upravlenie-po-razvitiyu-yazykov-i-arhivnogo",
     "level": "district",
-    "scope": "Руханият 2 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5102,7 +5102,7 @@
     "fullName": "ТОО \"Хозяйственное управление Астаны",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "ТОО \"Хозяйственное управление Астаны\" 15 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5112,7 +5112,7 @@
     "fullName": "Управление по мобилизационной подготовке, территориальной и гражданской обороне",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление по мобилизационной подготовке, территориальной и гражданской обороне8 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5122,7 +5122,7 @@
     "fullName": "Центр по обеспечению гражданской обороны",
     "parentId": "upravlenie-po-mobilizacionnoi-podgotovke-ter",
     "level": "district",
-    "scope": "Центр по обеспечению гражданской обороны 19 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5132,7 +5132,7 @@
     "fullName": "Управление по делам религий",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление по делам религий 49 0,0014%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5152,7 +5152,7 @@
     "fullName": "Управление экономики и бюджетного планирования",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление экономики и бюджетного планирования 35 0,0010%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5162,7 +5162,7 @@
     "fullName": "Управление внутренней политики",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление внутренней политики 227 0,0063%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5172,7 +5172,7 @@
     "fullName": "Қоғамдық келісім",
     "parentId": "upravlenie-vnutrennei-politiki",
     "level": "district",
-    "scope": "Қоғамдық келісім 11 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5182,7 +5182,7 @@
     "fullName": "Служба коммуникаций",
     "parentId": "upravlenie-vnutrennei-politiki",
     "level": "agency",
-    "scope": "Служба коммуникаций 1 0%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5192,7 +5192,7 @@
     "fullName": "ТОО Elorda Aqparat",
     "parentId": "upravlenie-vnutrennei-politiki",
     "level": "district",
-    "scope": "ТОО Elorda Aqparat 14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5202,7 +5202,7 @@
     "fullName": "Управление финансов",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление финансов 5 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5212,7 +5212,7 @@
     "fullName": "Управление энергетики",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление энергетики 593 0,0166%",
+    "scope": "",
     "questions": [
       {
         "id": "q-upravlenie-energetiki-1",
@@ -5245,7 +5245,7 @@
     "fullName": "АО Астана - Региональная Электросетевая Компания",
     "parentId": "upravlenie-energetiki",
     "level": "district",
-    "scope": "АО Астана - Региональная Электросетевая Компания 3833 0,1070%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5255,7 +5255,7 @@
     "fullName": "АО Астана-Теплотранзит",
     "parentId": "upravlenie-energetiki",
     "level": "district",
-    "scope": "АО Астана-Теплотранзит 1922 0,0536%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5265,7 +5265,7 @@
     "fullName": "ТОО Астана қалалық жарық",
     "parentId": "upravlenie-energetiki",
     "level": "district",
-    "scope": "ТОО Астана қалалық жарық 7 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5275,7 +5275,7 @@
     "fullName": "АО Астана-Энергия",
     "parentId": "upravlenie-energetiki",
     "level": "district",
-    "scope": "АО Астана-Энергия 47 0,0013%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5285,7 +5285,7 @@
     "fullName": "Управление по инвестициям и развитию предпринимательства",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление по инвестициям и развитию предпринимательства 426 0,0119%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5295,7 +5295,7 @@
     "fullName": "ТОО Центр развития туризма \"Astana Tourism",
     "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
     "level": "district",
-    "scope": "ТОО Центр развития туризма \"Astana Tourism\" 14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5305,7 +5305,7 @@
     "fullName": "ТОО Центр развития Астаны",
     "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
     "level": "district",
-    "scope": "ТОО Центр развития Астаны 24 0,0007%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5315,7 +5315,7 @@
     "fullName": "АО СПК \"Astana",
     "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
     "level": "district",
-    "scope": "АО СПК \"Astana\" 248 0,0069%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5325,7 +5325,7 @@
     "fullName": "ТОО \"Городской центр развития инвестиций \"AstanaInvest",
     "parentId": "upravlenie-po-investiciyam-i-razvitiyu-predp",
     "level": "district",
-    "scope": "ТОО \"Городской центр развития инвестиций \"AstanaInvest\" 64 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5335,7 +5335,7 @@
     "fullName": "Управление по вопросам молодежной политики",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление по вопросам молодежной политики 21 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5345,7 +5345,7 @@
     "fullName": "Молодежный ресурсный центр \"Астана жастары",
     "parentId": "upravlenie-po-voprosam-molodezhnoi-politiki",
     "level": "district",
-    "scope": "Молодежный ресурсный центр \"Астана жастары\" 22 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5355,7 +5355,7 @@
     "fullName": "Управление цифровизации и государственных услуг",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление цифровизации и государственных услуг 257 0,0072%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5365,7 +5365,7 @@
     "fullName": "Городской центр мониторинга и оперативного реагирования",
     "parentId": "upravlenie-cifrovizacii-i-gosudarstvennyh-us",
     "level": "district",
-    "scope": "Городской центр мониторинга и оперативного реагирования 103 0,0029%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5375,7 +5375,7 @@
     "fullName": "АО Астана Innovations",
     "parentId": "upravlenie-cifrovizacii-i-gosudarstvennyh-us",
     "level": "district",
-    "scope": "АО Астана Innovations 40 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5385,7 +5385,7 @@
     "fullName": "Управление физической культуры и спорта",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление физической культуры и спорта 342 0,0095%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5395,7 +5395,7 @@
     "fullName": "Подведомки",
     "parentId": "upravlenie-fizicheskoi-kultury-i-sporta",
     "level": "district",
-    "scope": "подведомки 142 0,0040%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5405,7 +5405,7 @@
     "fullName": "Управление культуры",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление культуры 268 0,0075%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5415,7 +5415,7 @@
     "fullName": "Подведомки",
     "parentId": "upravlenie-kultury",
     "level": "district",
-    "scope": "подведомки 201 0,0328%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5425,7 +5425,7 @@
     "fullName": "Управление по защите прав детей",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление по защите прав детей 221 0,0062%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5435,7 +5435,7 @@
     "fullName": "Управление активов и государственных закупок",
     "parentId": "akimat-astana",
     "level": "district",
-    "scope": "Управление активов и государственных закупок 560 0,0156%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5445,7 +5445,7 @@
     "fullName": "ТОО \"Astana Venue Management",
     "parentId": "upravlenie-aktivov-i-gosudarstvennyh-zakupok",
     "level": "district",
-    "scope": "ТОО \"Astana Venue Management\" 5 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5455,7 +5455,7 @@
     "fullName": "Алматинская область",
     "parentId": "apr",
     "level": "district",
-    "scope": "Алматинская область 709 0,0198%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5465,7 +5465,7 @@
     "fullName": "Аппарат Акима Карасайского района",
     "parentId": "almatinskaya-oblast",
     "level": "regional",
-    "scope": "Аппарат Акима Карасайского района 247 0,0069%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-karasai-skogo-rai-ona-1",
@@ -5488,7 +5488,7 @@
     "fullName": "Аппарат акима Иргелинского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Иргелинского сельского округа 485 0,0135%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-irgelinskogo-selskogo-okruga-1",
@@ -5511,7 +5511,7 @@
     "fullName": "Аппарат акима города Каскелен",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима города Каскелен 602 0,0168%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-goroda-kaskelen-1",
@@ -5534,7 +5534,7 @@
     "fullName": "Аппарат акима Райымбекского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Райымбекского сельского округа 530 0,0148%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-rai-ymbekskogo-selskogo-okruga-1",
@@ -5557,7 +5557,7 @@
     "fullName": "Аппарат акима Жамбылского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Жамбылского сельского округа 110 0,0031%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-zhambylskogo-selskogo-okruga-1",
@@ -5580,7 +5580,7 @@
     "fullName": "Аппарат акима Умтылского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Умтылского сельского округа 143 0,0040%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-umtylskogo-selskogo-okruga-1",
@@ -5603,7 +5603,7 @@
     "fullName": "Аппарат акима Жандосовского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Жандосовского сельского округа 86 0,0024%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-zhandosovskogo-selskogo-okruga-1",
@@ -5626,7 +5626,7 @@
     "fullName": "Аппарат акима сельского округа Жибек Жолы",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима сельского округа Жибек Жолы 180 0,0050%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-selskogo-okruga-zhibek-zholy-1",
@@ -5649,7 +5649,7 @@
     "fullName": "Аппарат акима Первомайского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Первомайского сельского округа 62 0,0017%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-pervomai-skogo-selskogo-okruga-1",
@@ -5672,7 +5672,7 @@
     "fullName": "Аппарат акима Шамалганского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Шамалганского сельского округа 131 0,0037%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-shamalganskogo-selskogo-okruga-1",
@@ -5695,7 +5695,7 @@
     "fullName": "Аппарат акима Ельтайского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Ельтайского сельского округа - 262 0,0073%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-eltai-skogo-selskogo-okruga-1",
@@ -5718,7 +5718,7 @@
     "fullName": "Аппарат акима Айтейского сельского округа",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Айтейского сельского округа 83 0,0023%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-ai-tei-skogo-selskogo-okruga-1",
@@ -5741,7 +5741,7 @@
     "fullName": "Отдел архитектуры и градостроительства",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел архитектуры и градостроительства 2302 0,0643%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5751,7 +5751,7 @@
     "fullName": "Отдел жилищно-коммунального хозяйства и жилищной инспекции",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел жилищно-коммунального хозяйства и жилищной инспекции 484 0,0135%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5761,7 +5761,7 @@
     "fullName": "Отдел внутренней политики",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел внутренней политики 5 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5771,7 +5771,7 @@
     "fullName": "Центр проведения спортивно-массовых мероприятий Карасайского района",
     "parentId": "otdel-vnutrennei-politiki",
     "level": "district",
-    "scope": "Центр проведения спортивно-массовых мероприятий Карасайского района 1 0%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5781,7 +5781,7 @@
     "fullName": "Районный дом культуры",
     "parentId": "otdel-vnutrennei-politiki",
     "level": "district",
-    "scope": "Районный дом культуры 1 0%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5791,7 +5791,7 @@
     "fullName": "Фольклорно-этнографический ансамбль \"Ушконыр",
     "parentId": "otdel-vnutrennei-politiki",
     "level": "district",
-    "scope": "Фольклорно-этнографический ансамбль \"Ушконыр\" 3 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5801,7 +5801,7 @@
     "fullName": "Отдел культуры, развития языков, физической культуры и спорта",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел культуры, развития языков, физической культуры и спорта 19 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5811,7 +5811,7 @@
     "fullName": "Карасайская районная библиотека",
     "parentId": "otdel-kultury-razvitiya-yazykov-fizicheskoi",
     "level": "district",
-    "scope": "Карасайская районная библиотека 4 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5821,7 +5821,7 @@
     "fullName": "Отдел предпринимательства Карасайского района",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел предпринимательства Карасайского района 65 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5831,7 +5831,7 @@
     "fullName": "Отдел строительства Карасайского района",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел строительства Карасайского района 41 0,0011%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5841,7 +5841,7 @@
     "fullName": "Отдел занятости и социальных программ",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел занятости и социальных программ 51 0,0014%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5851,7 +5851,7 @@
     "fullName": "Центр поддержки семьи \"Жанұя",
     "parentId": "otdel-zanyatosti-i-socialnyh-programm",
     "level": "district",
-    "scope": "Центр поддержки семьи \"Жанұя\" 3 0,0001%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5861,7 +5861,7 @@
     "fullName": "Отдел пассажирского транспорта и автомобильных дорог",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел пассажирского транспорта и автомобильных дорог 318 0,0089%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5871,7 +5871,7 @@
     "fullName": "Отдел сельского хозяйства",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел сельского хозяйства 61 0,0017%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5881,7 +5881,7 @@
     "fullName": "Отдел экономики и финансов",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел экономики и финансов 14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5891,7 +5891,7 @@
     "fullName": "Отдел земельных отношений",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Отдел земельных отношений 366 0,0102%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5901,7 +5901,7 @@
     "fullName": "Таусамалы Кызмет",
     "parentId": "apparat-akima-karasai-skogo-rai-ona",
     "level": "district",
-    "scope": "Таусамалы Кызмет 11 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -5911,7 +5911,7 @@
     "fullName": "Аппарат акима Талгарского района",
     "parentId": "almatinskaya-oblast",
     "level": "regional",
-    "scope": "Аппарат акима Талгарского района - 203 0,0057%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-talgarskogo-rai-ona-1",
@@ -5934,7 +5934,7 @@
     "fullName": "Аппарат акима Туздыбастауского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Туздыбастауского сельского округа - 500 0,0140%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-tuzdybastauskogo-selskogo-okru-1",
@@ -5957,7 +5957,7 @@
     "fullName": "Аппарат акима Гулдалинского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Гулдалинского сельского округа 187 0,0052%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-guldalinskogo-selskogo-okruga-1",
@@ -5980,7 +5980,7 @@
     "fullName": "Аппарат акима Панфиловского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Панфиловского сельского округа - 648 0,0181%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-panfilovskogo-selskogo-okruga-1",
@@ -6003,7 +6003,7 @@
     "fullName": "Аппарат акима Бесагашского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Бесагашского сельского округа - 284 0,0079%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-besagashskogo-selskogo-okruga-1",
@@ -6026,7 +6026,7 @@
     "fullName": "Аппарат акима Белбулакского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Белбулакского сельского округа - 474 0,0132%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-belbulakskogo-selskogo-okruga-1",
@@ -6049,7 +6049,7 @@
     "fullName": "Аппарат акима города Талгар",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима города Талгар - 428 0,0119%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-goroda-talgar-1",
@@ -6072,7 +6072,7 @@
     "fullName": "ТОО Талгар тұрғын үй",
     "parentId": "apparat-akima-goroda-talgar",
     "level": "district",
-    "scope": "ТОО Талгар тұрғын үй65 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6082,7 +6082,7 @@
     "fullName": "Аппарат акима Кендалинского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Кендалинского сельского округа - 147 0,0041%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-kendalinskogo-selskogo-okruga-1",
@@ -6105,7 +6105,7 @@
     "fullName": "Аппарат акима Нуринского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Нуринского сельского округа - 106 0,0030%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-nurinskogo-selskogo-okruga-1",
@@ -6128,7 +6128,7 @@
     "fullName": "Аппарат акима Алатауского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Алатауского сельского округа - 161 0,0045%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-alatauskogo-selskogo-okruga-1",
@@ -6151,7 +6151,7 @@
     "fullName": "Аппарат акима Кайнарского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Кайнарского сельского округа - 250 0,0070%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-kai-narskogo-selskogo-okruga-1",
@@ -6174,7 +6174,7 @@
     "fullName": "Аппарат акима Бескайнарского сельского округа",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "regional",
-    "scope": "Аппарат акима Бескайнарского сельского округа - 61 0,0017%",
+    "scope": "",
     "questions": [
       {
         "id": "q-apparat-akima-beskai-narskogo-selskogo-okrug-1",
@@ -6197,7 +6197,7 @@
     "fullName": "Отдел архитектуры и градостроительства",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел архитектуры и градостроительства 729 0,0203%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6207,7 +6207,7 @@
     "fullName": "Отдел внутренней политики",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел внутренней политики 7 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6217,7 +6217,7 @@
     "fullName": "Отдел экономики и финансов",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел экономики и финансов - 19 0,0005%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6227,7 +6227,7 @@
     "fullName": "Отдел культуры, развития языков, физической культуры и спорта",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел культуры, развития языков, физической культуры и спорта 22 0,0006%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6237,7 +6237,7 @@
     "fullName": "Подведомки",
     "parentId": "otdel-kultury-razvitiya-yazykov-fizicheskoi-2",
     "level": "district",
-    "scope": "подведомки 7 0,0002%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6247,7 +6247,7 @@
     "fullName": "Отдел предпринимательства",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел предпринимательства 14 0,0004%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6257,7 +6257,7 @@
     "fullName": "Отдел строительства",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел строительства 67 0,0019%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6267,7 +6267,7 @@
     "fullName": "Отдел сельского хозяйства",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел сельского хозяйства 59 0,0016%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6277,7 +6277,7 @@
     "fullName": "Отдел пассажирского транспорта и автомобильных дорог",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел пассажирского транспорта и автомобильных дорог 64 0,0018%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6287,7 +6287,7 @@
     "fullName": "Отдел жилищно-коммунального хозяйства и жилищной инспекции",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел жилищно-коммунального хозяйства и жилищной инспекции 420 0,0117%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6297,7 +6297,7 @@
     "fullName": "Отдел занятости и социальных программ",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел занятости и социальных программ - 44 0,0012%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6307,7 +6307,7 @@
     "fullName": "ЦЕНТ ПОДДЕРЖКИ СЕМЬИ",
     "parentId": "otdel-zanyatosti-i-socialnyh-programm-2",
     "level": "district",
-    "scope": "ЦЕНТ ПОДДЕРЖКИ СЕМЬИ11 0,0003%",
+    "scope": "",
     "questions": [],
     "version": 1
   },
@@ -6317,7 +6317,7 @@
     "fullName": "Отдел земельных отношений",
     "parentId": "apparat-akima-talgarskogo-rai-ona",
     "level": "district",
-    "scope": "Отдел земельных отношений 999 0,0279%",
+    "scope": "",
     "questions": [],
     "version": 1
   }
