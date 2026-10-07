@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { GovOrg, OrgQuestion, User, ROLE_PERMISSIONS, JurisdictionLevel } from '@/types';
+import { useAuth } from '@/context/AuthContext';
 import { QuestionModal } from './QuestionModal';
 import { QuestionCsvModal } from './QuestionCsvModal';
 import { CreateChildOrgModal } from './CreateChildOrgModal';
@@ -26,6 +27,7 @@ import {
   Minimize2,
   FileSpreadsheet,
   Edit3,
+  CheckCircle2,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -102,6 +104,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   onReparent,
   onCreateOrg,
 }) => {
+  const { user: authUser, canManageOrg } = useAuth();
   const [activeTab, setActiveTab] = useState<'info' | 'questions' | 'admin'>('info');
 
   // Наименования
@@ -190,8 +193,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
 
   if (!isOpen || !org) return null;
 
-  const permissions = ROLE_PERMISSIONS[currentUser.role];
-  const isLockedByOther = org.lockedBy && org.lockedBy.userId !== currentUser.id;
+  const access = canManageOrg(org.id, allOrgs);
+  const effectiveUserId = authUser?.userId || currentUser.id;
+  const isLockedByOther = org.lockedBy && org.lockedBy.userId !== effectiveUserId;
+
+  const permissions = {
+    canEditContent: access.allowed && !isLockedByOther,
+    canChangeStructure: access.allowed && !isLockedByOther,
+  };
   const parentOrg = allOrgs.find((o) => o.id === org.parentId);
   const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
@@ -345,6 +354,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
         </div>
+
+        {/* Баннер ведомственной юрисдикции при ограничении прав */}
+        {!access.allowed && (
+          <div className="mx-5 mt-3 p-3 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 flex items-center gap-2.5 text-xs text-amber-800 dark:text-amber-300 shrink-0">
+            <Lock className="w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400" />
+            <div>
+              <span className="font-black">Режим просмотра:</span>{' '}
+              <span className="font-medium opacity-90">{access.reason}</span>
+            </div>
+          </div>
+        )}
 
         {/* Навигационные вкладки */}
         <div className="flex border-b border-slate-200 dark:border-slate-800 px-5 gap-4 text-xs font-bold bg-white dark:bg-slate-900 shrink-0">
@@ -908,9 +928,19 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
 
         {/* Футер карточки с кнопкой Сохранить */}
         <div className="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-850 flex items-center justify-between shrink-0">
-          <span className="text-[11px] text-slate-500 font-semibold">
-            Роль: <strong className="text-slate-900 dark:text-white">{currentUser.role}</strong>
-          </span>
+          <div className="flex items-center gap-2">
+            {access.allowed ? (
+              <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Доступ разрешен ({authUser?.orgName || authUser?.role || 'Администратор'})</span>
+              </span>
+            ) : (
+              <span className="text-[11px] text-amber-600 dark:text-amber-400 font-bold flex items-center gap-1">
+                <Lock className="w-3.5 h-3.5" />
+                <span>Только просмотр</span>
+              </span>
+            )}
+          </div>
 
           {activeTab !== 'admin' && permissions.canEditContent && !isLockedByOther && (
             <button

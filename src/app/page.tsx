@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { GovOrg, OrgQuestion, User, UserRole, JurisdictionLevel } from '../types';
 import { NavigationProvider, useNavigation } from '../lib/NavigationContext';
+import { AuthProvider, useAuth } from '../context/AuthContext';
 import { InteractiveOrgGraph } from '../components/graph/InteractiveOrgGraph';
 import { ListView } from '../components/ListView';
 import { QuickSearch } from '../components/QuickSearch';
 import { OrgDrawer } from '../components/OrgDrawer';
 import { CsvModal } from '../components/CsvModal';
+import { UserBadge } from '../components/auth/UserBadge';
 import {
   Network,
   List,
@@ -32,6 +34,15 @@ function HomeContent({
   const [isCsvModalOpen, setIsCsvModalOpen] = useState(false);
 
   const { inspectorOrg, closeInspector, openInspector, navigateToOrg } = useNavigation();
+  const { user: authUser, canManageOrg } = useAuth();
+
+  const effectiveUser: User = authUser
+    ? {
+        id: authUser.userId,
+        name: authUser.fullName,
+        role: authUser.role === 'GLOBAL_ADMIN' || authUser.role === 'ORG_ADMIN' ? 'superadmin' : 'viewer',
+      }
+    : currentUser;
 
   // Сохранение сведений (компетенции, локация, юрисдикция, вопросы, наименования)
   const handleSaveContent = async (updatedData: {
@@ -45,13 +56,18 @@ function HomeContent({
     questions: OrgQuestion[];
   }) => {
     if (!inspectorOrg) return;
+    const access = canManageOrg(inspectorOrg.id, orgs);
+    if (!access.allowed) {
+      throw new Error(access.reason || 'Нет прав на редактирование данной организации');
+    }
+
     const res = await fetch('/api/mutate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'update_content',
         orgId: inspectorOrg.id,
-        user: currentUser,
+        user: effectiveUser,
         version: inspectorOrg.version,
         payload: updatedData,
       }),
@@ -70,12 +86,17 @@ function HomeContent({
     locationAddress: string;
     jurisdiction: JurisdictionLevel;
   }) => {
+    const access = canManageOrg(newOrgData.parentId, orgs);
+    if (!access.allowed) {
+      throw new Error(access.reason || 'Нет прав на создание организации в чужом ведомстве');
+    }
+
     const res = await fetch('/api/mutate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'create_org',
-        user: currentUser,
+        user: effectiveUser,
         payload: newOrgData,
       }),
     });
@@ -90,13 +111,18 @@ function HomeContent({
   // Смена подотчетности
   const handleReparent = async (newParentId: string | null) => {
     if (!inspectorOrg) return;
+    const access = canManageOrg(inspectorOrg.id, orgs);
+    if (!access.allowed) {
+      throw new Error(access.reason || 'Нет прав на изменение структуры данной организации');
+    }
+
     const res = await fetch('/api/mutate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'reparent',
         orgId: inspectorOrg.id,
-        user: currentUser,
+        user: effectiveUser,
         version: inspectorOrg.version,
         payload: { newParentId },
       }),
@@ -114,7 +140,7 @@ function HomeContent({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         action: 'import_csv',
-        user: currentUser,
+        user: effectiveUser,
         payload: { items },
       }),
     });
@@ -148,18 +174,6 @@ function HomeContent({
 
           {/* Действия и тулбар */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* Импорт CSV (скрыт из шапки, сохранен на будущее) */}
-            {/* currentUser.role === 'superadmin' && (
-              <button
-                type="button"
-                onClick={() => setIsCsvModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors shadow-xs"
-              >
-                <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
-                Импорт CSV
-              </button>
-            ) */}
-
             {/* Переключатель режимов: Граф / Список */}
             <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl text-xs">
               <button
@@ -188,23 +202,9 @@ function HomeContent({
               </button>
             </div>
 
-            {/* Переключатель роли */}
-            <div className="flex items-center gap-2 pl-3 border-l border-slate-200 dark:border-slate-800">
-              <span className="text-xs text-slate-400 font-medium hidden xl:inline">Роль:</span>
-              <select
-                value={currentUser.role}
-                onChange={(e) =>
-                  setCurrentUser({
-                    ...currentUser,
-                    role: e.target.value as UserRole,
-                  })
-                }
-                className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-xl p-2.5 border-none outline-none font-bold cursor-pointer shadow-xs"
-              >
-                <option value="superadmin">Суперадмин</option>
-                <option value="methodologist">Методолог</option>
-                <option value="operator">Оператор</option>
-              </select>
+            {/* Авторизация и переключатель профилей */}
+            <div className="pl-3 border-l border-slate-200 dark:border-slate-800">
+              <UserBadge />
             </div>
           </div>
         </div>
@@ -225,7 +225,7 @@ function HomeContent({
       <OrgDrawer
         org={inspectorOrg}
         allOrgs={orgs}
-        currentUser={currentUser}
+        currentUser={effectiveUser}
         isOpen={Boolean(inspectorOrg)}
         onClose={closeInspector}
         onSaveContent={handleSaveContent}
@@ -284,14 +284,16 @@ export default function HomePage() {
   }
 
   return (
-    <NavigationProvider allOrgs={orgs}>
-      <HomeContent
-        orgs={orgs}
-        setOrgs={setOrgs}
-        loadOrgs={loadOrgs}
-        currentUser={currentUser}
-        setCurrentUser={setCurrentUser}
-      />
-    </NavigationProvider>
+    <AuthProvider>
+      <NavigationProvider allOrgs={orgs}>
+        <HomeContent
+          orgs={orgs}
+          setOrgs={setOrgs}
+          loadOrgs={loadOrgs}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+      </NavigationProvider>
+    </AuthProvider>
   );
 }
