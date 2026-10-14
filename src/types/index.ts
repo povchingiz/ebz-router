@@ -69,6 +69,21 @@ export interface GovOrg {
   locationAddress?: string; // Фактическое местонахождение (адрес/город)
   jurisdiction?: JurisdictionLevel; // Зона ответственности (Республиканский, Областной, Районный, Сельский)
   legalBasis?: string;      // Нормативно-правовая база (указ/положение/закон)
+  orgType?: string;         // Тип ведомства: Министерство, Агентство, Комитет, Акимат
+  orgNameKk?: string;       // Официальное наименование на казахском языке
+  shortNameKk?: string;     // Краткое наименование на казахском языке
+  status?: 'unfilled' | 'in_progress' | 'verified'; // Светофор готовности (🔴/🟡/🟢)
+  hasHumanTouch?: boolean;  // Редактировался ли живым человеком
+  completenessScore?: number; // % заполненности (0 - 100)
+  competenciesExcluded?: string; // Что НЕ входит в компетенцию
+  forwardToGuidance?: string;    // Куда перенаправлять типовые ошибки
+  contacts?: {
+    phoneHotline?: string;
+    phoneChancellery?: string;
+    emailOfficial?: string;
+    websiteUrl?: string;
+    physicalAddress?: string;
+  };
   questions: OrgQuestion[]; // Вопросы и компетенции (для маршрутизатора)
   version: number;          // Для оптимистической блокировки
   lockedBy?: {              // Для soft lock (подсветка одновременного редактирования)

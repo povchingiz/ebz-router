@@ -2,7 +2,7 @@ import React from 'react';
 import { Handle, Position } from '@xyflow/react';
 import { GovOrg } from '../../types';
 import { LEVEL_CONFIG } from '../OrgCard';
-import { ChevronDown, ChevronUp, Lock, FileText } from 'lucide-react';
+import { ChevronDown, ChevronUp, Lock, FileText, MapPin, Tag } from 'lucide-react';
 
 export interface OrgNodeData {
   org: GovOrg;
@@ -30,11 +30,20 @@ export const OrgFlowCard = ({ data, selected }: any) => {
   } = data as OrgNodeData;
   const config = LEVEL_CONFIG[org.level] || LEVEL_CONFIG.agency;
 
+  // Определение стилей статуса готовности
+  const isUnfilled = org.status === 'unfilled' || (!org.hasHumanTouch && org.level !== 'central');
+  const isVerified = org.status === 'verified';
+  const isInProgress = org.status === 'in_progress';
+
   return (
     <div
-      className={`group relative w-[270px] rounded-2xl border-2 bg-white dark:bg-slate-900 shadow-md transition-all duration-150 select-none p-3.5 flex flex-col justify-between ${
+      className={`group relative w-[280px] rounded-2xl border-2 bg-white dark:bg-slate-900 shadow-md transition-all duration-150 select-none p-3.5 flex flex-col justify-between ${
         selected
           ? 'border-blue-600 ring-4 ring-blue-500/20 shadow-blue-500/10'
+          : isUnfilled
+          ? 'border-rose-300 dark:border-rose-900/70 hover:border-rose-400 bg-rose-50/20'
+          : isInProgress
+          ? 'border-amber-300 dark:border-amber-900/60 hover:border-amber-400 bg-amber-50/15'
           : `${config.borderClass}`
       } ${org.lockedBy ? 'border-amber-400 ring-2 ring-amber-400/40' : ''}`}
     >
@@ -55,8 +64,19 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </div>
       )}
 
-      {/* Верх: Кнопка Сведения */}
-      <div className="flex items-center justify-end gap-1 mb-1.5">
+      {/* Верх: Тип госоргана + Кнопка Сведения */}
+      <div className="flex items-center justify-between gap-1 mb-1.5">
+        <div className="flex items-center gap-1 overflow-hidden">
+          {org.orgType ? (
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 truncate max-w-[150px]">
+              {org.orgType}
+            </span>
+          ) : (
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
+              Госорган
+            </span>
+          )}
+        </div>
         <button
           type="button"
           onClick={(e) => {
@@ -64,7 +84,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
             onOpenDetails(org);
           }}
           className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs shrink-0"
-          title="Открыть сведения об организации"
+          title="Открыть паспорт и сведения"
         >
           <FileText className="w-3 h-3" />
           <span>Сведения</span>
@@ -86,6 +106,40 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 leading-relaxed">
           {org.fullName}
         </p>
+
+        {/* Локация ведомства */}
+        {org.locationAddress && (
+          <div className="flex items-center gap-1 mt-1 text-[10px] font-semibold text-slate-500 dark:text-slate-400">
+            <MapPin className="w-2.5 h-2.5 text-slate-400 shrink-0" />
+            <span className="truncate">{org.locationAddress}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Индикатор готовности базы знаний (Светофор) */}
+      <div className="mt-1 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px]">
+        {isUnfilled ? (
+          <span className="inline-flex items-center gap-1 font-bold text-rose-600 dark:text-rose-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
+            <span>Требует заполнения</span>
+          </span>
+        ) : isInProgress ? (
+          <span className="inline-flex items-center gap-1 font-bold text-amber-600 dark:text-amber-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span>В работе ({org.completenessScore || 65}%)</span>
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>Заполнено</span>
+          </span>
+        )}
+
+        {org.questions && org.questions.length > 0 && (
+          <span className="font-bold text-slate-500 dark:text-slate-400">
+            {org.questions.length} FAQ
+          </span>
+        )}
       </div>
 
       {/* Нижняя панель действий (только если есть подотчетные) */}

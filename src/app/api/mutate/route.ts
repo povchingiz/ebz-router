@@ -98,7 +98,10 @@ export async function POST(req: NextRequest) {
             jurisdiction: payload.jurisdiction,
             legalBasis: payload.legalBasis,
             questions: payload.questions,
-          },
+            competenciesExcluded: payload.competenciesExcluded,
+            forwardToGuidance: payload.forwardToGuidance,
+            contacts: payload.contacts,
+          } as any,
           version ?? 1,
           userForStore
         );

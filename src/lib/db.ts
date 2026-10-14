@@ -39,6 +39,21 @@ function mapDbRowToGovOrg(row: any, questions: OrgQuestion[] = []): GovOrg {
     aliases: Array.isArray(row.aliases) ? row.aliases : [],
     parentId: row.org_id === 77 ? null : parentId,
     level,
+    orgType: row.org_type_ru || '',
+    orgNameKk: row.org_name_kk || '',
+    shortNameKk: row.short_name_kk || '',
+    status: (row.knowledge_status as any) || (row.has_human_touch ? 'in_progress' : 'unfilled'),
+    hasHumanTouch: row.has_human_touch ?? false,
+    completenessScore: row.completeness_score ?? (row.has_human_touch ? 65 : 15),
+    competenciesExcluded: row.competencies_excluded || '',
+    forwardToGuidance: row.forward_to_guidance || '',
+    contacts: {
+      phoneHotline: row.phone_hotline || (row.contacts?.hotline || ''),
+      phoneChancellery: row.phone_chancellery || (row.contacts?.chancellery || ''),
+      emailOfficial: row.email_official || (row.contacts?.email || ''),
+      websiteUrl: row.website_url || (row.contacts?.website || ''),
+      physicalAddress: row.physical_address || (row.location_name_ru || ''),
+    },
     scope: row.scope || `Сфера ведения и компетенции ведомства: ${row.org_name_ru}`,
     theme: row.scope || '',
     locationAddress: row.location_name_ru || '',
@@ -69,9 +84,21 @@ export async function getOrgsFromDb(options?: {
     let query = `
       SELECT 
         m.*,
-        p.slug as parent_slug
+        p.slug as parent_slug,
+        ks.status as knowledge_status,
+        ks.has_human_touch,
+        ks.completeness_score,
+        ex.competencies_excluded,
+        ex.forward_to_guidance,
+        ex.phone_hotline,
+        ex.phone_chancellery,
+        ex.email_official,
+        ex.website_url,
+        ex.physical_address
       FROM platform.gov_organizations_master m
       LEFT JOIN platform.gov_organizations_master p ON m.parent_id = p.org_id
+      LEFT JOIN knowledge.org_readiness_status ks ON m.org_id = ks.org_id
+      LEFT JOIN knowledge.org_details_extra ex ON m.org_id = ex.org_id
       WHERE m.deleted = FALSE
     `;
     const params: any[] = [];
@@ -173,9 +200,27 @@ export async function getOrgByIdFromDb(id: string | number): Promise<GovOrg | nu
       slug = id;
     }
 
+    const selectFields = `
+      m.*,
+      p.slug as parent_slug,
+      ks.status as knowledge_status,
+      ks.has_human_touch,
+      ks.completeness_score,
+      ex.competencies_excluded,
+      ex.forward_to_guidance,
+      ex.phone_hotline,
+      ex.phone_chancellery,
+      ex.email_official,
+      ex.website_url,
+      ex.physical_address
+      FROM platform.gov_organizations_master m
+      LEFT JOIN platform.gov_organizations_master p ON m.parent_id = p.org_id
+      LEFT JOIN knowledge.org_readiness_status ks ON m.org_id = ks.org_id
+      LEFT JOIN knowledge.org_details_extra ex ON m.org_id = ex.org_id
+    `;
     const query = numericId
-      ? `SELECT m.*, p.slug as parent_slug FROM platform.gov_organizations_master m LEFT JOIN platform.gov_organizations_master p ON m.parent_id = p.org_id WHERE m.org_id = $1`
-      : `SELECT m.*, p.slug as parent_slug FROM platform.gov_organizations_master m LEFT JOIN platform.gov_organizations_master p ON m.parent_id = p.org_id WHERE m.slug = $1`;
+      ? `SELECT ${selectFields} WHERE m.org_id = $1`
+      : `SELECT ${selectFields} WHERE m.slug = $1`;
 
     const { rows } = await pool.query(query, [numericId || slug]);
     if (rows.length === 0) return null;
@@ -290,6 +335,48 @@ export async function updateOrgContentInDb(
           [numericId, q.topic, q.description || '', JSON.stringify(q.keywords || [])]
         );
       }
+    }
+
+    // 3.5 Обновление статуса в knowledge.org_readiness_status
+    await client.query(
+      `
+      INSERT INTO knowledge.org_readiness_status (org_id, status, has_human_touch, completeness_score, last_touched_by, last_touched_at, updated_at)
+      VALUES ($1, 'in_progress', TRUE, 75, $2, NOW(), NOW())
+      ON CONFLICT (org_id) DO UPDATE
+      SET status = 'in_progress', has_human_touch = TRUE, completeness_score = 75, last_touched_by = EXCLUDED.last_touched_by, last_touched_at = NOW(), updated_at = NOW()
+      `,
+      [numericId, user.name || user.id]
+    );
+
+    // 3.6 Обновление knowledge.org_details_extra если переданы
+    if ((updates as any).competenciesExcluded !== undefined || (updates as any).contacts) {
+      const u = updates as any;
+      await client.query(
+        `
+        INSERT INTO knowledge.org_details_extra (org_id, competencies_excluded, forward_to_guidance, phone_hotline, phone_chancellery, email_official, website_url, physical_address, updated_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+        ON CONFLICT (org_id) DO UPDATE
+        SET 
+          competencies_excluded = COALESCE(EXCLUDED.competencies_excluded, knowledge.org_details_extra.competencies_excluded),
+          forward_to_guidance = COALESCE(EXCLUDED.forward_to_guidance, knowledge.org_details_extra.forward_to_guidance),
+          phone_hotline = COALESCE(EXCLUDED.phone_hotline, knowledge.org_details_extra.phone_hotline),
+          phone_chancellery = COALESCE(EXCLUDED.phone_chancellery, knowledge.org_details_extra.phone_chancellery),
+          email_official = COALESCE(EXCLUDED.email_official, knowledge.org_details_extra.email_official),
+          website_url = COALESCE(EXCLUDED.website_url, knowledge.org_details_extra.website_url),
+          physical_address = COALESCE(EXCLUDED.physical_address, knowledge.org_details_extra.physical_address),
+          updated_at = NOW()
+        `,
+        [
+          numericId,
+          u.competenciesExcluded || null,
+          u.forwardToGuidance || null,
+          u.contacts?.phoneHotline || null,
+          u.contacts?.phoneChancellery || null,
+          u.contacts?.emailOfficial || null,
+          u.contacts?.websiteUrl || null,
+          u.contacts?.physicalAddress || null,
+        ]
+      );
     }
 
     // 4. Фиксация в аудит-логе

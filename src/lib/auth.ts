@@ -22,8 +22,35 @@ const PRESET_USERS_CONFIG = [
     password: 'admin8391',
     fullName: 'Супер-администратор (АП РК)',
     role: 'GLOBAL_ADMIN' as UserRole,
-    orgId: null,
-    orgName: 'Вся республика',
+    orgId: 'ap',
+    orgName: 'Администрация Президента (Вся республика)',
+  },
+  {
+    id: 'user-curator-apr',
+    username: 'curator_apr',
+    password: 'apr2026',
+    fullName: 'Инспектор Аппарата Правительства (АПр)',
+    role: 'ORG_ADMIN' as UserRole,
+    orgId: 'gov',
+    orgName: 'Правительство РК (АПр)',
+  },
+  {
+    id: 'user-admin-minenergo',
+    username: 'admin_minenergo',
+    password: 'energo2026',
+    fullName: 'Методолог Минэнерго РК',
+    role: 'ORG_ADMIN' as UserRole,
+    orgId: 'minenergo',
+    orgName: 'Минэнерго РК',
+  },
+  {
+    id: 'user-admin-mvd',
+    username: 'admin_mvd',
+    password: 'mvd2026',
+    fullName: 'Методолог МВД РК',
+    role: 'ORG_ADMIN' as UserRole,
+    orgId: 'mvd',
+    orgName: 'МВД РК',
   },
   {
     id: 'user-admin-miicr',
@@ -189,6 +216,16 @@ export function canUserManageOrg(
 
     // Проверяем, является ли targetOrgId потомком user.orgId
     const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
+    const targetOrg = orgMap.get(targetOrgId);
+    const userOrg = orgMap.get(user.orgId);
+
+    // 1. Мгновенная проверка по Materialized Path (каскад по иерархии)
+    if (targetOrg?.path && userOrg?.path) {
+      if (targetOrg.path.startsWith(userOrg.path)) {
+        return { allowed: true };
+      }
+    }
+
     let currId: string | null = targetOrgId;
     const visited = new Set<string>();
 
