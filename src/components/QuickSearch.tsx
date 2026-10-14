@@ -55,7 +55,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
   }, [allOrgs, query]);
 
   return (
-    <div ref={wrapperRef} className="relative w-full max-w-xl">
+    <div ref={wrapperRef} className="relative w-full">
       {/* Акцентная подсветка поля поиска (Градиентная рамка для привлечения внимания) */}
       <div className="relative p-0.5 rounded-2xl bg-gradient-to-r from-blue-500 via-indigo-500 to-sky-400 shadow-md shadow-blue-500/10">
         <div className="relative flex items-center bg-white dark:bg-slate-900 rounded-[14px]">
@@ -88,7 +88,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
 
       {/* Выпадающий список результатов */}
       {isOpen && query.trim() && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800 animate-fadeIn">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800 animate-fadeIn min-w-[480px]">
           {results.length > 0 ? (
             results.map((org) => (
               <div

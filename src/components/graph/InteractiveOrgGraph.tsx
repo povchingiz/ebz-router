@@ -65,6 +65,9 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
       const org = orgMap.get(id);
       if (!org) return;
 
+      const parentOrg = org.parentId ? orgMap.get(org.parentId) : null;
+      const parentName = parentOrg ? (parentOrg.name || parentOrg.fullName) : undefined;
+
       const children = childrenMap.get(id) || [];
       const hasChildren = children.length > 0;
       const isExpanded = navState.expandedIds.has(id);
@@ -77,6 +80,7 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
         selected: isFocused,
         data: {
           org,
+          parentName,
           isExpanded,
           hasChildren,
           childrenCount: children.length,
@@ -213,25 +217,12 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
   return (
     <div className="relative w-full h-[calc(100vh-140px)] min-h-[580px] rounded-3xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm">
       {/* Верхняя панель управления графом: очистка доски + переключатель ориентации */}
-      <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
-        {/* Кнопка сброса дерева / очистки доски на графе */}
-        {(navState.expandedIds.size > 0 || navState.focusedOrgId !== 'ap' || navState.inspector.isOpen) && (
-          <button
-            type="button"
-            onClick={collapseAll}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-black transition-all shadow-md border-2 border-slate-200 dark:border-slate-800"
-            title="Очистить доску и свернуть все открытые карточки к корню (АП)"
-          >
-            <RotateCcw className="w-3.5 h-3.5 text-blue-600" />
-            <span>Очистить доску</span>
-          </button>
-        )}
-
+      <div className="absolute top-4 left-44 z-10 flex items-center gap-2">
         {/* Переключатель ориентации: По вертикали (TB) ⇄ По горизонтали (LR) */}
         <button
           type="button"
           onClick={() => setLayoutDirection((prev) => (prev === 'TB' ? 'LR' : 'TB'))}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-black transition-all shadow-md border-2 border-slate-200 dark:border-slate-800"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all shadow-md border-2 border-slate-200 dark:border-slate-800"
           title="Сменить ориентацию раскладки графа"
         >
           {layoutDirection === 'TB' ? (

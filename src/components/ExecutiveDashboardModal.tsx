@@ -101,14 +101,14 @@ export const ExecutiveDashboardModal: React.FC<ExecutiveDashboardModalProps> = (
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-lg font-black text-slate-900 dark:text-white">
-                  Сводная готовность базы знаний
+                  Сводная заполненность базы знаний
                 </h2>
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
                   Республиканский мониторинг
                 </span>
               </div>
               <p className="text-xs text-slate-500 font-medium mt-0.5">
-                Статус заполнения паспортов, анти-компетенций и готовности ведомств к ИИ-маршрутизации
+                Статус заполнения сведений, компетенций и готовности ведомств к ИИ-маршрутизации
               </p>
             </div>
           </div>
@@ -250,13 +250,13 @@ export const ExecutiveDashboardModal: React.FC<ExecutiveDashboardModalProps> = (
                 </div>
               </div>
 
-              {/* Таблица готовности по ведомствам */}
+              {/* Таблица заполненности по ведомствам */}
               <div className="space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-2">
                     <Building className="w-4 h-4 text-blue-600" />
                     <h3 className="text-sm font-black text-slate-900 dark:text-white">
-                      Готовность ведомств и акиматов ({data.ministries.length})
+                      Заполненность ведомств и акиматов ({data.ministries.length})
                     </h3>
                   </div>
 
@@ -278,7 +278,7 @@ export const ExecutiveDashboardModal: React.FC<ExecutiveDashboardModalProps> = (
                       <tr className="bg-slate-100/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 font-bold border-b border-slate-200 dark:border-slate-800">
                         <th className="py-2.5 px-4">Ведомство</th>
                         <th className="py-2.5 px-3 text-center">Всего подведемств</th>
-                        <th className="py-2.5 px-3 text-center">Готовность</th>
+                        <th className="py-2.5 px-3 text-center">Заполненность</th>
                         <th className="py-2.5 px-3 text-center">Светофор</th>
                         <th className="py-2.5 px-4 text-right">Действие</th>
                       </tr>

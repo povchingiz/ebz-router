@@ -231,10 +231,28 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     });
   }, [org, questions, questionSearch]);
 
-  // Фильтрация организаций для смены родителя (потокеновый автокомплит)
+  // Все потомки текущей организации (дети, внуки и т.д.), чтобы исключить циклы в иерархии
+  const descendantIds = useMemo(() => {
+    if (!org) return new Set<string>();
+    const descendants = new Set<string>();
+    const queue = [org.id];
+    while (queue.length > 0) {
+      const currentId = queue.shift()!;
+      for (const item of allOrgs) {
+        if (item.parentId === currentId && !descendants.has(item.id)) {
+          descendants.add(item.id);
+          queue.push(item.id);
+        }
+      }
+    }
+    return descendants;
+  }, [allOrgs, org]);
+
+  // Фильтрация организаций для смены родителя (исключаем саму организацию и ВСЕХ её потомков)
   const filteredParentCandidates = useMemo(() => {
     if (!org) return [];
-    const list = allOrgs.filter((o) => o.id !== org.id);
+    // Исключаем саму организацию и всех её прямых и косвенных потомков (дочки, внуки)
+    const list = allOrgs.filter((o) => o.id !== org.id && !descendantIds.has(o.id));
     if (!parentSearchQuery.trim()) return list.slice(0, 8);
     const tokens = parentSearchQuery
       .toLowerCase()
@@ -247,7 +265,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         return tokens.every((token) => target.includes(token));
       })
       .slice(0, 15);
-  }, [allOrgs, org, parentSearchQuery]);
+  }, [allOrgs, org, descendantIds, parentSearchQuery]);
 
   if (!isOpen || !org) return null;
 
@@ -406,21 +424,21 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 <h2 className="text-lg font-black text-slate-900 dark:text-white leading-tight">
                   {orgName || org.name}
                 </h2>
-                {/* Светофор статуса готовности */}
+                {/* Светофор статуса заполненности */}
                 {org.status === 'unfilled' || (!org.hasHumanTouch && org.level !== 'central') ? (
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300 border border-rose-200 dark:border-rose-800 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
-                    Требует заполнения
+                    Требует заполнения (0%)
                   </span>
                 ) : org.status === 'in_progress' ? (
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-200 dark:border-amber-800 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    В работе ({org.completenessScore || 65}%)
+                    Заполненность {org.completenessScore || 65}%
                   </span>
                 ) : (
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    Заполнено
+                    Заполненность 100%
                   </span>
                 )}
                 {org.aliases && org.aliases.length > 0 && (
@@ -560,7 +578,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
               }`}
             >
               <GitFork className="w-4 h-4" />
-              Подотчетность
+              Подчинение и структура
             </button>
           )}
         </div>
@@ -1116,15 +1134,122 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* ВКЛАДКА 3: Подотчетность (Смена родителя и создание дочерних структур) */}
+          {/* ВКЛАДКА 4: Подчинение и структура (Вышестоящий орган + Подведомственные дочерние структуры) */}
           {activeTab === 'admin' && permissions.canChangeStructure && (
-            <div className="space-y-4">
-              {/* Секция: Подотчетные организации (Дочерние структуры) */}
-              <div className="p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/90 dark:border-slate-800 space-y-3">
+            <div className="space-y-5">
+              {/* КАРТОЧКА 1: ВЫШЕСТОЯЩИЙ ОРГАН */}
+              <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border-2 border-indigo-100 dark:border-indigo-900/60 space-y-3.5">
+                <div className="flex items-center gap-2 text-xs font-black text-indigo-950 dark:text-indigo-200">
+                  <span className="text-base">⬆️</span>
+                  <span className="uppercase tracking-wide">Вышестоящий орган (Кому подчиняется ведомство)</span>
+                </div>
+
+                {/* Текущий вышестоящий орган */}
+                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800 flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wider">Текущее подчинение:</span>
+                    <span className="text-sm font-black text-slate-900 dark:text-white truncate block">
+                      {parentOrg ? parentOrg.name : '⭐ Высший орган (Корень государственной иерархии)'}
+                    </span>
+                    {parentOrg && (
+                      <span className="text-[11px] text-slate-500 truncate block mt-0.5">
+                        {parentOrg.fullName}
+                      </span>
+                    )}
+                  </div>
+                  {parentOrg && (
+                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 shrink-0">
+                      Вышестоящий
+                    </span>
+                  )}
+                </div>
+
+                {/* Поиск и выбор нового вышестоящего органа */}
+                <div className="space-y-2 pt-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                    Сменить вышестоящий орган:
+                  </label>
+
+                  <div className="relative">
+                    <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="text"
+                      value={parentSearchQuery}
+                      onChange={(e) => setParentSearchQuery(e.target.value)}
+                      placeholder="Поиск родителя (Правительство, Министерство, Агентство)..."
+                      className="w-full pl-9 pr-3 py-2 text-xs font-bold rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-indigo-500 outline-none"
+                    />
+                  </div>
+
+                  {/* Быстрая опция: Корневой уровень (Без вышестоящего) */}
+                  <div
+                    onClick={() => setSelectedParentId(null)}
+                    className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between text-xs font-bold ${
+                      selectedParentId === null
+                        ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300'
+                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 bg-white dark:bg-slate-900'
+                    }`}
+                  >
+                    <div>
+                      <span>⭐ Корневой уровень (Без вышестоящего)</span>
+                      <span className="block text-[10px] text-slate-400 font-normal">
+                        Организация подчиняется напрямую высшему руководству страны
+                      </span>
+                    </div>
+                    {selectedParentId === null && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
+                  </div>
+
+                  {/* Список подходящих органов (без дочерних структур!) */}
+                  <div className="max-h-52 overflow-y-auto space-y-1.5 pr-1">
+                    {filteredParentCandidates.map((cand) => {
+                      const isSelected = selectedParentId === cand.id;
+                      return (
+                        <div
+                          key={cand.id}
+                          onClick={() => setSelectedParentId(cand.id)}
+                          className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between gap-2 ${
+                            isSelected
+                              ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 shadow-xs'
+                              : 'border-slate-200/90 dark:border-slate-800 hover:border-slate-300 bg-white dark:bg-slate-900'
+                          }`}
+                        >
+                          <div className="min-w-0">
+                            <div className="text-xs font-black text-slate-900 dark:text-white truncate">
+                              {cand.name}
+                            </div>
+                            <div className="text-[10px] text-slate-500 truncate">
+                              {cand.fullName}
+                            </div>
+                          </div>
+
+                          {isSelected && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Кнопка подтверждения смены вышестоящего */}
+                  <button
+                    type="button"
+                    onClick={handleReparent}
+                    disabled={isSubmitting || selectedParentId === org.parentId}
+                    className="w-full mt-2 py-2.5 px-4 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-md disabled:opacity-40"
+                  >
+                    {isSubmitting
+                      ? 'Применение изменений...'
+                      : selectedParentId === org.parentId
+                      ? 'Вышестоящий орган не изменен'
+                      : `Утвердить вышестоящим: ${candidateParent ? candidateParent.name : 'Корневой уровень'}`}
+                  </button>
+                </div>
+              </div>
+
+              {/* КАРТОЧКА 2: ПОДВЕДОМСТВЕННЫЕ ОРГАНИЗАЦИИ (ДОЧЕРНИЕ СТРУКТУРЫ) */}
+              <div className="p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border-2 border-slate-200/90 dark:border-slate-800 space-y-3">
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                    <Building2 className="w-4 h-4 text-blue-600" />
-                    <span>Подотчетные организации ({directChildren.length})</span>
+                    <span className="text-base">⬇️</span>
+                    <span className="uppercase tracking-wide">Подведомственные организации ({directChildren.length})</span>
                   </div>
                   {onCreateOrg && (
                     <button
@@ -1137,14 +1262,18 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   )}
                 </div>
 
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Организации и комитеты, которые напрямую подчиняются данному ведомству.
+                </p>
+
                 {directChildren.length > 0 ? (
-                  <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1 divide-y divide-slate-100 dark:divide-slate-800">
+                  <div className="max-h-60 overflow-y-auto space-y-2 pr-1">
                     {directChildren.map((c) => (
                       <div
                         key={c.id}
-                        className="pt-1.5 first:pt-0 flex items-center justify-between text-xs"
+                        className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-between gap-2 text-xs"
                       >
-                        <div className="min-w-0 pr-2">
+                        <div className="min-w-0">
                           <span className="font-bold text-slate-900 dark:text-white truncate block">
                             {c.name}
                           </span>
@@ -1152,6 +1281,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                             {c.fullName}
                           </span>
                         </div>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 shrink-0">
+                          Дочерний орган
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -1161,92 +1293,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 )}
               </div>
-
-              <div className="p-3.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 leading-relaxed font-medium">
-                Перепривязка родителя изменит положение ведомства в графе структуры. Дочерние ведомства переместятся вместе с ним.
-              </div>
-
-              {/* Текущий родитель */}
-              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs">
-                <span className="text-slate-500 block mb-1">Текущий вышестоящий орган:</span>
-                <span className="font-bold text-slate-900 dark:text-white">
-                  {parentOrg ? `${parentOrg.name} (${parentOrg.fullName})` : '— Корневой уровень (Без родителя)'}
-                </span>
-              </div>
-
-              {/* Потокеновый выбор нового родителя */}
-              <div className="space-y-2">
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
-                  Поиск нового вышестоящего органа:
-                </label>
-
-                <div className="relative">
-                  <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
-                  <input
-                    type="text"
-                    value={parentSearchQuery}
-                    onChange={(e) => setParentSearchQuery(e.target.value)}
-                    placeholder="Начните вводить название (АРРФР, Минэнерго, АП)..."
-                    className="w-full pl-9 pr-3 py-2.5 text-xs font-bold rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
-                  />
-                </div>
-
-                {/* Быстрая кнопка "Корневой уровень" */}
-                <div
-                  onClick={() => setSelectedParentId(null)}
-                  className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between text-xs font-bold ${
-                    selectedParentId === null
-                      ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300'
-                      : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50'
-                  }`}
-                >
-                  <span>(Без родителя / Корневой уровень)</span>
-                  {selectedParentId === null && <Check className="w-4 h-4 text-indigo-600" />}
-                </div>
-
-                {/* Список подходящих органов */}
-                <div className="max-h-60 overflow-y-auto space-y-1.5 pr-1">
-                  {filteredParentCandidates.map((cand) => {
-                    const isSelected = selectedParentId === cand.id;
-                    return (
-                      <div
-                        key={cand.id}
-                        onClick={() => setSelectedParentId(cand.id)}
-                        className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between gap-2 ${
-                          isSelected
-                            ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 shadow-xs'
-                            : 'border-slate-200/90 dark:border-slate-800 hover:border-slate-300 bg-white dark:bg-slate-900'
-                        }`}
-                      >
-                        <div className="min-w-0">
-                          <div className="text-xs font-black text-slate-900 dark:text-white truncate">
-                            {cand.name}
-                          </div>
-                          <div className="text-[10px] text-slate-500 truncate">
-                            {cand.fullName}
-                          </div>
-                        </div>
-
-                        {isSelected && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Кнопка подтверждения смены подотчетности */}
-              <button
-                type="button"
-                onClick={handleReparent}
-                disabled={isSubmitting || selectedParentId === org.parentId}
-                className="w-full py-3 px-4 rounded-2xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-md disabled:opacity-40"
-              >
-                {isSubmitting
-                  ? 'Применение изменений...'
-                  : selectedParentId === org.parentId
-                  ? 'Родитель не изменен'
-                  : `Определить подотчетным органу: ${candidateParent ? candidateParent.name : 'Корневой уровень'}`}
-              </button>
             </div>
           )}
         </div>

@@ -6,6 +6,7 @@ import { ChevronDown, ChevronUp, Lock, FileText, MapPin, Tag, EyeOff } from 'luc
 
 export interface OrgNodeData {
   org: GovOrg;
+  parentName?: string;
   isExpanded: boolean;
   hasChildren: boolean;
   childrenCount: number;
@@ -21,6 +22,7 @@ export interface OrgNodeData {
 export const OrgFlowCard = ({ data, selected }: any) => {
   const {
     org,
+    parentName,
     isExpanded,
     hasChildren,
     childrenCount,
@@ -100,6 +102,22 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </button>
       </div>
 
+      {/* Индикатор подчинения: Вышестоящий орган или Корневой уровень */}
+      <div className="mb-1 text-[10px] font-semibold">
+        {parentName ? (
+          <div className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 bg-slate-100/90 dark:bg-slate-800/80 px-2 py-0.5 rounded-md truncate max-w-full">
+            <span className="text-blue-600 dark:text-blue-400 shrink-0">⬆️</span>
+            <span className="text-slate-400 shrink-0">Вышестоящий:</span>
+            <span className="font-bold text-slate-700 dark:text-slate-200 truncate">{parentName}</span>
+          </div>
+        ) : (
+          <div className="inline-flex items-center gap-1 text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-md border border-amber-200/60 dark:border-amber-900/40">
+            <span>⭐</span>
+            <span className="font-bold">Высший орган (Корень)</span>
+          </div>
+        )}
+      </div>
+
       {/* Название и описание */}
       <div className="my-1">
         <div className="flex items-center gap-1.5 flex-wrap">
@@ -125,22 +143,22 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         )}
       </div>
 
-      {/* Индикатор готовности базы знаний (Светофор) */}
+      {/* Индикатор заполненности базы знаний (Светофор) */}
       <div className="mt-1 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px]">
         {isUnfilled ? (
           <span className="inline-flex items-center gap-1 font-bold text-rose-600 dark:text-rose-400">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
-            <span>Требует заполнения</span>
+            <span>Требует заполнения (0%)</span>
           </span>
         ) : isInProgress ? (
           <span className="inline-flex items-center gap-1 font-bold text-amber-600 dark:text-amber-400">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-            <span>В работе ({org.completenessScore || 65}%)</span>
+            <span>Заполненность {org.completenessScore || 65}%</span>
           </span>
         ) : (
           <span className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <span>Заполнено</span>
+            <span>Заполненность 100%</span>
           </span>
         )}
 
@@ -151,17 +169,17 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         )}
       </div>
 
-      {/* Нижняя панель действий (только если есть подотчетные) */}
+      {/* Нижняя панель действий (только если есть подотчетные дочерние структуры) */}
       {hasChildren && (
         <div className="pt-2 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
-          {/* Кнопка Развернуть/Свернуть подотчетных */}
+          {/* Кнопка Развернуть/Свернуть дочерние организации */}
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               onToggleExpand(org.id, e);
             }}
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-xl font-bold transition-all shadow-xs ${
+            className={`w-full inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl font-bold transition-all shadow-xs ${
               isExpanded
                 ? 'bg-blue-600 text-white hover:bg-blue-700'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700'
@@ -169,13 +187,13 @@ export const OrgFlowCard = ({ data, selected }: any) => {
           >
             {isExpanded ? (
               <>
-                <ChevronUp className="w-3 h-3" />
-                <span>Свернуть</span>
+                <ChevronUp className="w-3.5 h-3.5" />
+                <span>Свернуть ({childrenCount})</span>
               </>
             ) : (
               <>
-                <ChevronDown className="w-3 h-3" />
-                <span>+ Подотчетные ({childrenCount})</span>
+                <ChevronDown className="w-3.5 h-3.5" />
+                <span>⬇️ Дочерние организации ({childrenCount})</span>
               </>
             )}
           </button>
