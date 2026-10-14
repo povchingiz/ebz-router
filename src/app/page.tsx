@@ -56,18 +56,38 @@ function HomeContent({
 
   // Права доступа к сводному дашборду (Администраторы)
   const isAdminUser = Boolean(
-    authUser?.role === 'GLOBAL_ADMIN' ||
-    authUser?.role === 'ORG_ADMIN' ||
-    currentUser.role === 'superadmin'
+    authUser
+      ? authUser.role === 'GLOBAL_ADMIN' || authUser.role === 'ORG_ADMIN'
+      : false
   );
 
-  // Детектор коллизий строго конфиденциален для главного супер-админа
+  // Детектор коллизий «Пересечения» строго конфиденциален только для главного супер-админа
   const isSuperAdminOwner = Boolean(
-    authUser?.username === 'superadmin' ||
-    authUser?.role === 'GLOBAL_ADMIN' ||
-    currentUser.id === 'user-admin' ||
-    currentUser.id === 'admin_ap'
+    authUser
+      ? authUser.username === 'superadmin' || authUser.role === 'GLOBAL_ADMIN'
+      : false
   );
+
+  // При смене учетной записи: автоматическая навигация и открытие ведомства пользователя
+  useEffect(() => {
+    if (!authUser) return;
+
+    if (authUser.orgId) {
+      // Ищем ведомство пользователя по ID или slug
+      const targetOrg = orgs.find(
+        (o) => o.id === authUser.orgId || String(o.org_id) === String(authUser.orgId)
+      );
+      if (targetOrg) {
+        // Направляем граф прямо к этому ведомству, центрируем и открываем его паспорт
+        navigateToOrg(targetOrg.id, true);
+        openInspector(targetOrg.id);
+      }
+    } else if (authUser.role === 'GLOBAL_ADMIN') {
+      // Для супер-админа центрируем на корневом органе (АП)
+      navigateToOrg('ap', false);
+      closeInspector();
+    }
+  }, [authUser?.userId, authUser?.orgId, orgs, navigateToOrg, openInspector, closeInspector]);
 
   // Сохранение сведений (компетенции, локация, юрисдикция, вопросы, наименования)
   const handleSaveContent = async (updatedData: {

@@ -322,11 +322,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   };
 
   const isSuperAdminOwner = Boolean(
-    authUser?.username === 'superadmin' ||
-    authUser?.role === 'GLOBAL_ADMIN' ||
-    currentUser.id === 'user-admin' ||
-    currentUser.id === 'admin_ap' ||
-    currentUser.role === 'superadmin'
+    authUser
+      ? authUser.username === 'superadmin' || authUser.role === 'GLOBAL_ADMIN'
+      : false
   );
   const parentOrg = allOrgs.find((o) => o.id === org.parentId);
   const candidateParent = allOrgs.find((o) => o.id === selectedParentId);

@@ -145,6 +145,63 @@ export const UserBadge: React.FC = () => {
             <button
               type="button"
               onClick={async () => {
+                await login('curator_apr', 'apr2026');
+                setIsMenuOpen(false);
+              }}
+              className={`w-full p-2 rounded-xl text-left text-xs transition-colors flex items-center justify-between ${
+                user.username === 'curator_apr'
+                  ? 'bg-blue-100/70 dark:bg-blue-950 font-bold text-blue-900 dark:text-blue-200'
+                  : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Building2 className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Аппарат Правительства</span>
+              </div>
+              <span className="text-[9px] font-mono text-slate-400">apr2026</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={async () => {
+                await login('admin_minenergo', 'energo2026');
+                setIsMenuOpen(false);
+              }}
+              className={`w-full p-2 rounded-xl text-left text-xs transition-colors flex items-center justify-between ${
+                user.username === 'admin_minenergo'
+                  ? 'bg-blue-100/70 dark:bg-blue-950 font-bold text-blue-900 dark:text-blue-200'
+                  : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Building2 className="w-3.5 h-3.5 text-amber-600" />
+                <span>Минэнерго РК (МЭ)</span>
+              </div>
+              <span className="text-[9px] font-mono text-slate-400">energo2026</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={async () => {
+                await login('admin_mvd', 'mvd2026');
+                setIsMenuOpen(false);
+              }}
+              className={`w-full p-2 rounded-xl text-left text-xs transition-colors flex items-center justify-between ${
+                user.username === 'admin_mvd'
+                  ? 'bg-blue-100/70 dark:bg-blue-950 font-bold text-blue-900 dark:text-blue-200'
+                  : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Building2 className="w-3.5 h-3.5 text-rose-600" />
+                <span>МВД РК</span>
+              </div>
+              <span className="text-[9px] font-mono text-slate-400">mvd2026</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={async () => {
                 await login('admin_miicr', 'miicr7419');
                 setIsMenuOpen(false);
               }}
