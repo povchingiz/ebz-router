@@ -2,8 +2,7 @@ import React from 'react';
 import { Handle, Position } from '@xyflow/react';
 import { GovOrg } from '../../types';
 import { LEVEL_CONFIG } from '../OrgCard';
-import { ChevronDown, ChevronUp, Lock, FileText, ChevronRight } from 'lucide-react';
-import { dropdownCoordinator } from './dropdownCoordinator';
+import { ChevronDown, ChevronUp, Lock, FileText } from 'lucide-react';
 
 export interface OrgNodeData {
   org: GovOrg;
@@ -11,11 +10,9 @@ export interface OrgNodeData {
   hasChildren: boolean;
   childrenCount: number;
   isSelected: boolean;
+  layoutDirection?: 'TB' | 'LR';
   hiddenCount?: number;
   hiddenChildren?: GovOrg[];
-  isDropdownOpen?: boolean;
-  onToggleDropdown?: () => void;
-  onCloseDropdown?: () => void;
   onToggleExpand: (id: string, e: React.MouseEvent) => void;
   onOpenDetails: (org: GovOrg) => void;
   onSelectChildFromDropdown?: (org: GovOrg) => void;
@@ -27,52 +24,11 @@ export const OrgFlowCard = ({ data, selected }: any) => {
     isExpanded,
     hasChildren,
     childrenCount,
-    hiddenCount = 0,
-    hiddenChildren = [],
+    layoutDirection = 'TB',
     onToggleExpand,
     onOpenDetails,
-    onSelectChildFromDropdown,
   } = data as OrgNodeData;
   const config = LEVEL_CONFIG[org.level] || LEVEL_CONFIG.agency;
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const [searchQuery, setSearchQuery] = React.useState('');
-  const dropdownRef = React.useRef<HTMLDivElement>(null);
-
-  // Подписка на глобальный координатор: гарантирует ровно один открытый список без перерендера графа
-  React.useEffect(() => {
-    return dropdownCoordinator.subscribe((activeId) => {
-      setIsDropdownOpen(activeId === org.id);
-    });
-  }, [org.id]);
-
-  // Закрытие выпадающего списка при клике вне его или нажатии Escape
-  React.useEffect(() => {
-    if (!isDropdownOpen) return;
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        dropdownCoordinator.close();
-      }
-    }
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        dropdownCoordinator.close();
-      }
-    }
-    const timer = setTimeout(() => {
-      document.addEventListener('click', handleClickOutside);
-      document.addEventListener('keydown', handleKeyDown);
-    }, 20);
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener('click', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isDropdownOpen]);
-
-  const filteredHidden = hiddenChildren.filter((c) =>
-    c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    c.fullName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div
@@ -82,11 +38,13 @@ export const OrgFlowCard = ({ data, selected }: any) => {
           : `${config.borderClass}`
       } ${org.lockedBy ? 'border-amber-400 ring-2 ring-amber-400/40' : ''}`}
     >
-      {/* Ручка связи сверху */}
+      {/* Ручка связи сверху (при TB) или слева (при LR) */}
       <Handle
         type="target"
-        position={Position.Top}
-        className="!w-2.5 !h-2.5 !bg-blue-600 !border-2 !border-white dark:!border-slate-900 !-top-1.5"
+        position={layoutDirection === 'LR' ? Position.Left : Position.Top}
+        className={`!w-2.5 !h-2.5 !bg-blue-600 !border-2 !border-white dark:!border-slate-900 ${
+          layoutDirection === 'LR' ? '!-left-1.5' : '!-top-1.5'
+        }`}
       />
 
       {/* Индикатор блокировки */}
@@ -147,88 +105,23 @@ export const OrgFlowCard = ({ data, selected }: any) => {
             ) : (
               <>
                 <ChevronDown className="w-3 h-3" />
-                <span>+ Подотчетные</span>
+                <span>+ Подотчетные ({childrenCount})</span>
               </>
             )}
           </button>
+        </div>
+      )}
 
-        {/* Интерактивный выпадающий список прямо на карточке органа */}
-        {hasChildren && isExpanded && hiddenCount > 0 && onSelectChildFromDropdown && (
-          <div className="relative" ref={dropdownRef}>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                dropdownCoordinator.toggle(org.id);
-              }}
-              className="inline-flex items-center gap-1 px-2 py-1 rounded-xl text-[10px] font-black bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 hover:bg-indigo-100 transition-colors border border-indigo-200 dark:border-indigo-800"
-            >
-              <span>Еще +{hiddenCount}</span>
-              <ChevronDown className="w-3 h-3" />
-            </button>
-
-            {isDropdownOpen && (
-              <div
-                onClick={(e) => e.stopPropagation()}
-                onWheel={(e) => e.stopPropagation()}
-                className="nowheel nodrag nopan absolute right-0 bottom-full mb-2 w-64 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 p-2.5 text-left animate-fadeIn"
-              >
-                <div className="text-[10px] font-extrabold uppercase text-slate-400 px-1 mb-1.5">
-                  Выбрать ведомство в центр:
-                </div>
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Поиск по остальным..."
-                  className="w-full px-2.5 py-1 text-[11px] rounded-lg bg-slate-100 dark:bg-slate-800 border-none outline-none font-medium mb-1.5"
-                  autoFocus
-                />
-                <div
-                  className="max-h-48 overflow-y-auto space-y-1 nowheel nodrag"
-                  onWheel={(e) => e.stopPropagation()}
-                >
-                  {filteredHidden.map((child) => (
-                    <div
-                      key={child.id}
-                      onClick={() => {
-                        onSelectChildFromDropdown(child);
-                        dropdownCoordinator.close();
-                      }}
-                      className="p-2 hover:bg-blue-50 dark:hover:bg-blue-950/60 rounded-xl cursor-pointer transition-colors flex items-center justify-between gap-1 group"
-                    >
-                      <div className="min-w-0">
-                        <div className="text-[11px] font-bold text-slate-900 dark:text-white group-hover:text-blue-600 truncate">
-                          {child.name}
-                        </div>
-                        <div className="text-[9px] text-slate-500 truncate">
-                          {child.fullName}
-                        </div>
-                      </div>
-                      <ChevronRight className="w-3 h-3 text-slate-400 group-hover:text-blue-600 shrink-0" />
-                    </div>
-                  ))}
-                  {filteredHidden.length === 0 && (
-                    <div className="p-3 text-center text-[10px] text-slate-400">
-                      Не найдено
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    )}
-
-    {/* Ручка связи снизу */}
-    {hasChildren && (
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        className="!w-2.5 !h-2.5 !bg-blue-600 !border-2 !border-white dark:!border-slate-900 !-bottom-1.5"
-      />
-    )}
+      {/* Ручка связи снизу (при TB) или справа (при LR) */}
+      {hasChildren && (
+        <Handle
+          type="source"
+          position={layoutDirection === 'LR' ? Position.Right : Position.Bottom}
+          className={`!w-2.5 !h-2.5 !bg-blue-600 !border-2 !border-white dark:!border-slate-900 ${
+            layoutDirection === 'LR' ? '!-right-1.5' : '!-bottom-1.5'
+          }`}
+        />
+      )}
     </div>
   );
 };

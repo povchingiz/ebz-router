@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import {
   ReactFlow,
   Controls,
@@ -16,9 +16,10 @@ import {
 import '@xyflow/react/dist/style.css';
 import { GovOrg } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
+import { MoreChildrenCard } from './MoreChildrenCard';
 import { getDagreLayout } from './layout';
 import { useNavigation } from '../../lib/NavigationContext';
-import { Minimize2, RotateCcw } from 'lucide-react';
+import { RotateCcw, ArrowDownUp, ArrowLeftRight } from 'lucide-react';
 import { dropdownCoordinator } from './dropdownCoordinator';
 
 interface InteractiveOrgGraphProps {
@@ -27,10 +28,13 @@ interface InteractiveOrgGraphProps {
 
 const nodeTypes = {
   orgCard: OrgFlowCard,
+  moreChildren: MoreChildrenCard,
 };
 
 function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
   const { fitView } = useReactFlow();
+  const [layoutDirection, setLayoutDirection] = useState<'TB' | 'LR'>('TB');
+
   const {
     navState,
     visibleNodeIds,
@@ -39,7 +43,6 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
     selectChildInCenter,
     openInspector,
     collapseAll,
-    consumeCameraTarget,
   } = useNavigation();
 
   // Построение графа узлов и связей на основе детерминированного состояния
@@ -65,7 +68,6 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
       const children = childrenMap.get(id) || [];
       const hasChildren = children.length > 0;
       const isExpanded = navState.expandedIds.has(id);
-      const hiddenChildren = hiddenChildrenMap.get(id) || [];
       const isFocused = navState.focusedOrgId === id;
 
       nodes.push({
@@ -79,8 +81,7 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
           hasChildren,
           childrenCount: children.length,
           isSelected: isFocused,
-          hiddenCount: hiddenChildren.length,
-          hiddenChildren,
+          layoutDirection,
           onToggleExpand: () => {
             dropdownCoordinator.close();
             toggleExpandParent(org.id);
@@ -88,10 +89,6 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
           onOpenDetails: () => {
             dropdownCoordinator.close();
             openInspector(org.id);
-          },
-          onSelectChildFromDropdown: (child: GovOrg) => {
-            dropdownCoordinator.close();
-            selectChildInCenter(org.id, child.id);
           },
         },
       });
@@ -114,6 +111,44 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
       }
     });
 
+    // Добавляем «полупрозрачную» карточку-компаньон для остальных подотчетных (вместо дропдауна внутри ноды)
+    hiddenChildrenMap.forEach((hiddenChildren, parentId) => {
+      if (hiddenChildren.length > 0 && navState.expandedIds.has(parentId)) {
+        const parentOrg = orgMap.get(parentId);
+        const moreNodeId = `more-${parentId}`;
+
+        nodes.push({
+          id: moreNodeId,
+          type: 'moreChildren',
+          position: { x: 0, y: 0 },
+          data: {
+            parentId,
+            parentName: parentOrg?.name || 'ведомства',
+            hiddenChildren,
+            layoutDirection,
+            onSelectChild: (child: GovOrg) => {
+              selectChildInCenter(parentId, child.id);
+            },
+          },
+        });
+
+        edges.push({
+          id: `e-${parentId}-${moreNodeId}`,
+          source: parentId,
+          target: moreNodeId,
+          type: 'smoothstep',
+          animated: true,
+          style: { stroke: '#60a5fa', strokeWidth: 2, strokeDasharray: '4 4' },
+          markerEnd: {
+            type: MarkerType.ArrowClosed,
+            width: 14,
+            height: 14,
+            color: '#60a5fa',
+          },
+        });
+      }
+    });
+
     return { flowNodes: nodes, flowEdges: edges };
   }, [
     allOrgs,
@@ -121,14 +156,15 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
     hiddenChildrenMap,
     navState.expandedIds,
     navState.focusedOrgId,
+    layoutDirection,
     toggleExpandParent,
     openInspector,
     selectChildInCenter,
   ]);
 
   const layouted = useMemo(() => {
-    return getDagreLayout(flowNodes, flowEdges, 'TB');
-  }, [flowNodes, flowEdges]);
+    return getDagreLayout(flowNodes, flowEdges, layoutDirection);
+  }, [flowNodes, flowEdges, layoutDirection]);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(layouted.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(layouted.edges);
@@ -137,8 +173,6 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
     setNodes(layouted.nodes);
     setEdges(layouted.edges);
 
-    // Плавное адаптивное центрирование графа в видимой области:
-    // Если открыт инспектор сведений справа — центрируем в левой рабочей области, чтобы карточки не перекрывались
     const timer = setTimeout(() => {
       fitView({
         padding: {
@@ -157,9 +191,10 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
 
   return (
     <div className="relative w-full h-[calc(100vh-140px)] min-h-[580px] rounded-3xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm">
-      {/* Кнопка сброса дерева / очистки доски на графе */}
-      {(navState.expandedIds.size > 0 || navState.focusedOrgId !== 'ap' || navState.inspector.isOpen) && (
-        <div className="absolute top-4 left-4 z-10">
+      {/* Верхняя панель управления графом: очистка доски + переключатель ориентации */}
+      <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+        {/* Кнопка сброса дерева / очистки доски на графе */}
+        {(navState.expandedIds.size > 0 || navState.focusedOrgId !== 'ap' || navState.inspector.isOpen) && (
           <button
             type="button"
             onClick={collapseAll}
@@ -169,8 +204,28 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
             <RotateCcw className="w-3.5 h-3.5 text-blue-600" />
             <span>Очистить доску</span>
           </button>
-        </div>
-      )}
+        )}
+
+        {/* Переключатель ориентации: По вертикали (TB) ⇄ По горизонтали (LR) */}
+        <button
+          type="button"
+          onClick={() => setLayoutDirection((prev) => (prev === 'TB' ? 'LR' : 'TB'))}
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-black transition-all shadow-md border-2 border-slate-200 dark:border-slate-800"
+          title="Сменить ориентацию раскладки графа"
+        >
+          {layoutDirection === 'TB' ? (
+            <>
+              <ArrowLeftRight className="w-3.5 h-3.5 text-blue-600" />
+              <span>Вид: В горизонталь</span>
+            </>
+          ) : (
+            <>
+              <ArrowDownUp className="w-3.5 h-3.5 text-blue-600" />
+              <span>Вид: В вертикаль</span>
+            </>
+          )}
+        </button>
+      </div>
 
       <ReactFlow
         nodes={nodes}
