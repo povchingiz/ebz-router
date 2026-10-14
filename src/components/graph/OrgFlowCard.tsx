@@ -102,22 +102,6 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </button>
       </div>
 
-      {/* Индикатор подчинения: Вышестоящий орган или Корневой уровень */}
-      <div className="mb-1 text-[10px] font-semibold">
-        {parentName ? (
-          <div className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 bg-slate-100/90 dark:bg-slate-800/80 px-2 py-0.5 rounded-md truncate max-w-full">
-            <span className="text-blue-600 dark:text-blue-400 shrink-0">⬆️</span>
-            <span className="text-slate-400 shrink-0">Вышестоящий:</span>
-            <span className="font-bold text-slate-700 dark:text-slate-200 truncate">{parentName}</span>
-          </div>
-        ) : (
-          <div className="inline-flex items-center gap-1 text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-md border border-amber-200/60 dark:border-amber-900/40">
-            <span>⭐</span>
-            <span className="font-bold">Высший орган (Корень)</span>
-          </div>
-        )}
-      </div>
-
       {/* Название и описание */}
       <div className="my-1">
         <div className="flex items-center gap-1.5 flex-wrap">

@@ -1149,7 +1149,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   <div className="min-w-0">
                     <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wider">Текущее подчинение:</span>
                     <span className="text-sm font-black text-slate-900 dark:text-white truncate block">
-                      {parentOrg ? parentOrg.name : '⭐ Высший орган (Корень государственной иерархии)'}
+                      {parentOrg ? parentOrg.name : 'Корневой уровень (Без вышестоящего органа)'}
                     </span>
                     {parentOrg && (
                       <span className="text-[11px] text-slate-500 truncate block mt-0.5">
@@ -1191,7 +1191,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                     }`}
                   >
                     <div>
-                      <span>⭐ Корневой уровень (Без вышестоящего)</span>
+                      <span>Корневой уровень (Без вышестоящего)</span>
                       <span className="block text-[10px] text-slate-400 font-normal">
                         Организация подчиняется напрямую высшему руководству страны
                       </span>
