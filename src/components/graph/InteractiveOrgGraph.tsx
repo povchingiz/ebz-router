@@ -257,10 +257,11 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
         onPaneClick={() => dropdownCoordinator.close()}
         minZoom={0.15}
         maxZoom={2.5}
-        zoomOnScroll={true}
+        panOnScroll={true}
+        zoomOnScroll={false}
+        zoomActivationKeyCode="Control"
         zoomOnPinch={true}
-        panOnScroll={false}
-        zoomActivationKeyCode={null}
+        panOnDrag={true}
         elementsSelectable={true}
       >
         <Background color="#cbd5e1" gap={24} size={1.5} />
