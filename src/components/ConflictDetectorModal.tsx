@@ -166,7 +166,7 @@ export const ConflictDetectorModal: React.FC<ConflictDetectorModalProps> = ({
                       {item.status === 'resolved' ? (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
                           <CheckCircle2 className="w-3.5 h-3.5" />
-                          Разграничено (100%)
+                          Разграничено
                         </span>
                       ) : item.status === 'partial' ? (
                         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800">

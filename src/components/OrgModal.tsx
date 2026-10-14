@@ -79,16 +79,13 @@ export const OrgModal: React.FC<OrgModalProps> = ({
         {/* Шапка модалки */}
         <div className="flex items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-850">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
-                v{org.version}
-              </span>
-              {isLockedByOther && (
+            {isLockedByOther && (
+              <div className="flex items-center gap-2 mb-1">
                 <span className="flex items-center gap-1 text-xs text-amber-600 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded font-medium">
                   <Lock className="w-3 h-3" /> Правки ведет: {org.lockedBy?.userName}
                 </span>
-              )}
-            </div>
+              </div>
+            )}
             <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-tight">
               {org.name}
             </h3>

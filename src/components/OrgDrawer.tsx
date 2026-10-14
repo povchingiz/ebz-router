@@ -410,10 +410,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         <div className="p-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-850 shrink-0">
           <div className="flex items-center justify-between gap-3 mb-2.5">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-black px-2.5 py-1 rounded-lg bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">
-                v{org.version}
-              </span>
-
               {permissions.canChangeStructure && onCreateOrg && (
                 <button
                   type="button"
@@ -468,23 +464,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 <h2 className="text-lg font-black text-slate-900 dark:text-white leading-tight">
                   {orgName || org.name}
                 </h2>
-                {/* Светофор статуса заполненности */}
-                {org.status === 'unfilled' || (!org.hasHumanTouch && org.level !== 'central') ? (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300 border border-rose-200 dark:border-rose-800 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
-                    Требует заполнения (0%)
-                  </span>
-                ) : org.status === 'in_progress' ? (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-200 dark:border-amber-800 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    Заполненность {org.completenessScore || 65}%
-                  </span>
-                ) : (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    Заполненность 100%
-                  </span>
-                )}
                 {org.aliases && org.aliases.length > 0 && (
                   <div className="flex items-center gap-1 flex-wrap">
                     {org.aliases.slice(0, 3).map((alias, idx) => (
