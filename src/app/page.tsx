@@ -8,12 +8,16 @@ import { InteractiveOrgGraph } from '../components/graph/InteractiveOrgGraph';
 import { ListView } from '../components/ListView';
 import { QuickSearch } from '../components/QuickSearch';
 import { OrgDrawer } from '../components/OrgDrawer';
-import { CsvModal } from '../components/CsvModal';
+import { BulkExcelModal } from '../components/BulkExcelModal';
+import { ExecutiveDashboardModal } from '../components/ExecutiveDashboardModal';
+import { ConflictDetectorModal } from '../components/ConflictDetectorModal';
 import { UserBadge } from '../components/auth/UserBadge';
 import {
   Network,
   List,
   FileSpreadsheet,
+  BarChart3,
+  ShieldAlert,
   RotateCw,
   RotateCcw,
 } from 'lucide-react';
@@ -32,7 +36,9 @@ function HomeContent({
   setCurrentUser: React.Dispatch<React.SetStateAction<User>>;
 }) {
   const [viewMode, setViewMode] = useState<'graph' | 'list'>('graph');
-  const [isCsvModalOpen, setIsCsvModalOpen] = useState(false);
+  const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
+  const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false);
+  const [isConflictModalOpen, setIsConflictModalOpen] = useState(false);
 
   const { inspectorOrg, closeInspector, openInspector, navigateToOrg, collapseAll } = useNavigation();
   const { user: authUser, canManageOrg } = useAuth();
@@ -44,6 +50,21 @@ function HomeContent({
         role: authUser.role === 'GLOBAL_ADMIN' || authUser.role === 'ORG_ADMIN' ? 'superadmin' : 'viewer',
       }
     : currentUser;
+
+  // Права доступа к сводному дашборду (Администраторы)
+  const isAdminUser = Boolean(
+    authUser?.role === 'GLOBAL_ADMIN' ||
+    authUser?.role === 'ORG_ADMIN' ||
+    currentUser.role === 'superadmin'
+  );
+
+  // Детектор коллизий строго конфиденциален для главного супер-админа
+  const isSuperAdminOwner = Boolean(
+    authUser?.username === 'superadmin' ||
+    authUser?.role === 'GLOBAL_ADMIN' ||
+    currentUser.id === 'user-admin' ||
+    currentUser.id === 'admin_ap'
+  );
 
   // Сохранение сведений (компетенции, локация, юрисдикция, вопросы, наименования)
   const handleSaveContent = async (updatedData: {
@@ -175,6 +196,55 @@ function HomeContent({
 
           {/* Действия и тулбар */}
           <div className="flex items-center gap-3 shrink-0">
+            {/* ИИ-Маршрутизатор: серая неактивная плашка */}
+            <div
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-bold bg-slate-100 dark:bg-slate-800/80 text-slate-400 dark:text-slate-500 border border-slate-200/60 dark:border-slate-800 cursor-not-allowed select-none transition-opacity"
+              title="ИИ-маршрутизатор временно отключен на период наполнения и верификации базы знаний"
+            >
+              <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
+              <span>⚡ ИИ-Маршрутизатор</span>
+              <span className="text-[10px] font-medium bg-slate-200/70 dark:bg-slate-700/70 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded-md">
+                Скоро
+              </span>
+            </div>
+
+            {/* Пакетная работа через Excel/CSV */}
+            <button
+              type="button"
+              onClick={() => setIsBulkModalOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-bold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-all shadow-xs active:scale-95 border border-slate-200/80 dark:border-slate-700"
+              title="Пакетная работа через Excel/CSV с человеческими названиями колонок и защитой данных"
+            >
+              <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="hidden sm:inline">Excel / Пакетно</span>
+            </button>
+
+            {/* Сводный дашборд готовности (Только для администраторов) */}
+            {isAdminUser && (
+              <button
+                type="button"
+                onClick={() => setIsDashboardModalOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-bold bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/40 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 transition-all shadow-xs active:scale-95 border border-blue-200/80 dark:border-blue-800"
+                title="Сводная готовность базы знаний по всем ведомствам республики"
+              >
+                <BarChart3 className="w-3.5 h-3.5 text-blue-600" />
+                <span className="hidden sm:inline">Готовность</span>
+              </button>
+            )}
+
+            {/* Детектор конфликтов (Строго для супер-администратора) */}
+            {isSuperAdminOwner && (
+              <button
+                type="button"
+                onClick={() => setIsConflictModalOpen(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-bold bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/50 text-rose-700 dark:text-rose-300 transition-all shadow-xs active:scale-95 border border-rose-200/80 dark:border-rose-800"
+                title="Детектор коллизий и спорных компетенций (только АП РК)"
+              >
+                <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
+                <span className="hidden sm:inline">Коллизии</span>
+              </button>
+            )}
+
             {/* Кнопка сброса/очистки доски (Свернуть все ветви к корню) */}
             <button
               type="button"
@@ -245,12 +315,33 @@ function HomeContent({
         onCreateOrg={handleCreateOrg}
       />
 
-      {/* Модальное окно импорта CSV */}
-      <CsvModal
-        currentUser={currentUser}
-        isOpen={isCsvModalOpen}
-        onClose={() => setIsCsvModalOpen(false)}
-        onImport={handleImportCsv}
+      {/* Модальное окно пакетной работы через Excel/CSV */}
+      <BulkExcelModal
+        isOpen={isBulkModalOpen}
+        onClose={() => setIsBulkModalOpen(false)}
+        onSuccess={loadOrgs}
+        selectedBranchId={inspectorOrg?.org_id ? String(inspectorOrg.org_id) : undefined}
+      />
+
+      {/* Модальное окно сводной готовности (Для администраторов) */}
+      <ExecutiveDashboardModal
+        isOpen={isDashboardModalOpen}
+        onClose={() => setIsDashboardModalOpen(false)}
+        onSelectOrg={(targetOrgId) => {
+          const resolvedId = targetOrgId.startsWith('org-') ? targetOrgId : `org-${targetOrgId}`;
+          navigateToOrg(resolvedId, true);
+        }}
+      />
+
+      {/* Модальное окно детектора коллизий (Только для главного супер-админа) */}
+      <ConflictDetectorModal
+        isOpen={isConflictModalOpen}
+        onClose={() => setIsConflictModalOpen(false)}
+        onOpenOrgDrawer={(targetOrgId) => {
+          const resolvedId = targetOrgId.startsWith('org-') ? targetOrgId : `org-${targetOrgId}`;
+          navigateToOrg(resolvedId, true);
+          openInspector(resolvedId);
+        }}
       />
     </div>
   );

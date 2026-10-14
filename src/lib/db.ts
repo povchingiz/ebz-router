@@ -13,6 +13,7 @@ const pool = new Pool({
 });
 
 export const db = pool;
+export { pool };
 
 function mapDbRowToGovOrg(row: any, questions: OrgQuestion[] = []): GovOrg {
   // Определяем уровень иерархии
