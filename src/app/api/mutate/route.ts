@@ -92,6 +92,8 @@ export async function POST(req: NextRequest) {
           {
             name: payload.name,
             fullName: payload.fullName,
+            orgNameKk: payload.orgNameKk,
+            shortNameKk: payload.shortNameKk,
             scope: payload.scope,
             theme: payload.theme,
             locationAddress: payload.locationAddress,
@@ -116,6 +118,8 @@ export async function POST(req: NextRequest) {
         {
           name: payload.name,
           fullName: payload.fullName,
+          orgNameKk: payload.orgNameKk,
+          shortNameKk: payload.shortNameKk,
           scope: payload.scope,
           theme: payload.theme,
           locationAddress: payload.locationAddress,

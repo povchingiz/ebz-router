@@ -304,6 +304,8 @@ export async function updateOrgContentInDb(
     // 2. Подготовка апдейта
     const newName = updates.name !== undefined ? updates.name.trim() : currentOrg.short_name_ru;
     const newFullName = updates.fullName !== undefined ? updates.fullName.trim() : currentOrg.org_name_ru;
+    const newNameKk = (updates as any).orgNameKk !== undefined ? (updates as any).orgNameKk.trim() : currentOrg.org_name_kk;
+    const newShortNameKk = (updates as any).shortNameKk !== undefined ? (updates as any).shortNameKk.trim() : currentOrg.short_name_kk;
     const newScope = updates.scope !== undefined ? updates.scope : currentOrg.scope;
     const newLegalBasis = updates.legalBasis !== undefined ? updates.legalBasis : currentOrg.legal_basis;
     const newJurisdiction = updates.jurisdiction !== undefined ? updates.jurisdiction : currentOrg.jurisdiction;
@@ -316,18 +318,20 @@ export async function updateOrgContentInDb(
       SET 
         short_name_ru = $1,
         org_name_ru = $2,
-        scope = $3,
-        legal_basis = $4,
-        jurisdiction = $5,
-        location_name_ru = $6,
-        show_on_frontend = $7,
+        short_name_kk = $3,
+        org_name_kk = $4,
+        scope = $5,
+        legal_basis = $6,
+        jurisdiction = $7,
+        location_name_ru = $8,
+        show_on_frontend = $9,
         version = version + 1,
         locked_by_user = NULL,
         locked_at = NULL,
         updated_at = now()
-      WHERE org_id = $8
+      WHERE org_id = $10
       `,
-      [newName, newFullName, newScope, newLegalBasis, newJurisdiction, newLocation, newShowOnFrontend, numericId]
+      [newName, newFullName, newShortNameKk, newNameKk, newScope, newLegalBasis, newJurisdiction, newLocation, newShowOnFrontend, numericId]
     );
 
     // 3. Обновление FAQ если переданы

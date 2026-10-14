@@ -70,6 +70,8 @@ function HomeContent({
   const handleSaveContent = async (updatedData: {
     name?: string;
     fullName?: string;
+    orgNameKk?: string;
+    shortNameKk?: string;
     scope: string;
     theme?: string;
     locationAddress?: string;

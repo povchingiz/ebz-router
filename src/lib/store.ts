@@ -61,6 +61,8 @@ class OrgStore {
     updates: {
       name?: string;
       fullName?: string;
+      orgNameKk?: string;
+      shortNameKk?: string;
       scope?: string;
       theme?: string;
       locationAddress?: string;
@@ -99,6 +101,8 @@ class OrgStore {
 
     if (updates.name !== undefined && updates.name.trim()) org.name = updates.name.trim();
     if (updates.fullName !== undefined) org.fullName = updates.fullName.trim();
+    if (updates.orgNameKk !== undefined) org.orgNameKk = updates.orgNameKk.trim();
+    if (updates.shortNameKk !== undefined) org.shortNameKk = updates.shortNameKk.trim();
     if (updates.scope !== undefined) org.scope = updates.scope;
     if (updates.theme !== undefined) org.theme = updates.theme;
     if (updates.locationAddress !== undefined) org.locationAddress = updates.locationAddress;
