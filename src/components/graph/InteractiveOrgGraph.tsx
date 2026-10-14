@@ -24,6 +24,7 @@ import { dropdownCoordinator } from './dropdownCoordinator';
 
 interface InteractiveOrgGraphProps {
   allOrgs: GovOrg[];
+  layoutDirection?: 'TB' | 'LR';
 }
 
 const nodeTypes = {
@@ -31,9 +32,10 @@ const nodeTypes = {
   moreChildren: MoreChildrenCard,
 };
 
-function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
+function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: InteractiveOrgGraphProps) {
   const { fitView } = useReactFlow();
-  const [layoutDirection, setLayoutDirection] = useState<'TB' | 'LR'>('TB');
+  const [innerLayoutDirection, setInnerLayoutDirection] = useState<'TB' | 'LR'>('TB');
+  const layoutDirection = propLayoutDirection || innerLayoutDirection;
 
   const {
     navState,
@@ -216,29 +218,6 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
 
   return (
     <div className="relative w-full h-[calc(100vh-140px)] min-h-[580px] rounded-3xl overflow-hidden border-2 border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm">
-      {/* Верхняя панель управления графом: очистка доски + переключатель ориентации */}
-      <div className="absolute top-4 left-44 z-10 flex items-center gap-2">
-        {/* Переключатель ориентации: По вертикали (TB) ⇄ По горизонтали (LR) */}
-        <button
-          type="button"
-          onClick={() => setLayoutDirection((prev) => (prev === 'TB' ? 'LR' : 'TB'))}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all shadow-md border-2 border-slate-200 dark:border-slate-800"
-          title="Сменить ориентацию раскладки графа"
-        >
-          {layoutDirection === 'TB' ? (
-            <>
-              <ArrowLeftRight className="w-3.5 h-3.5 text-blue-600" />
-              <span>Вид: В горизонталь</span>
-            </>
-          ) : (
-            <>
-              <ArrowDownUp className="w-3.5 h-3.5 text-blue-600" />
-              <span>Вид: В вертикаль</span>
-            </>
-          )}
-        </button>
-      </div>
-
       <ReactFlow
         nodes={nodes}
         edges={edges}

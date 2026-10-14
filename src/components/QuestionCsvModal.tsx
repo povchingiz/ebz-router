@@ -9,7 +9,9 @@ import {
   Upload,
   AlertCircle,
   CheckCircle2,
-  Table,
+  ShieldCheck,
+  Loader2,
+  FileCheck,
 } from 'lucide-react';
 
 interface QuestionCsvModalProps {
@@ -18,106 +20,72 @@ interface QuestionCsvModalProps {
   onImport: (questions: OrgQuestion[]) => void;
 }
 
-const SAMPLE_CSV = `Тема;Суть вопроса;Ключевые слова;Типовой ответ
-Тарифы на электроэнергию;Порядок формирования и перерасчета тарифов;тариф, свет, оплата, счетчик;Утверждение предельных тарифов осуществляется Департаментом КРЕМ в соответствии с Законом об электроэнергетике
-Аварийное отключение света;Куда обращаться при аварии и перебоях энергоснабжения;авария, отключение, ремонт, сеть;При аварийных ситуациях обратитесь в круглосуточную диспетчерскую службу дежурного РЭС
-Подключение к сетям;Технические условия для присоединения к электросетям;техусловия, подключение, мощность;Подача заявления на техусловия производится через портал eGov или канцелярию РЭК`;
-
 export const QuestionCsvModal: React.FC<QuestionCsvModalProps> = ({
   isOpen,
   onClose,
   onImport,
 }) => {
-  const [csvText, setCsvText] = useState('');
+  const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [parsedQuestions, setParsedQuestions] = useState<OrgQuestion[]>([]);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [securityInfo, setSecurityInfo] = useState<{
+    totalRows?: number;
+    compressedSize?: number;
+    uncompressedSize?: number;
+  } | null>(null);
 
   if (!isOpen) return null;
 
-  // Разбор текста CSV
-  const parseCsv = (text: string) => {
-    setErrorMsg(null);
-    const lines = text
-      .split(/\r?\n/)
-      .map((l) => l.trim())
-      .filter(Boolean);
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (!selectedFile) return;
 
-    if (lines.length === 0) {
+    // Проверка расширения на клиенте
+    const isExcel =
+      selectedFile.name.endsWith('.xlsx') || selectedFile.name.endsWith('.xls');
+
+    if (!isExcel) {
+      setErrorMsg('Поддерживаются исключительно файлы таблиц Excel (.xlsx, .xls). Загрузка CSV запрещена.');
+      setFile(null);
       setParsedQuestions([]);
       return;
     }
 
-    // Определяем разделитель (; или , или \t)
-    const firstLine = lines[0];
-    const delimiter = firstLine.includes(';') ? ';' : firstLine.includes('\t') ? '\t' : ',';
+    setFile(selectedFile);
+    setErrorMsg(null);
+    setIsLoading(true);
+    setParsedQuestions([]);
+    setSecurityInfo(null);
 
-    const startIndex =
-      firstLine.toLowerCase().includes('тема') || firstLine.toLowerCase().includes('topic')
-        ? 1
-        : 0;
+    try {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
 
-    const list: OrgQuestion[] = [];
+      // Отправляем на бэкенд с защитой от Zip-бомб и проверкой Magic Bytes
+      const res = await fetch('/api/questions', {
+        method: 'POST',
+        body: formData,
+      });
 
-    for (let i = startIndex; i < lines.length; i++) {
-      const line = lines[i];
-      const cols = line.split(delimiter).map((c) => c.trim().replace(/^["']|["']$/g, ''));
+      const data = await res.json();
 
-      const topic = cols[0] || '';
-      const description = cols[1] || '';
-      const rawKeywords = cols[2] || '';
-      const sampleResponse = cols[3] || '';
-
-      if (topic) {
-        const keywords = rawKeywords
-          .split(/[,;|]/)
-          .map((k) => k.trim())
-          .filter(Boolean);
-
-        list.push({
-          id: `q-csv-${Date.now()}-${i}`,
-          topic,
-          description: description || topic,
-          keywords: keywords.length > 0 ? keywords : [topic.toLowerCase()],
-          sampleResponse: sampleResponse || undefined,
-        });
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Ошибка проверки и разбора файла');
       }
+
+      setParsedQuestions(data.questions || []);
+      setSecurityInfo(data.security || null);
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Не удалось обработать файл');
+    } finally {
+      setIsLoading(false);
     }
-
-    if (list.length === 0) {
-      setErrorMsg('Не удалось распознать строки вопросов. Проверьте разделитель.');
-    } else {
-      setParsedQuestions(list);
-    }
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const content = event.target?.result as string;
-      setCsvText(content);
-      parseCsv(content);
-    };
-    reader.readAsText(file, 'utf-8');
-  };
-
-  const handleTextChange = (val: string) => {
-    setCsvText(val);
-    parseCsv(val);
-  };
-
-  const downloadSample = () => {
-    // Добавляем UTF-8 BOM (\uFEFF) для корректного открытия в русском Excel
-    const blob = new Blob(['\uFEFF' + SAMPLE_CSV], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'obrazec_voprosov_ebz.csv');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownloadTemplate = () => {
+    // Скачивание официального образца через защищенный API
+    window.location.href = '/api/questions';
   };
 
   const handleApply = () => {
@@ -137,10 +105,10 @@ export const QuestionCsvModal: React.FC<QuestionCsvModalProps> = ({
             </div>
             <div>
               <h3 className="text-base font-black text-slate-900 dark:text-white">
-                Импорт вопросов и ответов из CSV
+                Импорт вопросов и тем обращений (Excel .xlsx)
               </h3>
               <p className="text-xs text-slate-500">
-                Массовая загрузка базы компетенций, ключевых слов и типовых ответов
+                Загрузка реестра вопросов ведомства с валидацией структуры и защитой от угроз
               </p>
             </div>
           </div>
@@ -154,53 +122,66 @@ export const QuestionCsvModal: React.FC<QuestionCsvModalProps> = ({
           </button>
         </div>
 
-        {/* Формат и образец */}
+        {/* Скачивание эталонного шаблона */}
         <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 text-xs">
           <div className="space-y-0.5">
             <span className="font-bold text-slate-800 dark:text-slate-200 block">
-              Структура колонок (разделитель «;»):
+              Эталонный шаблон eOtinish (Excel):
             </span>
-            <code className="text-[11px] text-blue-600 dark:text-blue-400 font-mono">
-              Тема ; Суть вопроса ; Ключевые слова ; Типовой ответ
-            </code>
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
+              <span>Колонки:</span>
+              <code className="text-blue-600 dark:text-blue-400 font-mono">
+                Тематика / Вопрос | Суть обращения | Ключевые слова | Регламент решения
+              </code>
+            </div>
           </div>
 
           <button
             type="button"
-            onClick={downloadSample}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs shrink-0"
+            onClick={handleDownloadTemplate}
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs shrink-0"
           >
-            <Download className="w-3.5 h-3.5" />
-            Шаблон CSV
+            <Download className="w-3.5 h-3.5 text-blue-600" />
+            Скачать шаблон .xlsx
           </button>
         </div>
 
-        {/* Загрузка файла или вставка текста */}
+        {/* Зона загрузки файла Excel */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-300">
-            <span>Вставьте текст из Excel/CSV или выберите файл:</span>
-            <label className="cursor-pointer text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1">
-              <Upload className="w-3.5 h-3.5" />
-              <span>Выбрать файл .csv</span>
-              <input
-                type="file"
-                accept=".csv,text/csv"
-                onChange={handleFileUpload}
-                className="hidden"
-              />
-            </label>
-          </div>
+          <div className="border-2 border-dashed border-slate-200 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors rounded-2xl p-5 text-center flex flex-col items-center justify-center gap-2 bg-slate-50/50 dark:bg-slate-850/50">
+            <div className="w-11 h-11 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 flex items-center justify-center">
+              {isLoading ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : file ? (
+                <FileCheck className="w-5 h-5" />
+              ) : (
+                <Upload className="w-5 h-5" />
+              )}
+            </div>
 
-          <textarea
-            rows={5}
-            value={csvText}
-            onChange={(e) => handleTextChange(e.target.value)}
-            placeholder={`Вставьте сюда скопированные строки из Excel или CSV файла...\nНапример:\nТарифы на свет;Жалоба на стоимость электроэнергии;свет, тариф;Тарифы регулируются...`}
-            className="w-full p-3 text-xs font-mono rounded-2xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:border-blue-500 outline-none leading-relaxed"
-          />
+            <div className="space-y-1">
+              <label className="cursor-pointer font-bold text-xs text-blue-600 dark:text-blue-400 hover:underline inline-block">
+                <span>{file ? file.name : 'Выберите файл реестра вопросов (.xlsx)'}</span>
+                <input
+                  type="file"
+                  accept=".xlsx,.xls"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+              </label>
+              <p className="text-[11px] text-slate-400">
+                Поддерживаются исключительно таблицы Excel (.xlsx, .xls). До 5 000 строк.
+              </p>
+            </div>
+
+            <div className="inline-flex items-center gap-1 text-[10px] font-semibold text-slate-400 mt-1">
+              <ShieldCheck className="w-3 h-3 text-emerald-500" />
+              <span>Проверка Magic Bytes (PKZIP), MIME-типа и защита от ZIP-бомб</span>
+            </div>
+          </div>
         </div>
 
-        {/* Ошибка */}
+        {/* Ошибка валидации */}
         {errorMsg && (
           <div className="p-3 rounded-xl bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 text-xs font-bold flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
@@ -208,42 +189,47 @@ export const QuestionCsvModal: React.FC<QuestionCsvModalProps> = ({
           </div>
         )}
 
-        {/* Превью таблицы */}
+        {/* Превью таблицы вопросов после успешной проверки бэкендом */}
         {parsedQuestions.length > 0 && (
           <div className="space-y-1.5 flex-1 overflow-hidden flex flex-col">
             <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
               <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
                 <CheckCircle2 className="w-4 h-4" />
-                Распознано вопросов: {parsedQuestions.length}
+                Успешно проверено вопросов: {parsedQuestions.length}
               </span>
-              <span className="text-[11px] text-slate-400 font-normal">Превью первых строк</span>
+              {securityInfo && (
+                <span className="text-[11px] text-slate-400 font-normal">
+                  Размер: {Math.round((securityInfo.compressedSize || 0) / 1024)} KB (распаковано:{' '}
+                  {Math.round((securityInfo.uncompressedSize || 0) / 1024)} KB)
+                </span>
+              )}
             </div>
 
-            <div className="max-h-40 overflow-y-auto border border-slate-200 dark:border-slate-800 rounded-xl">
+            <div className="max-h-48 overflow-y-auto border border-slate-200 dark:border-slate-800 rounded-xl">
               <table className="w-full text-left text-xs">
                 <thead className="bg-slate-100 dark:bg-slate-800 text-[10px] font-black uppercase text-slate-500">
                   <tr>
                     <th className="p-2 w-8">#</th>
-                    <th className="p-2">Тема</th>
-                    <th className="p-2">Суть / Жалоба</th>
-                    <th className="p-2">Теги</th>
-                    <th className="p-2">Типовой ответ</th>
+                    <th className="p-2">Тематика обращения</th>
+                    <th className="p-2">Суть обращения / Описание</th>
+                    <th className="p-2">Ключевые слова</th>
+                    <th className="p-2">Регламент / Ответ</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                  {parsedQuestions.slice(0, 5).map((q, idx) => (
+                  {parsedQuestions.slice(0, 10).map((q, idx) => (
                     <tr key={q.id} className="text-[11px]">
                       <td className="p-2 font-bold text-slate-400">{idx + 1}</td>
-                      <td className="p-2 font-bold text-slate-900 dark:text-white truncate max-w-[140px]">
+                      <td className="p-2 font-bold text-slate-900 dark:text-white truncate max-w-[150px]">
                         {q.topic}
                       </td>
-                      <td className="p-2 text-slate-600 dark:text-slate-300 truncate max-w-[160px]">
+                      <td className="p-2 text-slate-600 dark:text-slate-300 truncate max-w-[180px]">
                         {q.description}
                       </td>
-                      <td className="p-2 text-slate-500 truncate max-w-[120px]">
+                      <td className="p-2 text-slate-500 truncate max-w-[130px]">
                         {q.keywords.join(', ')}
                       </td>
-                      <td className="p-2 text-slate-500 truncate max-w-[140px]">
+                      <td className="p-2 text-slate-500 truncate max-w-[150px]">
                         {q.sampleResponse || '—'}
                       </td>
                     </tr>
@@ -251,6 +237,11 @@ export const QuestionCsvModal: React.FC<QuestionCsvModalProps> = ({
                 </tbody>
               </table>
             </div>
+            {parsedQuestions.length > 10 && (
+              <p className="text-[10px] text-slate-400 text-right">
+                И еще {parsedQuestions.length - 10} вопросов в файле
+              </p>
+            )}
           </div>
         )}
 
@@ -266,7 +257,7 @@ export const QuestionCsvModal: React.FC<QuestionCsvModalProps> = ({
           <button
             type="button"
             onClick={handleApply}
-            disabled={parsedQuestions.length === 0}
+            disabled={parsedQuestions.length === 0 || isLoading}
             className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-black bg-emerald-600 hover:bg-emerald-700 text-white shadow-md transition-all disabled:opacity-40"
           >
             <CheckCircle2 className="w-4 h-4" />

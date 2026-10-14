@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { orgStore } from '../../../lib/store';
-import { getOrgsFromDb, getOrgByIdFromDb } from '../../../lib/db';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -10,56 +11,86 @@ export async function GET(req: NextRequest) {
   const rootOnly = searchParams.get('root_only') === 'true';
 
   try {
-    // 1. Если запрошен конкретный орган
+    // 1. Если запрошен конкретный орган по ID / slug
     if (id) {
-      const dbOrg = await getOrgByIdFromDb(id);
-      if (dbOrg) {
-        return NextResponse.json({ status: 'ok', data: dbOrg });
+      const org = orgStore.getById(id);
+      if (org) {
+        return NextResponse.json({ status: 'ok', data: org });
       }
-      const memOrg = orgStore.getById(id);
-      return NextResponse.json({ status: memOrg ? 'ok' : 'not_found', data: memOrg });
+      return NextResponse.json({ status: 'not_found', message: 'Организация не найдена' }, { status: 404 });
     }
 
-    // 2. Выборка из PostgreSQL
-    const dbOrgs = await getOrgsFromDb({
-      search,
-      parentId,
-      rootOnly,
-      limit: search ? 50 : (parentId ? 100 : 500),
-    });
+    // 2. Базовая выборка чистой проверенной иерархии (до 27k)
+    let orgs = orgStore.getAll();
 
-    if (dbOrgs && dbOrgs.length > 0) {
+    // Фильтрация по поисковой строке
+    if (search && search.trim()) {
+      const query = search.trim().toLowerCase();
+      orgs = orgs.filter((o) => {
+        const inName = o.name?.toLowerCase().includes(query);
+        const inFullName = o.fullName?.toLowerCase().includes(query);
+        const inAliases = Array.isArray(o.aliases) && o.aliases.some((a) => a.toLowerCase().includes(query));
+        const inScope = o.scope?.toLowerCase().includes(query);
+        return inName || inFullName || inAliases || inScope;
+      });
       return NextResponse.json({
         status: 'ok',
-        source: 'database',
-        data: dbOrgs,
+        source: 'verified_hierarchy',
+        data: orgs.slice(0, 50),
         meta: {
-          count: dbOrgs.length,
+          count: orgs.length,
           cachedAt: new Date().toISOString(),
         },
       });
     }
 
-    // 3. Fallback на память
-    const memOrgs = orgStore.getAll();
+    // Фильтрация по родителю
+    if (parentId !== undefined && parentId !== null) {
+      orgs = orgs.filter((o) => o.parentId === parentId);
+      return NextResponse.json({
+        status: 'ok',
+        source: 'verified_hierarchy',
+        data: orgs,
+        meta: {
+          count: orgs.length,
+          cachedAt: new Date().toISOString(),
+        },
+      });
+    }
+
+    // Фильтрация только корневого эшелона
+    if (rootOnly) {
+      orgs = orgs.filter((o) => !o.parentId || o.parentId === 'ap' || o.id === 'ap');
+      return NextResponse.json({
+        status: 'ok',
+        source: 'verified_hierarchy',
+        data: orgs,
+        meta: {
+          count: orgs.length,
+          cachedAt: new Date().toISOString(),
+        },
+      });
+    }
+
+    // По умолчанию: вся чистая иерархия (все министерства под АПр, центральные агентства под АП)
     return NextResponse.json({
       status: 'ok',
-      source: 'memory_fallback',
-      data: memOrgs,
+      source: 'verified_hierarchy',
+      data: orgs,
       meta: {
-        count: memOrgs.length,
+        count: orgs.length,
         cachedAt: new Date().toISOString(),
       },
     });
   } catch (err: any) {
-    console.error('API /api/orgs fallback to store:', err.message);
-    const memOrgs = orgStore.getAll();
+    console.error('API /api/orgs error:', err.message);
+    const fallbackOrgs = orgStore.getAll();
     return NextResponse.json({
       status: 'ok',
-      source: 'memory_fallback',
-      data: memOrgs,
+      source: 'fallback',
+      data: fallbackOrgs,
       meta: {
-        count: memOrgs.length,
+        count: fallbackOrgs.length,
         cachedAt: new Date().toISOString(),
       },
     });

@@ -3,6 +3,10 @@ import { pool } from '@/lib/db';
 import { authService, canUserManageOrg } from '@/lib/auth';
 import { GovOrg } from '@/types';
 
+import * as XLSX from 'xlsx';
+
+import { validateAndParseExcel } from '@/lib/excelSecurity';
+
 export const dynamic = 'force-dynamic';
 
 // Сопоставление понятных человеческих заголовков Excel с колонками PostgreSQL
@@ -47,7 +51,7 @@ function cleanImportCell(value: any): string {
 
 /**
  * GET /api/bulk?branch_id=...
- * Выгрузка шаблона / среза ведомства в Excel-совместимый CSV с UTF-8 BOM
+ * Выгрузка шаблона / среза ведомства в настоящий формат Excel (.xlsx)
  */
 export async function GET(req: NextRequest) {
   try {
@@ -86,32 +90,50 @@ export async function GET(req: NextRequest) {
 
     const { rows } = await pool.query(query, params);
 
-    // Формируем CSV с заголовками
-    const headers = EXCEL_MAPPING.map((m) => `"${m.header}"`).join(';');
-    const lines = [headers];
-
-    for (const row of rows) {
-      const line = EXCEL_MAPPING.map((m) => {
+    // Формируем структурированные данные для листа Excel
+    const excelRows = rows.map((row) => {
+      const obj: Record<string, any> = {};
+      for (const m of EXCEL_MAPPING) {
         let val = row[m.key];
         if (m.key === 'show_on_frontend') {
           val = val !== false ? 'Да' : 'Нет';
         }
         val = sanitizeFormulaInjection(val);
-        // Экранируем двойные кавычки
-        const escaped = String(val).replace(/"/g, '""');
-        return `"${escaped}"`;
-      }).join(';');
-      lines.push(line);
-    }
+        obj[m.header] = val ?? '';
+      }
+      return obj;
+    });
 
-    // Добавляем UTF-8 BOM (\uFEFF) для мгновенного корректного открытия в Excel без крякозябр
-    const csvContent = '\uFEFF' + lines.join('\r\n');
+    const worksheet = XLSX.utils.json_to_sheet(excelRows);
 
-    return new NextResponse(csvContent, {
+    // Оптимальная ширина колонок для комфортной работы в Excel
+    worksheet['!cols'] = [
+      { wch: 15 }, // ID организации
+      { wch: 25 }, // Краткое наименование (RU)
+      { wch: 45 }, // Полное официальное наименование (RU)
+      { wch: 45 }, // Официальное наименование (KZ)
+      { wch: 20 }, // Тип ведомства
+      { wch: 25 }, // Локация
+      { wch: 50 }, // Полномочия
+      { wch: 50 }, // Анти-компетенции
+      { wch: 30 }, // Куда перенаправлять
+      { wch: 20 }, // Телефон канцелярии
+      { wch: 20 }, // Горячая линия
+      { wch: 25 }, // Email
+      { wch: 30 }, // Сайт
+      { wch: 25 }, // Отображать онлайн
+    ];
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Реестр ведомств');
+
+    const buffer = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
+
+    return new NextResponse(buffer, {
       status: 200,
       headers: {
-        'Content-Type': 'text/csv; charset=utf-8',
-        'Content-Disposition': `attachment; filename="ebz_export_${branchId || 'republic'}_${new Date().toISOString().slice(0, 10)}.csv"`,
+        'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'Content-Disposition': `attachment; filename="reestr_gosorganov_${branchId || 'rk'}_${new Date().toISOString().slice(0, 10)}.xlsx"`,
       },
     });
   } catch (error: any) {
@@ -136,8 +158,34 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const body = await req.json();
-    const { rows, dryRun } = body as { rows: any[]; dryRun?: boolean };
+    let rows: any[] = [];
+    let dryRun = false;
+
+    const contentType = req.headers.get('content-type') || '';
+    if (contentType.includes('multipart/form-data')) {
+      const formData = await req.formData();
+      const file = formData.get('file') as File | null;
+      dryRun = formData.get('dryRun') === 'true';
+
+      if (!file) {
+        return NextResponse.json({ error: 'Файл Excel не был прикреплен' }, { status: 400 });
+      }
+
+      const buffer = Buffer.from(await file.arrayBuffer());
+      const secResult = validateAndParseExcel(buffer, file.name);
+
+      if (!secResult.isValid || !secResult.rows) {
+        return NextResponse.json(
+          { error: secResult.error || 'Ошибка проверки безопасности Excel файла' },
+          { status: 400 }
+        );
+      }
+      rows = secResult.rows;
+    } else {
+      const body = await req.json();
+      rows = body.rows || [];
+      dryRun = Boolean(body.dryRun);
+    }
 
     if (!Array.isArray(rows) || rows.length === 0) {
       return NextResponse.json({ error: 'Таблица не содержит данных' }, { status: 400 });

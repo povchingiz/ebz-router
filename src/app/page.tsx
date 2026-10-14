@@ -20,6 +20,8 @@ import {
   ShieldAlert,
   RotateCw,
   RotateCcw,
+  ArrowLeftRight,
+  ArrowDownUp,
 } from 'lucide-react';
 
 function HomeContent({
@@ -36,6 +38,7 @@ function HomeContent({
   setCurrentUser: React.Dispatch<React.SetStateAction<User>>;
 }) {
   const [viewMode, setViewMode] = useState<'graph' | 'list'>('graph');
+  const [layoutDirection, setLayoutDirection] = useState<'TB' | 'LR'>('TB');
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false);
   const [isConflictModalOpen, setIsConflictModalOpen] = useState(false);
@@ -229,59 +232,73 @@ function HomeContent({
       </header>
 
       {/* Плавающая панель инструментов слева (разгрузка верхней шапки) */}
+      {/* Боковая фиксированная панель инструментов слева */}
       <aside
         aria-label="Панель инструментов"
-        className="fixed top-24 left-4 z-30 flex flex-col gap-1.5 p-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl border-2 border-slate-200/90 dark:border-slate-800 shadow-xl"
+        className="fixed top-24 left-4 z-30 w-48 flex flex-col gap-1.5 p-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl border-2 border-slate-200/90 dark:border-slate-800 shadow-xl"
       >
-        {/* Переключатель режимов: Граф / Список */}
-        <div className="flex flex-col gap-1 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl text-xs">
-          <button
-            type="button"
-            onClick={() => setViewMode('graph')}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg font-black transition-all ${
-              viewMode === 'graph'
-                ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
-                : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-            }`}
-            title="Интерактивный граф структуры госорганов"
-          >
-            <Network className="w-4 h-4 shrink-0" />
-            <span className="text-xs">Граф</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => setViewMode('list')}
-            className={`flex items-center gap-2 px-3 py-2 rounded-lg font-black transition-all ${
-              viewMode === 'list'
-                ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
-                : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
-            }`}
-            title="Табличный список организаций"
-          >
-            <List className="w-4 h-4 shrink-0" />
-            <span className="text-xs">Список</span>
-          </button>
+        {/* Переключатель режимов: Граф / Список + Ориентация графа */}
+        <div className="flex flex-col gap-1 bg-slate-100 dark:bg-slate-800/80 p-1.5 rounded-xl text-xs">
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setViewMode('graph')}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-black transition-all ${
+                viewMode === 'graph'
+                  ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
+                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+              }`}
+              title="Интерактивный граф структуры госорганов"
+            >
+              <Network className="w-3.5 h-3.5 shrink-0" />
+              <span>Граф</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('list')}
+              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-black transition-all ${
+                viewMode === 'list'
+                  ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
+                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+              }`}
+              title="Табличный список организаций"
+            >
+              <List className="w-3.5 h-3.5 shrink-0" />
+              <span>Список</span>
+            </button>
+          </div>
+
+          {/* Переключатель ориентации раскладки: встроен в левую менюшку */}
+          {viewMode === 'graph' && (
+            <button
+              type="button"
+              onClick={() => setLayoutDirection((prev) => (prev === 'TB' ? 'LR' : 'TB'))}
+              className="mt-1 w-full flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-bold text-slate-700 dark:text-slate-200 bg-white/70 dark:bg-slate-900/70 hover:bg-white dark:hover:bg-slate-900 border border-slate-200/70 dark:border-slate-700 transition-all text-[11px]"
+              title="Сменить ориентацию раскладки графа"
+            >
+              {layoutDirection === 'TB' ? (
+                <>
+                  <ArrowLeftRight className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                  <span>Вид: В горизонталь</span>
+                </>
+              ) : (
+                <>
+                  <ArrowDownUp className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                  <span>Вид: В вертикаль</span>
+                </>
+              )}
+            </button>
+          )}
         </div>
 
-        <div className="h-px bg-slate-200 dark:bg-slate-800 my-0.5" />
 
-        {/* Пакетная работа через Excel/CSV */}
-        <button
-          type="button"
-          onClick={() => setIsBulkModalOpen(true)}
-          className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
-          title="Пакетная работа через Excel/CSV с защитой данных"
-        >
-          <FileSpreadsheet className="w-4 h-4 text-emerald-600 shrink-0" />
-          <span>Excel / Пакетно</span>
-        </button>
 
         {/* Сводный дашборд заполненности (Для администраторов) */}
         {isAdminUser && (
           <button
             type="button"
             onClick={() => setIsDashboardModalOpen(true)}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/50 transition-all active:scale-95 border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
+            className="flex items-center gap-2 px-2.5 py-2 rounded-xl text-xs font-bold text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/50 transition-all active:scale-95 border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
             title="Сводная заполненность базы знаний по всем ведомствам республики"
           >
             <BarChart3 className="w-4 h-4 text-blue-600 shrink-0" />
@@ -294,7 +311,7 @@ function HomeContent({
           <button
             type="button"
             onClick={() => setIsConflictModalOpen(true)}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-all active:scale-95 border border-transparent hover:border-rose-200 dark:hover:border-rose-800"
+            className="flex items-center gap-2 px-2.5 py-2 rounded-xl text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-all active:scale-95 border border-transparent hover:border-rose-200 dark:hover:border-rose-800"
             title="Предупреждения о пересечениях компетенций (только АП РК)"
           >
             <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0" />
@@ -308,7 +325,7 @@ function HomeContent({
         <button
           type="button"
           onClick={collapseAll}
-          className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+          className="flex items-center gap-2 px-2.5 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
           title="Очистить доску и свернуть все открытые карточки к корню (АП)"
         >
           <RotateCcw className="w-4 h-4 text-blue-600 shrink-0" />
@@ -320,7 +337,7 @@ function HomeContent({
       <main className="flex-1 max-w-[1600px] w-full mx-auto p-4 sm:p-6">
         <div className="w-full">
           {viewMode === 'graph' ? (
-            <InteractiveOrgGraph allOrgs={orgs} />
+            <InteractiveOrgGraph allOrgs={orgs} layoutDirection={layoutDirection} />
           ) : (
             <ListView allOrgs={orgs} />
           )}

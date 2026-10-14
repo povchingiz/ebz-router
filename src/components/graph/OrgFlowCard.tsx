@@ -146,11 +146,9 @@ export const OrgFlowCard = ({ data, selected }: any) => {
           </span>
         )}
 
-        {org.questions && org.questions.length > 0 && (
-          <span className="font-bold text-slate-500 dark:text-slate-400">
-            {org.questions.length} FAQ
-          </span>
-        )}
+        <span className="font-bold text-slate-500 dark:text-slate-400">
+          вопросов: {org.questions?.length || 0}
+        </span>
       </div>
 
       {/* Нижняя панель действий (только если есть подотчетные дочерние структуры) */}

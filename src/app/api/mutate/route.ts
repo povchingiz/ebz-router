@@ -137,7 +137,7 @@ export async function POST(req: NextRequest) {
       if (!result.success) {
         return NextResponse.json({ error: result.error }, { status: 409 }); // 409 Conflict
       }
-      return NextResponse.json({ success: true, org: dbResult?.org || result.org });
+      return NextResponse.json({ success: true, org: result.org || dbResult?.org });
     }
 
     if (action === 'reparent' && orgId) {
@@ -154,7 +154,7 @@ export async function POST(req: NextRequest) {
       if (!result.success) {
         return NextResponse.json({ error: result.error }, { status: 400 });
       }
-      return NextResponse.json({ success: true, org: dbResult?.org || result.org });
+      return NextResponse.json({ success: true, org: result.org || dbResult?.org });
     }
 
     if (action === 'create_org') {
