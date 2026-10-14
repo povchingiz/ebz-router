@@ -35,7 +35,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Администрация Президента Республики Казахстан",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "arrfr",
@@ -66,7 +70,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по регулированию и развитию финансового рынка",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "banki-mfo",
@@ -83,7 +91,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Банки, МФО",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "adgs",
@@ -113,7 +125,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по делам государственной службы",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-territorii",
@@ -130,7 +146,11 @@
     "theme": "областных территорий",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "akademiya-gosudarstvennogo-upravleniya",
@@ -147,7 +167,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Академия государственного управления",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-territorii-2",
@@ -164,7 +188,11 @@
     "theme": "областных территорий",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-nacionalnyi-centr-po-upravleniyu-personal",
@@ -181,7 +209,11 @@
     "theme": "АО Национальный центр по управлению персоналом государственной службы-0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "afm",
@@ -198,7 +230,11 @@
     "theme": "(всего - 17840) АФМ",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-territorii-3",
@@ -215,7 +251,11 @@
     "theme": "областных территорий -",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kinologicheskii-centr",
@@ -232,7 +272,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Кинологический центр",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "aspir",
@@ -249,7 +293,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по стратегическому планированию и реформам",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "byuro-nac-statistiki",
@@ -266,7 +314,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Бюро нац статистики",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-territorii-4",
@@ -283,7 +335,11 @@
     "theme": "областных территорий",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "azrk",
@@ -300,7 +356,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по защите и развитию конкуренции",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-territorii-5",
@@ -317,7 +377,11 @@
     "theme": "областных территорий -",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "analiticheskii-issledovatelskii-centr-razvit",
@@ -334,7 +398,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Аналитический исследовательский центр развития конкуренции",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "agentstvo-atomnoi-energii",
@@ -351,7 +419,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Агентство атомной энергии",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-atomnogo-nadzora-i-kontrolya",
@@ -368,7 +440,11 @@
     "theme": "Комитет атомного надзора и контроля -",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "institut-yadernoi-fiziki",
@@ -385,7 +461,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Институт ядерной физики",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "aksai-skii-filial",
@@ -402,7 +482,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Аксайский филиал",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "astaninskii-filial",
@@ -419,7 +503,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Астанинский филиал",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-kazahstanskie-atomnye-elektricheskie-sta",
@@ -436,7 +524,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ТОО Казахстанские атомные электрические станции",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-yadernyi-centr",
@@ -453,7 +545,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Национальный ядерный центр",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "vap",
@@ -470,7 +566,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Высшая аудиторская палата",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-centr-issledovanii-analiza-i-ocenki-effe",
@@ -487,7 +587,11 @@
     "theme": "ТОО Центр исследований, анализа и оценки эффективности - 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-delami-prezidenta",
@@ -504,7 +608,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Управление делами Президента",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "prezidentskii-centr",
@@ -521,7 +629,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Президентский центр",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "medicinskii-centr",
@@ -538,7 +650,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Медицинский центр",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki",
@@ -555,7 +671,11 @@
     "theme": "подведомки",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-kazstroi-sistema",
@@ -572,7 +692,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ТОО Казстройсистема",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "direkciya-gosudarstvennyh-rezidencii",
@@ -589,7 +713,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Дирекция государственных резиденций",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "teleradiokompleks",
@@ -606,7 +734,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Телерадиокомплекс",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "avtohozyai-stvo",
@@ -623,7 +755,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Автохозяйство",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "direkciya-adm-zdanii",
@@ -640,7 +776,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Дирекция адм зданий",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "almatinskii-filial",
@@ -657,7 +797,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Алматинский филиал",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "750000000",
+    "katoNameRu": "г.Алматы",
+    "locationId": "75",
+    "locationAddress": "г.Алматы"
   },
   {
     "id": "too-burabai-damu",
@@ -674,7 +818,11 @@
     "theme": "ТОО Бурабай даму 12",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "100000000",
+    "katoNameRu": "область Абай",
+    "locationId": "10",
+    "locationAddress": "область Абай"
   },
   {
     "id": "itc",
@@ -691,7 +839,11 @@
     "theme": "ИТЦ 16",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "aviakompaniya-berkut",
@@ -708,7 +860,11 @@
     "theme": "Авиакомпания Беркут 13",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gf-astana-20",
@@ -725,7 +881,11 @@
     "theme": "ГФ Астана 20 - 20",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nac-park-burabai",
@@ -742,7 +902,11 @@
     "theme": "Нац парк Бурабай - 167",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "100000000",
+    "katoNameRu": "область Абай",
+    "locationId": "10",
+    "locationAddress": "область Абай"
   },
   {
     "id": "gf-astana-20-2",
@@ -759,7 +923,11 @@
     "theme": "ГФ Астана 20 - 20",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nac-park-burabai-2",
@@ -776,7 +944,11 @@
     "theme": "Нац парк Бурабай - 167",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "100000000",
+    "katoNameRu": "область Абай",
+    "locationId": "10",
+    "locationAddress": "область Абай"
   },
   {
     "id": "otel-alatau",
@@ -793,7 +965,11 @@
     "theme": "Отель Алатау - 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "umto",
@@ -810,7 +986,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: УМТО",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki-2",
@@ -827,7 +1007,11 @@
     "theme": "подведомки",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "knb",
@@ -844,7 +1028,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет национальной безопасности",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-territorii-6",
@@ -861,7 +1049,11 @@
     "theme": "областных территорий",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sluzhba-po-protivodei-stviyu-korrupcii",
@@ -878,7 +1070,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Служба по противодействию коррупции",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sledstvennyi-izolyator",
@@ -895,7 +1091,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Следственный изолятор",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "pogranichnaya-sluzhba",
@@ -912,7 +1112,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Пограничная служба",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii",
@@ -929,7 +1133,11 @@
     "theme": "территории",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenii",
@@ -946,7 +1154,11 @@
     "theme": "управлений",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sluzhba-vneshnei-razvedki",
@@ -963,7 +1175,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Служба внешней разведки",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sluzhba-pravitelstvennoi-svyazi",
@@ -980,7 +1196,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Служба правительственной связи",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "akademiya",
@@ -997,7 +1217,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Академия",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-tehnicheskoi-zaschity-informacii-i-pod",
@@ -1014,7 +1238,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskii-centr-kazimpeks",
@@ -1031,7 +1259,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Республиканский центр \"Казимпэкс",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "aviacionnaya-sluzhba",
@@ -1048,7 +1280,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Авиационная служба",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-gts",
@@ -1065,7 +1301,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: АО ГТС",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "rgp-almas",
@@ -1082,7 +1322,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: РГП Алмас",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "pogranichnaya-akademiya",
@@ -1099,7 +1343,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Пограничная академия",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-kazimpeks",
@@ -1116,7 +1364,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ТОО Казимпэкс",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gospital",
@@ -1133,7 +1385,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Госпиталь",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-tehnicheskoi-zaschity-informacii-i-pod-2",
@@ -1150,7 +1406,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sluzhba-specialnogo-naznacheniya",
@@ -1167,7 +1427,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Служба специального назначения",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "generalnaya-prokuratura",
@@ -1184,7 +1448,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Генеральная прокуратура",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kpsisu",
@@ -1201,7 +1469,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: КПСиСУ",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastye",
@@ -1218,7 +1490,11 @@
     "theme": "-областые",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kzpi",
@@ -1235,7 +1511,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: КЗПИ",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apo",
@@ -1252,7 +1532,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: АПО",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gvp",
@@ -1269,7 +1553,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ГВП",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastye-2",
@@ -1286,7 +1574,11 @@
     "theme": "-областые",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gtp",
@@ -1303,7 +1595,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ГТП",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastye-3",
@@ -1320,7 +1616,11 @@
     "theme": "-областые",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-prokuratur",
@@ -1337,7 +1637,11 @@
     "theme": "-Областных прокуратур",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gorrai-prokuratury",
@@ -1354,7 +1658,11 @@
     "theme": "-Горрай прокуратуры",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sudebnaya-administraciya",
@@ -1371,7 +1679,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Судебная администрация",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnye",
@@ -1388,7 +1700,11 @@
     "theme": "-областные",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gorrai-sudy",
@@ -1405,7 +1721,11 @@
     "theme": "-горрайсуды",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kassacionnyi-sud",
@@ -1422,7 +1742,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Кассационный суд",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "voennyi-sud",
@@ -1439,7 +1763,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Военный суд",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh",
@@ -1456,7 +1784,11 @@
     "theme": "-областных",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "akademiya-2",
@@ -1473,7 +1805,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Академия",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-po-pravam-cheloveka",
@@ -1490,7 +1826,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Национальный центр по правам человека",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-konstitucionnogo-suda",
@@ -1507,7 +1847,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Конституционного Суда",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-vysshego-sudebnogo-soveta",
@@ -1524,7 +1868,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Высшего Судебного Совета",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-bank",
@@ -1541,7 +1889,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Национальный Банк",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-kvazik",
@@ -1558,7 +1910,11 @@
     "theme": "-филиалов, квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-mazhilisa",
@@ -1575,7 +1931,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Мажилиса",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "arhiv-prezidenta",
@@ -1592,7 +1952,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Архив Президента",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "senat-parlamenta",
@@ -1609,7 +1973,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Сенат Парламента",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sluzhba-gos-ohrany",
@@ -1626,7 +1994,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Служба гос. охраны",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "prezidentskii-orkestr",
@@ -1643,7 +2015,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Президентский оркестр",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "chast-0111",
@@ -1660,7 +2036,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Часть 0111",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "chast-0116",
@@ -1677,7 +2057,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Часть 0116",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "chast-0112",
@@ -1694,7 +2078,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Часть 0112",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahstanskii-institut-strategicheskih-issle",
@@ -1711,7 +2099,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Казахстанский институт стратегических исследовании при Президенте",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sluzhba-centralnyh-kommunikacii",
@@ -1728,7 +2120,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Служба центральных коммуникаций",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "cik",
@@ -1745,7 +2141,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Центральная избирательная комиссия",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "rgp-na-pvh-inzhenerno-tehnicheskii-centr",
@@ -1762,7 +2162,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: РГП на ПВХ Инженерно-технический центр",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "tik",
@@ -1779,7 +2183,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ТИК",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "maslihaty",
@@ -1796,7 +2204,11 @@
     "theme": "-Маслихаты",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "revizionnaya-komissiya",
@@ -1813,7 +2225,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Ревизионная комиссия",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apr",
@@ -1830,7 +2246,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Правительства Республики Казахстан",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "myu",
@@ -1847,7 +2267,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-2",
@@ -1864,7 +2288,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mezhrai-onnyh-territorialnyh-otdelov-prinudi",
@@ -1881,7 +2309,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-prinuditelnogo-ispolneniya",
@@ -1898,7 +2330,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-pravam-intellektualnoi-sobstvenno",
@@ -1915,7 +2351,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "niis",
@@ -1932,7 +2372,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-registracionnoi-sluzhby",
@@ -1949,7 +2393,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "institut-zakonodatelstva-i-pravovoi-informac",
@@ -1966,7 +2414,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-instituta",
@@ -1983,7 +2435,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskaya-kollegiya-yuridicheskih-kon",
@@ -2000,7 +2456,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki-3",
@@ -2017,7 +2477,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-sudebnyh-ekspertiz",
@@ -2034,7 +2498,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov",
@@ -2051,7 +2519,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "chsi",
@@ -2068,7 +2540,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-2",
@@ -2085,7 +2561,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "palata-sudebnyh-ekspertov",
@@ -2102,7 +2582,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "miicr",
@@ -2119,7 +2603,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-telekommunikacii",
@@ -2136,7 +2624,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "inspekcii",
@@ -2153,7 +2645,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-informacionnoi-bezopasnosti",
@@ -2170,7 +2666,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "aerokosmicheskii-komitet",
@@ -2187,7 +2687,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Аэрокосмический комитет",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "bai-konyrbalans",
@@ -2204,7 +2708,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "431910000",
+    "katoNameRu": "г.Байконыр",
+    "locationId": "431910",
+    "locationAddress": "Кызылординская область / г.Байконыр"
   },
   {
     "id": "too-institut-ionosfery",
@@ -2221,7 +2729,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-bai-terek",
@@ -2238,7 +2750,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-ghalam",
@@ -2255,7 +2771,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "institut-kosmicheskoi-tehniki-i-tehnologii",
@@ -2272,7 +2792,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astrofizicheskii-institut",
@@ -2289,7 +2813,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-qazaqstan-garysh-sapary",
@@ -2306,7 +2834,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-kosmicheskih-issledovanii",
@@ -2323,7 +2855,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "infrakos",
@@ -2340,7 +2876,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filial",
@@ -2357,7 +2897,11 @@
     "theme": "Филиал 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskii-centr-kosmicheskoi-svyazi",
@@ -2374,7 +2918,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-cifrovyh-aktivov",
@@ -2391,7 +2939,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennyh-uslug",
@@ -2408,7 +2960,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-nit",
@@ -2425,7 +2981,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nao-gk",
@@ -2442,7 +3002,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-3",
@@ -2459,7 +3023,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gosudarstvennaya-radiochastotnaya-sluzhba",
@@ -2476,7 +3044,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "cpcp",
@@ -2493,7 +3065,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "astana-hab",
@@ -2510,7 +3086,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-qazinnovations",
@@ -2527,7 +3107,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-geodezii",
@@ -2544,7 +3128,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-qazexpocongress",
@@ -2561,7 +3149,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mvd",
@@ -2590,7 +3182,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "dp",
@@ -2607,7 +3203,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-upr-otdel",
@@ -2624,7 +3224,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kuis",
@@ -2641,7 +3245,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-3",
@@ -2658,7 +3266,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "uchrezhdenii",
@@ -2675,7 +3287,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "akademiya-i-uchebnye-centry-mvd",
@@ -2704,7 +3320,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "alatau",
@@ -2721,7 +3341,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-spec-sluzhby",
@@ -2738,7 +3362,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ipc",
@@ -2755,7 +3383,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kinologicheskii-centr-2",
@@ -2772,7 +3404,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otryad-specialnogo-naznacheniya-sunkar",
@@ -2789,7 +3425,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "voenno-sledstvennoe-upravlenie",
@@ -2806,7 +3446,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "baza-voennogo-i-specialnogo-snabzheniya",
@@ -2823,7 +3467,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "predstavitelstvo-mvd-v-gorode-bai-konyr",
@@ -2852,7 +3500,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "431910000",
+    "katoNameRu": "г.Байконыр",
+    "locationId": "431910",
+    "locationAddress": "Кызылординская область / г.Байконыр"
   },
   {
     "id": "nacgvardiya",
@@ -2869,7 +3521,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "vch-409-0-0115",
@@ -2886,7 +3542,11 @@
     "theme": "ВЧ 409 0,0115",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "vch-739-0-0205",
@@ -2903,7 +3563,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ВЧ -739 0,0205",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sanatorii",
@@ -2920,7 +3584,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centralnyi-gospital-s-poliklinikoi",
@@ -2937,7 +3605,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "media-centr-organov-vnutrennih-del",
@@ -2966,7 +3638,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mti",
@@ -2983,7 +3659,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-zaschite-prav-potrebitelei",
@@ -3000,7 +3680,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-tehnicheskogo-regulirovaniya-i-metro",
@@ -3017,7 +3701,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territori",
@@ -3034,7 +3722,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahstanskii-institut-standartizacii-i-metr",
@@ -3051,7 +3743,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filiala",
@@ -3068,7 +3764,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-akkreditacii",
@@ -3085,7 +3785,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filial-2",
@@ -3102,7 +3806,11 @@
     "theme": "филиал 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-4",
@@ -3119,7 +3827,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mps",
@@ -3136,7 +3848,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-delam-stroitelstva-i-zhkh",
@@ -3153,7 +3869,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskii-centr-gosudarstvennogo-grado",
@@ -3170,7 +3890,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-4",
@@ -3187,7 +3911,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gosudarstvennaya-vnevedomstvennaya-ekspertiz",
@@ -3204,7 +3932,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-5",
@@ -3221,7 +3953,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahskii-nauchno-issledovatelskii-i-proe",
@@ -3238,7 +3974,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahstanskii-centr-modernizacii-i-razvit",
@@ -3255,7 +3995,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-promyshlennosti",
@@ -3272,7 +4016,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-tehnologicheskogo-prognozi",
@@ -3289,7 +4037,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-institut-razvitiya-elektroenergetiki-i-en",
@@ -3329,7 +4081,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-zhezkazganredmet",
@@ -3346,7 +4102,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-po-kompleksnoi-pererabotke",
@@ -3363,7 +4123,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-6",
@@ -3380,7 +4144,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-nauchno-proizvodstvennyi-centr-mashinost",
@@ -3397,7 +4165,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-geologii",
@@ -3414,7 +4186,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mezhregionalnye-departamenty",
@@ -3431,7 +4207,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-nacionalnaya-geologicheskaya-sluzhba",
@@ -3448,7 +4228,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-upravlyayuschaya-kompaniya-specialnoi-eko",
@@ -3465,7 +4249,11 @@
     "theme": "АО Управляющая компания специальной экономической зоны \"Jibek Joly\" 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahstan-inzhiniring",
@@ -3482,7 +4270,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki-4",
@@ -3499,7 +4291,11 @@
     "theme": "подведомки 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-qazindustry",
@@ -3516,7 +4312,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mepr",
@@ -3533,7 +4333,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
@@ -3550,7 +4354,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorialnaya-inspekciya",
@@ -3567,7 +4375,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "prirodnyi-zapovednik",
@@ -3584,7 +4396,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "prirodnyi-park",
@@ -3601,7 +4417,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "prirodnyi-rezervat",
@@ -3618,7 +4438,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "proizvodstvennoe-obedinenie-ohotzooprom",
@@ -3635,7 +4459,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "institut-botaniki-i-fitointrodukcii",
@@ -3652,7 +4480,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "issykskii-gosudarstvennyi-dendrologicheskii",
@@ -3669,7 +4501,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskii-lesnoi-selekcionno-semenovod",
@@ -3686,7 +4522,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahskaya-baza-aviacionnoi-ohrany-lesov-i-o",
@@ -3703,7 +4543,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "zhasyl-ai-ma",
@@ -3720,7 +4564,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahskoe-lesoustroitelnoe-predpriyatie",
@@ -3737,7 +4585,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahskii-nauchno-issledovatelskii-institut",
@@ -3754,7 +4606,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-ekologicheskogo-regulirovaniya-i-kon",
@@ -3771,7 +4627,11 @@
     "theme": "Комитет экологического регулирования и контроля 694 0,0194",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-5",
@@ -3788,7 +4648,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-zhasyl-damu",
@@ -3805,7 +4669,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazgidromet",
@@ -3822,7 +4690,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-7",
@@ -3839,7 +4711,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahskii-nauchno-issledovatelskii-institut-2",
@@ -3856,7 +4732,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "informacionno-analiticheskii-centr-ohrany-ok",
@@ -3873,7 +4753,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mezhdunarodnyi-centr-zelenyh-tehnologii-i-in",
@@ -3890,7 +4774,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "me",
@@ -3930,7 +4818,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennogo-energeticheskogo-na",
@@ -3970,7 +4862,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-6",
@@ -3987,7 +4883,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kapitalneftegaz",
@@ -4004,7 +4904,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "yuzhnoe-mezhregionalnoe-upravlenie-gosudarst",
@@ -4021,7 +4925,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "zapadnoe-mezhregionalnoe-upravlenie-gosudars",
@@ -4038,7 +4946,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-raschetno-finansovyi-centr-po-podderzhke",
@@ -4055,7 +4967,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-nacionalnyi-industrialnyi-neftehimicheski",
@@ -4072,7 +4988,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahstanskii-operator-rynka-elektrichesk",
@@ -4089,7 +5009,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "situacionno-analiticheskii-centr-toplivno-en",
@@ -4129,7 +5053,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mtszn",
@@ -4146,7 +5074,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennoi-inspekcii-truda",
@@ -4163,7 +5095,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-7",
@@ -4180,7 +5116,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-migracii",
@@ -4197,7 +5137,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-regulirovaniya-i-kontrolya-v-sfere-s",
@@ -4214,7 +5158,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-8",
@@ -4231,7 +5179,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-nauchnyi-centr-razvitiya-sfery-s",
@@ -4248,7 +5200,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-8",
@@ -4265,7 +5221,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gfss",
@@ -4282,7 +5242,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-9",
@@ -4299,7 +5263,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskii-nauchno-issledovatelskii-ins",
@@ -4316,7 +5284,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-centr-razvitiya-trudovyh-resursov",
@@ -4333,7 +5305,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kompaniya-po-strahovaniyu-zhizni-gosudars",
@@ -4350,7 +5326,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mf",
@@ -4367,7 +5347,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennogo-kaznachei-stva",
@@ -4384,7 +5368,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-9",
@@ -4401,7 +5389,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gor-rai-onnye-upravleniya",
@@ -4418,7 +5410,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennyh-dohodov",
@@ -4435,7 +5431,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-10",
@@ -4452,7 +5452,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gor-rai-onnye-upravleniya-2",
@@ -4469,7 +5473,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-vnutrennego-gosudarstvennogo-audita",
@@ -4486,7 +5494,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-11",
@@ -4503,7 +5515,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennogo-imuschestva-i-priva",
@@ -4520,7 +5536,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "departamentov",
@@ -4537,7 +5557,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-ai-t-otel",
@@ -4554,7 +5578,11 @@
     "theme": "АО Айт- Отель 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-kompaniya-po-upravleniyu-vozvraschennymi",
@@ -4571,7 +5599,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-fond-problemnyh-kreditov",
@@ -4588,7 +5620,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-centr-elektronnyh-finansov",
@@ -4605,7 +5641,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nao-fond-socialnogo-medicinskogo-strahovaniy",
@@ -4622,7 +5662,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-10",
@@ -4639,7 +5683,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-finansovyi-centr",
@@ -4656,7 +5704,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-informacionno-uchetnyi-centr",
@@ -4673,7 +5725,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mo",
@@ -4690,7 +5746,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-12",
@@ -4707,7 +5767,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenii-i-otdelov",
@@ -4724,7 +5788,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "voennyi-kolledzh-institut-shkola",
@@ -4741,7 +5809,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "voi-skovaya-chast",
@@ -4758,7 +5830,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "chasti-i-gospitali",
@@ -4775,7 +5851,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centralnyi-arhiv",
@@ -4792,7 +5872,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahstan-gis-centr",
@@ -4809,7 +5893,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "glavnoe-upravlenie-voennoi-policii-vs",
@@ -4826,7 +5914,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdelenii",
@@ -4843,7 +5935,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-glavnokomanduyuschego-voenno-mors",
@@ -4860,7 +5956,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-nachalnika-tyla",
@@ -4877,7 +5977,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-komanduyuschego-voenno-vozdushnym",
@@ -4894,7 +5998,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-komanduyuschego-voi-skami-regiona",
@@ -4911,7 +6019,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-glavnokomanduyuschego-silami-vozd",
@@ -4928,7 +6040,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-komanduyuschego-desantno-shturmov",
@@ -4945,7 +6061,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-glavnokomanduyuschego-suhoputnymi",
@@ -4962,7 +6082,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-centr-voenno-strategicheskih-issledovanii",
@@ -4979,7 +6103,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-askeri-qurylys",
@@ -4996,7 +6124,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-komanduyuschego-voi-skami-protivo",
@@ -5013,7 +6145,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-pensionnogo-obespecheniya",
@@ -5030,7 +6166,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "glavnoe-upravlenie-voennoi-infrastruktury",
@@ -5047,7 +6187,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ekspl-uchastkov-629-0-0176",
@@ -5064,7 +6208,11 @@
     "theme": "экспл участков 629 0,0176",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennogo-oboronnogo-zakaza",
@@ -5081,7 +6229,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazspeceksport",
@@ -5098,7 +6250,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mki",
@@ -5115,7 +6271,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-razvitiyu-mezhetnicheskih-otnoshe",
@@ -5132,7 +6292,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "qogamdyq-kelisim",
@@ -5149,7 +6313,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-delam-molodezhi-i-semi",
@@ -5166,7 +6334,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-arhivov-dokumentacii-i-knizhnogo-del",
@@ -5183,7 +6355,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centrov",
@@ -5200,7 +6376,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-kultury",
@@ -5217,7 +6397,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki-5",
@@ -5234,7 +6418,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-informacii",
@@ -5251,7 +6439,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-analiza-i-informacii",
@@ -5268,7 +6460,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-delam-religii",
@@ -5285,7 +6481,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-delam-grazhdanskogo-obschestva",
@@ -5302,7 +6502,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-teleradiokorporaciya-kazahstan-qazaq-auen",
@@ -5319,7 +6523,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mezhdunarodnyi-centr-mezhkonfessionalnogo-i",
@@ -5336,7 +6544,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-institut-centr-balet-gazet",
@@ -5353,7 +6565,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nao-centr-podderzhki-nacionalnogo-kino-insti",
@@ -5370,7 +6586,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "uchebnye-uchrezhd",
@@ -5387,7 +6607,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahskaya-nacionalnaya-akademiya-horeografi",
@@ -5404,7 +6628,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mts",
@@ -5421,7 +6649,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-delam-sporta-i-fizicheskoi-kultur",
@@ -5438,7 +6670,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centrov-i-podvedomki",
@@ -5455,7 +6691,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-regulirovaniyu-igornogo-biznesa-i",
@@ -5472,7 +6712,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-centr-monitoringa-i-analiza-azartnyh-igr",
@@ -5489,7 +6733,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-industrii-turizma",
@@ -5506,7 +6754,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazakh-tourism",
@@ -5523,7 +6775,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nao-mezhdunarodnyi-universitet-turizma-i-gos",
@@ -5540,7 +6796,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mz",
@@ -5569,7 +6829,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-medicinskogo-i-farmacevticheskogo-ko",
@@ -5586,7 +6850,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-13",
@@ -5603,7 +6871,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-ekspertizy-lekarstvennyh-s",
@@ -5620,7 +6892,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-sanitarno-epidemiologicheskogo-kontr",
@@ -5637,7 +6913,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-14",
@@ -5654,7 +6934,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gor-rai-onnye-upravlenii",
@@ -5671,7 +6955,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "departament-sanitarno-epidemiologicheskogo-k",
@@ -5688,7 +6976,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenii-2",
@@ -5705,7 +6997,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "protivochumnaya-stanciya",
@@ -5722,7 +7018,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-ekspertizy",
@@ -5739,7 +7039,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-11",
@@ -5756,7 +7060,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nauchnye-centry",
@@ -5773,7 +7081,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "detskii-klinicheskii-sanatorii-reabilitaciya",
@@ -5790,7 +7102,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nao-turar-healthcae",
@@ -5807,7 +7123,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazmedteh",
@@ -5824,7 +7144,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskie-centr-y-i-bolnicy",
@@ -5841,7 +7165,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-gigieny-truda-i-profession",
@@ -5858,7 +7186,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazahskii-respublikanskii-leprozorii",
@@ -5875,7 +7207,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "med-univery",
@@ -5892,7 +7228,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-qazbiopharm",
@@ -5909,7 +7249,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-obschestvennogo-zdravoohra",
@@ -5938,7 +7282,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filial-3",
@@ -5955,7 +7303,11 @@
     "theme": "филиал 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nauchno-iscledovatelskii-institut-kurortolog",
@@ -5972,7 +7324,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "respublikanskii-centr-elektronnogo-zdravoohr",
@@ -6001,7 +7357,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-sk-farmaciya",
@@ -6018,7 +7378,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mt",
@@ -6035,7 +7399,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-avtomobilnogo-transporta-i-transport",
@@ -6052,7 +7420,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "inspekcii-2",
@@ -6069,7 +7441,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-zheleznodorozhnogo-i-vodnogo-transpo",
@@ -6086,7 +7462,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "morskaya-administraciya-portov",
@@ -6103,7 +7483,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "qazaqstan-su-zholdary",
@@ -6120,7 +7504,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-12",
@@ -6137,7 +7525,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-avtomobilnyh-dorog",
@@ -6154,7 +7546,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahstanskii-dorozhnyi-nauchno-issledova",
@@ -6171,7 +7567,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filial-4",
@@ -6188,7 +7588,11 @@
     "theme": "филиал 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nacionalnyi-centr-kachestva-dorozhnyh-aktivo",
@@ -6205,7 +7609,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-13",
@@ -6222,7 +7630,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-grazhdanskoi-aviacii",
@@ -6239,7 +7651,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-aviacionnaya-administraciya-kazahstana",
@@ -6256,7 +7672,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazaeronavigaciya",
@@ -6273,7 +7693,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-14",
@@ -6290,7 +7714,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mezhregionalnaya-inspekciya-v-sfere-grazhdan",
@@ -6307,7 +7735,11 @@
     "theme": "Межрегиональная инспекция в сфере гражданской авиации 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-centr-po-rassledovaniyu-transportnyh-proi",
@@ -6324,7 +7756,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-qazavtozhol-685-0-0191",
@@ -6341,7 +7777,11 @@
     "theme": "АО ҚазАвтоЖол 685 0,0191",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-15",
@@ -6358,7 +7798,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-kazhservis",
@@ -6375,7 +7819,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-16",
@@ -6392,7 +7840,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mne",
@@ -6409,7 +7861,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-regulirovaniyu-estestvennyh-monop",
@@ -6426,7 +7882,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "territorii-15",
@@ -6443,7 +7903,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-specialnyh-programm",
@@ -6460,7 +7924,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nauchno-issledovatelskii-institut-mikrografi",
@@ -6477,7 +7945,11 @@
     "theme": "Научно-исследовательский институт микрографии 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahstanskii-centr-gosudarstvenno-chastn",
@@ -6494,7 +7966,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-institut-ekonomicheskih-issledovanii",
@@ -6511,7 +7987,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nih-bai-terek",
@@ -6528,7 +8008,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "zhssb-otbasy-bank",
@@ -6545,7 +8029,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-qazaqstan-investment-corporation",
@@ -6562,7 +8050,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-eksportno-kreditnoe-agentstvo-kazahstana",
@@ -6579,7 +8071,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-agrarnaya-kreditnaya-korporaciya",
@@ -6596,7 +8092,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-bank-razvitiya-kazahstana",
@@ -6613,7 +8113,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-fond-razvitiya-predprinimatelstva-damu",
@@ -6630,7 +8134,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-kazahstanskaya-zhilischnaya-kompaniya",
@@ -6647,7 +8155,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mvri",
@@ -6664,7 +8176,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-vodnogo-hozyai-stva",
@@ -6681,7 +8197,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-regulirovaniyu-ohrane-i-ispolzova",
@@ -6698,7 +8218,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "inspekcii-3",
@@ -6715,7 +8239,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gidrogeologo-meliorativnyi-centr",
@@ -6732,7 +8260,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-kazahskii-nauchno-issledovatelskii-incti",
@@ -6749,7 +8281,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-sk-water-solutions",
@@ -6766,7 +8302,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nao-kazgidrogeologiya",
@@ -6783,7 +8323,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filiala-2",
@@ -6800,7 +8344,11 @@
     "theme": "филиала 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "nao-informacionno-analiticheskii-centr-vodny",
@@ -6817,7 +8365,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kazvodhoz",
@@ -6834,7 +8386,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filial-5",
@@ -6851,7 +8407,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mnvo",
@@ -6868,7 +8428,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "vuz",
@@ -6885,7 +8449,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "til-qazyna",
@@ -6902,7 +8470,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "institutov-i-centrov",
@@ -6919,7 +8491,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mid",
@@ -6936,7 +8512,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik",
@@ -6953,7 +8533,11 @@
     "theme": "-квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mp",
@@ -6970,7 +8554,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik-2",
@@ -6987,7 +8575,11 @@
     "theme": "-квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "msh",
@@ -7004,7 +8596,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-upravleniyu-zemelnymi-resursami",
@@ -7021,7 +8617,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет по управлению земельными ресурсами",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-departamentov",
@@ -7038,7 +8638,11 @@
     "theme": "-областных департаментов",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik-3",
@@ -7055,7 +8659,11 @@
     "theme": "-квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-veterinarnogo-kontrolya-i-nadzora",
@@ -7072,7 +8680,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет ветеринарного контроля и надзора",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-inspekcii",
@@ -7089,7 +8701,11 @@
     "theme": "-областных инспекций",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gorrai-inspekcii",
@@ -7106,7 +8722,11 @@
     "theme": "-горрай инспекции",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik-4",
@@ -7123,7 +8743,11 @@
     "theme": "-квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-rybnogo-hozyai-stva",
@@ -7140,7 +8764,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет рыбного хозяйства",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mezhoblastnaya-inspekciya",
@@ -7157,7 +8785,11 @@
     "theme": "-межобластная инспекция",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik-5",
@@ -7174,7 +8806,11 @@
     "theme": "квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-gosudarstvennoi-inspekcii-v-agroprom",
@@ -7191,7 +8827,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет государственной инспекции в агропромышленном комплексе",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-inspekcii-2",
@@ -7208,7 +8848,11 @@
     "theme": "-областных инспекций",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gorrai-inspekcii-2",
@@ -7225,7 +8869,11 @@
     "theme": "-горрай инспекции",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik-respublikanskii-centr-karantina-raste",
@@ -7242,7 +8890,11 @@
     "theme": "-квазик Республиканский центр карантина растений",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik-6",
@@ -7259,7 +8911,11 @@
     "theme": "квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "mchs",
@@ -7276,7 +8932,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "oblastnyh-departamentov-2",
@@ -7293,7 +8953,11 @@
     "theme": "-областных департаментов",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gorrai-chs",
@@ -7310,7 +8974,11 @@
     "theme": "-горрай ЧС",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-promyshlennoi-bezopasnosti",
@@ -7327,7 +8995,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет промышленной безопасности",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "rgu-respublikanskaya-sluzhba-spaseniya-barys",
@@ -7344,7 +9016,11 @@
     "theme": "РГУ Республиканская служба спасения \"Барыс\"",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-preduprezhdeniya-chrezvychai-nyh-sit",
@@ -7361,7 +9037,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет предупреждения чрезвычайных ситуаций",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-gosudarstvennym-materialnym-rezer",
@@ -7378,7 +9058,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет по государственным материальным резервам",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "rgp-rezerv-30-0-0008",
@@ -7395,7 +9079,11 @@
     "theme": "РГП \"Резерв\"",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gosudarstvennoe-uchrezhdenie-centr-mediciny",
@@ -7412,7 +9100,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Государственное учреждение Центр медицины катастроф",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "regionalnyh-filialov",
@@ -7429,7 +9121,11 @@
     "theme": "-региональных филиалов",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gu-akademiya-grazhdanskoi-zaschity-imeni-mal",
@@ -7446,7 +9142,11 @@
     "theme": "ГУ \"Академия гражданской защиты имени Малика Габдуллина \"",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-protivopozharnoi-sluzhby",
@@ -7463,7 +9163,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет противопожарной службы",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "komitet-po-grazhdanskoi-oborone-i-voinskim-c",
@@ -7480,7 +9184,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: Комитет по гражданской обороне и воинским частям",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "voinskoi-chasti",
@@ -7497,7 +9205,11 @@
     "theme": "- Воинской части",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gu-kazselezaschita",
@@ -7514,7 +9226,11 @@
     "theme": "Сфера деятельности и полномочия ведомства: ГУ \"Казселезащита",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filialov-17",
@@ -7531,7 +9247,11 @@
     "theme": "-филиалов",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "voinskaya-chast-55209-7-0-0002",
@@ -7548,7 +9268,11 @@
     "theme": "Воинская часть 55209",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "kvazik-7",
@@ -7565,7 +9289,11 @@
     "theme": "-квазик",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "akimat-astana",
@@ -7595,7 +9323,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-rai-ona-saryarka",
@@ -7625,7 +9357,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "711310000",
+    "katoNameRu": "район Сарыарка",
+    "locationId": "711310",
+    "locationAddress": "г. Астана / район Сарыарка"
   },
   {
     "id": "apparat-akima-rai-ona-esil",
@@ -7655,7 +9391,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "711210000",
+    "katoNameRu": "район Есиль",
+    "locationId": "711210",
+    "locationAddress": "г. Астана / район Есиль"
   },
   {
     "id": "apparat-akima-rai-ona-nura",
@@ -7685,7 +9425,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "711510000",
+    "katoNameRu": "район Нұра",
+    "locationId": "71151",
+    "locationAddress": "г. Астана / район Нұра"
   },
   {
     "id": "apparat-akima-rai-ona-almaty",
@@ -7715,7 +9459,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "750000000",
+    "katoNameRu": "г.Алматы",
+    "locationId": "75",
+    "locationAddress": "г.Алматы"
   },
   {
     "id": "apparat-akima-rai-ona-bai-qonyr",
@@ -7745,7 +9493,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "711410000",
+    "katoNameRu": "район Байқоңыр",
+    "locationId": "711410",
+    "locationAddress": "г. Астана / район Байқоңыр"
   },
   {
     "id": "apparat-akima-rai-ona-sarai-shyq",
@@ -7775,7 +9527,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "711610000",
+    "katoNameRu": "район Сарайшық",
+    "locationId": "711610",
+    "locationAddress": "г. Астана / район Сарайшық"
   },
   {
     "id": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
@@ -7792,7 +9548,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "zhilischnyi-fond",
@@ -7809,7 +9569,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astana-ornek",
@@ -7826,7 +9590,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-orken-qala",
@@ -7843,7 +9611,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gorodskaya-nedvizhimost",
@@ -7860,7 +9632,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-arhitektury-gradostroitelstva-i-z",
@@ -7877,7 +9653,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-centr-urbanistiki-goroda-astany",
@@ -7894,7 +9674,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-nauchno-issledovatelskii-proektnyi-insti",
@@ -7911,7 +9695,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-transporta-i-razvitiya-dorozhno-t",
@@ -7928,7 +9716,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-centr-organizacii-dorozhnogo-dvizheniya",
@@ -7945,7 +9737,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-direkciya-po-stroitelstvu-lrt",
@@ -7962,7 +9758,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-avtobusnyi-park-no1",
@@ -7979,7 +9779,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-mezhdunarodnyi-aeroport-nursultan-nazarba",
@@ -7996,7 +9800,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "filial-ao-mezhdunarodnyi-aeroport-nursultan",
@@ -8013,7 +9821,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-zhezkiik",
@@ -8030,7 +9842,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-city-transportation-systems",
@@ -8047,7 +9863,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-gosudarstvennogo-arhitekturno-str",
@@ -8064,7 +9884,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-elorda-qurylys-kompaniyasy",
@@ -8081,7 +9905,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-obschestvennogo-zdravoohraneniya",
@@ -8110,7 +9938,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "polikliniki-bolnicy",
@@ -8127,7 +9959,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
@@ -8144,7 +9980,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astana-ormany",
@@ -8161,7 +10001,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "astana-vetservis",
@@ -8178,7 +10022,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astana-zelenstroi",
@@ -8195,7 +10043,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-obrazovaniya",
@@ -8212,7 +10064,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "obrazov-uchrezhd",
@@ -8229,7 +10085,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-stroitelstva",
@@ -8246,7 +10106,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-elorda-damu",
@@ -8263,7 +10127,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-kommunalnogo-hozyai-stva",
@@ -8280,7 +10148,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "astana-su-arnasy",
@@ -8297,7 +10169,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astana-byuro-specialnogo-obsluzhivaniya",
@@ -8314,7 +10190,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astana-tazalyq",
@@ -8331,7 +10211,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "elorda-eco-system",
@@ -8348,7 +10232,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-zanyatosti-i-socialnoi-zaschity",
@@ -8365,7 +10253,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centrov-2",
@@ -8382,7 +10274,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-po-razvitiyu-yazykov-i-arhivnogo",
@@ -8399,7 +10295,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gosudarstvennyi-arhiv",
@@ -8416,7 +10316,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ruhaniyat",
@@ -8433,7 +10337,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-hozyai-stvennoe-upravlenie-astany",
@@ -8450,7 +10358,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-po-mobilizacionnoi-podgotovke-ter",
@@ -8467,7 +10379,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-po-obespecheniyu-grazhdanskoi-oborony",
@@ -8484,7 +10400,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-po-delam-religii",
@@ -8501,7 +10421,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomka",
@@ -8518,7 +10442,11 @@
     "theme": "подведомка 0",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-ekonomiki-i-byudzhetnogo-planirov",
@@ -8535,7 +10463,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-vnutrennei-politiki",
@@ -8552,7 +10484,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "qogamdyq-kelisim-2",
@@ -8569,7 +10505,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "sluzhba-kommunikacii",
@@ -8586,7 +10526,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-elorda-aqparat",
@@ -8603,7 +10547,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-finansov",
@@ -8620,7 +10568,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-energetiki",
@@ -8660,7 +10612,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-astana-regionalnaya-elektrosetevaya-kompa",
@@ -8677,7 +10633,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-astana-teplotranzit",
@@ -8694,7 +10654,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astana-qalalyq-zharyq",
@@ -8711,7 +10675,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-astana-energiya",
@@ -8728,7 +10696,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-po-investiciyam-i-razvitiyu-predp",
@@ -8745,7 +10717,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-centr-razvitiya-turizma-astana-tourism",
@@ -8762,7 +10738,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-centr-razvitiya-astany",
@@ -8779,7 +10759,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-spk-astana",
@@ -8796,7 +10780,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-gorodskoi-centr-razvitiya-investicii-ast",
@@ -8813,7 +10801,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-po-voprosam-molodezhnoi-politiki",
@@ -8830,7 +10822,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "molodezhnyi-resursnyi-centr-astana-zhastary",
@@ -8847,7 +10843,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-cifrovizacii-i-gosudarstvennyh-us",
@@ -8864,7 +10864,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "gorodskoi-centr-monitoringa-i-operativnogo-r",
@@ -8881,7 +10885,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "ao-astana-innovations",
@@ -8898,7 +10906,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-fizicheskoi-kultury-i-sporta",
@@ -8915,7 +10927,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki-6",
@@ -8932,7 +10948,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-kultury",
@@ -8949,7 +10969,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki-7",
@@ -8966,7 +10990,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-po-zaschite-prav-detei",
@@ -8983,7 +11011,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "upravlenie-aktivov-i-gosudarstvennyh-zakupok",
@@ -9000,7 +11032,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "too-astana-venue-management",
@@ -9017,7 +11053,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "almatinskaya-oblast",
@@ -9034,7 +11074,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "190000000",
+    "katoNameRu": "Алматинская область",
+    "locationId": "19",
+    "locationAddress": "Алматинская область"
   },
   {
     "id": "apparat-akima-karasai-skogo-rai-ona",
@@ -9064,7 +11108,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-irgelinskogo-selskogo-okruga",
@@ -9094,7 +11142,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-goroda-kaskelen",
@@ -9124,7 +11176,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "195220100",
+    "katoNameRu": "г.Каскелен",
+    "locationId": "195220100",
+    "locationAddress": "Алматинская область / Карасайский район / г.Каскелен"
   },
   {
     "id": "apparat-akima-rai-ymbekskogo-selskogo-okruga",
@@ -9154,7 +11210,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-zhambylskogo-selskogo-okruga",
@@ -9184,7 +11244,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "310000000",
+    "katoNameRu": "Жамбылская область",
+    "locationId": "31",
+    "locationAddress": "Жамбылская область"
   },
   {
     "id": "apparat-akima-umtylskogo-selskogo-okruga",
@@ -9214,7 +11278,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-zhandosovskogo-selskogo-okruga",
@@ -9244,7 +11312,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-selskogo-okruga-zhibek-zholy",
@@ -9274,7 +11346,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-pervomai-skogo-selskogo-okruga",
@@ -9304,7 +11380,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-shamalganskogo-selskogo-okruga",
@@ -9334,7 +11414,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-eltai-skogo-selskogo-okruga",
@@ -9364,7 +11448,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-ai-tei-skogo-selskogo-okruga",
@@ -9394,7 +11482,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-arhitektury-i-gradostroitelstva",
@@ -9411,7 +11503,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-zhilischno-kommunalnogo-hozyai-stva-i",
@@ -9428,7 +11524,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-vnutrennei-politiki",
@@ -9445,7 +11545,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-provedeniya-sportivno-massovyh-meropri",
@@ -9462,7 +11566,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "rai-onnyi-dom-kultury",
@@ -9479,7 +11587,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "folklorno-etnograficheskii-ansambl-ushkonyr",
@@ -9496,7 +11608,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-kultury-razvitiya-yazykov-fizicheskoi",
@@ -9513,7 +11629,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "karasai-skaya-rai-onnaya-biblioteka",
@@ -9530,7 +11650,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-predprinimatelstva-karasai-skogo-rai-o",
@@ -9547,7 +11671,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-stroitelstva-karasai-skogo-rai-ona",
@@ -9564,7 +11692,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-zanyatosti-i-socialnyh-programm",
@@ -9581,7 +11713,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "centr-podderzhki-semi-zhanuya",
@@ -9598,7 +11734,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-passazhirskogo-transporta-i-avtomobiln",
@@ -9615,7 +11755,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-selskogo-hozyai-stva",
@@ -9632,7 +11776,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-ekonomiki-i-finansov",
@@ -9649,7 +11797,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-zemelnyh-otnoshenii",
@@ -9666,7 +11818,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "tausamaly-kyzmet",
@@ -9683,7 +11839,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-talgarskogo-rai-ona",
@@ -9713,7 +11873,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "196220100",
+    "katoNameRu": "г.Талгар",
+    "locationId": "196220100",
+    "locationAddress": "Алматинская область / Талгарский район / г.Талгар"
   },
   {
     "id": "apparat-akima-tuzdybastauskogo-selskogo-okru",
@@ -9743,7 +11907,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-guldalinskogo-selskogo-okruga",
@@ -9773,7 +11941,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-panfilovskogo-selskogo-okruga",
@@ -9803,7 +11975,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-besagashskogo-selskogo-okruga",
@@ -9833,7 +12009,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-belbulakskogo-selskogo-okruga",
@@ -9863,7 +12043,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-goroda-talgar",
@@ -9893,7 +12077,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "196220100",
+    "katoNameRu": "г.Талгар",
+    "locationId": "196220100",
+    "locationAddress": "Алматинская область / Талгарский район / г.Талгар"
   },
   {
     "id": "too-talgar-turgyn-ui",
@@ -9910,7 +12098,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "196220100",
+    "katoNameRu": "г.Талгар",
+    "locationId": "196220100",
+    "locationAddress": "Алматинская область / Талгарский район / г.Талгар"
   },
   {
     "id": "apparat-akima-kendalinskogo-selskogo-okruga",
@@ -9940,7 +12132,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-nurinskogo-selskogo-okruga",
@@ -9970,7 +12166,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-alatauskogo-selskogo-okruga",
@@ -10000,7 +12200,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-kai-narskogo-selskogo-okruga",
@@ -10030,7 +12234,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "apparat-akima-beskai-narskogo-selskogo-okrug",
@@ -10060,7 +12268,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-arhitektury-i-gradostroitelstva-2",
@@ -10077,7 +12289,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-vnutrennei-politiki-2",
@@ -10094,7 +12310,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-ekonomiki-i-finansov-2",
@@ -10111,7 +12331,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-kultury-razvitiya-yazykov-fizicheskoi-2",
@@ -10128,7 +12352,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "podvedomki-8",
@@ -10145,7 +12373,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-predprinimatelstva",
@@ -10162,7 +12394,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-stroitelstva",
@@ -10179,7 +12415,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-selskogo-hozyai-stva-2",
@@ -10196,7 +12436,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-passazhirskogo-transporta-i-avtomobiln-2",
@@ -10213,7 +12457,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-zhilischno-kommunalnogo-hozyai-stva-i-2",
@@ -10230,7 +12478,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-zanyatosti-i-socialnyh-programm-2",
@@ -10247,7 +12499,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "cent-podderzhki-semi",
@@ -10264,7 +12520,11 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   },
   {
     "id": "otdel-zemelnyh-otnoshenii-2",
@@ -10281,6 +12541,10 @@
     "theme": "",
     "completenessScore": 0,
     "status": "unfilled",
-    "hasHumanTouch": false
+    "hasHumanTouch": false,
+    "katoCode": "710000000",
+    "katoNameRu": "г. Астана",
+    "locationId": "71",
+    "locationAddress": "г. Астана"
   }
 ]

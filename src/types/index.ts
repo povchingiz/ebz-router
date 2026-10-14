@@ -98,3 +98,13 @@ export interface GovOrg {
     lockedAt: string;
   } | null;
 }
+
+export interface ClassifierLocation {
+  id: string;
+  parentId: string;
+  name: string;
+  nameKk?: string;
+  type: string;
+  kato: string;
+  breadcrumb: string;
+}

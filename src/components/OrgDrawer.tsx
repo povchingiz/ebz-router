@@ -4,6 +4,7 @@ import { useAuth } from '@/context/AuthContext';
 import { QuestionModal } from './QuestionModal';
 import { QuestionCsvModal } from './QuestionCsvModal';
 import { CreateChildOrgModal } from './CreateChildOrgModal';
+import { LocationPicker } from './LocationPicker';
 import {
   X,
   Lock,
@@ -119,29 +120,6 @@ const JURISDICTION_OPTIONS: {
   },
 ];
 
-export const KATO_REGIONS = [
-  { code: '710000000', name: 'г. Астана', type: 'REPUBLIC_CITY' },
-  { code: '750000000', name: 'г. Алматы', type: 'REPUBLIC_CITY' },
-  { code: '790000000', name: 'г. Шымкент', type: 'REPUBLIC_CITY' },
-  { code: '110000000', name: 'Акмолинская область', type: 'REGION' },
-  { code: '150000000', name: 'Актюбинская область', type: 'REGION' },
-  { code: '190000000', name: 'Алматинская область', type: 'REGION' },
-  { code: '230000000', name: 'Атырауская область', type: 'REGION' },
-  { code: '270000000', name: 'Западно-Казахстанская область', type: 'REGION' },
-  { code: '310000000', name: 'Жамбылская область', type: 'REGION' },
-  { code: '350000000', name: 'Карагандинская область', type: 'REGION' },
-  { code: '390000000', name: 'Костанайская область', type: 'REGION' },
-  { code: '430000000', name: 'Кызылординская область', type: 'REGION' },
-  { code: '470000000', name: 'Мангистауская область', type: 'REGION' },
-  { code: '550000000', name: 'Павлодарская область', type: 'REGION' },
-  { code: '590000000', name: 'Северо-Казахстанская область', type: 'REGION' },
-  { code: '610000000', name: 'Туркестанская область', type: 'REGION' },
-  { code: '630000000', name: 'Восточно-Казахстанская область', type: 'REGION' },
-  { code: '100000000', name: 'область Абай', type: 'REGION' },
-  { code: '330000000', name: 'область Жетісу', type: 'REGION' },
-  { code: '620000000', name: 'область Ұлытау', type: 'REGION' },
-];
-
 export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   org,
   allOrgs,
@@ -167,6 +145,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [theme, setTheme] = useState('');
   const [locationAddress, setLocationAddress] = useState('');
   const [katoCode, setKatoCode] = useState('');
+  const [locationId, setLocationId] = useState('');
+  const [katoNameRu, setKatoNameRu] = useState('');
   const [jurisdiction, setJurisdiction] = useState<JurisdictionLevel>('republican');
   const [legalBasis, setLegalBasis] = useState('');
 
@@ -213,6 +193,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setTheme(org.theme || '');
       setLocationAddress(org.locationAddress || '');
       setKatoCode(org.katoCode || '');
+      setLocationId(org.locationId || '');
+      setKatoNameRu(org.katoNameRu || '');
       const initStatus = org.hasHumanTouch
         ? ((org.status as any) === 'verified'
           ? 'verified'
@@ -342,6 +324,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         theme,
         locationAddress,
         katoCode,
+        katoNameRu,
+        locationId,
         jurisdiction,
         status: verificationStatus === 'unfilled' ? 'llm_check' : verificationStatus,
         hasHumanTouch: true,
@@ -735,58 +719,36 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </div>
 
                 <div className="space-y-3">
-                  {/* Выбор города / региона */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Выберите город или область:
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <select
-                        value={katoCode}
-                        onChange={(e) => {
-                          const val = e.target.value;
-                          setKatoCode(val);
-                          const selected = KATO_REGIONS.find((r) => r.code === val);
-                          if (selected) {
-                            setLocationAddress(selected.name);
-                            setPhysicalAddress(selected.name);
-                          }
-                        }}
-                        className="w-full mt-1 p-2.5 text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none cursor-pointer"
-                      >
-                        <option value="">-- Выберите город или область --</option>
-                        {KATO_REGIONS.map((r) => (
-                          <option key={r.code} value={r.code}>
-                            {r.name}
-                          </option>
-                        ))}
-                      </select>
-                    ) : (
-                      <div className="mt-1 p-2 text-xs font-bold rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white">
-                        {KATO_REGIONS.find((r) => r.code === katoCode)?.name || locationAddress || 'Не указан'}
-                      </div>
-                    )}
-                  </div>
+                  <LocationPicker
+                    currentKatoCode={katoCode}
+                    currentLocationId={locationId}
+                    currentLocationAddress={locationAddress}
+                    disabled={!permissions.canEditContent || Boolean(isLockedByOther)}
+                    onChange={(loc) => {
+                      setKatoCode(loc.katoCode);
+                      setKatoNameRu(loc.katoNameRu);
+                      setLocationId(loc.locationId);
+                      setLocationAddress(loc.locationAddress);
+                      setPhysicalAddress(loc.locationAddress);
+                    }}
+                  />
 
                   {/* Фактический адрес (улица, дом - опционально) */}
                   <div>
                     <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Фактический адрес (улица, здание):
+                      Фактический адрес (улица, здание — опционально):
                     </label>
                     {permissions.canEditContent && !isLockedByOther ? (
                       <input
                         type="text"
-                        value={locationAddress}
-                        onChange={(e) => {
-                          setLocationAddress(e.target.value);
-                          setPhysicalAddress(e.target.value);
-                        }}
+                        value={physicalAddress || locationAddress}
+                        onChange={(e) => setPhysicalAddress(e.target.value)}
                         placeholder="Например: пр. Мәңгілік Ел, 8"
                         className="w-full mt-1 p-2.5 text-xs font-medium rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none text-slate-900 dark:text-white"
                       />
                     ) : (
                       <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {locationAddress || physicalAddress || 'Адрес не указан'}
+                        {physicalAddress || locationAddress || 'Адрес не указан'}
                       </div>
                     )}
                   </div>
