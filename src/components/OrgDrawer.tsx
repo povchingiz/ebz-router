@@ -32,6 +32,8 @@ import {
   Mail,
   Ban,
   PhoneCall,
+  Eye,
+  EyeOff,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -50,6 +52,7 @@ interface OrgDrawerProps {
     legalBasis?: string;
     competenciesExcluded?: string;
     forwardToGuidance?: string;
+    showOnFrontend?: boolean;
     contacts?: {
       phoneHotline?: string;
       phoneChancellery?: string;
@@ -136,6 +139,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   // Исключения компетенций (Схема knowledge)
   const [competenciesExcluded, setCompetenciesExcluded] = useState('');
   const [forwardToGuidance, setForwardToGuidance] = useState('');
+  const [showOnFrontend, setShowOnFrontend] = useState(true);
 
   // Контакты и реквизиты (Схема knowledge)
   const [phoneHotline, setPhoneHotline] = useState('');
@@ -173,6 +177,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setLegalBasis(org.legalBasis || '');
       setCompetenciesExcluded(org.competenciesExcluded || '');
       setForwardToGuidance(org.forwardToGuidance || '');
+      setShowOnFrontend(org.showOnFrontend !== false);
       setPhoneHotline(org.contacts?.phoneHotline || '');
       setPhoneChancellery(org.contacts?.phoneChancellery || '');
       setEmailOfficial(org.contacts?.emailOfficial || '');
@@ -251,6 +256,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         legalBasis,
         competenciesExcluded,
         forwardToGuidance,
+        showOnFrontend,
         contacts: {
           phoneHotline,
           phoneChancellery,
@@ -424,6 +430,41 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
               </span>
             </div>
           )}
+
+          {/* Переключатель видимости на платформе (show_on_frontend) */}
+          <div className="flex items-center justify-between mt-2.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80">
+            <div className="flex items-center gap-2">
+              {showOnFrontend ? (
+                <Eye className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              ) : (
+                <EyeOff className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+              )}
+              <div>
+                <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
+                  {showOnFrontend ? 'Отображается на платформе онлайн' : 'Скрыто с платформы онлайн'}
+                </div>
+                <div className="text-[10px] text-slate-400">
+                  {showOnFrontend ? 'Организация активна в графе и поиске' : 'Временно отключено от показа пользователям'}
+                </div>
+              </div>
+            </div>
+            {permissions.canChangeStructure && (
+              <button
+                type="button"
+                onClick={() => setShowOnFrontend(!showOnFrontend)}
+                className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                  showOnFrontend ? 'bg-emerald-600' : 'bg-slate-300 dark:bg-slate-700'
+                }`}
+                title="Переключить видимость на платформе"
+              >
+                <span
+                  className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
+                    showOnFrontend ? 'translate-x-4' : 'translate-x-0'
+                  }`}
+                />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Баннер ведомственной юрисдикции при ограничении прав */}

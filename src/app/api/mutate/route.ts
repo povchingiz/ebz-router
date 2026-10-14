@@ -101,6 +101,7 @@ export async function POST(req: NextRequest) {
             competenciesExcluded: payload.competenciesExcluded,
             forwardToGuidance: payload.forwardToGuidance,
             contacts: payload.contacts,
+            showOnFrontend: payload.showOnFrontend,
           } as any,
           version ?? 1,
           userForStore

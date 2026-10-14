@@ -73,6 +73,7 @@ export interface GovOrg {
   orgNameKk?: string;       // Официальное наименование на казахском языке
   shortNameKk?: string;     // Краткое наименование на казахском языке
   status?: 'unfilled' | 'in_progress' | 'verified'; // Светофор готовности (🔴/🟡/🟢)
+  showOnFrontend?: boolean; // Флаг отображения на платформе онлайн (true = видно, false = скрыто)
   hasHumanTouch?: boolean;  // Редактировался ли живым человеком
   completenessScore?: number; // % заполненности (0 - 100)
   competenciesExcluded?: string; // Что НЕ входит в компетенцию

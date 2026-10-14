@@ -2,7 +2,7 @@ import React from 'react';
 import { Handle, Position } from '@xyflow/react';
 import { GovOrg } from '../../types';
 import { LEVEL_CONFIG } from '../OrgCard';
-import { ChevronDown, ChevronUp, Lock, FileText, MapPin, Tag } from 'lucide-react';
+import { ChevronDown, ChevronUp, Lock, FileText, MapPin, Tag, EyeOff } from 'lucide-react';
 
 export interface OrgNodeData {
   org: GovOrg;
@@ -34,12 +34,15 @@ export const OrgFlowCard = ({ data, selected }: any) => {
   const isUnfilled = org.status === 'unfilled' || (!org.hasHumanTouch && org.level !== 'central');
   const isVerified = org.status === 'verified';
   const isInProgress = org.status === 'in_progress';
+  const isHiddenOnline = org.showOnFrontend === false;
 
   return (
     <div
       className={`group relative w-[280px] rounded-2xl border-2 bg-white dark:bg-slate-900 shadow-md transition-all duration-150 select-none p-3.5 flex flex-col justify-between ${
         selected
           ? 'border-blue-600 ring-4 ring-blue-500/20 shadow-blue-500/10'
+          : isHiddenOnline
+          ? 'border-dashed border-slate-400 dark:border-slate-600 bg-slate-50/70 dark:bg-slate-900/60 opacity-80'
           : isUnfilled
           ? 'border-rose-300 dark:border-rose-900/70 hover:border-rose-400 bg-rose-50/20'
           : isInProgress
@@ -68,12 +71,18 @@ export const OrgFlowCard = ({ data, selected }: any) => {
       <div className="flex items-center justify-between gap-1 mb-1.5">
         <div className="flex items-center gap-1 overflow-hidden">
           {org.orgType ? (
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 truncate max-w-[150px]">
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 truncate max-w-[125px]">
               {org.orgType}
             </span>
           ) : (
             <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
               Госорган
+            </span>
+          )}
+          {isHiddenOnline && (
+            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-400 border border-amber-200 dark:border-amber-800 flex items-center gap-0.5 shrink-0">
+              <EyeOff className="w-2.5 h-2.5" />
+              Скрыто
             </span>
           )}
         </div>

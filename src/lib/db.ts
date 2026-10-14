@@ -43,6 +43,7 @@ function mapDbRowToGovOrg(row: any, questions: OrgQuestion[] = []): GovOrg {
     orgNameKk: row.org_name_kk || '',
     shortNameKk: row.short_name_kk || '',
     status: (row.knowledge_status as any) || (row.has_human_touch ? 'in_progress' : 'unfilled'),
+    showOnFrontend: row.show_on_frontend !== false,
     hasHumanTouch: row.has_human_touch ?? false,
     completenessScore: row.completeness_score ?? (row.has_human_touch ? 65 : 15),
     competenciesExcluded: row.competencies_excluded || '',
@@ -306,6 +307,7 @@ export async function updateOrgContentInDb(
     const newLegalBasis = updates.legalBasis !== undefined ? updates.legalBasis : currentOrg.legal_basis;
     const newJurisdiction = updates.jurisdiction !== undefined ? updates.jurisdiction : currentOrg.jurisdiction;
     const newLocation = updates.locationAddress !== undefined ? updates.locationAddress : currentOrg.location_name_ru;
+    const newShowOnFrontend = (updates as any).showOnFrontend !== undefined ? (updates as any).showOnFrontend : (currentOrg.show_on_frontend !== false);
 
     await client.query(
       `
@@ -317,13 +319,14 @@ export async function updateOrgContentInDb(
         legal_basis = $4,
         jurisdiction = $5,
         location_name_ru = $6,
+        show_on_frontend = $7,
         version = version + 1,
         locked_by_user = NULL,
         locked_at = NULL,
         updated_at = now()
-      WHERE org_id = $7
+      WHERE org_id = $8
       `,
-      [newName, newFullName, newScope, newLegalBasis, newJurisdiction, newLocation, numericId]
+      [newName, newFullName, newScope, newLegalBasis, newJurisdiction, newLocation, newShowOnFrontend, numericId]
     );
 
     // 3. Обновление FAQ если переданы
