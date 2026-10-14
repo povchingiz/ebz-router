@@ -34,6 +34,7 @@ import {
   PhoneCall,
   Eye,
   EyeOff,
+  ExternalLink,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -121,7 +122,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   onCreateOrg,
 }) => {
   const { user: authUser, canManageOrg } = useAuth();
-  const [activeTab, setActiveTab] = useState<'info' | 'passport' | 'questions' | 'admin'>('info');
+  const [activeTab, setActiveTab] = useState<'competencies' | 'info' | 'questions' | 'admin'>('competencies');
 
   // Наименования
   const [orgName, setOrgName] = useState('');
@@ -482,9 +483,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         <div className="flex border-b border-slate-200 dark:border-slate-800 px-5 gap-4 text-xs font-bold bg-white dark:bg-slate-900 shrink-0">
           <button
             type="button"
-            onClick={() => setActiveTab('info')}
+            onClick={() => setActiveTab('competencies')}
             className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
-              activeTab === 'info'
+              activeTab === 'competencies'
                 ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
             }`}
@@ -495,15 +496,15 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
 
           <button
             type="button"
-            onClick={() => setActiveTab('passport')}
+            onClick={() => setActiveTab('info')}
             className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
-              activeTab === 'passport'
+              activeTab === 'info'
                 ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <Building2 className="w-4 h-4" />
-            Паспорт и контакты
+            Информация
           </button>
 
           <button
@@ -550,17 +551,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* ВКЛАДКА 1: Компетенции и статус */}
-          {activeTab === 'info' && (
+          {/* ВКЛАДКА 1: Компетенции ведомства */}
+          {activeTab === 'competencies' && (
             <div className="space-y-4">
-              {/* Объединенная секция: Полномочия, задачи и компетенции ведомства */}
+              {/* 1. Сфера ведения, задачи и полномочия */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <FileText className="w-4 h-4 text-blue-600" />
-                  <span>Полномочия, задачи и компетенции ведомства</span>
+                  <span>Сфера ведения и основные задачи (Полномочия)</span>
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Сфера ответственности, типовые вопросы, предметная тематика обращений граждан и задачи органа.
+                  Отраслевая сфера регулирования, задачи ведомства и предметная компетенция по рассмотрению обращений граждан.
                 </p>
                 {permissions.canEditContent && !isLockedByOther ? (
                   <textarea
@@ -570,7 +571,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                       setScope(e.target.value);
                       setTheme(e.target.value);
                     }}
-                    placeholder="Например: выработка государственной политики в сфере недропользования, вопросы тарифов ЖКХ, контроль лицензирования, рассмотрение обращений граждан..."
+                    placeholder="Например: выработка государственной политики в сфере регулирования отрасли, лицензирование, контроль исполнения стандартов, рассмотрение обращений граждан..."
                     className="w-full p-3 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none leading-relaxed"
                   />
                 ) : (
@@ -580,14 +581,51 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* Временно скрыто: Зона ответственности (Масштаб юрисдикции)
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2.5">
-                <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                  <Globe className="w-4 h-4 text-indigo-600" />
-                  <span>Зона ответственности (Масштаб юрисдикции)</span>
+              {/* 2. Нормативно-правовая база (Положение об органе) */}
+              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
+                    <Scale className="w-4 h-4 text-indigo-600" />
+                    <span>Нормативно-правовая основа (Положение об органе)</span>
+                  </div>
+                  {legalBasis && (legalBasis.startsWith('http://') || legalBasis.startsWith('https://')) && (
+                    <a
+                      href={legalBasis}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[10px] font-bold text-blue-600 hover:underline flex items-center gap-1"
+                    >
+                      <span>Открыть в Әділет</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Территориальный уровень охвата и действия компетенций ведомства.
+                  Постановление Правительства РК / Указ Президента / Решение маслихата об утверждении Положения о ведомстве.
+                </p>
+                {permissions.canEditContent && !isLockedByOther ? (
+                  <input
+                    type="text"
+                    value={legalBasis}
+                    onChange={(e) => setLegalBasis(e.target.value)}
+                    placeholder="Например: Положение утверждено Постановлением Правительства РК от ... № ... (ссылка на adilet.zan.kz)"
+                    className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none font-medium"
+                  />
+                ) : (
+                  <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                    {legalBasis || 'Нормативно-правовой акт не указан.'}
+                  </div>
+                )}
+              </div>
+
+              {/* 3. Территориальный масштаб юрисдикции */}
+              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2.5">
+                <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
+                  <Globe className="w-4 h-4 text-teal-600" />
+                  <span>Территориальный масштаб юрисдикции</span>
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  Территориальный уровень охвата полномочий и действия компетенций ведомства.
                 </p>
                 {permissions.canEditContent && !isLockedByOther ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
@@ -630,87 +668,105 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 )}
               </div>
-              */}
 
-              {/* Секция: Что НЕ входит в компетенцию ведомства */}
-              <div className="p-4 rounded-2xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-200/90 dark:border-rose-900/60 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-black text-rose-800 dark:text-rose-300">
-                  <Ban className="w-4 h-4 text-rose-600 shrink-0" />
-                  <span>Что НЕ входит в компетенцию (Анти-компетенции)</span>
-                </div>
-                <p className="text-[11px] text-slate-600 dark:text-slate-400">
-                  Вопросы и сферы, которые граждане ошибочно направляют в это ведомство.
-                </p>
-                {permissions.canEditContent && !isLockedByOther ? (
-                  <textarea
-                    rows={3}
-                    value={competenciesExcluded}
-                    onChange={(e) => setCompetenciesExcluded(e.target.value)}
-                    placeholder="Например: Минэнерго НЕ устанавливает тарифы ЖКХ для физлиц и НЕ регулирует розничные цены на АЗС..."
-                    className="w-full p-2.5 text-xs rounded-xl border border-rose-200 dark:border-rose-800 bg-white dark:bg-slate-900 focus:border-rose-500 outline-none leading-relaxed"
-                  />
-                ) : (
-                  <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-rose-100 dark:border-rose-900/50 leading-relaxed whitespace-pre-wrap">
-                    {competenciesExcluded || 'Ограничения и исключения компетенций не указаны.'}
+              {/* 4. Тематики и типовые вопросы */}
+              <div className="p-4 rounded-2xl bg-blue-50/40 dark:bg-blue-950/20 border border-blue-200/80 dark:border-blue-900/50 flex items-center justify-between">
+                <div>
+                  <div className="text-xs font-black text-blue-950 dark:text-blue-200 flex items-center gap-1.5">
+                    <HelpCircle className="w-4 h-4 text-blue-600" />
+                    <span>Тематики и поводы обращений ({questions.length})</span>
                   </div>
-                )}
+                  <p className="text-[11px] text-blue-800/80 dark:text-blue-300/80 mt-0.5">
+                    Закрепленные типовые вопросы для базы знаний и ИИ-маршрутизации.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('questions')}
+                  className="px-3 py-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 hover:bg-blue-100/70 dark:hover:bg-blue-900/40 rounded-xl transition-all flex items-center gap-1 shrink-0"
+                >
+                  <span>Смотреть вопросы</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
 
-                <div className="pt-1 space-y-1">
-                  <label className="text-[10px] font-bold text-slate-500">Куда перенаправлять типовые ошибочные обращения:</label>
-                  {permissions.canEditContent && !isLockedByOther ? (
-                    <input
-                      type="text"
-                      value={forwardToGuidance}
-                      onChange={(e) => setForwardToGuidance(e.target.value)}
-                      placeholder="Например: тарифы ЖКХ -> КРЕМ МНЭ РК, розничные цены АЗС -> АЗРК"
-                      className="w-full p-2 text-xs rounded-xl border border-rose-200 dark:border-rose-800 bg-white dark:bg-slate-900 focus:border-rose-500 outline-none"
-                    />
-                  ) : (
-                    <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2 rounded-xl border border-rose-100 dark:border-rose-900/50">
-                      {forwardToGuidance || 'Маршрут перенаправления не задан.'}
+          {/* ВКЛАДКА 2: Информация об организации */}
+          {activeTab === 'info' && (
+            <div className="space-y-4">
+              {/* Официальные наименования */}
+              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
+                  <Building2 className="w-4 h-4 text-blue-600" />
+                  <span>Официальные наименования</span>
+                </div>
+
+                <div className="space-y-2.5">
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase">
+                      Мемлекеттік тілдегі ресми атауы (На казахском языке):
+                    </label>
+                    <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                      {org.orgNameKk || org.fullName || 'Қазақ тіліндегі ресми атауы көрсетілмеген.'}
                     </div>
-                  )}
+                  </div>
+
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase">
+                      Официальное наименование на русском языке:
+                    </label>
+                    <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                      {orgFullName || org.fullName}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[10px] font-bold text-slate-500 uppercase">
+                        Краткое наименование:
+                      </label>
+                      <div className="text-xs font-black text-slate-900 dark:text-white bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                        {orgName || org.name}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-bold text-slate-500 uppercase">
+                        Тип ведомства:
+                      </label>
+                      <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1 truncate">
+                        {org.orgType || 'Государственный орган'}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Секция: Фактическое местонахождение (Локация) */}
+              {/* Фактическое местонахождение (Локация) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <MapPin className="w-4 h-4 text-emerald-600" />
                   <span>Фактическое местонахождение (Локация)</span>
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Город и фактический адрес главного аппарата ведомства.
+                  Населенный пункт и физический адрес главного здания ведомства.
                 </p>
                 {permissions.canEditContent && !isLockedByOther ? (
                   <input
                     type="text"
                     value={locationAddress}
-                    onChange={(e) => setLocationAddress(e.target.value)}
-                    placeholder="Например: г. Астана, пр. Мангилик Ел, 8, Дом Министерств"
+                    onChange={(e) => {
+                      setLocationAddress(e.target.value);
+                      setPhysicalAddress(e.target.value);
+                    }}
+                    placeholder="Например: г. Астана, пр. Мәңгілік Ел, 8, Дом Министерств"
                     className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none font-medium"
                   />
                 ) : (
                   <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
-                    {locationAddress || 'Адрес местонахождения не указан.'}
+                    {locationAddress || physicalAddress || 'Адрес местонахождения не указан.'}
                   </div>
                 )}
-              </div>
-            </div>
-          )}
-
-          {/* ВКЛАДКА: Паспорт и контакты */}
-          {activeTab === 'passport' && (
-            <div className="space-y-4">
-              {/* Официальное наименование на государственном (казахском) языке */}
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                  <Globe className="w-4 h-4 text-blue-600" />
-                  <span>Мемлекеттік тілдегі ресми атауы (На казахском языке)</span>
-                </div>
-                <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-100 dark:border-slate-800 leading-relaxed">
-                  {org.orgNameKk || org.fullName || 'Қазақ тіліндегі ресми атауы көрсетілмеген.'}
-                </div>
               </div>
 
               {/* Официальные контакты и справочные телефоны */}
@@ -796,23 +852,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                       </div>
                     )}
                   </div>
-                </div>
-
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-slate-500 uppercase">Фактический адрес канцелярии:</label>
-                  {permissions.canEditContent && !isLockedByOther ? (
-                    <input
-                      type="text"
-                      value={physicalAddress}
-                      onChange={(e) => setPhysicalAddress(e.target.value)}
-                      placeholder="г. Астана, пр. Мәңгілік Ел, 8"
-                      className="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 outline-none font-medium"
-                    />
-                  ) : (
-                    <div className="p-2 text-xs font-semibold bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800">
-                      {physicalAddress || locationAddress || 'Не указан'}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
