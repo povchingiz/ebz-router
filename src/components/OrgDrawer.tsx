@@ -324,10 +324,22 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           ) : (
             <div className="group relative mt-1">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <h2 className="text-lg font-black text-slate-900 dark:text-white leading-tight">
                   {orgName || org.name}
                 </h2>
+                {org.aliases && org.aliases.length > 0 && (
+                  <div className="flex items-center gap-1 flex-wrap">
+                    {org.aliases.slice(0, 3).map((alias, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
+                      >
+                        {alias}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 {permissions.canChangeStructure && (
                   <button
                     type="button"

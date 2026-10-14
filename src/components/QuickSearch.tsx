@@ -47,7 +47,8 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
 
     return allOrgs
       .filter((org) => {
-        const target = `${org.name} ${org.fullName} ${org.scope || ''}`.toLowerCase();
+        const aliasesText = org.aliases ? org.aliases.join(' ') : '';
+        const target = `${org.name} ${org.fullName} ${aliasesText} ${org.scope || ''}`.toLowerCase();
         return tokens.every((token) => target.includes(token));
       })
       .slice(0, 10);

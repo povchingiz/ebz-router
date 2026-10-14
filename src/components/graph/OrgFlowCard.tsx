@@ -73,9 +73,16 @@ export const OrgFlowCard = ({ data, selected }: any) => {
 
       {/* Название и описание */}
       <div className="my-1">
-        <h4 className="text-sm font-black text-slate-900 dark:text-white leading-snug line-clamp-2">
-          {org.name}
-        </h4>
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <h4 className="text-sm font-black text-slate-900 dark:text-white leading-snug line-clamp-2">
+            {org.name}
+          </h4>
+          {org.name === 'АПр' && (
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+              Правительство РК
+            </span>
+          )}
+        </div>
         <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5 leading-relaxed">
           {org.fullName}
         </p>

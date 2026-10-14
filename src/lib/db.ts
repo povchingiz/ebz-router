@@ -36,6 +36,7 @@ function mapDbRowToGovOrg(row: any, questions: OrgQuestion[] = []): GovOrg {
     path: row.path,
     name: row.short_name_ru || (row.org_name_ru && row.org_name_ru.length <= 30 ? row.org_name_ru : `${row.org_name_ru?.substring(0, 28)}...`),
     fullName: row.org_name_ru || row.short_name_ru || '',
+    aliases: Array.isArray(row.aliases) ? row.aliases : [],
     parentId: row.org_id === 77 ? null : parentId,
     level,
     scope: row.scope || `Сфера ведения и компетенции ведомства: ${row.org_name_ru}`,
@@ -77,8 +78,17 @@ export async function getOrgsFromDb(options?: {
 
     if (options?.search && options.search.trim()) {
       params.push(`%${options.search.trim()}%`);
-      query += ` AND (m.org_name_ru ILIKE $${params.length} OR m.short_name_ru ILIKE $${params.length} OR m.slug ILIKE $${params.length})`;
-      query += ` ORDER BY m.org_id ASC LIMIT ${options.limit || 50}`;
+      query += ` AND (m.org_name_ru ILIKE $${params.length} OR m.short_name_ru ILIKE $${params.length} OR m.slug ILIKE $${params.length} OR array_to_string(m.aliases, ' ') ILIKE $${params.length})`;
+      query += ` ORDER BY 
+        CASE 
+          WHEN m.slug = 'gov' OR m.org_id = 30400 THEN 0
+          WHEN m.short_name_ru ILIKE $${params.length} THEN 1
+          WHEN m.slug IS NOT NULL THEN 2
+          WHEN m.parent_id IN (77, 30400) THEN 3
+          ELSE 4
+        END,
+        LENGTH(m.org_name_ru) ASC
+        LIMIT ${options.limit || 50}`;
     } else if (options?.parentId !== undefined && options?.parentId !== null) {
       // Ищем по родительскому числовому ID или slug
       let parentNumericId: number | null = null;
