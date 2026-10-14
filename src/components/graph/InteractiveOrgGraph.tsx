@@ -111,42 +111,63 @@ function GraphInner({ allOrgs }: InteractiveOrgGraphProps) {
       }
     });
 
-    // Добавляем «полупрозрачную» карточку-компаньон для остальных подотчетных (вместо дропдауна внутри ноды)
+    // Добавляем «полупрозрачную» карточку-компаньон для остальных подотчетных (только на нижнем активном уровне)
     hiddenChildrenMap.forEach((hiddenChildren, parentId) => {
-      if (hiddenChildren.length > 0 && navState.expandedIds.has(parentId)) {
-        const parentOrg = orgMap.get(parentId);
-        const moreNodeId = `more-${parentId}`;
+      if (hiddenChildren.length === 0 || !navState.expandedIds.has(parentId)) return;
 
-        nodes.push({
-          id: moreNodeId,
-          type: 'moreChildren',
-          position: { x: 0, y: 0 },
-          data: {
-            parentId,
-            parentName: parentOrg?.name || 'ведомства',
-            hiddenChildren,
-            layoutDirection,
-            onSelectChild: (child: GovOrg) => {
-              selectChildInCenter(parentId, child.id);
-            },
-          },
-        });
+      // Проверяем, является ли parentId промежуточным вышестоящим уровнем:
+      // 1. Если выбран конкретный потомок в центр (транзитный проход к целевому органу)
+      const isTransitAncestor = navState.featuredChildMap.has(parentId);
 
-        edges.push({
-          id: `e-${parentId}-${moreNodeId}`,
-          source: parentId,
-          target: moreNodeId,
-          type: 'smoothstep',
-          animated: true,
-          style: { stroke: '#60a5fa', strokeWidth: 2, strokeDasharray: '4 4' },
-          markerEnd: {
-            type: MarkerType.ArrowClosed,
-            width: 14,
-            height: 14,
-            color: '#60a5fa',
-          },
-        });
+      // 2. Если в ветке ниже уже раскрыты другие дочерние узлы
+      const hasDeeperExpansion = Array.from(navState.expandedIds).some((expId) => {
+        if (expId === parentId) return false;
+        let cur = orgMap.get(expId);
+        while (cur && cur.parentId) {
+          if (cur.parentId === parentId) return true;
+          cur = orgMap.get(cur.parentId);
+        }
+        return false;
+      });
+
+      // Не показываем карточку "ЕЩЕ" на вышестоящих уровнях (АП, КПМ),
+      // она должна появляться только на самом нижнем активном уровне просмотра (например, МИИЦР)
+      if (isTransitAncestor || hasDeeperExpansion) {
+        return;
       }
+
+      const parentOrg = orgMap.get(parentId);
+      const moreNodeId = `more-${parentId}`;
+
+      nodes.push({
+        id: moreNodeId,
+        type: 'moreChildren',
+        position: { x: 0, y: 0 },
+        data: {
+          parentId,
+          parentName: parentOrg?.name || 'ведомства',
+          hiddenChildren,
+          layoutDirection,
+          onSelectChild: (child: GovOrg) => {
+            selectChildInCenter(parentId, child.id);
+          },
+        },
+      });
+
+      edges.push({
+        id: `e-${parentId}-${moreNodeId}`,
+        source: parentId,
+        target: moreNodeId,
+        type: 'smoothstep',
+        animated: true,
+        style: { stroke: '#60a5fa', strokeWidth: 2, strokeDasharray: '4 4' },
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          width: 14,
+          height: 14,
+          color: '#60a5fa',
+        },
+      });
     });
 
     return { flowNodes: nodes, flowEdges: edges };
