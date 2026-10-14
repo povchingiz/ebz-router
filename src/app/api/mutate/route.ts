@@ -130,6 +130,12 @@ export async function POST(req: NextRequest) {
           showOnFrontend: payload.showOnFrontend,
           contacts: payload.contacts,
           questions: payload.questions,
+          status: payload.status,
+          katoCode: payload.katoCode,
+          katoNameRu: payload.katoNameRu,
+          locationId: payload.locationId,
+          hasHumanTouch: payload.hasHumanTouch,
+          llmNotes: payload.llmNotes,
         },
         version ?? 1,
         userForStore

@@ -59,6 +59,7 @@ export interface GovOrg {
   id: string;
   org_id?: number;          // Внутренний технический код из БД (напр. 77, 30400) - НЕ отображается в UI
   path?: string;            // Внутренний материализованный путь (напр. 77/30400/...) - НЕ отображается в UI
+  classifierPath?: string;  // Системный путь по классификатору
   name: string;             // Краткое (Минэнерго РК)
   fullName: string;         // Полное
   aliases?: string[];       // Синонимы и альтернативные наименования (напр. ['Правительство', 'АПр'])
@@ -72,10 +73,14 @@ export interface GovOrg {
   orgType?: string;         // Тип ведомства: Министерство, Агентство, Комитет, Акимат
   orgNameKk?: string;       // Официальное наименование на казахском языке
   shortNameKk?: string;     // Краткое наименование на казахском языке
-  status?: 'unfilled' | 'in_progress' | 'verified'; // Светофор готовности (🔴/🟡/🟢)
+  katoCode?: string;        // Код КАТО (напр. 710000000)
+  katoNameRu?: string;      // Наименование населенного пункта по КАТО
+  locationId?: string;      // ID локации из locations_4classifier
+  status?: 'unfilled' | 'llm_check' | 'human_review' | 'verified' | 'in_progress'; // 🔴 Не проверено / 🌸 Проверка ИИ / 🟡 Ожидает верификации / 🟢 Верифицировано
   showOnFrontend?: boolean; // Флаг отображения на платформе онлайн (true = видно, false = скрыто)
   hasHumanTouch?: boolean;  // Редактировался ли живым человеком
-  completenessScore?: number; // % заполненности (0 - 100)
+  completenessScore?: number; // Внутренний скор (не выводится на карточки)
+  llmNotes?: string;        // Замечания и вердикт LLM валидатора
   competenciesExcluded?: string; // Что НЕ входит в компетенцию
   forwardToGuidance?: string;    // Куда перенаправлять типовые ошибки
   contacts?: {

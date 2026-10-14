@@ -32,10 +32,15 @@ export const OrgFlowCard = ({ data, selected }: any) => {
   } = data as OrgNodeData;
   const config = LEVEL_CONFIG[org.level] || LEVEL_CONFIG.agency;
 
-  // Определение стилей статуса готовности
-  const isUnfilled = org.status === 'unfilled' || (!org.hasHumanTouch && org.level !== 'central');
+  // Определение стилей 4 этапов жизненного цикла данных:
+  // 1. 🔴 Красный: предзаполнено нами, человек никогда не трогал (!hasHumanTouch)
+  // 2. 🌸 Розовый: человек дополнил сведения, проверка LLM на адекватность (status === 'llm_check')
+  // 3. 🟡 Желтый: проверка человека ожидает верификации (status === 'human_review' или 'in_progress')
+  // 4. 🟢 Зеленый: и LLM, и Человек проверили (status === 'verified')
+  const isLlmCheck = org.status === 'llm_check';
+  const isHumanReview = org.status === 'human_review' || (org.status === 'in_progress' && org.hasHumanTouch);
   const isVerified = org.status === 'verified';
-  const isInProgress = org.status === 'in_progress';
+  const isUnfilled = !isVerified && !isHumanReview && !isLlmCheck;
   const isHiddenOnline = org.showOnFrontend === false;
 
   return (
@@ -45,11 +50,13 @@ export const OrgFlowCard = ({ data, selected }: any) => {
           ? 'border-blue-600 ring-4 ring-blue-500/20 shadow-blue-500/10'
           : isHiddenOnline
           ? 'border-dashed border-slate-400 dark:border-slate-600 bg-slate-50/70 dark:bg-slate-900/60 opacity-80'
-          : isUnfilled
-          ? 'border-rose-300 dark:border-rose-900/70 hover:border-rose-400 bg-rose-50/20'
-          : isInProgress
-          ? 'border-amber-300 dark:border-amber-900/60 hover:border-amber-400 bg-amber-50/15'
-          : `${config.borderClass}`
+          : isVerified
+          ? 'border-emerald-400 dark:border-emerald-700 hover:border-emerald-500 bg-emerald-50/15 dark:bg-emerald-950/15'
+          : isHumanReview
+          ? 'border-amber-400 dark:border-amber-700 hover:border-amber-500 bg-amber-50/15 dark:bg-amber-950/15'
+          : isLlmCheck
+          ? 'border-pink-400 dark:border-pink-700 hover:border-pink-500 bg-pink-50/15 dark:bg-pink-950/15'
+          : 'border-rose-400 dark:border-rose-800 hover:border-rose-500 bg-rose-50/20 dark:bg-rose-950/20'
       } ${org.lockedBy ? 'border-amber-400 ring-2 ring-amber-400/40' : ''}`}
     >
       {/* Ручка связи сверху (при TB) или слева (при LR) */}
@@ -69,18 +76,14 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </div>
       )}
 
-      {/* Верх: Тип госоргана + Кнопка Сведения */}
+      {/* Верх: Тип госоргана (скрываем если "Госорган") + Кнопка Сведения */}
       <div className="flex items-center justify-between gap-1 mb-1.5">
         <div className="flex items-center gap-1 overflow-hidden">
-          {org.orgType ? (
+          {org.orgType && org.orgType.toLowerCase() !== 'госорган' ? (
             <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 truncate max-w-[125px]">
               {org.orgType}
             </span>
-          ) : (
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
-              Госорган
-            </span>
-          )}
+          ) : null}
           {isHiddenOnline && (
             <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-400 border border-amber-200 dark:border-amber-800 flex items-center gap-0.5 shrink-0">
               <EyeOff className="w-2.5 h-2.5" />
@@ -95,7 +98,7 @@ export const OrgFlowCard = ({ data, selected }: any) => {
             onOpenDetails(org);
           }}
           className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs shrink-0"
-          title="Открыть паспорт и сведения"
+          title="Открыть сведения о ведомстве"
         >
           <FileText className="w-3 h-3" />
           <span>Сведения</span>
@@ -127,22 +130,27 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         )}
       </div>
 
-      {/* Индикатор заполненности базы знаний (Светофор) */}
+      {/* Нижняя плашка карточки: Светофор жизненного цикла (без процентов) + количество вопросов */}
       <div className="mt-1 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px]">
-        {isUnfilled ? (
-          <span className="inline-flex items-center gap-1 font-bold text-rose-600 dark:text-rose-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
-            <span>Требует заполнения (0%)</span>
+        {isVerified ? (
+          <span className="inline-flex items-center gap-1.5 font-bold text-emerald-600 dark:text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span>Верифицировано</span>
           </span>
-        ) : isInProgress ? (
-          <span className="inline-flex items-center gap-1 font-bold text-amber-600 dark:text-amber-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-            <span>Заполненность {org.completenessScore || 65}%</span>
+        ) : isHumanReview ? (
+          <span className="inline-flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400">
+            <span className="w-2 h-2 rounded-full bg-amber-500" />
+            <span>Ожидает проверки</span>
+          </span>
+        ) : isLlmCheck ? (
+          <span className="inline-flex items-center gap-1.5 font-bold text-pink-600 dark:text-pink-400">
+            <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
+            <span>Проверка ИИ</span>
           </span>
         ) : (
-          <span className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <span>Заполненность 100%</span>
+          <span className="inline-flex items-center gap-1.5 font-bold text-rose-600 dark:text-rose-400">
+            <span className="w-2 h-2 rounded-full bg-rose-500" />
+            <span>Не проверено</span>
           </span>
         )}
 

@@ -79,6 +79,12 @@ class OrgStore {
         physicalAddress?: string;
       };
       questions?: OrgQuestion[];
+      status?: 'unfilled' | 'llm_check' | 'human_review' | 'verified' | 'in_progress';
+      katoCode?: string;
+      katoNameRu?: string;
+      locationId?: string;
+      hasHumanTouch?: boolean;
+      llmNotes?: string;
     },
     expectedVersion: number,
     user: User
@@ -113,6 +119,12 @@ class OrgStore {
     if (updates.showOnFrontend !== undefined) org.showOnFrontend = updates.showOnFrontend;
     if (updates.contacts !== undefined) org.contacts = updates.contacts;
     if (updates.questions !== undefined) org.questions = updates.questions;
+    if (updates.status !== undefined) org.status = updates.status;
+    if (updates.katoCode !== undefined) org.katoCode = updates.katoCode;
+    if (updates.katoNameRu !== undefined) org.katoNameRu = updates.katoNameRu;
+    if (updates.locationId !== undefined) org.locationId = updates.locationId;
+    if (updates.hasHumanTouch !== undefined) org.hasHumanTouch = updates.hasHumanTouch;
+    if (updates.llmNotes !== undefined) org.llmNotes = updates.llmNotes;
 
     org.version += 1;
     org.lockedBy = null; // сбрасываем soft lock после сохранения

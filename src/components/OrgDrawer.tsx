@@ -64,6 +64,12 @@ interface OrgDrawerProps {
       physicalAddress?: string;
     };
     questions: OrgQuestion[];
+    status?: 'unfilled' | 'llm_check' | 'human_review' | 'verified' | 'in_progress';
+    katoCode?: string;
+    katoNameRu?: string;
+    locationId?: string;
+    hasHumanTouch?: boolean;
+    llmNotes?: string;
   }) => Promise<void>;
   onReparent: (newParentId: string | null) => Promise<void>;
   onCreateOrg?: (newOrgData: {
@@ -113,6 +119,29 @@ const JURISDICTION_OPTIONS: {
   },
 ];
 
+export const KATO_REGIONS = [
+  { code: '710000000', name: 'г. Астана', type: 'REPUBLIC_CITY' },
+  { code: '750000000', name: 'г. Алматы', type: 'REPUBLIC_CITY' },
+  { code: '790000000', name: 'г. Шымкент', type: 'REPUBLIC_CITY' },
+  { code: '110000000', name: 'Акмолинская область', type: 'REGION' },
+  { code: '150000000', name: 'Актюбинская область', type: 'REGION' },
+  { code: '190000000', name: 'Алматинская область', type: 'REGION' },
+  { code: '230000000', name: 'Атырауская область', type: 'REGION' },
+  { code: '270000000', name: 'Западно-Казахстанская область', type: 'REGION' },
+  { code: '310000000', name: 'Жамбылская область', type: 'REGION' },
+  { code: '350000000', name: 'Карагандинская область', type: 'REGION' },
+  { code: '390000000', name: 'Костанайская область', type: 'REGION' },
+  { code: '430000000', name: 'Кызылординская область', type: 'REGION' },
+  { code: '470000000', name: 'Мангистауская область', type: 'REGION' },
+  { code: '550000000', name: 'Павлодарская область', type: 'REGION' },
+  { code: '590000000', name: 'Северо-Казахстанская область', type: 'REGION' },
+  { code: '610000000', name: 'Туркестанская область', type: 'REGION' },
+  { code: '630000000', name: 'Восточно-Казахстанская область', type: 'REGION' },
+  { code: '100000000', name: 'область Абай', type: 'REGION' },
+  { code: '330000000', name: 'область Жетісу', type: 'REGION' },
+  { code: '620000000', name: 'область Ұлытау', type: 'REGION' },
+];
+
 export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   org,
   allOrgs,
@@ -124,7 +153,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   onCreateOrg,
 }) => {
   const { user: authUser, canManageOrg } = useAuth();
-  const [activeTab, setActiveTab] = useState<'competencies' | 'info' | 'questions' | 'admin'>('competencies');
+  const [activeTab, setActiveTab] = useState<'router' | 'ebz' | 'info' | 'admin' | 'competencies' | 'questions'>('router');
 
   // Наименования
   const [orgName, setOrgName] = useState('');
@@ -137,8 +166,13 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [scope, setScope] = useState('');
   const [theme, setTheme] = useState('');
   const [locationAddress, setLocationAddress] = useState('');
+  const [katoCode, setKatoCode] = useState('');
   const [jurisdiction, setJurisdiction] = useState<JurisdictionLevel>('republican');
   const [legalBasis, setLegalBasis] = useState('');
+
+  // Жизненный цикл верификации данных
+  const [verificationStatus, setVerificationStatus] = useState<'unfilled' | 'llm_check' | 'human_review' | 'verified'>('unfilled');
+  const [isLlmTesting, setIsLlmTesting] = useState(false);
 
   // Исключения компетенций (Схема knowledge)
   const [competenciesExcluded, setCompetenciesExcluded] = useState('');
@@ -178,6 +212,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setScope(org.scope || '');
       setTheme(org.theme || '');
       setLocationAddress(org.locationAddress || '');
+      setKatoCode(org.katoCode || '');
+      const initStatus = (org.status as any) === 'verified'
+        ? 'verified'
+        : (org.status as any) === 'llm_check'
+        ? 'llm_check'
+        : (org.status as any) === 'human_review' || (org.status as any) === 'in_progress'
+        ? 'human_review'
+        : org.hasHumanTouch
+        ? 'human_review'
+        : 'unfilled';
+      setVerificationStatus(initStatus);
       
       // Автоматическое предзаполнение масштаба юрисдикции по структуре органа
       let resolvedJurisdiction: JurisdictionLevel = 'republican';
@@ -300,7 +345,10 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         scope,
         theme,
         locationAddress,
+        katoCode,
         jurisdiction,
+        status: verificationStatus === 'unfilled' ? 'llm_check' : verificationStatus,
+        hasHumanTouch: true,
         legalBasis,
         competenciesExcluded,
         forwardToGuidance,
@@ -310,7 +358,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           phoneChancellery,
           emailOfficial,
           websiteUrl,
-          physicalAddress,
+          physicalAddress: locationAddress,
         },
         questions,
       });
@@ -526,19 +574,105 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           </div>
         )}
 
+        {/* Статус проверки (4 этапа жизненного цикла данных) */}
+        <div className="mx-5 mt-2.5 p-3 rounded-2xl border flex items-center justify-between gap-3 text-xs shrink-0 transition-all bg-slate-50/70 dark:bg-slate-850 border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-2.5">
+            {verificationStatus === 'verified' ? (
+              <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 shrink-0" />
+            ) : verificationStatus === 'human_review' ? (
+              <span className="w-3.5 h-3.5 rounded-full bg-amber-500 shrink-0" />
+            ) : verificationStatus === 'llm_check' ? (
+              <span className="w-3.5 h-3.5 rounded-full bg-pink-500 animate-pulse shrink-0" />
+            ) : (
+              <span className="w-3.5 h-3.5 rounded-full bg-rose-500 shrink-0" />
+            )}
+            <div>
+              <div className="font-black text-xs flex items-center gap-1.5 text-slate-900 dark:text-white">
+                <span>Статус ведомства:</span>
+                {verificationStatus === 'verified' ? (
+                  <span className="text-emerald-600 dark:text-emerald-400 font-black">🟢 Верифицировано (ИИ + Человек)</span>
+                ) : verificationStatus === 'human_review' ? (
+                  <span className="text-amber-600 dark:text-amber-400 font-black">🟡 Ожидает верификации человеком</span>
+                ) : verificationStatus === 'llm_check' ? (
+                  <span className="text-pink-600 dark:text-pink-400 font-black">🌸 Проверка ИИ (валидация LLM)</span>
+                ) : (
+                  <span className="text-rose-600 dark:text-rose-400 font-black">🔴 Не проверено (исходный импорт)</span>
+                )}
+              </div>
+              <div className="text-[10px] text-slate-400 mt-0.5">
+                {verificationStatus === 'verified'
+                  ? 'Сведения верифицированы LLM и утверждены оператором'
+                  : verificationStatus === 'human_review'
+                  ? 'Проверка LLM пройдена, ожидается окончательное подтверждение человеком'
+                  : verificationStatus === 'llm_check'
+                  ? 'Человек дополнил сведения, запущен анализ адекватности нейросетью'
+                  : 'Сведения предзаполнены нами автоматически, человек не редактировал'}
+              </div>
+            </div>
+          </div>
+
+          {permissions.canEditContent && !isLockedByOther && (
+            <div className="flex items-center gap-1.5 shrink-0">
+              {verificationStatus === 'unfilled' && (
+                <button
+                  type="button"
+                  onClick={() => setVerificationStatus('llm_check')}
+                  className="px-2.5 py-1.5 rounded-xl text-[10px] font-bold bg-pink-50 hover:bg-pink-100 text-pink-700 dark:bg-pink-950/60 dark:text-pink-300 border border-pink-200 dark:border-pink-800 transition-all"
+                  title="Отправить дополненные сведения на проверку нейросетью"
+                >
+                  ⚡ Проверить в ИИ
+                </button>
+              )}
+              {verificationStatus === 'llm_check' && (
+                <button
+                  type="button"
+                  onClick={() => setVerificationStatus('human_review')}
+                  className="px-2.5 py-1.5 rounded-xl text-[10px] font-bold bg-amber-50 hover:bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800 transition-all"
+                  title="Подтвердить успешность проверки ИИ и направить человеку"
+                >
+                  ✓ ИИ одобрено
+                </button>
+              )}
+              {(verificationStatus === 'human_review' || verificationStatus === 'llm_check') && (
+                <button
+                  type="button"
+                  onClick={() => setVerificationStatus('verified')}
+                  className="px-2.5 py-1.5 rounded-xl text-[10px] font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
+                  title="Утвердить и верифицировать карточку"
+                >
+                  ✓ Утвердить
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+
         {/* Навигационные вкладки */}
         <div className="flex border-b border-slate-200 dark:border-slate-800 px-5 gap-4 text-xs font-bold bg-white dark:bg-slate-900 shrink-0">
           <button
             type="button"
-            onClick={() => setActiveTab('competencies')}
+            onClick={() => setActiveTab('router')}
             className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
-              activeTab === 'competencies'
+              activeTab === 'router' || activeTab === 'competencies'
                 ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <ShieldCheck className="w-4 h-4" />
-            Компетенции
+            Для маршрутизатора
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('ebz')}
+            className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
+              activeTab === 'ebz' || activeTab === 'questions'
+                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
+                : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            <HelpCircle className="w-4 h-4" />
+            Для ЕБЗ ({questions.length})
           </button>
 
           <button
@@ -552,19 +686,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           >
             <Building2 className="w-4 h-4" />
             Информация
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab('questions')}
-            className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
-              activeTab === 'questions'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
-                : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            <HelpCircle className="w-4 h-4" />
-            Вопросы и темы ({questions.length})
           </button>
 
           {permissions.canChangeStructure && (
@@ -598,8 +719,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* ВКЛАДКА 1: Компетенции ведомства */}
-          {activeTab === 'competencies' && (
+          {/* ВКЛАДКА 1: Для маршрутизатора */}
+          {(activeTab === 'router' || activeTab === 'competencies') && (
             <div className="space-y-4">
               {/* 1. Тематика и сфера деятельности (для ИИ-маршрутизатора) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
@@ -612,7 +733,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </p>
                 {permissions.canEditContent && !isLockedByOther ? (
                   <textarea
-                    rows={6}
+                    rows={5}
                     value={scope || theme}
                     onChange={(e) => {
                       setScope(e.target.value);
@@ -628,7 +749,76 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* 2. Масштаб юрисдикции (компактный выпадающий список) */}
+              {/* 2. НАД масштабом юрисдикции: Город / Регион расположения */}
+              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
+                    <MapPin className="w-4 h-4 text-emerald-600" />
+                    <span>Город / Регион расположения</span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-medium">Для региональной маршрутизации</span>
+                </div>
+
+                <div className="space-y-3">
+                  {/* Выбор города / региона */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase">
+                      Выберите город или область:
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <select
+                        value={katoCode}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setKatoCode(val);
+                          const selected = KATO_REGIONS.find((r) => r.code === val);
+                          if (selected) {
+                            setLocationAddress(selected.name);
+                            setPhysicalAddress(selected.name);
+                          }
+                        }}
+                        className="w-full mt-1 p-2.5 text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none cursor-pointer"
+                      >
+                        <option value="">-- Выберите город или область --</option>
+                        {KATO_REGIONS.map((r) => (
+                          <option key={r.code} value={r.code}>
+                            {r.name}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <div className="mt-1 p-2 text-xs font-bold rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white">
+                        {KATO_REGIONS.find((r) => r.code === katoCode)?.name || locationAddress || 'Не указан'}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Фактический адрес (улица, дом - опционально) */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase">
+                      Фактический адрес (улица, здание):
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <input
+                        type="text"
+                        value={locationAddress}
+                        onChange={(e) => {
+                          setLocationAddress(e.target.value);
+                          setPhysicalAddress(e.target.value);
+                        }}
+                        placeholder="Например: пр. Мәңгілік Ел, 8"
+                        className="w-full mt-1 p-2.5 text-xs font-medium rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none text-slate-900 dark:text-white"
+                      />
+                    ) : (
+                      <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                        {locationAddress || physicalAddress || 'Адрес не указан'}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Масштаб юрисдикции (компактный выпадающий список) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
@@ -762,147 +952,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* ВКЛАДКА 2: Информация об организации */}
-          {activeTab === 'info' && (
-            <div className="space-y-4">
-              {/* Официальные наименования (Редактируемые) */}
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                    <Building2 className="w-4 h-4 text-blue-600" />
-                    <span>Официальные наименования</span>
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-medium">Редактируемые поля</span>
-                </div>
-
-                <div className="space-y-3">
-                  {/* Краткое наименование RU */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Краткое наименование (на русском языке):
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <input
-                        type="text"
-                        value={orgName}
-                        onChange={(e) => setOrgName(e.target.value)}
-                        placeholder="Например: Минэнерго"
-                        className="w-full mt-1 p-2.5 text-xs font-black rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none"
-                      />
-                    ) : (
-                      <div className="text-xs font-black text-slate-900 dark:text-white bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {orgName || org.name}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Полное наименование RU */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Официальное полное наименование (на русском языке):
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <textarea
-                        rows={2}
-                        value={orgFullName}
-                        onChange={(e) => setOrgFullName(e.target.value)}
-                        placeholder="Полное официальное наименование органа"
-                        className="w-full mt-1 p-2.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 outline-none leading-relaxed"
-                      />
-                    ) : (
-                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {orgFullName || org.fullName}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Ресми толық атауы KZ */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Мемлекеттік тілдегі толық ресми атауы (Қазақ тілінде):
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <textarea
-                        rows={2}
-                        value={orgNameKk}
-                        onChange={(e) => setOrgNameKk(e.target.value)}
-                        placeholder="Қазақ тіліндегі ресми толық атауы"
-                        className="w-full mt-1 p-2.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 outline-none leading-relaxed"
-                      />
-                    ) : (
-                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {orgNameKk || org.orgNameKk || org.fullName || 'Көрсетілмеген'}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Қысқаша атауы KZ и Тип ведомства */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div>
-                      <label className="text-[10px] font-bold text-slate-500 uppercase">
-                        Қысқаша атауы (Қазақ тілінде):
-                      </label>
-                      {permissions.canEditContent && !isLockedByOther ? (
-                        <input
-                          type="text"
-                          value={shortNameKk}
-                          onChange={(e) => setShortNameKk(e.target.value)}
-                          placeholder="Қысқаша атауы"
-                          className="w-full mt-1 p-2 text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none"
-                        />
-                      ) : (
-                        <div className="text-xs font-bold text-slate-900 dark:text-white bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                          {shortNameKk || org.shortNameKk || 'Көрсетілмеген'}
-                        </div>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="text-[10px] font-bold text-slate-500 uppercase">
-                        Тип госоргана:
-                      </label>
-                      <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1 truncate">
-                        {org.orgType || 'Государственный орган'}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Географическая локация */}
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                    <MapPin className="w-4 h-4 text-emerald-600" />
-                    <span>Географическая локация (Населенный пункт / город)</span>
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-medium">Редактируемое поле</span>
-                </div>
-                <p className="text-[11px] text-slate-500">
-                  Город, район, село или фактический населенный пункт расположения ведомства (напр. г. Астана, г. Алматы, с. Явленка).
-                </p>
-                {permissions.canEditContent && !isLockedByOther ? (
-                  <input
-                    type="text"
-                    value={locationAddress}
-                    onChange={(e) => {
-                      setLocationAddress(e.target.value);
-                      setPhysicalAddress(e.target.value);
-                    }}
-                    placeholder="Например: г. Астана, пр. Мәңгілік Ел, 8"
-                    className="w-full p-2.5 text-xs font-medium rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none text-slate-900 dark:text-white"
-                  />
-                ) : (
-                  <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
-                    {locationAddress || physicalAddress || 'Локация не указана.'}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* ВКЛАДКА 2: Вопросы и темы */}
-          {activeTab === 'questions' && (
+          {/* ВКЛАДКА 2: Для ЕБЗ (База знаний вопросов и тем) */}
+          {(activeTab === 'ebz' || activeTab === 'questions') && (
             <div className="space-y-4">
               {/* Панель поиска и переключения вида (Карточки / Таблица) */}
               <div className="flex items-center justify-between gap-2">
@@ -1131,6 +1182,218 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 ))
               )}
+            </div>
+          )}
+
+          {/* ВКЛАДКА 3: Информация об организации */}
+          {activeTab === 'info' && (
+            <div className="space-y-4">
+              {/* Официальные наименования (Редактируемые) */}
+              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
+                    <Building2 className="w-4 h-4 text-blue-600" />
+                    <span>Официальные наименования</span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-medium">Редактируемые поля</span>
+                </div>
+
+                <div className="space-y-3">
+                  {/* Краткое наименование RU */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase">
+                      Краткое наименование (на русском языке):
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <input
+                        type="text"
+                        value={orgName}
+                        onChange={(e) => setOrgName(e.target.value)}
+                        placeholder="Например: Минэнерго"
+                        className="w-full mt-1 p-2.5 text-xs font-black rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none"
+                      />
+                    ) : (
+                      <div className="text-xs font-black text-slate-900 dark:text-white bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                        {orgName || org.name}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Полное наименование RU */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase">
+                      Официальное полное наименование (на русском языке):
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <textarea
+                        rows={2}
+                        value={orgFullName}
+                        onChange={(e) => setOrgFullName(e.target.value)}
+                        placeholder="Полное официальное наименование органа"
+                        className="w-full mt-1 p-2.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 outline-none leading-relaxed"
+                      />
+                    ) : (
+                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                        {orgFullName || org.fullName}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Ресми толық атауы KZ */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase">
+                      Мемлекеттік тілдегі толық ресми атауы (Қазақ тілінде):
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <textarea
+                        rows={2}
+                        value={orgNameKk}
+                        onChange={(e) => setOrgNameKk(e.target.value)}
+                        placeholder="Қазақ тіліндегі ресми толық атауы"
+                        className="w-full mt-1 p-2.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 outline-none leading-relaxed"
+                      />
+                    ) : (
+                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                        {orgNameKk || org.orgNameKk || org.fullName || 'Көрсетілмеген'}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Қысқаша атауы KZ и Тип ведомства */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div>
+                      <label className="text-[10px] font-bold text-slate-500 uppercase">
+                        Қысқаша атауы (Қазақ тілінде):
+                      </label>
+                      {permissions.canEditContent && !isLockedByOther ? (
+                        <input
+                          type="text"
+                          value={shortNameKk}
+                          onChange={(e) => setShortNameKk(e.target.value)}
+                          placeholder="Қысқаша атауы"
+                          className="w-full mt-1 p-2 text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none"
+                        />
+                      ) : (
+                        <div className="text-xs font-bold text-slate-900 dark:text-white bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
+                          {shortNameKk || org.shortNameKk || 'Көрсетілмеген'}
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="text-[10px] font-bold text-slate-500 uppercase">
+                        Тип госоргана:
+                      </label>
+                      <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1 truncate">
+                        {org.orgType || 'Государственный орган'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Контакты канцелярии и горячей линии */}
+              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
+                    <PhoneCall className="w-4 h-4 text-blue-600" />
+                    <span>Контакты канцелярии и горячей линии</span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-medium">Для граждан</span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* Горячая линия */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
+                      <Phone className="w-3 h-3 text-emerald-600" />
+                      <span>Единый контакт-центр / Горячая линия:</span>
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <input
+                        type="text"
+                        value={phoneHotline}
+                        onChange={(e) => setPhoneHotline(e.target.value)}
+                        placeholder="Например: 1414 или +7 (7172) 74-00-00"
+                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
+                      />
+                    ) : (
+                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800">
+                        {phoneHotline || 'Не указан'}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Телефон канцелярии */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
+                      <PhoneCall className="w-3 h-3 text-indigo-600" />
+                      <span>Телефон канцелярии / приемной:</span>
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <input
+                        type="text"
+                        value={phoneChancellery}
+                        onChange={(e) => setPhoneChancellery(e.target.value)}
+                        placeholder="Например: +7 (7172) 74-11-22"
+                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
+                      />
+                    ) : (
+                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800">
+                        {phoneChancellery || 'Не указан'}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Официальный Email */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
+                      <Mail className="w-3 h-3 text-amber-600" />
+                      <span>Официальный email канцелярии:</span>
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <input
+                        type="email"
+                        value={emailOfficial}
+                        onChange={(e) => setEmailOfficial(e.target.value)}
+                        placeholder="kense@gov.kz"
+                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
+                      />
+                    ) : (
+                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800">
+                        {emailOfficial || 'Не указан'}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Веб-сайт */}
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
+                      <Globe className="w-3 h-3 text-teal-600" />
+                      <span>Официальный сайт ведомства:</span>
+                    </label>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <input
+                        type="text"
+                        value={websiteUrl}
+                        onChange={(e) => setWebsiteUrl(e.target.value)}
+                        placeholder="https://www.gov.kz/memleket/entities/..."
+                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
+                      />
+                    ) : (
+                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 truncate">
+                        {websiteUrl ? (
+                          <a href={websiteUrl} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                            {websiteUrl}
+                          </a>
+                        ) : (
+                          'Не указан'
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
