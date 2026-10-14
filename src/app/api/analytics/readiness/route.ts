@@ -27,12 +27,12 @@ export async function GET(req: NextRequest) {
     let totalScore = 0;
 
     for (const org of allOrgs) {
-      const score = org.completenessScore ?? 40;
+      const score = org.completenessScore ?? 0;
       totalScore += score;
 
-      if (org.status === 'verified' || score >= 90) {
+      if (org.hasHumanTouch && org.status === 'verified') {
         verified++;
-      } else if (org.status === 'in_progress' || score >= 50) {
+      } else if (org.hasHumanTouch && (org.status === 'human_review' || org.status === 'in_progress')) {
         inProgress++;
       } else {
         unfilled++;
@@ -62,10 +62,10 @@ export async function GET(req: NextRequest) {
         let bScoreSum = 0;
 
         for (const b of branches) {
-          const sc = b.completenessScore ?? 40;
+          const sc = b.completenessScore ?? 0;
           bScoreSum += sc;
-          if (b.status === 'verified' || sc >= 90) bVerified++;
-          else if (b.status === 'in_progress' || sc >= 50) bInProgress++;
+          if (b.hasHumanTouch && b.status === 'verified') bVerified++;
+          else if (b.hasHumanTouch && (b.status === 'human_review' || b.status === 'in_progress')) bInProgress++;
           else bUnfilled++;
         }
 

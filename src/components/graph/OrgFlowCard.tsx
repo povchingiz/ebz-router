@@ -36,10 +36,9 @@ export const OrgFlowCard = ({ data, selected }: any) => {
   // 1. 🔴 Красный: предзаполнено нами, человек никогда не трогал (!hasHumanTouch)
   // 2. 🌸 Розовый: человек дополнил сведения, проверка LLM на адекватность (status === 'llm_check')
   // 3. 🟡 Желтый: проверка человека ожидает верификации (status === 'human_review' или 'in_progress')
-  // 4. 🟢 Зеленый: и LLM, и Человек проверили (status === 'verified')
   const isLlmCheck = org.status === 'llm_check';
-  const isHumanReview = org.status === 'human_review' || (org.status === 'in_progress' && org.hasHumanTouch);
-  const isVerified = org.status === 'verified';
+  const isHumanReview = (org.status === 'human_review' || org.status === 'in_progress') && Boolean(org.hasHumanTouch);
+  const isVerified = org.status === 'verified' && Boolean(org.hasHumanTouch);
   const isUnfilled = !isVerified && !isHumanReview && !isLlmCheck;
   const isHiddenOnline = org.showOnFrontend === false;
 

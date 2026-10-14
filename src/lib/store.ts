@@ -6,7 +6,12 @@ class OrgStore {
 
   constructor() {
     (ALL_566_ORGS as GovOrg[]).forEach((org) => {
-      this.orgs.set(org.id, { ...org });
+      const hasHumanTouch = Boolean(org.hasHumanTouch);
+      this.orgs.set(org.id, {
+        ...org,
+        hasHumanTouch,
+        status: hasHumanTouch ? (org.status || 'in_progress') : 'unfilled',
+      });
     });
   }
 

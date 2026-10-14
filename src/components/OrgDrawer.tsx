@@ -213,14 +213,12 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setTheme(org.theme || '');
       setLocationAddress(org.locationAddress || '');
       setKatoCode(org.katoCode || '');
-      const initStatus = (org.status as any) === 'verified'
-        ? 'verified'
-        : (org.status as any) === 'llm_check'
-        ? 'llm_check'
-        : (org.status as any) === 'human_review' || (org.status as any) === 'in_progress'
-        ? 'human_review'
-        : org.hasHumanTouch
-        ? 'human_review'
+      const initStatus = org.hasHumanTouch
+        ? ((org.status as any) === 'verified'
+          ? 'verified'
+          : (org.status as any) === 'llm_check'
+          ? 'llm_check'
+          : 'human_review')
         : 'unfilled';
       setVerificationStatus(initStatus);
       

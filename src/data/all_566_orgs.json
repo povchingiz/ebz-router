@@ -33,8 +33,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Администрация Президента Республики Казахстан",
-    "completenessScore": 100,
-    "status": "verified"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "arrfr",
@@ -63,8 +64,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по регулированию и развитию финансового рынка",
-    "completenessScore": 100,
-    "status": "verified"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "banki-mfo",
@@ -79,8 +81,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Банки, МФО",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "adgs",
@@ -108,8 +111,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по делам государственной службы",
-    "completenessScore": 100,
-    "status": "verified"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-territorii",
@@ -124,8 +128,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "областных территорий",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "akademiya-gosudarstvennogo-upravleniya",
@@ -140,8 +145,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Академия государственного управления",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-territorii-2",
@@ -156,8 +162,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "областных территорий",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-nacionalnyi-centr-po-upravleniyu-personal",
@@ -172,8 +179,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "АО Национальный центр по управлению персоналом государственной службы-0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "afm",
@@ -188,8 +196,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "(всего - 17840) АФМ",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-territorii-3",
@@ -204,8 +213,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "областных территорий -",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kinologicheskii-centr",
@@ -220,8 +230,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Кинологический центр",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "aspir",
@@ -236,8 +247,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по стратегическому планированию и реформам",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "byuro-nac-statistiki",
@@ -252,8 +264,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Бюро нац статистики",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-territorii-4",
@@ -268,8 +281,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "областных территорий",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "azrk",
@@ -284,8 +298,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Агентство по защите и развитию конкуренции",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-territorii-5",
@@ -300,8 +315,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "областных территорий -",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "analiticheskii-issledovatelskii-centr-razvit",
@@ -316,8 +332,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Аналитический исследовательский центр развития конкуренции",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "agentstvo-atomnoi-energii",
@@ -332,8 +349,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Агентство атомной энергии",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-atomnogo-nadzora-i-kontrolya",
@@ -348,8 +366,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Комитет атомного надзора и контроля -",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "institut-yadernoi-fiziki",
@@ -364,8 +383,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Институт ядерной физики",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "aksai-skii-filial",
@@ -380,8 +400,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Аксайский филиал",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "astaninskii-filial",
@@ -396,8 +417,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Астанинский филиал",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-kazahstanskie-atomnye-elektricheskie-sta",
@@ -412,8 +434,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ТОО Казахстанские атомные электрические станции",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-yadernyi-centr",
@@ -428,8 +451,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Национальный ядерный центр",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "vap",
@@ -444,8 +468,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Высшая аудиторская палата",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-centr-issledovanii-analiza-i-ocenki-effe",
@@ -460,8 +485,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "ТОО Центр исследований, анализа и оценки эффективности - 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-delami-prezidenta",
@@ -476,8 +502,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Управление делами Президента",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "prezidentskii-centr",
@@ -492,8 +519,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Президентский центр",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "medicinskii-centr",
@@ -508,8 +536,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Медицинский центр",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki",
@@ -524,8 +553,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "подведомки",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-kazstroi-sistema",
@@ -540,8 +570,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ТОО Казстройсистема",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "direkciya-gosudarstvennyh-rezidencii",
@@ -556,8 +587,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Дирекция государственных резиденций",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "teleradiokompleks",
@@ -572,8 +604,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Телерадиокомплекс",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "avtohozyai-stvo",
@@ -588,8 +621,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Автохозяйство",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "direkciya-adm-zdanii",
@@ -604,8 +638,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Дирекция адм зданий",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "almatinskii-filial",
@@ -620,8 +655,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Алматинский филиал",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-burabai-damu",
@@ -636,8 +672,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "ТОО Бурабай даму 12",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "itc",
@@ -652,8 +689,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "ИТЦ 16",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "aviakompaniya-berkut",
@@ -668,8 +706,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Авиакомпания Беркут 13",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gf-astana-20",
@@ -684,8 +723,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "ГФ Астана 20 - 20",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nac-park-burabai",
@@ -700,8 +740,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Нац парк Бурабай - 167",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gf-astana-20-2",
@@ -716,8 +757,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "ГФ Астана 20 - 20",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nac-park-burabai-2",
@@ -732,8 +774,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Нац парк Бурабай - 167",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otel-alatau",
@@ -748,8 +791,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Отель Алатау - 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "umto",
@@ -764,8 +808,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: УМТО",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki-2",
@@ -780,8 +825,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "подведомки",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "knb",
@@ -796,8 +842,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет национальной безопасности",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-territorii-6",
@@ -812,8 +859,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "областных территорий",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sluzhba-po-protivodei-stviyu-korrupcii",
@@ -828,8 +876,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Служба по противодействию коррупции",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sledstvennyi-izolyator",
@@ -844,8 +893,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Следственный изолятор",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "pogranichnaya-sluzhba",
@@ -860,8 +910,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Пограничная служба",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii",
@@ -876,8 +927,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "территории",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenii",
@@ -892,8 +944,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "управлений",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sluzhba-vneshnei-razvedki",
@@ -908,8 +961,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Служба внешней разведки",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sluzhba-pravitelstvennoi-svyazi",
@@ -924,8 +978,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Служба правительственной связи",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "akademiya",
@@ -940,8 +995,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Академия",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-tehnicheskoi-zaschity-informacii-i-pod",
@@ -956,8 +1012,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskii-centr-kazimpeks",
@@ -972,8 +1029,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Республиканский центр \"Казимпэкс",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "aviacionnaya-sluzhba",
@@ -988,8 +1046,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Авиационная служба",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-gts",
@@ -1004,8 +1063,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: АО ГТС",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "rgp-almas",
@@ -1020,8 +1080,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: РГП Алмас",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "pogranichnaya-akademiya",
@@ -1036,8 +1097,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Пограничная академия",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-kazimpeks",
@@ -1052,8 +1114,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ТОО Казимпэкс",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gospital",
@@ -1068,8 +1131,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Госпиталь",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-tehnicheskoi-zaschity-informacii-i-pod-2",
@@ -1084,8 +1148,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Центр технической защиты информации и подготовки специалистов в области защиты государственных секретов",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sluzhba-specialnogo-naznacheniya",
@@ -1100,8 +1165,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Служба специального назначения",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "generalnaya-prokuratura",
@@ -1116,8 +1182,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Генеральная прокуратура",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kpsisu",
@@ -1132,8 +1199,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: КПСиСУ",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastye",
@@ -1148,8 +1216,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областые",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kzpi",
@@ -1164,8 +1233,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: КЗПИ",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apo",
@@ -1180,8 +1250,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: АПО",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gvp",
@@ -1196,8 +1267,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ГВП",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastye-2",
@@ -1212,8 +1284,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областые",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gtp",
@@ -1228,8 +1301,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ГТП",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastye-3",
@@ -1244,8 +1318,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областые",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-prokuratur",
@@ -1260,8 +1335,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-Областных прокуратур",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gorrai-prokuratury",
@@ -1276,8 +1352,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-Горрай прокуратуры",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sudebnaya-administraciya",
@@ -1292,8 +1369,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Судебная администрация",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnye",
@@ -1308,8 +1386,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областные",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gorrai-sudy",
@@ -1324,8 +1403,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-горрайсуды",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kassacionnyi-sud",
@@ -1340,8 +1420,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Кассационный суд",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "voennyi-sud",
@@ -1356,8 +1437,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Военный суд",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh",
@@ -1372,8 +1454,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областных",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "akademiya-2",
@@ -1388,8 +1471,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Академия",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-po-pravam-cheloveka",
@@ -1404,8 +1488,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Национальный центр по правам человека",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-konstitucionnogo-suda",
@@ -1420,8 +1505,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Конституционного Суда",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-vysshego-sudebnogo-soveta",
@@ -1436,8 +1522,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Высшего Судебного Совета",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-bank",
@@ -1452,8 +1539,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Национальный Банк",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-kvazik",
@@ -1468,8 +1556,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-филиалов, квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-mazhilisa",
@@ -1484,8 +1573,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Мажилиса",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "arhiv-prezidenta",
@@ -1500,8 +1590,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Архив Президента",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "senat-parlamenta",
@@ -1516,8 +1607,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Сенат Парламента",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sluzhba-gos-ohrany",
@@ -1532,8 +1624,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Служба гос. охраны",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "prezidentskii-orkestr",
@@ -1548,8 +1641,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Президентский оркестр",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "chast-0111",
@@ -1564,8 +1658,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Часть 0111",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "chast-0116",
@@ -1580,8 +1675,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Часть 0116",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "chast-0112",
@@ -1596,8 +1692,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Часть 0112",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahstanskii-institut-strategicheskih-issle",
@@ -1612,8 +1709,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Казахстанский институт стратегических исследовании при Президенте",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sluzhba-centralnyh-kommunikacii",
@@ -1628,8 +1726,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Служба центральных коммуникаций",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "cik",
@@ -1644,8 +1743,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Центральная избирательная комиссия",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "rgp-na-pvh-inzhenerno-tehnicheskii-centr",
@@ -1660,8 +1760,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: РГП на ПВХ Инженерно-технический центр",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "tik",
@@ -1676,8 +1777,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ТИК",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "maslihaty",
@@ -1692,8 +1794,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-Маслихаты",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "revizionnaya-komissiya",
@@ -1708,8 +1811,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Ревизионная комиссия",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apr",
@@ -1724,8 +1828,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Аппарат Правительства Республики Казахстан",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "myu",
@@ -1740,8 +1845,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-2",
@@ -1756,8 +1862,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mezhrai-onnyh-territorialnyh-otdelov-prinudi",
@@ -1772,8 +1879,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-prinuditelnogo-ispolneniya",
@@ -1788,8 +1896,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-pravam-intellektualnoi-sobstvenno",
@@ -1804,8 +1913,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "niis",
@@ -1820,8 +1930,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-registracionnoi-sluzhby",
@@ -1836,8 +1947,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "institut-zakonodatelstva-i-pravovoi-informac",
@@ -1852,8 +1964,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-instituta",
@@ -1868,8 +1981,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskaya-kollegiya-yuridicheskih-kon",
@@ -1884,8 +1998,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki-3",
@@ -1900,8 +2015,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-sudebnyh-ekspertiz",
@@ -1916,8 +2032,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov",
@@ -1932,8 +2049,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "chsi",
@@ -1948,8 +2066,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-2",
@@ -1964,8 +2083,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "palata-sudebnyh-ekspertov",
@@ -1980,8 +2100,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "miicr",
@@ -1996,8 +2117,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-telekommunikacii",
@@ -2012,8 +2134,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "inspekcii",
@@ -2028,8 +2151,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-informacionnoi-bezopasnosti",
@@ -2044,8 +2168,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "aerokosmicheskii-komitet",
@@ -2060,8 +2185,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Аэрокосмический комитет",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "bai-konyrbalans",
@@ -2076,8 +2202,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-institut-ionosfery",
@@ -2092,8 +2219,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-bai-terek",
@@ -2108,8 +2236,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-ghalam",
@@ -2124,8 +2253,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "institut-kosmicheskoi-tehniki-i-tehnologii",
@@ -2140,8 +2270,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astrofizicheskii-institut",
@@ -2156,8 +2287,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-qazaqstan-garysh-sapary",
@@ -2172,8 +2304,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-kosmicheskih-issledovanii",
@@ -2188,8 +2321,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "infrakos",
@@ -2204,8 +2338,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filial",
@@ -2220,8 +2355,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Филиал 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskii-centr-kosmicheskoi-svyazi",
@@ -2236,8 +2372,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-cifrovyh-aktivov",
@@ -2252,8 +2389,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennyh-uslug",
@@ -2268,8 +2406,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-nit",
@@ -2284,8 +2423,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nao-gk",
@@ -2300,8 +2440,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-3",
@@ -2316,8 +2457,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gosudarstvennaya-radiochastotnaya-sluzhba",
@@ -2332,8 +2474,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "cpcp",
@@ -2348,8 +2491,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "astana-hab",
@@ -2364,8 +2508,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-qazinnovations",
@@ -2380,8 +2525,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-geodezii",
@@ -2396,8 +2542,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-qazexpocongress",
@@ -2412,8 +2559,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mvd",
@@ -2440,8 +2588,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "dp",
@@ -2456,8 +2605,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-upr-otdel",
@@ -2472,8 +2622,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kuis",
@@ -2488,8 +2639,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-3",
@@ -2504,8 +2656,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "uchrezhdenii",
@@ -2520,8 +2673,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "akademiya-i-uchebnye-centry-mvd",
@@ -2548,8 +2702,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "alatau",
@@ -2564,8 +2719,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-spec-sluzhby",
@@ -2580,8 +2736,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ipc",
@@ -2596,8 +2753,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kinologicheskii-centr-2",
@@ -2612,8 +2770,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otryad-specialnogo-naznacheniya-sunkar",
@@ -2628,8 +2787,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "voenno-sledstvennoe-upravlenie",
@@ -2644,8 +2804,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "baza-voennogo-i-specialnogo-snabzheniya",
@@ -2660,8 +2821,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "predstavitelstvo-mvd-v-gorode-bai-konyr",
@@ -2688,8 +2850,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacgvardiya",
@@ -2704,8 +2867,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "vch-409-0-0115",
@@ -2720,8 +2884,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "ВЧ 409 0,0115",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "vch-739-0-0205",
@@ -2736,8 +2901,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ВЧ -739 0,0205",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sanatorii",
@@ -2752,8 +2918,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centralnyi-gospital-s-poliklinikoi",
@@ -2768,8 +2935,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "media-centr-organov-vnutrennih-del",
@@ -2796,8 +2964,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mti",
@@ -2812,8 +2981,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-zaschite-prav-potrebitelei",
@@ -2828,8 +2998,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-tehnicheskogo-regulirovaniya-i-metro",
@@ -2844,8 +3015,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territori",
@@ -2860,8 +3032,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahstanskii-institut-standartizacii-i-metr",
@@ -2876,8 +3049,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filiala",
@@ -2892,8 +3066,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-akkreditacii",
@@ -2908,8 +3083,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filial-2",
@@ -2924,8 +3100,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "филиал 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-4",
@@ -2940,8 +3117,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mps",
@@ -2956,8 +3134,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-delam-stroitelstva-i-zhkh",
@@ -2972,8 +3151,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskii-centr-gosudarstvennogo-grado",
@@ -2988,8 +3168,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-4",
@@ -3004,8 +3185,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gosudarstvennaya-vnevedomstvennaya-ekspertiz",
@@ -3020,8 +3202,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-5",
@@ -3036,8 +3219,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahskii-nauchno-issledovatelskii-i-proe",
@@ -3052,8 +3236,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahstanskii-centr-modernizacii-i-razvit",
@@ -3068,8 +3253,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-promyshlennosti",
@@ -3084,8 +3270,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-tehnologicheskogo-prognozi",
@@ -3100,8 +3287,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-institut-razvitiya-elektroenergetiki-i-en",
@@ -3139,8 +3327,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-zhezkazganredmet",
@@ -3155,8 +3344,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-po-kompleksnoi-pererabotke",
@@ -3171,8 +3361,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-6",
@@ -3187,8 +3378,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-nauchno-proizvodstvennyi-centr-mashinost",
@@ -3203,8 +3395,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-geologii",
@@ -3219,8 +3412,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mezhregionalnye-departamenty",
@@ -3235,8 +3429,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-nacionalnaya-geologicheskaya-sluzhba",
@@ -3251,8 +3446,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-upravlyayuschaya-kompaniya-specialnoi-eko",
@@ -3267,8 +3463,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "АО Управляющая компания специальной экономической зоны \"Jibek Joly\" 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahstan-inzhiniring",
@@ -3283,8 +3480,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki-4",
@@ -3299,8 +3497,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "подведомки 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-qazindustry",
@@ -3315,8 +3514,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mepr",
@@ -3331,8 +3531,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-lesnogo-hozyai-stva-i-zhivotnogo-mir",
@@ -3347,8 +3548,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorialnaya-inspekciya",
@@ -3363,8 +3565,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "prirodnyi-zapovednik",
@@ -3379,8 +3582,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "prirodnyi-park",
@@ -3395,8 +3599,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "prirodnyi-rezervat",
@@ -3411,8 +3616,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "proizvodstvennoe-obedinenie-ohotzooprom",
@@ -3427,8 +3633,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "institut-botaniki-i-fitointrodukcii",
@@ -3443,8 +3650,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "issykskii-gosudarstvennyi-dendrologicheskii",
@@ -3459,8 +3667,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskii-lesnoi-selekcionno-semenovod",
@@ -3475,8 +3684,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahskaya-baza-aviacionnoi-ohrany-lesov-i-o",
@@ -3491,8 +3701,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "zhasyl-ai-ma",
@@ -3507,8 +3718,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahskoe-lesoustroitelnoe-predpriyatie",
@@ -3523,8 +3735,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahskii-nauchno-issledovatelskii-institut",
@@ -3539,8 +3752,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-ekologicheskogo-regulirovaniya-i-kon",
@@ -3555,8 +3769,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Комитет экологического регулирования и контроля 694 0,0194",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-5",
@@ -3571,8 +3786,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-zhasyl-damu",
@@ -3587,8 +3803,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazgidromet",
@@ -3603,8 +3820,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-7",
@@ -3619,8 +3837,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahskii-nauchno-issledovatelskii-institut-2",
@@ -3635,8 +3854,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "informacionno-analiticheskii-centr-ohrany-ok",
@@ -3651,8 +3871,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mezhdunarodnyi-centr-zelenyh-tehnologii-i-in",
@@ -3667,8 +3888,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "me",
@@ -3706,8 +3928,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennogo-energeticheskogo-na",
@@ -3745,8 +3968,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-6",
@@ -3761,8 +3985,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kapitalneftegaz",
@@ -3777,8 +4002,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "yuzhnoe-mezhregionalnoe-upravlenie-gosudarst",
@@ -3793,8 +4019,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "zapadnoe-mezhregionalnoe-upravlenie-gosudars",
@@ -3809,8 +4036,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-raschetno-finansovyi-centr-po-podderzhke",
@@ -3825,8 +4053,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-nacionalnyi-industrialnyi-neftehimicheski",
@@ -3841,8 +4070,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahstanskii-operator-rynka-elektrichesk",
@@ -3857,8 +4087,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "situacionno-analiticheskii-centr-toplivno-en",
@@ -3896,8 +4127,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mtszn",
@@ -3912,8 +4144,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennoi-inspekcii-truda",
@@ -3928,8 +4161,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-7",
@@ -3944,8 +4178,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-migracii",
@@ -3960,8 +4195,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-regulirovaniya-i-kontrolya-v-sfere-s",
@@ -3976,8 +4212,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-8",
@@ -3992,8 +4229,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-nauchnyi-centr-razvitiya-sfery-s",
@@ -4008,8 +4246,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-8",
@@ -4024,8 +4263,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gfss",
@@ -4040,8 +4280,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-9",
@@ -4056,8 +4297,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskii-nauchno-issledovatelskii-ins",
@@ -4072,8 +4314,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-centr-razvitiya-trudovyh-resursov",
@@ -4088,8 +4331,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kompaniya-po-strahovaniyu-zhizni-gosudars",
@@ -4104,8 +4348,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mf",
@@ -4120,8 +4365,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennogo-kaznachei-stva",
@@ -4136,8 +4382,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-9",
@@ -4152,8 +4399,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gor-rai-onnye-upravleniya",
@@ -4168,8 +4416,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennyh-dohodov",
@@ -4184,8 +4433,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-10",
@@ -4200,8 +4450,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gor-rai-onnye-upravleniya-2",
@@ -4216,8 +4467,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-vnutrennego-gosudarstvennogo-audita",
@@ -4232,8 +4484,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-11",
@@ -4248,8 +4501,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennogo-imuschestva-i-priva",
@@ -4264,8 +4518,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "departamentov",
@@ -4280,8 +4535,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-ai-t-otel",
@@ -4296,8 +4552,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "АО Айт- Отель 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-kompaniya-po-upravleniyu-vozvraschennymi",
@@ -4312,8 +4569,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-fond-problemnyh-kreditov",
@@ -4328,8 +4586,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-centr-elektronnyh-finansov",
@@ -4344,8 +4603,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nao-fond-socialnogo-medicinskogo-strahovaniy",
@@ -4360,8 +4620,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-10",
@@ -4376,8 +4637,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-finansovyi-centr",
@@ -4392,8 +4654,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-informacionno-uchetnyi-centr",
@@ -4408,8 +4671,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mo",
@@ -4424,8 +4688,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-12",
@@ -4440,8 +4705,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenii-i-otdelov",
@@ -4456,8 +4722,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "voennyi-kolledzh-institut-shkola",
@@ -4472,8 +4739,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "voi-skovaya-chast",
@@ -4488,8 +4756,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "chasti-i-gospitali",
@@ -4504,8 +4773,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centralnyi-arhiv",
@@ -4520,8 +4790,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahstan-gis-centr",
@@ -4536,8 +4807,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "glavnoe-upravlenie-voennoi-policii-vs",
@@ -4552,8 +4824,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdelenii",
@@ -4568,8 +4841,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-glavnokomanduyuschego-voenno-mors",
@@ -4584,8 +4858,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-nachalnika-tyla",
@@ -4600,8 +4875,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-komanduyuschego-voenno-vozdushnym",
@@ -4616,8 +4892,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-komanduyuschego-voi-skami-regiona",
@@ -4632,8 +4909,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-glavnokomanduyuschego-silami-vozd",
@@ -4648,8 +4926,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-komanduyuschego-desantno-shturmov",
@@ -4664,8 +4943,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-glavnokomanduyuschego-suhoputnymi",
@@ -4680,8 +4960,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-centr-voenno-strategicheskih-issledovanii",
@@ -4696,8 +4977,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-askeri-qurylys",
@@ -4712,8 +4994,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-komanduyuschego-voi-skami-protivo",
@@ -4728,8 +5011,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-pensionnogo-obespecheniya",
@@ -4744,8 +5028,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "glavnoe-upravlenie-voennoi-infrastruktury",
@@ -4760,8 +5045,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ekspl-uchastkov-629-0-0176",
@@ -4776,8 +5062,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "экспл участков 629 0,0176",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennogo-oboronnogo-zakaza",
@@ -4792,8 +5079,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazspeceksport",
@@ -4808,8 +5096,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mki",
@@ -4824,8 +5113,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-razvitiyu-mezhetnicheskih-otnoshe",
@@ -4840,8 +5130,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "qogamdyq-kelisim",
@@ -4856,8 +5147,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-delam-molodezhi-i-semi",
@@ -4872,8 +5164,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-arhivov-dokumentacii-i-knizhnogo-del",
@@ -4888,8 +5181,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centrov",
@@ -4904,8 +5198,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-kultury",
@@ -4920,8 +5215,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki-5",
@@ -4936,8 +5232,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-informacii",
@@ -4952,8 +5249,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-analiza-i-informacii",
@@ -4968,8 +5266,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-delam-religii",
@@ -4984,8 +5283,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-delam-grazhdanskogo-obschestva",
@@ -5000,8 +5300,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-teleradiokorporaciya-kazahstan-qazaq-auen",
@@ -5016,8 +5317,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mezhdunarodnyi-centr-mezhkonfessionalnogo-i",
@@ -5032,8 +5334,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-institut-centr-balet-gazet",
@@ -5048,8 +5351,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nao-centr-podderzhki-nacionalnogo-kino-insti",
@@ -5064,8 +5368,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "uchebnye-uchrezhd",
@@ -5080,8 +5385,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahskaya-nacionalnaya-akademiya-horeografi",
@@ -5096,8 +5402,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mts",
@@ -5112,8 +5419,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-delam-sporta-i-fizicheskoi-kultur",
@@ -5128,8 +5436,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centrov-i-podvedomki",
@@ -5144,8 +5453,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-regulirovaniyu-igornogo-biznesa-i",
@@ -5160,8 +5470,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-centr-monitoringa-i-analiza-azartnyh-igr",
@@ -5176,8 +5487,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-industrii-turizma",
@@ -5192,8 +5504,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazakh-tourism",
@@ -5208,8 +5521,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nao-mezhdunarodnyi-universitet-turizma-i-gos",
@@ -5224,8 +5538,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mz",
@@ -5252,8 +5567,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-medicinskogo-i-farmacevticheskogo-ko",
@@ -5268,8 +5584,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-13",
@@ -5284,8 +5601,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-ekspertizy-lekarstvennyh-s",
@@ -5300,8 +5618,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-sanitarno-epidemiologicheskogo-kontr",
@@ -5316,8 +5635,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-14",
@@ -5332,8 +5652,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gor-rai-onnye-upravlenii",
@@ -5348,8 +5669,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "departament-sanitarno-epidemiologicheskogo-k",
@@ -5364,8 +5686,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenii-2",
@@ -5380,8 +5703,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "protivochumnaya-stanciya",
@@ -5396,8 +5720,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-ekspertizy",
@@ -5412,8 +5737,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-11",
@@ -5428,8 +5754,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nauchnye-centry",
@@ -5444,8 +5771,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "detskii-klinicheskii-sanatorii-reabilitaciya",
@@ -5460,8 +5788,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nao-turar-healthcae",
@@ -5476,8 +5805,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazmedteh",
@@ -5492,8 +5822,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskie-centr-y-i-bolnicy",
@@ -5508,8 +5839,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-gigieny-truda-i-profession",
@@ -5524,8 +5856,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazahskii-respublikanskii-leprozorii",
@@ -5540,8 +5873,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "med-univery",
@@ -5556,8 +5890,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-qazbiopharm",
@@ -5572,8 +5907,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-obschestvennogo-zdravoohra",
@@ -5600,8 +5936,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filial-3",
@@ -5616,8 +5953,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "филиал 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nauchno-iscledovatelskii-institut-kurortolog",
@@ -5632,8 +5970,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "respublikanskii-centr-elektronnogo-zdravoohr",
@@ -5660,8 +5999,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-sk-farmaciya",
@@ -5676,8 +6016,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mt",
@@ -5692,8 +6033,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-avtomobilnogo-transporta-i-transport",
@@ -5708,8 +6050,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "inspekcii-2",
@@ -5724,8 +6067,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-zheleznodorozhnogo-i-vodnogo-transpo",
@@ -5740,8 +6084,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "morskaya-administraciya-portov",
@@ -5756,8 +6101,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "qazaqstan-su-zholdary",
@@ -5772,8 +6118,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-12",
@@ -5788,8 +6135,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-avtomobilnyh-dorog",
@@ -5804,8 +6152,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahstanskii-dorozhnyi-nauchno-issledova",
@@ -5820,8 +6169,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filial-4",
@@ -5836,8 +6186,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "филиал 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nacionalnyi-centr-kachestva-dorozhnyh-aktivo",
@@ -5852,8 +6203,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-13",
@@ -5868,8 +6220,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-grazhdanskoi-aviacii",
@@ -5884,8 +6237,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-aviacionnaya-administraciya-kazahstana",
@@ -5900,8 +6254,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazaeronavigaciya",
@@ -5916,8 +6271,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-14",
@@ -5932,8 +6288,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mezhregionalnaya-inspekciya-v-sfere-grazhdan",
@@ -5948,8 +6305,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Межрегиональная инспекция в сфере гражданской авиации 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-centr-po-rassledovaniyu-transportnyh-proi",
@@ -5964,8 +6322,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-qazavtozhol-685-0-0191",
@@ -5980,8 +6339,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "АО ҚазАвтоЖол 685 0,0191",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-15",
@@ -5996,8 +6356,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-kazhservis",
@@ -6012,8 +6373,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-16",
@@ -6028,8 +6390,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mne",
@@ -6044,8 +6407,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-regulirovaniyu-estestvennyh-monop",
@@ -6060,8 +6424,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "territorii-15",
@@ -6076,8 +6441,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-specialnyh-programm",
@@ -6092,8 +6458,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nauchno-issledovatelskii-institut-mikrografi",
@@ -6108,8 +6475,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Научно-исследовательский институт микрографии 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahstanskii-centr-gosudarstvenno-chastn",
@@ -6124,8 +6492,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-institut-ekonomicheskih-issledovanii",
@@ -6140,8 +6509,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nih-bai-terek",
@@ -6156,8 +6526,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "zhssb-otbasy-bank",
@@ -6172,8 +6543,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-qazaqstan-investment-corporation",
@@ -6188,8 +6560,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-eksportno-kreditnoe-agentstvo-kazahstana",
@@ -6204,8 +6577,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-agrarnaya-kreditnaya-korporaciya",
@@ -6220,8 +6594,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-bank-razvitiya-kazahstana",
@@ -6236,8 +6611,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-fond-razvitiya-predprinimatelstva-damu",
@@ -6252,8 +6628,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-kazahstanskaya-zhilischnaya-kompaniya",
@@ -6268,8 +6645,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mvri",
@@ -6284,8 +6662,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-vodnogo-hozyai-stva",
@@ -6300,8 +6679,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-regulirovaniyu-ohrane-i-ispolzova",
@@ -6316,8 +6696,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "inspekcii-3",
@@ -6332,8 +6713,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gidrogeologo-meliorativnyi-centr",
@@ -6348,8 +6730,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-kazahskii-nauchno-issledovatelskii-incti",
@@ -6364,8 +6747,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-sk-water-solutions",
@@ -6380,8 +6764,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nao-kazgidrogeologiya",
@@ -6396,8 +6781,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filiala-2",
@@ -6412,8 +6798,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "филиала 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "nao-informacionno-analiticheskii-centr-vodny",
@@ -6428,8 +6815,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kazvodhoz",
@@ -6444,8 +6832,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filial-5",
@@ -6460,8 +6849,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mnvo",
@@ -6476,8 +6866,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "vuz",
@@ -6492,8 +6883,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "til-qazyna",
@@ -6508,8 +6900,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "institutov-i-centrov",
@@ -6524,8 +6917,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mid",
@@ -6540,8 +6934,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik",
@@ -6556,8 +6951,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mp",
@@ -6572,8 +6968,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik-2",
@@ -6588,8 +6985,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "msh",
@@ -6604,8 +7002,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-upravleniyu-zemelnymi-resursami",
@@ -6620,8 +7019,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет по управлению земельными ресурсами",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-departamentov",
@@ -6636,8 +7036,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областных департаментов",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik-3",
@@ -6652,8 +7053,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-veterinarnogo-kontrolya-i-nadzora",
@@ -6668,8 +7070,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет ветеринарного контроля и надзора",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-inspekcii",
@@ -6684,8 +7087,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областных инспекций",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gorrai-inspekcii",
@@ -6700,8 +7104,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-горрай инспекции",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik-4",
@@ -6716,8 +7121,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-rybnogo-hozyai-stva",
@@ -6732,8 +7138,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет рыбного хозяйства",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mezhoblastnaya-inspekciya",
@@ -6748,8 +7155,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-межобластная инспекция",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik-5",
@@ -6764,8 +7172,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-gosudarstvennoi-inspekcii-v-agroprom",
@@ -6780,8 +7189,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет государственной инспекции в агропромышленном комплексе",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-inspekcii-2",
@@ -6796,8 +7206,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областных инспекций",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gorrai-inspekcii-2",
@@ -6812,8 +7223,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-горрай инспекции",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik-respublikanskii-centr-karantina-raste",
@@ -6828,8 +7240,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-квазик Республиканский центр карантина растений",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik-6",
@@ -6844,8 +7257,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "mchs",
@@ -6860,8 +7274,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "oblastnyh-departamentov-2",
@@ -6876,8 +7291,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-областных департаментов",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gorrai-chs",
@@ -6892,8 +7308,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-горрай ЧС",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-promyshlennoi-bezopasnosti",
@@ -6908,8 +7325,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет промышленной безопасности",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "rgu-respublikanskaya-sluzhba-spaseniya-barys",
@@ -6924,8 +7342,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "РГУ Республиканская служба спасения \"Барыс\"",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-preduprezhdeniya-chrezvychai-nyh-sit",
@@ -6940,8 +7359,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет предупреждения чрезвычайных ситуаций",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-gosudarstvennym-materialnym-rezer",
@@ -6956,8 +7376,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет по государственным материальным резервам",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "rgp-rezerv-30-0-0008",
@@ -6972,8 +7393,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "РГП \"Резерв\"",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gosudarstvennoe-uchrezhdenie-centr-mediciny",
@@ -6988,8 +7410,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Государственное учреждение Центр медицины катастроф",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "regionalnyh-filialov",
@@ -7004,8 +7427,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-региональных филиалов",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gu-akademiya-grazhdanskoi-zaschity-imeni-mal",
@@ -7020,8 +7444,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "ГУ \"Академия гражданской защиты имени Малика Габдуллина \"",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-protivopozharnoi-sluzhby",
@@ -7036,8 +7461,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет противопожарной службы",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "komitet-po-grazhdanskoi-oborone-i-voinskim-c",
@@ -7052,8 +7478,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: Комитет по гражданской обороне и воинским частям",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "voinskoi-chasti",
@@ -7068,8 +7495,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "- Воинской части",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gu-kazselezaschita",
@@ -7084,8 +7512,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Сфера деятельности и полномочия ведомства: ГУ \"Казселезащита",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filialov-17",
@@ -7100,8 +7529,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-филиалов",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "voinskaya-chast-55209-7-0-0002",
@@ -7116,8 +7546,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "Воинская часть 55209",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "kvazik-7",
@@ -7132,8 +7563,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "-квазик",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "akimat-astana",
@@ -7161,8 +7593,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-rai-ona-saryarka",
@@ -7190,8 +7623,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-rai-ona-esil",
@@ -7219,8 +7653,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-rai-ona-nura",
@@ -7248,8 +7683,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-rai-ona-almaty",
@@ -7277,8 +7713,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-rai-ona-bai-qonyr",
@@ -7306,8 +7743,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-rai-ona-sarai-shyq",
@@ -7335,8 +7773,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-zhilya-i-zhilischnoi-inspekcii",
@@ -7351,8 +7790,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "zhilischnyi-fond",
@@ -7367,8 +7807,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astana-ornek",
@@ -7383,8 +7824,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-orken-qala",
@@ -7399,8 +7841,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gorodskaya-nedvizhimost",
@@ -7415,8 +7858,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-arhitektury-gradostroitelstva-i-z",
@@ -7431,8 +7875,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-centr-urbanistiki-goroda-astany",
@@ -7447,8 +7892,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-nauchno-issledovatelskii-proektnyi-insti",
@@ -7463,8 +7909,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-transporta-i-razvitiya-dorozhno-t",
@@ -7479,8 +7926,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-centr-organizacii-dorozhnogo-dvizheniya",
@@ -7495,8 +7943,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-direkciya-po-stroitelstvu-lrt",
@@ -7511,8 +7960,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-avtobusnyi-park-no1",
@@ -7527,8 +7977,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-mezhdunarodnyi-aeroport-nursultan-nazarba",
@@ -7543,8 +7994,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "filial-ao-mezhdunarodnyi-aeroport-nursultan",
@@ -7559,8 +8011,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-zhezkiik",
@@ -7575,8 +8028,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-city-transportation-systems",
@@ -7591,8 +8045,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-gosudarstvennogo-arhitekturno-str",
@@ -7607,8 +8062,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-elorda-qurylys-kompaniyasy",
@@ -7623,8 +8079,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-obschestvennogo-zdravoohraneniya",
@@ -7651,8 +8108,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "polikliniki-bolnicy",
@@ -7667,8 +8125,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-ohrany-okruzhayuschei-sredy-i-pri",
@@ -7683,8 +8142,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astana-ormany",
@@ -7699,8 +8159,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "astana-vetservis",
@@ -7715,8 +8176,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astana-zelenstroi",
@@ -7731,8 +8193,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-obrazovaniya",
@@ -7747,8 +8210,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "obrazov-uchrezhd",
@@ -7763,8 +8227,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-stroitelstva",
@@ -7779,8 +8244,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-elorda-damu",
@@ -7795,8 +8261,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-kommunalnogo-hozyai-stva",
@@ -7811,8 +8278,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "astana-su-arnasy",
@@ -7827,8 +8295,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astana-byuro-specialnogo-obsluzhivaniya",
@@ -7843,8 +8312,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astana-tazalyq",
@@ -7859,8 +8329,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "elorda-eco-system",
@@ -7875,8 +8346,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-zanyatosti-i-socialnoi-zaschity",
@@ -7891,8 +8363,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centrov-2",
@@ -7907,8 +8380,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-po-razvitiyu-yazykov-i-arhivnogo",
@@ -7923,8 +8397,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gosudarstvennyi-arhiv",
@@ -7939,8 +8414,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ruhaniyat",
@@ -7955,8 +8431,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-hozyai-stvennoe-upravlenie-astany",
@@ -7971,8 +8448,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-po-mobilizacionnoi-podgotovke-ter",
@@ -7987,8 +8465,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-po-obespecheniyu-grazhdanskoi-oborony",
@@ -8003,8 +8482,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-po-delam-religii",
@@ -8019,8 +8499,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomka",
@@ -8035,8 +8516,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "подведомка 0",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-ekonomiki-i-byudzhetnogo-planirov",
@@ -8051,8 +8533,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-vnutrennei-politiki",
@@ -8067,8 +8550,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "qogamdyq-kelisim-2",
@@ -8083,8 +8567,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "sluzhba-kommunikacii",
@@ -8099,8 +8584,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-elorda-aqparat",
@@ -8115,8 +8601,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-finansov",
@@ -8131,8 +8618,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-energetiki",
@@ -8170,8 +8658,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-astana-regionalnaya-elektrosetevaya-kompa",
@@ -8186,8 +8675,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-astana-teplotranzit",
@@ -8202,8 +8692,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astana-qalalyq-zharyq",
@@ -8218,8 +8709,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-astana-energiya",
@@ -8234,8 +8726,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-po-investiciyam-i-razvitiyu-predp",
@@ -8250,8 +8743,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-centr-razvitiya-turizma-astana-tourism",
@@ -8266,8 +8760,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-centr-razvitiya-astany",
@@ -8282,8 +8777,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-spk-astana",
@@ -8298,8 +8794,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-gorodskoi-centr-razvitiya-investicii-ast",
@@ -8314,8 +8811,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-po-voprosam-molodezhnoi-politiki",
@@ -8330,8 +8828,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "molodezhnyi-resursnyi-centr-astana-zhastary",
@@ -8346,8 +8845,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-cifrovizacii-i-gosudarstvennyh-us",
@@ -8362,8 +8862,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "gorodskoi-centr-monitoringa-i-operativnogo-r",
@@ -8378,8 +8879,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "ao-astana-innovations",
@@ -8394,8 +8896,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-fizicheskoi-kultury-i-sporta",
@@ -8410,8 +8913,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki-6",
@@ -8426,8 +8930,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-kultury",
@@ -8442,8 +8947,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki-7",
@@ -8458,8 +8964,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-po-zaschite-prav-detei",
@@ -8474,8 +8981,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "upravlenie-aktivov-i-gosudarstvennyh-zakupok",
@@ -8490,8 +8998,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-astana-venue-management",
@@ -8506,8 +9015,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "almatinskaya-oblast",
@@ -8522,8 +9032,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-karasai-skogo-rai-ona",
@@ -8551,8 +9062,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-irgelinskogo-selskogo-okruga",
@@ -8580,8 +9092,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-goroda-kaskelen",
@@ -8609,8 +9122,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-rai-ymbekskogo-selskogo-okruga",
@@ -8638,8 +9152,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-zhambylskogo-selskogo-okruga",
@@ -8667,8 +9182,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-umtylskogo-selskogo-okruga",
@@ -8696,8 +9212,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-zhandosovskogo-selskogo-okruga",
@@ -8725,8 +9242,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-selskogo-okruga-zhibek-zholy",
@@ -8754,8 +9272,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-pervomai-skogo-selskogo-okruga",
@@ -8783,8 +9302,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-shamalganskogo-selskogo-okruga",
@@ -8812,8 +9332,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-eltai-skogo-selskogo-okruga",
@@ -8841,8 +9362,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-ai-tei-skogo-selskogo-okruga",
@@ -8870,8 +9392,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-arhitektury-i-gradostroitelstva",
@@ -8886,8 +9409,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-zhilischno-kommunalnogo-hozyai-stva-i",
@@ -8902,8 +9426,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-vnutrennei-politiki",
@@ -8918,8 +9443,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-provedeniya-sportivno-massovyh-meropri",
@@ -8934,8 +9460,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "rai-onnyi-dom-kultury",
@@ -8950,8 +9477,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "folklorno-etnograficheskii-ansambl-ushkonyr",
@@ -8966,8 +9494,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-kultury-razvitiya-yazykov-fizicheskoi",
@@ -8982,8 +9511,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "karasai-skaya-rai-onnaya-biblioteka",
@@ -8998,8 +9528,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-predprinimatelstva-karasai-skogo-rai-o",
@@ -9014,8 +9545,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-stroitelstva-karasai-skogo-rai-ona",
@@ -9030,8 +9562,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-zanyatosti-i-socialnyh-programm",
@@ -9046,8 +9579,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "centr-podderzhki-semi-zhanuya",
@@ -9062,8 +9596,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-passazhirskogo-transporta-i-avtomobiln",
@@ -9078,8 +9613,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-selskogo-hozyai-stva",
@@ -9094,8 +9630,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-ekonomiki-i-finansov",
@@ -9110,8 +9647,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-zemelnyh-otnoshenii",
@@ -9126,8 +9664,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "tausamaly-kyzmet",
@@ -9142,8 +9681,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-talgarskogo-rai-ona",
@@ -9171,8 +9711,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-tuzdybastauskogo-selskogo-okru",
@@ -9200,8 +9741,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-guldalinskogo-selskogo-okruga",
@@ -9229,8 +9771,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-panfilovskogo-selskogo-okruga",
@@ -9258,8 +9801,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-besagashskogo-selskogo-okruga",
@@ -9287,8 +9831,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-belbulakskogo-selskogo-okruga",
@@ -9316,8 +9861,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-goroda-talgar",
@@ -9345,8 +9891,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "too-talgar-turgyn-ui",
@@ -9361,8 +9908,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-kendalinskogo-selskogo-okruga",
@@ -9390,8 +9938,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-nurinskogo-selskogo-okruga",
@@ -9419,8 +9968,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-alatauskogo-selskogo-okruga",
@@ -9448,8 +9998,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-kai-narskogo-selskogo-okruga",
@@ -9477,8 +10028,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "apparat-akima-beskai-narskogo-selskogo-okrug",
@@ -9506,8 +10058,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 75,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-arhitektury-i-gradostroitelstva-2",
@@ -9522,8 +10075,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-vnutrennei-politiki-2",
@@ -9538,8 +10092,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-ekonomiki-i-finansov-2",
@@ -9554,8 +10109,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-kultury-razvitiya-yazykov-fizicheskoi-2",
@@ -9570,8 +10126,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "podvedomki-8",
@@ -9586,8 +10143,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-predprinimatelstva",
@@ -9602,8 +10160,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-stroitelstva",
@@ -9618,8 +10177,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-selskogo-hozyai-stva-2",
@@ -9634,8 +10194,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-passazhirskogo-transporta-i-avtomobiln-2",
@@ -9650,8 +10211,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-zhilischno-kommunalnogo-hozyai-stva-i-2",
@@ -9666,8 +10228,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-zanyatosti-i-socialnyh-programm-2",
@@ -9682,8 +10245,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "cent-podderzhki-semi",
@@ -9698,8 +10262,9 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   },
   {
     "id": "otdel-zemelnyh-otnoshenii-2",
@@ -9714,7 +10279,8 @@
     "jurisdiction": "republican",
     "showOnFrontend": true,
     "theme": "",
-    "completenessScore": 50,
-    "status": "in_progress"
+    "completenessScore": 0,
+    "status": "unfilled",
+    "hasHumanTouch": false
   }
 ]
