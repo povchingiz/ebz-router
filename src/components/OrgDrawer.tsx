@@ -240,6 +240,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     canEditContent: access.allowed && !isLockedByOther,
     canChangeStructure: access.allowed && !isLockedByOther,
   };
+
+  const isSuperAdminOwner = Boolean(
+    authUser?.username === 'superadmin' ||
+    authUser?.role === 'GLOBAL_ADMIN' ||
+    currentUser.id === 'user-admin' ||
+    currentUser.id === 'admin_ap' ||
+    currentUser.role === 'superadmin'
+  );
   const parentOrg = allOrgs.find((o) => o.id === org.parentId);
   const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
@@ -554,11 +562,11 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           {/* ВКЛАДКА 1: Компетенции ведомства */}
           {activeTab === 'competencies' && (
             <div className="space-y-4">
-              {/* 1. Сфера ведения, задачи и полномочия */}
+              {/* 1. Сфера ведения, задачи и полномочия (Тематика обращений) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <FileText className="w-4 h-4 text-blue-600" />
-                  <span>Сфера ведения и основные задачи (Полномочия)</span>
+                  <span>Тематика и сфера ведения (Полномочия)</span>
                 </div>
                 <p className="text-[11px] text-slate-500">
                   Отраслевая сфера регулирования, задачи ведомства и предметная компетенция по рассмотрению обращений граждан.
@@ -581,44 +589,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* 2. Нормативно-правовая база (Положение об органе) */}
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                    <Scale className="w-4 h-4 text-indigo-600" />
-                    <span>Нормативно-правовая основа (Положение об органе)</span>
-                  </div>
-                  {legalBasis && (legalBasis.startsWith('http://') || legalBasis.startsWith('https://')) && (
-                    <a
-                      href={legalBasis}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[10px] font-bold text-blue-600 hover:underline flex items-center gap-1"
-                    >
-                      <span>Открыть в Әділет</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                </div>
-                <p className="text-[11px] text-slate-500">
-                  Постановление Правительства РК / Указ Президента / Решение маслихата об утверждении Положения о ведомстве.
-                </p>
-                {permissions.canEditContent && !isLockedByOther ? (
-                  <input
-                    type="text"
-                    value={legalBasis}
-                    onChange={(e) => setLegalBasis(e.target.value)}
-                    placeholder="Например: Положение утверждено Постановлением Правительства РК от ... № ... (ссылка на adilet.zan.kz)"
-                    className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none font-medium"
-                  />
-                ) : (
-                  <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
-                    {legalBasis || 'Нормативно-правовой акт не указан.'}
-                  </div>
-                )}
-              </div>
-
-              {/* 3. Территориальный масштаб юрисдикции */}
+              {/* 2. Территориальный масштаб юрисдикции */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2.5">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <Globe className="w-4 h-4 text-teal-600" />
@@ -669,26 +640,107 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* 4. Тематики и типовые вопросы */}
-              <div className="p-4 rounded-2xl bg-blue-50/40 dark:bg-blue-950/20 border border-blue-200/80 dark:border-blue-900/50 flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-black text-blue-950 dark:text-blue-200 flex items-center gap-1.5">
-                    <HelpCircle className="w-4 h-4 text-blue-600" />
-                    <span>Тематики и поводы обращений ({questions.length})</span>
+              {/* Превью-блок: только для главного администратора */}
+              {isSuperAdminOwner && (
+                <div className="mt-8 pt-6 border-t-2 border-dashed border-slate-300/80 dark:border-slate-700/80 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-300/60 dark:border-slate-700 flex items-center gap-1.5">
+                        <Eye className="w-3.5 h-3.5 text-slate-500" />
+                        Превью (видно только главному администратору)
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-medium text-slate-400 dark:text-slate-500">
+                      Скрыто от ведомств
+                    </span>
                   </div>
-                  <p className="text-[11px] text-blue-800/80 dark:text-blue-300/80 mt-0.5">
-                    Закрепленные типовые вопросы для базы знаний и ИИ-маршрутизации.
+
+                  <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed">
+                    Данные разделы находятся на этапе утверждения регламентов и доступны для предварительного заполнения только вам.
                   </p>
+
+                  {/* 1. Нормативно-правовая основа (Положение об органе) */}
+                  <div className="p-4 rounded-2xl bg-slate-100/50 dark:bg-slate-850/40 border border-slate-200/60 dark:border-slate-800/60 space-y-2 opacity-90">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-xs font-black text-slate-700 dark:text-slate-300">
+                        <Scale className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                        <span>Нормативно-правовая основа (Положение об органе)</span>
+                      </div>
+                      {legalBasis && (legalBasis.startsWith('http://') || legalBasis.startsWith('https://')) && (
+                        <a
+                          href={legalBasis}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-[10px] font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline flex items-center gap-1"
+                        >
+                          <span>Открыть в Әділет</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-[11px] text-slate-400 dark:text-slate-500">
+                      Постановление Правительства РК / Указ Президента / Решение маслихата об утверждении Положения о ведомстве.
+                    </p>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <input
+                        type="text"
+                        value={legalBasis}
+                        onChange={(e) => setLegalBasis(e.target.value)}
+                        placeholder="Например: Положение утверждено Постановлением Правительства РК от ... № ... (ссылка на adilet.zan.kz)"
+                        className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 focus:border-slate-400 outline-none font-medium text-slate-700 dark:text-slate-300"
+                      />
+                    ) : (
+                      <div className="text-xs text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/80 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                        {legalBasis || 'Нормативно-правовой акт не указан.'}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* 2. Анти-темы (организация точно НЕ рассматривает) */}
+                  <div className="p-4 rounded-2xl bg-slate-100/50 dark:bg-slate-850/40 border border-slate-200/60 dark:border-slate-800/60 space-y-3 opacity-90">
+                    <div className="flex items-center gap-2 text-xs font-black text-slate-700 dark:text-slate-300">
+                      <Ban className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                      <span>Анти-темы (организация точно НЕ рассматривает)</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 dark:text-slate-500">
+                      Круг вопросов, по которым орган не имеет полномочий принимать решения (для исключения ошибочных и нецелевых обращений).
+                    </p>
+                    {permissions.canEditContent && !isLockedByOther ? (
+                      <textarea
+                        rows={3}
+                        value={competenciesExcluded}
+                        onChange={(e) => setCompetenciesExcluded(e.target.value)}
+                        placeholder="Например: трудовые споры в коммерческих структурах, уголовное судопроизводство, обжалование судебных решений..."
+                        className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 focus:border-slate-400 outline-none leading-relaxed text-slate-700 dark:text-slate-300"
+                      />
+                    ) : (
+                      <div className="text-xs text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/80 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 whitespace-pre-wrap">
+                        {competenciesExcluded || 'Исключения не указаны.'}
+                      </div>
+                    )}
+
+                    {/* Куда перенаправлять типовые ошибки */}
+                    <div className="pt-1 space-y-1">
+                      <label className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">
+                        Рекомендация по перенаправлению / Маршрут пересылки:
+                      </label>
+                      {permissions.canEditContent && !isLockedByOther ? (
+                        <input
+                          type="text"
+                          value={forwardToGuidance}
+                          onChange={(e) => setForwardToGuidance(e.target.value)}
+                          placeholder="Например: перенаправлять в Министерство юстиции РК или судебные органы"
+                          className="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 focus:border-slate-400 outline-none font-medium text-slate-700 dark:text-slate-300"
+                        />
+                      ) : (
+                        <div className="p-2 text-xs text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/80 rounded-xl border border-slate-100 dark:border-slate-800">
+                          {forwardToGuidance || 'Маршрут перенаправления не указан.'}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('questions')}
-                  className="px-3 py-1.5 text-xs font-bold text-blue-700 dark:text-blue-300 hover:bg-blue-100/70 dark:hover:bg-blue-900/40 rounded-xl transition-all flex items-center gap-1 shrink-0"
-                >
-                  <span>Смотреть вопросы</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
+              )}
             </div>
           )}
 

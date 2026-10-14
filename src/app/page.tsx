@@ -75,6 +75,16 @@ function HomeContent({
     locationAddress?: string;
     jurisdiction?: JurisdictionLevel;
     legalBasis?: string;
+    competenciesExcluded?: string;
+    forwardToGuidance?: string;
+    showOnFrontend?: boolean;
+    contacts?: {
+      phoneHotline?: string;
+      phoneChancellery?: string;
+      emailOfficial?: string;
+      websiteUrl?: string;
+      physicalAddress?: string;
+    };
     questions: OrgQuestion[];
   }) => {
     if (!inspectorOrg) return;
@@ -196,17 +206,19 @@ function HomeContent({
 
           {/* Действия и тулбар */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* ИИ-Маршрутизатор: серая неактивная плашка */}
-            <div
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-bold bg-slate-100 dark:bg-slate-800/80 text-slate-400 dark:text-slate-500 border border-slate-200/60 dark:border-slate-800 cursor-not-allowed select-none transition-opacity"
-              title="ИИ-маршрутизатор временно отключен на период наполнения и верификации базы знаний"
-            >
-              <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
-              <span>⚡ ИИ-Маршрутизатор</span>
-              <span className="text-[10px] font-medium bg-slate-200/70 dark:bg-slate-700/70 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded-md">
-                Скоро
-              </span>
-            </div>
+            {/* ИИ-Маршрутизатор: виден строго главному супер-админу */}
+            {isSuperAdminOwner && (
+              <div
+                className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-bold bg-slate-100 dark:bg-slate-800/80 text-slate-400 dark:text-slate-500 border border-slate-200/60 dark:border-slate-800 cursor-not-allowed select-none transition-opacity"
+                title="ИИ-маршрутизатор (в разработке)"
+              >
+                <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
+                <span>⚡ ИИ-Маршрутизатор</span>
+                <span className="text-[10px] font-medium bg-slate-200/70 dark:bg-slate-700/70 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded-md">
+                  Скоро
+                </span>
+              </div>
+            )}
 
             {/* Пакетная работа через Excel/CSV */}
             <button
@@ -232,16 +244,15 @@ function HomeContent({
               </button>
             )}
 
-            {/* Детектор конфликтов (Строго для супер-администратора) */}
+            {/* Детектор коллизий (Строго для главного супер-админа, без текстовой подписи) */}
             {isSuperAdminOwner && (
               <button
                 type="button"
                 onClick={() => setIsConflictModalOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-2xl text-xs font-bold bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/50 text-rose-700 dark:text-rose-300 transition-all shadow-xs active:scale-95 border border-rose-200/80 dark:border-rose-800"
-                title="Детектор коллизий и спорных компетенций (только АП РК)"
+                className="inline-flex items-center justify-center p-2 rounded-2xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/50 text-rose-700 dark:text-rose-300 transition-all shadow-xs active:scale-95 border border-rose-200/80 dark:border-rose-800"
+                title="Детектор коллизий (только АП РК)"
               >
                 <ShieldAlert className="w-3.5 h-3.5 text-rose-600" />
-                <span className="hidden sm:inline">Коллизии</span>
               </button>
             )}
 

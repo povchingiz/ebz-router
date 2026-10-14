@@ -66,6 +66,16 @@ class OrgStore {
       locationAddress?: string;
       jurisdiction?: 'republican' | 'regional' | 'district' | 'local';
       legalBasis?: string;
+      competenciesExcluded?: string;
+      forwardToGuidance?: string;
+      showOnFrontend?: boolean;
+      contacts?: {
+        phoneHotline?: string;
+        phoneChancellery?: string;
+        emailOfficial?: string;
+        websiteUrl?: string;
+        physicalAddress?: string;
+      };
       questions?: OrgQuestion[];
     },
     expectedVersion: number,
@@ -94,6 +104,10 @@ class OrgStore {
     if (updates.locationAddress !== undefined) org.locationAddress = updates.locationAddress;
     if (updates.jurisdiction !== undefined) org.jurisdiction = updates.jurisdiction;
     if (updates.legalBasis !== undefined) org.legalBasis = updates.legalBasis;
+    if (updates.competenciesExcluded !== undefined) org.competenciesExcluded = updates.competenciesExcluded;
+    if (updates.forwardToGuidance !== undefined) org.forwardToGuidance = updates.forwardToGuidance;
+    if (updates.showOnFrontend !== undefined) org.showOnFrontend = updates.showOnFrontend;
+    if (updates.contacts !== undefined) org.contacts = updates.contacts;
     if (updates.questions !== undefined) org.questions = updates.questions;
 
     org.version += 1;
