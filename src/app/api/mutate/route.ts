@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { orgStore } from '../../../lib/store';
+import { updateOrgContentInDb, reparentOrgInDb } from '../../../lib/db';
 import { authService, canUserManageOrg } from '../../../lib/auth';
 import { User } from '../../../types';
 
@@ -83,6 +84,29 @@ export async function POST(req: NextRequest) {
     }
 
     if (action === 'update_content' && orgId) {
+      // 1. Попытка записи в PostgreSQL
+      let dbResult: any = null;
+      try {
+        dbResult = await updateOrgContentInDb(
+          orgId,
+          {
+            name: payload.name,
+            fullName: payload.fullName,
+            scope: payload.scope,
+            theme: payload.theme,
+            locationAddress: payload.locationAddress,
+            jurisdiction: payload.jurisdiction,
+            legalBasis: payload.legalBasis,
+            questions: payload.questions,
+          },
+          version ?? 1,
+          userForStore
+        );
+      } catch (e: any) {
+        console.warn('DB update failed, using memory store fallback:', e.message);
+      }
+
+      // 2. Синхронизируем локальный store
       const result = orgStore.updateContent(
         orgId,
         {
@@ -101,15 +125,24 @@ export async function POST(req: NextRequest) {
       if (!result.success) {
         return NextResponse.json({ error: result.error }, { status: 409 }); // 409 Conflict
       }
-      return NextResponse.json({ success: true, org: result.org });
+      return NextResponse.json({ success: true, org: dbResult?.org || result.org });
     }
 
     if (action === 'reparent' && orgId) {
+      // 1. Попытка смены родителя в PostgreSQL
+      let dbResult: any = null;
+      try {
+        dbResult = await reparentOrgInDb(orgId, payload.newParentId, version ?? 1, userForStore);
+      } catch (e: any) {
+        console.warn('DB reparent failed, using memory store fallback:', e.message);
+      }
+
+      // 2. Синхронизируем локальный store
       const result = orgStore.reparent(orgId, payload.newParentId, version ?? 1, userForStore);
       if (!result.success) {
         return NextResponse.json({ error: result.error }, { status: 400 });
       }
-      return NextResponse.json({ success: true, org: result.org });
+      return NextResponse.json({ success: true, org: dbResult?.org || result.org });
     }
 
     if (action === 'create_org') {
