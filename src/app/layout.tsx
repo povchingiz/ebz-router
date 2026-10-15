@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SiteGate } from '../components/auth/SiteGate';
 
 export const metadata: Metadata = {
   title: 'ЕБЗ Роутер — Единая база знаний и маршрутизация',
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className="min-h-screen antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-500 selection:text-white">
-        {children}
+        <SiteGate>{children}</SiteGate>
       </body>
     </html>
   );
