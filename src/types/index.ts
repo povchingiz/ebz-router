@@ -126,6 +126,7 @@ export interface EbzArticle {
   relatedNpaKk?: string;
   tags?: string[];
   category?: string;
+  version?: number;
   createdAt?: string;
   updatedAt?: string;
 }

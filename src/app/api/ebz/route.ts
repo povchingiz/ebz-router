@@ -128,14 +128,32 @@ export async function POST(req: NextRequest) {
     const existingIndex = currentList.findIndex((a) => a.id === article.id);
 
     if (existingIndex >= 0) {
+      const existing = currentList[existingIndex];
+      // Защита от Race Condition (Optimistic Concurrency Control):
+      if (
+        article.version !== undefined &&
+        existing.version !== undefined &&
+        article.version !== existing.version
+      ) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: `Конфликт версий: статья была обновлена другим оператором (версия на сервере v${existing.version}, у вас v${article.version}). Обновите страницу, чтобы увидеть свежие изменения.`,
+          },
+          { status: 409 }
+        );
+      }
+
       currentList[existingIndex] = {
-        ...currentList[existingIndex],
+        ...existing,
         ...article,
+        version: (existing.version || 1) + 1,
         updatedAt: new Date().toISOString(),
       };
     } else {
       currentList.unshift({
         ...article,
+        version: 1,
         createdAt: article.createdAt || new Date().toISOString().split('T')[0],
       });
     }
