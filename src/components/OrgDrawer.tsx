@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { GovOrg, OrgQuestion, User, ROLE_PERMISSIONS, JurisdictionLevel } from '@/types';
+import { GovOrg, OrgQuestion, User, ROLE_PERMISSIONS, JurisdictionLevel, OrgDepartment } from '@/types';
 import { useAuth } from '@/context/AuthContext';
 import { QuestionModal } from './QuestionModal';
 import { QuestionCsvModal } from './QuestionCsvModal';
@@ -36,6 +36,8 @@ import {
   Eye,
   EyeOff,
   ExternalLink,
+  Layers,
+  BookOpen,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -65,6 +67,7 @@ interface OrgDrawerProps {
       physicalAddress?: string;
     };
     questions: OrgQuestion[];
+    departments?: OrgDepartment[];
     status?: 'unfilled' | 'llm_check' | 'human_review' | 'verified' | 'in_progress';
     katoCode?: string;
     katoNameRu?: string;
@@ -174,6 +177,15 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [isCsvQuestionModalOpen, setIsCsvQuestionModalOpen] = useState(false);
   const [isCreateChildModalOpen, setIsCreateChildModalOpen] = useState(false);
 
+  // Подразделения ведомства (Управления / Департаменты)
+  const [departments, setDepartments] = useState<OrgDepartment[]>([]);
+  const [deptSearch, setDeptSearch] = useState('');
+  const [isAddDeptModalOpen, setIsAddDeptModalOpen] = useState(false);
+  const [editingDeptId, setEditingDeptId] = useState<number | string | null>(null);
+  const [newDeptName, setNewDeptName] = useState('');
+  const [newDeptResponsible, setNewDeptResponsible] = useState('');
+  const [newDeptPath, setNewDeptPath] = useState('');
+
   // Подотчетность
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
   const [parentSearchQuery, setParentSearchQuery] = useState('');
@@ -195,6 +207,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setKatoCode(org.katoCode || '');
       setLocationId(org.locationId || '');
       setKatoNameRu(org.katoNameRu || '');
+      setDepartments(org.departments ? JSON.parse(JSON.stringify(org.departments)) : []);
+      setDeptSearch('');
       const initStatus = org.hasHumanTouch
         ? ((org.status as any) === 'verified'
           ? 'verified'
@@ -255,6 +269,18 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       return tokens.every((token) => searchTarget.includes(token));
     });
   }, [org, questions, questionSearch]);
+
+  // Поиск подразделений по названию, компетенциям и пути
+  const filteredDepartments = useMemo(() => {
+    if (!deptSearch.trim()) return departments;
+    const q = deptSearch.toLowerCase();
+    return departments.filter(
+      (d) =>
+        d.name.toLowerCase().includes(q) ||
+        (d.responsible && d.responsible.toLowerCase().includes(q)) ||
+        (d.path && d.path.toLowerCase().includes(q))
+    );
+  }, [departments, deptSearch]);
 
   // Все потомки текущей организации (дети, внуки и т.д.), чтобы исключить циклы в иерархии
   const descendantIds = useMemo(() => {
@@ -341,6 +367,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           physicalAddress: locationAddress,
         },
         questions,
+        departments,
       });
       setIsEditingNames(false);
       setStatusMsg({ text: 'Сведения и компетенции ведомства успешно сохранены!' });
@@ -886,12 +913,142 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 </div>
               )}
+
+              {/* 4. Внутренние подразделения ведомства (Управления / Департаменты) */}
+              <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-200/80 dark:border-indigo-900/60 space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 text-xs font-black text-indigo-950 dark:text-indigo-200">
+                    <Layers className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                    <span>Внутренние подразделения ведомства ({departments.length})</span>
+                  </div>
+                  {permissions.canEditContent && !isLockedByOther && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingDeptId(null);
+                        setNewDeptName('');
+                        setNewDeptResponsible('');
+                        setNewDeptPath(org.fullName || org.name);
+                        setIsAddDeptModalOpen(true);
+                      }}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-all active:scale-95"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>Добавить подразделение</span>
+                    </button>
+                  )}
+                </div>
+
+                <p className="text-[11px] text-slate-500 leading-snug">
+                  Структурные управления и департаменты ведомства для точной адресации и внутренней маршрутизации обращений.
+                </p>
+
+                {/* Поиск по подразделениям */}
+                {departments.length > 0 && (
+                  <div className="relative">
+                    <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
+                    <input
+                      type="text"
+                      value={deptSearch}
+                      onChange={(e) => setDeptSearch(e.target.value)}
+                      placeholder="Поиск по названию подразделения или компетенциям..."
+                      className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none font-medium"
+                    />
+                  </div>
+                )}
+
+                {/* Список подразделений */}
+                <div className="space-y-2 max-h-[380px] overflow-y-auto pr-1">
+                  {filteredDepartments.length === 0 ? (
+                    <div className="p-4 text-center text-xs text-slate-400 bg-white/60 dark:bg-slate-900/40 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
+                      {departments.length === 0
+                        ? 'Подразделения пока не внесены. Нажмите «Добавить подразделение», чтобы зарегистрировать структуру.'
+                        : 'Подразделения не найдены по запросу.'}
+                    </div>
+                  ) : (
+                    filteredDepartments.map((dept) => (
+                      <div
+                        key={dept.id}
+                        className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/50 shadow-xs space-y-1.5"
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="space-y-0.5">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
+                                #{dept.id}
+                              </span>
+                              <h5 className="text-xs font-black text-slate-900 dark:text-white leading-snug">
+                                {dept.name}
+                              </h5>
+                            </div>
+                            {dept.path && (
+                              <div className="text-[10px] text-slate-400 font-medium truncate max-w-[360px]" title={dept.path}>
+                                {dept.path}
+                              </div>
+                            )}
+                          </div>
+
+                          {permissions.canEditContent && !isLockedByOther && (
+                            <div className="flex items-center gap-1 shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setEditingDeptId(dept.id);
+                                  setNewDeptName(dept.name);
+                                  setNewDeptResponsible(dept.responsible || '');
+                                  setNewDeptPath(dept.path || '');
+                                  setIsAddDeptModalOpen(true);
+                                }}
+                                className="p-1 text-slate-400 hover:text-indigo-600 rounded transition-colors"
+                                title="Редактировать подразделение"
+                              >
+                                <Edit3 className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setDepartments((prev) => prev.filter((d) => d.id !== dept.id));
+                                }}
+                                className="p-1 text-slate-400 hover:text-rose-600 rounded transition-colors"
+                                title="Удалить подразделение"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          )}
+                        </div>
+
+                        {dept.responsible && (
+                          <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-wrap bg-slate-50 dark:bg-slate-850 p-2 rounded-lg border border-slate-100 dark:border-slate-800">
+                            {dept.responsible}
+                          </p>
+                        )}
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
           )}
 
           {/* ВКЛАДКА 2: Для ЕБЗ (База знаний вопросов и тем) */}
           {(activeTab === 'ebz' || activeTab === 'questions') && (
             <div className="space-y-4">
+              {/* Баннер перехода в полноэкранный реестр статей ЕБЗ */}
+              <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 flex items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2.5">
+                  <BookOpen className="w-4 h-4 text-indigo-600 shrink-0" />
+                  <div>
+                    <div className="font-black text-indigo-950 dark:text-indigo-200">
+                      Реестр статей ЕБЗ (1414 и регламенты)
+                    </div>
+                    <div className="text-[11px] text-slate-500">
+                      Полная база знаний статей доступна в полноэкранном режиме «Статьи ЕБЗ» в левом меню.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Панель поиска и переключения вида (Карточки / Таблица) */}
               <div className="flex items-center justify-between gap-2">
                 <div className="relative flex-1">
@@ -1552,6 +1709,113 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           allOrgs={allOrgs}
           onCreate={onCreateOrg}
         />
+      )}
+      {/* Модальное окно создания / редактирования внутреннего подразделения */}
+      {isAddDeptModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fadeIn">
+          <div className="w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl p-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div className="flex items-center gap-2">
+                <Layers className="w-4 h-4 text-indigo-600" />
+                <h3 className="text-sm font-black text-slate-900 dark:text-white">
+                  {editingDeptId ? 'Редактировать подразделение' : 'Добавить подразделение ведомства'}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsAddDeptModalOpen(false)}
+                className="p-1 rounded-xl text-slate-400 hover:text-slate-600"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold uppercase text-slate-500">
+                  Наименование подразделения:
+                </label>
+                <input
+                  type="text"
+                  value={newDeptName}
+                  onChange={(e) => setNewDeptName(e.target.value)}
+                  placeholder="Например: Департамент автомобильных дорог"
+                  className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none font-bold"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold uppercase text-slate-500">
+                  Зона ответственности и компетенции:
+                </label>
+                <textarea
+                  rows={4}
+                  value={newDeptResponsible}
+                  onChange={(e) => setNewDeptResponsible(e.target.value)}
+                  placeholder="Опишите предметную сферу, полномочия и функции данного подразделения..."
+                  className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none leading-relaxed"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold uppercase text-slate-500">
+                  Иерархический путь / Подчиненность внутри ведомства:
+                </label>
+                <input
+                  type="text"
+                  value={newDeptPath}
+                  onChange={(e) => setNewDeptPath(e.target.value)}
+                  placeholder="Например: Министерство транспорта РК > Комитет автомобильных дорог"
+                  className="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none text-slate-600"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => setIsAddDeptModalOpen(false)}
+                className="px-3.5 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                Отмена
+              </button>
+              <button
+                type="button"
+                disabled={!newDeptName.trim()}
+                onClick={() => {
+                  if (!newDeptName.trim()) return;
+                  if (editingDeptId) {
+                    setDepartments((prev) =>
+                      prev.map((d) =>
+                        d.id === editingDeptId
+                          ? {
+                              ...d,
+                              name: newDeptName.trim(),
+                              responsible: newDeptResponsible.trim(),
+                              path: newDeptPath.trim(),
+                            }
+                          : d
+                      )
+                    );
+                  } else {
+                    const newDept: OrgDepartment = {
+                      id: String(Date.now()),
+                      name: newDeptName.trim(),
+                      responsible: newDeptResponsible.trim(),
+                      path: newDeptPath.trim(),
+                      orgId: org.id,
+                    };
+                    setDepartments((prev) => [...prev, newDept]);
+                  }
+                  setIsAddDeptModalOpen(false);
+                }}
+                className="px-4 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-md transition-all disabled:opacity-50"
+              >
+                {editingDeptId ? 'Сохранить изменения' : 'Добавить'}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

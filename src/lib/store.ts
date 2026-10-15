@@ -1,4 +1,4 @@
-import { GovOrg, OrgQuestion, User } from '../types';
+import { GovOrg, OrgQuestion, User, OrgDepartment } from '../types';
 import ALL_566_ORGS from '../data/all_566_orgs.json';
 
 class OrgStore {
@@ -84,6 +84,7 @@ class OrgStore {
         physicalAddress?: string;
       };
       questions?: OrgQuestion[];
+      departments?: OrgDepartment[];
       status?: 'unfilled' | 'llm_check' | 'human_review' | 'verified' | 'in_progress';
       katoCode?: string;
       katoNameRu?: string;
@@ -124,6 +125,7 @@ class OrgStore {
     if (updates.showOnFrontend !== undefined) org.showOnFrontend = updates.showOnFrontend;
     if (updates.contacts !== undefined) org.contacts = updates.contacts;
     if (updates.questions !== undefined) org.questions = updates.questions;
+    if (updates.departments !== undefined) org.departments = updates.departments;
     if (updates.status !== undefined) org.status = updates.status;
     if (updates.katoCode !== undefined) org.katoCode = updates.katoCode;
     if (updates.katoNameRu !== undefined) org.katoNameRu = updates.katoNameRu;

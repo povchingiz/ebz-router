@@ -17,7 +17,8 @@ import '@xyflow/react/dist/style.css';
 import { GovOrg } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
 import { MoreChildrenCard } from './MoreChildrenCard';
-import { getDagreLayout } from './layout';
+import { DepartmentNode } from './DepartmentNode';
+import { getDagreLayout, NODE_WIDTH, NODE_HEIGHT } from './layout';
 import { useNavigation } from '../../lib/NavigationContext';
 import { RotateCcw, ArrowDownUp, ArrowLeftRight } from 'lucide-react';
 import { dropdownCoordinator } from './dropdownCoordinator';
@@ -30,12 +31,14 @@ interface InteractiveOrgGraphProps {
 const nodeTypes = {
   orgCard: OrgFlowCard,
   moreChildren: MoreChildrenCard,
+  departmentCard: DepartmentNode,
 };
 
 function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: InteractiveOrgGraphProps) {
   const { fitView } = useReactFlow();
   const [innerLayoutDirection, setInnerLayoutDirection] = useState<'TB' | 'LR'>('TB');
   const layoutDirection = propLayoutDirection || innerLayoutDirection;
+  const [expandedDeptOrgIds, setExpandedDeptOrgIds] = useState<Set<string>>(new Set());
 
   const {
     navState,
@@ -47,6 +50,20 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
     openInspector,
     collapseAll,
   } = useNavigation();
+
+  // Автоматически раскрываем подразделения, когда фокус падает на ведомство с подразделениями
+  useEffect(() => {
+    if (navState.focusedOrgId) {
+      const org = allOrgs.find((o) => o.id === navState.focusedOrgId);
+      if (org?.departments && org.departments.length > 0) {
+        setExpandedDeptOrgIds((prev) => {
+          const next = new Set(prev);
+          next.add(org.id);
+          return next;
+        });
+      }
+    }
+  }, [navState.focusedOrgId, allOrgs]);
 
   // Построение графа узлов и связей на основе детерминированного состояния
   const { flowNodes, flowEdges } = useMemo(() => {
@@ -75,6 +92,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
       const hasChildren = children.length > 0;
       const isExpanded = navState.expandedIds.has(id);
       const isFocused = navState.focusedOrgId === id;
+      const showDepartments = expandedDeptOrgIds.has(org.id);
 
       nodes.push({
         id: org.id,
@@ -89,6 +107,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
           childrenCount: children.length,
           isSelected: isFocused,
           layoutDirection,
+          showDepartments,
           onToggleExpand: () => {
             dropdownCoordinator.close();
             toggleExpandParent(org.id);
@@ -96,6 +115,14 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
           onOpenDetails: () => {
             dropdownCoordinator.close();
             openInspector(org.id);
+          },
+          onToggleDepartments: () => {
+            setExpandedDeptOrgIds((prev) => {
+              const next = new Set(prev);
+              if (next.has(org.id)) next.delete(org.id);
+              else next.add(org.id);
+              return next;
+            });
           },
         },
       });
@@ -166,6 +193,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
     hiddenChildrenMap,
     navState.expandedIds,
     navState.focusedOrgId,
+    expandedDeptOrgIds,
     layoutDirection,
     toggleExpandParent,
     openInspector,
@@ -174,8 +202,122 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
   ]);
 
   const layouted = useMemo(() => {
-    return getDagreLayout(flowNodes, flowEdges, layoutDirection);
-  }, [flowNodes, flowEdges, layoutDirection]);
+    const base = getDagreLayout(flowNodes, flowEdges, layoutDirection);
+    const posMap = new Map(base.nodes.map((n) => [n.id, n.position]));
+
+    const deptNodes: Node[] = [];
+    const deptEdges: Edge[] = [];
+
+    const DEPT_WIDTH = 260;
+    const DEPT_HEIGHT = 100;
+    const GAP_X = 20;
+    const GAP_Y = 16;
+
+    expandedDeptOrgIds.forEach((orgId) => {
+      if (!visibleNodeIds.has(orgId)) return;
+      const org = allOrgs.find((o) => o.id === orgId);
+      if (!org?.departments || org.departments.length === 0) return;
+
+      const parentPos = posMap.get(orgId);
+      if (!parentPos) return;
+
+      // Если основной граф расположен вертикально (TB):
+      // Подразделения выходят перпендикулярно — по горизонтали вправо!
+      // Формируем аккуратную сетку из 2 колонок вправо
+      if (layoutDirection === 'TB') {
+        const cols = 2;
+        org.departments.forEach((dept, idx) => {
+          const col = idx % cols;
+          const row = Math.floor(idx / cols);
+          const x = parentPos.x + NODE_WIDTH + 70 + col * (DEPT_WIDTH + GAP_X);
+          const y = parentPos.y + row * (DEPT_HEIGHT + GAP_Y);
+
+          deptNodes.push({
+            id: `dept-${dept.id}`,
+            type: 'departmentCard',
+            position: { x, y },
+            data: {
+              department: dept,
+              parentOrgName: org.name,
+              layoutDirection,
+              onSelect: () => {
+                openInspector(org.id);
+              },
+            },
+          });
+
+          // Соединяем только первое подразделение каждого ряда или общее звено,
+          // чтобы избежать паутины из 57 стрелок:
+          // стрелка идет от dept-source к каждому подразделению в первой колонке
+          if (col === 0) {
+            deptEdges.push({
+              id: `e-dept-${org.id}-${dept.id}`,
+              source: org.id,
+              sourceHandle: 'dept-source',
+              target: `dept-${dept.id}`,
+              type: 'smoothstep',
+              animated: false,
+              style: { stroke: '#6366f1', strokeWidth: 1.5, strokeDasharray: '3 3' },
+              markerEnd: {
+                type: MarkerType.ArrowClosed,
+                width: 10,
+                height: 10,
+                color: '#6366f1',
+              },
+            });
+          }
+        });
+      } else {
+        // Если основной граф расположен горизонтально (LR):
+        // Подразделения выходят перпендикулярно — по вертикали вниз!
+        // Формируем аккуратную сетку из 2 рядов вниз
+        const rows = 2;
+        org.departments.forEach((dept, idx) => {
+          const row = idx % rows;
+          const col = Math.floor(idx / rows);
+          const x = parentPos.x + col * (DEPT_WIDTH + GAP_X);
+          const y = parentPos.y + NODE_HEIGHT + 70 + row * (DEPT_HEIGHT + GAP_Y);
+
+          deptNodes.push({
+            id: `dept-${dept.id}`,
+            type: 'departmentCard',
+            position: { x, y },
+            data: {
+              department: dept,
+              parentOrgName: org.name,
+              layoutDirection,
+              onSelect: () => {
+                openInspector(org.id);
+              },
+            },
+          });
+
+          if (row === 0) {
+            deptEdges.push({
+              id: `e-dept-${org.id}-${dept.id}`,
+              source: org.id,
+              sourceHandle: 'dept-source',
+              target: `dept-${dept.id}`,
+              type: 'smoothstep',
+              animated: false,
+              style: { stroke: '#6366f1', strokeWidth: 1.5, strokeDasharray: '3 3' },
+              markerEnd: {
+                type: MarkerType.ArrowClosed,
+                width: 10,
+                height: 10,
+                color: '#6366f1',
+              },
+            });
+          }
+        });
+      }
+    });
+
+    return {
+      nodes: [...base.nodes, ...deptNodes],
+      edges: [...base.edges, ...deptEdges],
+    };
+  }, [flowNodes, flowEdges, layoutDirection, expandedDeptOrgIds, visibleNodeIds, allOrgs, openInspector]);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(layouted.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(layouted.edges);

@@ -62,6 +62,15 @@ const PRESET_USERS_CONFIG = [
     orgName: 'МИИЦР',
   },
   {
+    id: 'user-admin-mt',
+    username: 'admin_mt',
+    password: 'mt2026',
+    fullName: 'Куратор Министерства транспорта (МТ)',
+    role: 'ORG_ADMIN' as UserRole,
+    orgId: 'mt',
+    orgName: 'Министерство транспорта РК',
+  },
+  {
     id: 'user-admin-astana',
     username: 'admin_astana',
     password: 'astana5283',

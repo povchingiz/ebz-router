@@ -130,6 +130,7 @@ export async function POST(req: NextRequest) {
           showOnFrontend: payload.showOnFrontend,
           contacts: payload.contacts,
           questions: payload.questions,
+          departments: payload.departments,
           status: payload.status,
           katoCode: payload.katoCode,
           katoNameRu: payload.katoNameRu,

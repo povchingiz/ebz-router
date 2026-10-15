@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { GovOrg, OrgQuestion, User, UserRole, JurisdictionLevel } from '../types';
+import { GovOrg, OrgQuestion, User, UserRole, JurisdictionLevel, OrgDepartment } from '../types';
 import { NavigationProvider, useNavigation } from '../lib/NavigationContext';
 import { AuthProvider, useAuth } from '../context/AuthContext';
 import { InteractiveOrgGraph } from '../components/graph/InteractiveOrgGraph';
@@ -12,9 +12,11 @@ import { BulkExcelModal } from '../components/BulkExcelModal';
 import { ExecutiveDashboardModal } from '../components/ExecutiveDashboardModal';
 import { ConflictDetectorModal } from '../components/ConflictDetectorModal';
 import { UserBadge } from '../components/auth/UserBadge';
+import { EbzWorkspace } from '../components/ebz/EbzWorkspace';
 import {
   Network,
   List,
+  BookOpen,
   FileSpreadsheet,
   BarChart3,
   ShieldAlert,
@@ -37,7 +39,7 @@ function HomeContent({
   currentUser: User;
   setCurrentUser: React.Dispatch<React.SetStateAction<User>>;
 }) {
-  const [viewMode, setViewMode] = useState<'graph' | 'list'>('graph');
+  const [viewMode, setViewMode] = useState<'graph' | 'list' | 'ebz'>('graph');
   const [layoutDirection, setLayoutDirection] = useState<'TB' | 'LR'>('TB');
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false);
@@ -111,6 +113,13 @@ function HomeContent({
       physicalAddress?: string;
     };
     questions: OrgQuestion[];
+    departments?: OrgDepartment[];
+    status?: 'unfilled' | 'llm_check' | 'human_review' | 'verified' | 'in_progress';
+    katoCode?: string;
+    katoNameRu?: string;
+    locationId?: string;
+    hasHumanTouch?: boolean;
+    llmNotes?: string;
   }) => {
     if (!inspectorOrg) return;
     const access = canManageOrg(inspectorOrg.id, orgs);
@@ -258,13 +267,13 @@ function HomeContent({
           aria-label="Панель инструментов"
           className="w-52 shrink-0 sticky top-22 flex flex-col gap-2 p-2.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl border-2 border-slate-200/90 dark:border-slate-800 shadow-sm"
         >
-          {/* Переключатель режимов: Граф / Список + Ориентация графа */}
+          {/* Переключатель режимов: Граф / Список / Статьи ЕБЗ + Ориентация графа */}
           <div className="flex flex-col gap-1 bg-slate-100 dark:bg-slate-800/80 p-1.5 rounded-xl text-xs">
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={() => setViewMode('graph')}
-                className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-black transition-all ${
+                className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-1.5 rounded-lg font-black transition-all text-[11px] ${
                   viewMode === 'graph'
                     ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
                     : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
@@ -277,7 +286,7 @@ function HomeContent({
               <button
                 type="button"
                 onClick={() => setViewMode('list')}
-                className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-black transition-all ${
+                className={`flex-1 flex items-center justify-center gap-1 py-1.5 px-1.5 rounded-lg font-black transition-all text-[11px] ${
                   viewMode === 'list'
                     ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
                     : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
@@ -288,6 +297,21 @@ function HomeContent({
                 <span>Список</span>
               </button>
             </div>
+
+            {/* Вкладка Статьи ЕБЗ */}
+            <button
+              type="button"
+              onClick={() => setViewMode('ebz')}
+              className={`w-full flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-black transition-all text-[11px] ${
+                viewMode === 'ebz'
+                  ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
+                  : 'text-slate-500 hover:text-slate-900 dark:hover:text-white'
+              }`}
+              title="Полноэкранный реестр статей и регламентов ЕБЗ"
+            >
+              <BookOpen className="w-3.5 h-3.5 shrink-0 text-indigo-600" />
+              <span>Статьи ЕБЗ</span>
+            </button>
 
             {/* Переключатель ориентации раскладки: встроен в левую менюшку */}
             {viewMode === 'graph' && (
@@ -357,8 +381,17 @@ function HomeContent({
           <div className="w-full">
             {viewMode === 'graph' ? (
               <InteractiveOrgGraph allOrgs={orgs} layoutDirection={layoutDirection} />
-            ) : (
+            ) : viewMode === 'list' ? (
               <ListView allOrgs={orgs} />
+            ) : (
+              <EbzWorkspace
+                allOrgs={orgs}
+                onSelectOrg={(targetOrgId) => {
+                  setViewMode('graph');
+                  navigateToOrg(targetOrgId, true);
+                  openInspector(targetOrgId);
+                }}
+              />
             )}
           </div>
         </main>

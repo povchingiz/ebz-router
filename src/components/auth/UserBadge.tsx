@@ -221,6 +221,25 @@ export const UserBadge: React.FC = () => {
             <button
               type="button"
               onClick={async () => {
+                await login('admin_mt', 'mt2026');
+                setIsMenuOpen(false);
+              }}
+              className={`w-full p-2 rounded-xl text-left text-xs transition-colors flex items-center justify-between ${
+                user.username === 'admin_mt'
+                  ? 'bg-indigo-100/70 dark:bg-indigo-950 font-bold text-indigo-900 dark:text-indigo-200'
+                  : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <Building2 className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Минтранспорта (МТ)</span>
+              </div>
+              <span className="text-[9px] font-mono text-slate-400">mt2026</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={async () => {
                 await login('admin_astana', 'astana5283');
                 setIsMenuOpen(false);
               }}

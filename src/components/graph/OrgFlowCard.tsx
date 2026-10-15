@@ -2,7 +2,7 @@ import React from 'react';
 import { Handle, Position } from '@xyflow/react';
 import { GovOrg } from '../../types';
 import { LEVEL_CONFIG } from '../OrgCard';
-import { ChevronDown, ChevronUp, Lock, FileText, MapPin, Tag, EyeOff } from 'lucide-react';
+import { ChevronDown, ChevronUp, Lock, FileText, MapPin, Tag, EyeOff, Layers } from 'lucide-react';
 
 export interface OrgNodeData {
   org: GovOrg;
@@ -14,8 +14,10 @@ export interface OrgNodeData {
   layoutDirection?: 'TB' | 'LR';
   hiddenCount?: number;
   hiddenChildren?: GovOrg[];
+  showDepartments?: boolean;
   onToggleExpand: (id: string, e: React.MouseEvent) => void;
   onOpenDetails: (org: GovOrg) => void;
+  onToggleDepartments?: () => void;
   onSelectChildFromDropdown?: (org: GovOrg) => void;
 }
 
@@ -27,8 +29,10 @@ export const OrgFlowCard = ({ data, selected }: any) => {
     hasChildren,
     childrenCount,
     layoutDirection = 'TB',
+    showDepartments = false,
     onToggleExpand,
     onOpenDetails,
+    onToggleDepartments,
   } = data as OrgNodeData;
   const config = LEVEL_CONFIG[org.level] || LEVEL_CONFIG.agency;
 
@@ -158,6 +162,28 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </span>
       </div>
 
+      {/* Кнопка показа/скрытия внутренних подразделений */}
+      {org.departments && org.departments.length > 0 && (
+        <div className="pt-1.5 mt-1.5 border-t border-slate-100 dark:border-slate-800/80">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleDepartments?.();
+            }}
+            className={`w-full inline-flex items-center justify-center gap-1.5 px-2 py-1 rounded-xl font-bold text-[10px] transition-all shadow-xs ${
+              showDepartments
+                ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                : 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100'
+            }`}
+            title="Показать / скрыть внутренние подразделения на графе"
+          >
+            <Layers className="w-3 h-3" />
+            <span>{showDepartments ? 'Скрыть подразделения' : `Подразделения (${org.departments.length})`}</span>
+          </button>
+        </div>
+      )}
+
       {/* Нижняя панель действий (только если есть подотчетные дочерние структуры) */}
       {hasChildren && (
         <div className="pt-2 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
@@ -189,13 +215,27 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         </div>
       )}
 
-      {/* Ручка связи снизу (при TB) или справа (при LR) */}
+      {/* Ручка связи снизу (при TB) или справа (при LR) для дочерних организаций */}
       {hasChildren && (
         <Handle
           type="source"
           position={layoutDirection === 'LR' ? Position.Right : Position.Bottom}
           className={`!w-2.5 !h-2.5 !bg-blue-600 !border-2 !border-white dark:!border-slate-900 ${
             layoutDirection === 'LR' ? '!-right-1.5' : '!-bottom-1.5'
+          }`}
+        />
+      )}
+
+      {/* Ручка связи для подразделений: строго перпендикулярна основному потоку!
+          При TB (вертикаль) выходит СПРАВА (Position.Right).
+          При LR (горизонталь) выходит СНИЗУ (Position.Bottom). */}
+      {org.departments && org.departments.length > 0 && (
+        <Handle
+          type="source"
+          id="dept-source"
+          position={layoutDirection === 'TB' ? Position.Right : Position.Bottom}
+          className={`!w-2.5 !h-2.5 !bg-indigo-600 !border-2 !border-white dark:!border-slate-900 ${
+            layoutDirection === 'TB' ? '!-right-1.5 !top-1/2' : '!-bottom-1.5 !left-1/2'
           }`}
         />
       )}

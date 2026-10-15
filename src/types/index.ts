@@ -91,12 +91,40 @@ export interface GovOrg {
     physicalAddress?: string;
   };
   questions: OrgQuestion[]; // Вопросы и компетенции (для маршрутизатора)
+  departments?: OrgDepartment[]; // Внутренние структурные подразделения ведомства
   version: number;          // Для оптимистической блокировки
   lockedBy?: {              // Для soft lock (подсветка одновременного редактирования)
     userId: string;
     userName: string;
     lockedAt: string;
   } | null;
+}
+
+export interface OrgDepartment {
+  id: string | number;
+  name: string;
+  responsible: string;
+  orgId: string;
+  path?: string;
+}
+
+export interface EbzArticle {
+  id: string;
+  orgId?: string;
+  orgNameRu?: string;
+  orgNameKk?: string;
+  titleRu: string;
+  titleKk?: string;
+  summaryRu: string;
+  summaryKk?: string;
+  fullResponseRu: string;
+  fullResponseKk?: string;
+  relatedNpaRu?: string;
+  relatedNpaKk?: string;
+  tags?: string[];
+  category?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface ClassifierLocation {
