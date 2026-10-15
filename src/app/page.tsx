@@ -14,7 +14,6 @@ import { ConflictDetectorModal } from '../components/ConflictDetectorModal';
 import { UserBadge } from '../components/auth/UserBadge';
 import { EbzWorkspace } from '../components/ebz/EbzWorkspace';
 import { McpChatModal } from '../components/mcp/McpChatModal';
-import Link from 'next/link';
 import {
   Network,
   List,
@@ -26,7 +25,6 @@ import {
   RotateCcw,
   ArrowLeftRight,
   ArrowDownUp,
-  Terminal,
   Sparkles,
 } from 'lucide-react';
 
@@ -268,16 +266,6 @@ function HomeContent({
                 <span>⚡ ИИ-Маршрутизатор (MCP)</span>
               </button>
             )}
-
-            {/* Спецификация OpenAPI 3.0 и документация шлюза */}
-            <Link
-              href="/docs"
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 border border-slate-200 dark:border-slate-700 transition-all shadow-2xs"
-              title="Открыть документацию API, спецификацию OpenAPI 3.0 и протокол MCP"
-            >
-              <Terminal className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-              <span>API / Gateway</span>
-            </Link>
 
             {/* Авторизация и переключатель профилей */}
             <UserBadge />
