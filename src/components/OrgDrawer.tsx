@@ -38,6 +38,9 @@ import {
   ExternalLink,
   Layers,
   BookOpen,
+  Sparkles,
+  ArrowRight,
+  ArrowLeft,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -45,6 +48,7 @@ interface OrgDrawerProps {
   allOrgs: GovOrg[];
   currentUser: User;
   isOpen: boolean;
+  initialDepartmentId?: string | number | null;
   onClose: () => void;
   onSaveContent: (updatedData: {
     name?: string;
@@ -128,6 +132,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   allOrgs,
   currentUser,
   isOpen,
+  initialDepartmentId,
   onClose,
   onSaveContent,
   onReparent,
@@ -185,6 +190,106 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [newDeptName, setNewDeptName] = useState('');
   const [newDeptResponsible, setNewDeptResponsible] = useState('');
   const [newDeptPath, setNewDeptPath] = useState('');
+
+  // Фокус на конкретном подразделении
+  const [selectedDeptId, setSelectedDeptId] = useState<string | number | null>(initialDepartmentId ?? null);
+  const [isAddDeptQuestionModalOpen, setIsAddDeptQuestionModalOpen] = useState(false);
+  const [deptQuestionTopic, setDeptQuestionTopic] = useState('');
+  const [deptQuestionDesc, setDeptQuestionDesc] = useState('');
+  const [deptQuestionKeywords, setDeptQuestionKeywords] = useState('');
+
+  useEffect(() => {
+    if (initialDepartmentId) {
+      setSelectedDeptId(initialDepartmentId);
+      setActiveTab('router');
+    } else {
+      setSelectedDeptId(null);
+    }
+  }, [initialDepartmentId, org?.id]);
+
+  const currentDept = useMemo(() => {
+    if (!selectedDeptId) return null;
+    return departments.find((d) => String(d.id) === String(selectedDeptId)) || null;
+  }, [departments, selectedDeptId]);
+
+  // Генерация ключевых вопросов ИИ-маршрутизатора из пунктов компетенций подразделения
+  const generateDeptQuestions = (deptId: string | number) => {
+    setDepartments((prev) =>
+      prev.map((d) => {
+        if (String(d.id) !== String(deptId)) return d;
+        const text = d.responsible || '';
+        const rawClauses = text
+          .split(/(?:\r?\n|\d+[\)\.]\s*)/g)
+          .map((s) => s.trim().replace(/^;+|;+$/g, '').replace(/\s+/g, ' '))
+          .filter((s) => s.length >= 10);
+
+        const newQuestions: OrgQuestion[] = rawClauses.slice(0, 10).map((clause, idx) => {
+          const words = clause
+            .toLowerCase()
+            .replace(/[^a-zа-яәғқңөұүһі\s]/gi, ' ')
+            .split(/\s+/)
+            .filter((w) => w.length >= 4 && !['осуществление', 'проведение', 'деятельности', 'соответствии', 'порядке', 'рамках'].includes(w));
+          const uniqueKeywords = Array.from(new Set(words)).slice(0, 6);
+
+          return {
+            id: `dept-q-${d.id}-${idx + 1}-${Date.now().toString().slice(-4)}`,
+            topic: clause.length > 95 ? clause.slice(0, 95) + '...' : clause,
+            description: `Специфика компетенции подразделения: ${clause}`,
+            keywords: uniqueKeywords.length > 0 ? uniqueKeywords : [d.name.toLowerCase().split(' ')[0]],
+          };
+        });
+
+        return {
+          ...d,
+          questions: newQuestions,
+        };
+      })
+    );
+    setStatusMsg({ text: 'Вопросы маршрутизатора успешно сформированы из компетенций подразделения!' });
+  };
+
+  const addDeptQuestion = (deptId: string | number) => {
+    if (!deptQuestionTopic.trim()) return;
+    const kw = deptQuestionKeywords
+      .split(',')
+      .map((k) => k.trim())
+      .filter(Boolean);
+
+    const newQ: OrgQuestion = {
+      id: `dept-q-${deptId}-${Date.now()}`,
+      topic: deptQuestionTopic.trim(),
+      description: deptQuestionDesc.trim(),
+      keywords: kw.length > 0 ? kw : [deptQuestionTopic.trim().split(' ')[0].toLowerCase()],
+    };
+
+    setDepartments((prev) =>
+      prev.map((d) => {
+        if (String(d.id) !== String(deptId)) return d;
+        return {
+          ...d,
+          questions: [...(d.questions || []), newQ],
+        };
+      })
+    );
+
+    setIsAddDeptQuestionModalOpen(false);
+    setDeptQuestionTopic('');
+    setDeptQuestionDesc('');
+    setDeptQuestionKeywords('');
+    setStatusMsg({ text: 'Вопрос подразделения добавлен для маршрутизатора!' });
+  };
+
+  const deleteDeptQuestion = (deptId: string | number, questionId: string) => {
+    setDepartments((prev) =>
+      prev.map((d) => {
+        if (String(d.id) !== String(deptId)) return d;
+        return {
+          ...d,
+          questions: (d.questions || []).filter((q) => q.id !== questionId),
+        };
+      })
+    );
+  };
 
   // Подотчетность
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
@@ -451,8 +556,33 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           </div>
 
-          {permissions.canChangeStructure && isEditingNames ? (
-            <div className="space-y-1.5 my-1.5 p-2.5 rounded-2xl bg-blue-50/50 dark:bg-slate-800 border border-blue-200 dark:border-slate-700">
+          {currentDept ? (
+            <div className="group relative mt-1 space-y-1.5 p-3 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800">
+              <div className="flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-700">
+                  <Layers className="w-3 h-3" />
+                  Подразделение ведомства
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setSelectedDeptId(null)}
+                  className="inline-flex items-center gap-1 text-[11px] font-bold text-indigo-700 dark:text-indigo-300 hover:text-indigo-900 dark:hover:text-white px-2 py-0.5 rounded-lg bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800 shadow-2xs transition-all active:scale-95"
+                  title="Вернуться к просмотру паспорта всего ведомства целиком"
+                >
+                  <ArrowLeft className="w-3 h-3" />
+                  <span>К ведомству целиком</span>
+                </button>
+              </div>
+              <h2 className="text-base font-black text-slate-900 dark:text-white leading-tight">
+                {currentDept.name}
+              </h2>
+              <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 font-medium">
+                <span>Основной орган:</span>
+                <span className="font-bold text-slate-800 dark:text-slate-200">{orgName || org.name}</span>
+              </div>
+            </div>
+          ) : isEditingNames ? (
+            <div className="space-y-2 mt-1">
               <label className="text-[10px] font-bold text-slate-500 uppercase">Редактирование названий органа:</label>
               <input
                 type="text"
@@ -501,6 +631,31 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">
                 {orgFullName || org.fullName}
               </p>
+            </div>
+          )}
+
+          {/* Быстрый переключатель между подразделениями ведомства */}
+          {departments.length > 0 && (
+            <div className="mt-2.5 flex items-center gap-2 p-1.5 px-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-xs">
+              <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 shrink-0 flex items-center gap-1">
+                <Layers className="w-3 h-3 text-indigo-600" />
+                Фокус:
+              </span>
+              <select
+                value={selectedDeptId ? String(selectedDeptId) : ''}
+                onChange={(e) => {
+                  setSelectedDeptId(e.target.value ? e.target.value : null);
+                  setActiveTab('router');
+                }}
+                className="flex-1 bg-white dark:bg-slate-900 text-xs font-bold text-slate-800 dark:text-slate-200 py-1 px-2 rounded-lg border border-slate-200 dark:border-slate-700 outline-none truncate cursor-pointer shadow-2xs"
+              >
+                <option value="">🏛️ Все ведомство целиком ({orgName || org.name})</option>
+                {departments.map((d) => (
+                  <option key={d.id} value={String(d.id)}>
+                    📁 {d.name} {d.questions?.length ? `(${d.questions.length} вопр.)` : ''}
+                  </option>
+                ))}
+              </select>
             </div>
           )}
 
@@ -720,7 +875,192 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
 
           {/* ВКЛАДКА 1: Для маршрутизатора */}
           {(activeTab === 'router' || activeTab === 'competencies') && (
-            <div className="space-y-4">
+            currentDept ? (
+              /* РЕЖИМ ФОКУСА НА ПОДРАЗДЕЛЕНИИ */
+              <div className="space-y-4">
+                {/* 1. Блок наследуемой информации основного органа */}
+                <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-black text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                      <Building2 className="w-4 h-4 text-blue-600" />
+                      <span>Наследуемые параметры ведомства</span>
+                    </span>
+                    <span className="text-[10px] text-slate-400 font-medium">от {orgName || org.name}</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 text-[11px]">
+                    <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                      <span className="text-[10px] text-slate-400 block font-medium">Вышестоящий орган:</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200 truncate block">
+                        {parentOrg ? parentOrg.name : 'Правительство РК'}
+                      </span>
+                    </div>
+                    <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                      <span className="text-[10px] text-slate-400 block font-medium">Закрепленная локация:</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200 truncate block">
+                        {locationAddress || katoNameRu || 'г. Астана'}
+                      </span>
+                    </div>
+                    <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                      <span className="text-[10px] text-slate-400 block font-medium">Юрисдикция:</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200 truncate block">
+                        {JURISDICTION_OPTIONS.find((j) => j.value === jurisdiction)?.badge || 'РК'}
+                      </span>
+                    </div>
+                    <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+                      <span className="text-[10px] text-slate-400 block font-medium">Канцелярия / Контакты:</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200 truncate block">
+                        {phoneChancellery || phoneHotline || 'Центральный аппарат'}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-slate-400 leading-tight">
+                    Подразделение действует в юрисдикции {orgName || org.name} и наследует его географию, но решает профильные задачи своей отраслевой компетенции.
+                  </p>
+                </div>
+
+                {/* 2. Компетенции и полномочия подразделения */}
+                <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-slate-850 border border-indigo-200/80 dark:border-indigo-900/60 space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5 text-xs font-black text-indigo-950 dark:text-indigo-200">
+                      <ShieldCheck className="w-4 h-4 text-indigo-600" />
+                      <span>Компетенции подразделения (для ИИ-маршрутизатора)</span>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-slate-500">
+                    Перечень официальных задач и функций подразделения. ИИ использует их для точного сопоставления с текстом обращения.
+                  </p>
+                  {permissions.canEditContent && !isLockedByOther ? (
+                    <textarea
+                      rows={6}
+                      value={currentDept.responsible || ''}
+                      onChange={(e) => {
+                        const updated = departments.map((d) =>
+                          d.id === currentDept.id ? { ...d, responsible: e.target.value } : d
+                        );
+                        setDepartments(updated);
+                      }}
+                      placeholder="Перечислите пункты полномочий и функций подразделения..."
+                      className="w-full p-3 text-xs rounded-xl bg-white dark:bg-slate-900 border border-indigo-200/70 dark:border-slate-700 outline-none leading-relaxed font-normal text-slate-800 dark:text-slate-200 focus:border-indigo-500"
+                    />
+                  ) : (
+                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/40 text-xs text-slate-700 dark:text-slate-200 whitespace-pre-wrap leading-relaxed">
+                      {currentDept.responsible || 'Полномочия не указаны'}
+                    </div>
+                  )}
+                </div>
+
+                {/* 3. Вопросы и тематики подразделения для ИИ-маршрутизатора */}
+                <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-900/70 space-y-3 shadow-xs">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <div className="flex items-center gap-2 text-xs font-black text-slate-900 dark:text-white">
+                        <HelpCircle className="w-4 h-4 text-indigo-600 shrink-0" />
+                        <span>Вопросы подразделения для маршрутизатора ({currentDept.questions?.length || 0})</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5">
+                        Маршрутизатор сопоставляет входящие обращения с этими вопросами и перенаправляет их в данный отдел.
+                      </p>
+                    </div>
+
+                    {permissions.canEditContent && !isLockedByOther && (
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {(!currentDept.questions || currentDept.questions.length === 0) && currentDept.responsible && (
+                          <button
+                            type="button"
+                            onClick={() => generateDeptQuestions(currentDept.id)}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-all active:scale-95"
+                            title="Сформировать готовые вопросы маршрутизатора по пунктам компетенций"
+                          >
+                            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+                            <span>Сгенерировать</span>
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setDeptQuestionTopic('');
+                            setDeptQuestionDesc('');
+                            setDeptQuestionKeywords('');
+                            setIsAddDeptQuestionModalOpen(true);
+                          }}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-all active:scale-95"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                          <span>Добавить</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Список вопросов или плашка генерации */}
+                  {(!currentDept.questions || currentDept.questions.length === 0) ? (
+                    <div className="p-4 text-center rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700 space-y-2">
+                      <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+                        Для этого подразделения пока не добавлены индивидуальные вопросы.
+                      </p>
+                      {currentDept.responsible && (
+                        <p className="text-[11px] text-slate-400">
+                          Нажмите <strong className="text-indigo-600 dark:text-indigo-400">«Сгенерировать»</strong>, чтобы алгоритм автоматически создал вопросы с тегами из пунктов компетенций отдела.
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="space-y-2 max-h-[380px] overflow-y-auto pr-1">
+                      {currentDept.questions.map((q, idx) => (
+                        <div
+                          key={q.id || idx}
+                          className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1"
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <h5 className="text-xs font-bold text-slate-900 dark:text-white leading-snug">
+                              {q.topic}
+                            </h5>
+                            {permissions.canEditContent && !isLockedByOther && (
+                              <button
+                                type="button"
+                                onClick={() => deleteDeptQuestion(currentDept.id, q.id)}
+                                className="p-1 text-slate-400 hover:text-rose-600 rounded transition-colors shrink-0"
+                                title="Удалить вопрос"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            )}
+                          </div>
+                          {q.description && (
+                            <p className="text-[11px] text-slate-500 leading-snug">
+                              {q.description}
+                            </p>
+                          )}
+                          {q.keywords && q.keywords.length > 0 && (
+                            <div className="flex flex-wrap gap-1 pt-1">
+                              {q.keywords.map((kw, kidx) => (
+                                <span
+                                  key={kidx}
+                                  className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-900/40"
+                                >
+                                  #{kw}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Кнопка сброса фокуса на общее ведомство */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedDeptId(null)}
+                  className="w-full py-2 px-3 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-1.5"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Вернуться к паспорту всего ведомства целиком ({orgName || org.name})</span>
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-4">
               {/* 1. Тематика и сфера деятельности (для ИИ-маршрутизатора) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
@@ -1026,13 +1366,34 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                             {dept.responsible}
                           </p>
                         )}
+
+                        <div className="flex items-center justify-between pt-1">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedDeptId(dept.id);
+                            }}
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800 transition-all active:scale-95 shadow-2xs"
+                            title="Открыть вопросы и компетенции этого подразделения"
+                          >
+                            <Layers className="w-3.5 h-3.5 text-indigo-600" />
+                            <span>Вопросы и компетенции отдела</span>
+                            <ArrowRight className="w-3 h-3" />
+                          </button>
+                          {dept.questions && dept.questions.length > 0 && (
+                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
+                              {dept.questions.length} вопр.
+                            </span>
+                          )}
+                        </div>
                       </div>
                     ))
                   )}
                 </div>
               </div>
             </div>
-          )}
+          )
+        )}
 
           {/* ВКЛАДКА 2: Для ЕБЗ (База знаний вопросов и тем) */}
           {(activeTab === 'ebz' || activeTab === 'questions') && (
@@ -1815,6 +2176,91 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 className="px-4 py-2 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white shadow-md transition-all disabled:opacity-50"
               >
                 {editingDeptId ? 'Сохранить изменения' : 'Добавить'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Модальное окно создания вопроса для конкретного подразделения */}
+      {isAddDeptQuestionModalOpen && currentDept && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+          <div className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-5 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+              <div className="flex items-center gap-2">
+                <HelpCircle className="w-4 h-4 text-indigo-600" />
+                <div>
+                  <h4 className="text-sm font-black text-slate-900 dark:text-white">
+                    Новый вопрос подразделения
+                  </h4>
+                  <p className="text-[10px] text-slate-400 font-medium truncate max-w-[260px]">
+                    {currentDept.name}
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsAddDeptQuestionModalOpen(false)}
+                className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs">
+              <div>
+                <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  Тематика / Вопрос:
+                </label>
+                <input
+                  type="text"
+                  value={deptQuestionTopic}
+                  onChange={(e) => setDeptQuestionTopic(e.target.value)}
+                  placeholder="Например: Аудит процедур государственных закупок"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none font-medium text-slate-800 dark:text-slate-200 focus:border-indigo-500"
+                />
+              </div>
+              <div>
+                <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  Описание / Суть компетенции:
+                </label>
+                <textarea
+                  rows={3}
+                  value={deptQuestionDesc}
+                  onChange={(e) => setDeptQuestionDesc(e.target.value)}
+                  placeholder="Опишите, в каких случаях обращение направляется в данное подразделение..."
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none text-slate-800 dark:text-slate-200 focus:border-indigo-500"
+                />
+              </div>
+              <div>
+                <label className="font-bold text-slate-700 dark:text-slate-300 block mb-1">
+                  Ключевые слова (через запятую):
+                </label>
+                <input
+                  type="text"
+                  value={deptQuestionKeywords}
+                  onChange={(e) => setDeptQuestionKeywords(e.target.value)}
+                  placeholder="аудит, госзакупки, закупки, договор"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none font-medium text-slate-800 dark:text-slate-200 focus:border-indigo-500"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => setIsAddDeptQuestionModalOpen(false)}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+              >
+                Отмена
+              </button>
+              <button
+                type="button"
+                onClick={() => addDeptQuestion(currentDept.id)}
+                disabled={!deptQuestionTopic.trim()}
+                className="px-4 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs disabled:opacity-50 transition-all"
+              >
+                Добавить вопрос
               </button>
             </div>
           </div>

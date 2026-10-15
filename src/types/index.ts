@@ -106,6 +106,9 @@ export interface OrgDepartment {
   responsible: string;
   orgId: string;
   path?: string;
+  theme?: string;
+  scope?: string;
+  questions?: OrgQuestion[];
 }
 
 export interface EbzArticle {

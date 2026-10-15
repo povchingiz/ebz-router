@@ -16,6 +16,7 @@ export interface NavigationState {
   inspector: {
     isOpen: boolean;
     orgId: string | null;
+    departmentId?: string | number | null;
   };
   // Целевой узел для камеры (сбрасывается после центрирования)
   cameraTargetId: string | null;

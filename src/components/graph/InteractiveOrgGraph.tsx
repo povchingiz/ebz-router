@@ -14,7 +14,7 @@ import {
   ReactFlowProvider,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { GovOrg } from '../../types';
+import { GovOrg, OrgDepartment } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
 import { MoreChildrenCard } from './MoreChildrenCard';
 import { DepartmentNode } from './DepartmentNode';
@@ -210,8 +210,8 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
               return next;
             });
           },
-          onSelectDepartment: () => {
-            openInspector(org.id);
+          onSelectDepartment: (dept: OrgDepartment) => {
+            openInspector(org.id, dept.id);
           },
         },
       });

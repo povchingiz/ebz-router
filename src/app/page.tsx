@@ -45,7 +45,7 @@ function HomeContent({
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false);
   const [isConflictModalOpen, setIsConflictModalOpen] = useState(false);
 
-  const { inspectorOrg, closeInspector, openInspector, navigateToOrg, collapseAll } = useNavigation();
+  const { inspectorOrg, inspectorDepartmentId, closeInspector, openInspector, navigateToOrg, collapseAll } = useNavigation();
   const { user: authUser, canManageOrg } = useAuth();
 
   const effectiveUser: User = authUser
@@ -413,6 +413,7 @@ function HomeContent({
         allOrgs={orgs}
         currentUser={effectiveUser}
         isOpen={viewMode !== 'ebz' && Boolean(inspectorOrg)}
+        initialDepartmentId={inspectorDepartmentId}
         onClose={closeInspector}
         onSaveContent={handleSaveContent}
         onReparent={handleReparent}

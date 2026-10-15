@@ -21,8 +21,9 @@ interface NavigationContextType {
   toggleExpandParent: (parentId: string) => void;
   selectChildInCenter: (parentId: string, childId: string) => void;
   showAllChildren: (parentId: string) => void;
-  openInspector: (orgId: string) => void;
+  openInspector: (orgId: string, departmentId?: string | number | null) => void;
   closeInspector: () => void;
+  inspectorDepartmentId: string | number | null;
   collapseAll: () => void;
   consumeCameraTarget: () => string | null;
 }
@@ -173,12 +174,13 @@ export const NavigationProvider: React.FC<{
   }, []);
 
   // 4. Открыть инспектор (Сведения)
-  const openInspector = useCallback((orgId: string) => {
+  const openInspector = useCallback((orgId: string, departmentId?: string | number | null) => {
     setNavState((prev) => ({
       ...prev,
       inspector: {
         isOpen: true,
         orgId,
+        departmentId: departmentId ?? null,
       },
     }));
   }, []);
@@ -190,6 +192,7 @@ export const NavigationProvider: React.FC<{
       inspector: {
         isOpen: false,
         orgId: null,
+        departmentId: null,
       },
     }));
   }, []);
@@ -243,6 +246,7 @@ export const NavigationProvider: React.FC<{
       navState,
       activeOrg,
       inspectorOrg,
+      inspectorDepartmentId: navState.inspector.departmentId || null,
       visibleNodeIds,
       hiddenChildrenMap,
       navigateToOrg,
