@@ -91,6 +91,13 @@ function HomeContent({
     }
   }, [authUser?.userId, authUser?.orgId, orgs, navigateToOrg, openInspector, closeInspector]);
 
+  // При переходе в реестр «Статьи ЕБЗ» боковая карточка организации обязана закрываться
+  useEffect(() => {
+    if (viewMode === 'ebz') {
+      closeInspector();
+    }
+  }, [viewMode, closeInspector]);
+
   // Сохранение сведений (компетенции, локация, юрисдикция, вопросы, наименования)
   const handleSaveContent = async (updatedData: {
     name?: string;
@@ -301,7 +308,10 @@ function HomeContent({
             {/* Вкладка Статьи ЕБЗ */}
             <button
               type="button"
-              onClick={() => setViewMode('ebz')}
+              onClick={() => {
+                setViewMode('ebz');
+                closeInspector();
+              }}
               className={`w-full flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg font-black transition-all text-[11px] ${
                 viewMode === 'ebz'
                   ? 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
@@ -402,7 +412,7 @@ function HomeContent({
         org={inspectorOrg}
         allOrgs={orgs}
         currentUser={effectiveUser}
-        isOpen={Boolean(inspectorOrg)}
+        isOpen={viewMode !== 'ebz' && Boolean(inspectorOrg)}
         onClose={closeInspector}
         onSaveContent={handleSaveContent}
         onReparent={handleReparent}

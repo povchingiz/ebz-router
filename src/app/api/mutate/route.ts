@@ -84,6 +84,10 @@ export async function POST(req: NextRequest) {
     }
 
     if (action === 'update_content' && orgId) {
+      // Строгое ограничение: изменять видимость/отображение карточки (showOnFrontend) разрешено ТОЛЬКО Суперюзеру (GLOBAL_ADMIN)
+      const isSuperUser = effectiveUser.role === 'GLOBAL_ADMIN';
+      const safeShowOnFrontend = isSuperUser ? payload.showOnFrontend : undefined;
+
       // 1. Попытка записи в PostgreSQL
       let dbResult: any = null;
       try {
@@ -103,7 +107,7 @@ export async function POST(req: NextRequest) {
             competenciesExcluded: payload.competenciesExcluded,
             forwardToGuidance: payload.forwardToGuidance,
             contacts: payload.contacts,
-            showOnFrontend: payload.showOnFrontend,
+            showOnFrontend: safeShowOnFrontend,
           } as any,
           version ?? 1,
           userForStore
@@ -127,7 +131,7 @@ export async function POST(req: NextRequest) {
           legalBasis: payload.legalBasis,
           competenciesExcluded: payload.competenciesExcluded,
           forwardToGuidance: payload.forwardToGuidance,
-          showOnFrontend: payload.showOnFrontend,
+          showOnFrontend: safeShowOnFrontend,
           contacts: payload.contacts,
           questions: payload.questions,
           departments: payload.departments,

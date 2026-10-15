@@ -266,7 +266,11 @@ export async function POST(req: NextRequest) {
         const websiteUrl = cleanImportCell(rawRow['Официальный сайт'] || rawRow['website_url'] || '');
 
         const showOnFrontendRaw = String(rawRow['Отображать онлайн (Да/Нет)'] || rawRow['show_on_frontend'] || '').toLowerCase();
-        const showOnFrontend = showOnFrontendRaw === 'нет' || showOnFrontendRaw === 'false' ? false : true;
+        // Менять статус отображения организации онлайн разрешено строго Суперюзеру (GLOBAL_ADMIN)
+        const isSuperAdmin = user.role === 'GLOBAL_ADMIN';
+        const effectiveShowOnFrontend = isSuperAdmin
+          ? (showOnFrontendRaw === 'нет' || showOnFrontendRaw === 'false' ? false : true)
+          : (existingOrg.show_on_frontend !== false);
 
         if (!dryRun) {
           // Обновляем мастер-таблицу
@@ -285,7 +289,7 @@ export async function POST(req: NextRequest) {
               updated_at = NOW()
             WHERE org_id = $8
             `,
-            [shortNameRu, orgNameRu, orgNameKk, orgTypeRu, locationNameRu, scope, showOnFrontend, orgId]
+            [shortNameRu, orgNameRu, orgNameKk, orgTypeRu, locationNameRu, scope, effectiveShowOnFrontend, orgId]
           );
 
           // Обновляем knowledge.org_readiness_status
@@ -330,7 +334,7 @@ export async function POST(req: NextRequest) {
               user.role,
               JSON.stringify({
                 action: 'bulk_excel_import',
-                updated_fields: { shortNameRu, scope, competenciesExcluded, showOnFrontend },
+                updated_fields: { shortNameRu, scope, competenciesExcluded, showOnFrontend: effectiveShowOnFrontend },
               }),
             ]
           );

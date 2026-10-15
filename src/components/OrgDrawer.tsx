@@ -358,7 +358,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         legalBasis,
         competenciesExcluded,
         forwardToGuidance,
-        showOnFrontend,
+        showOnFrontend: isSuperAdminOwner ? showOnFrontend : (org.showOnFrontend !== false),
         contacts: {
           phoneHotline,
           phoneChancellery,
@@ -513,7 +513,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* Переключатель видимости на платформе (show_on_frontend) */}
+          {/* Переключатель видимости на платформе (show_on_frontend) - доступен СТРОГО Суперюзеру */}
           <div className="flex items-center justify-between mt-2.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80">
             <div className="flex items-center gap-2">
               {showOnFrontend ? (
@@ -522,22 +522,27 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 <EyeOff className="w-3.5 h-3.5 text-amber-600 shrink-0" />
               )}
               <div>
-                <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
-                  {showOnFrontend ? 'Отображается на платформе онлайн' : 'Скрыто с платформы онлайн'}
+                <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                  <span>{showOnFrontend ? 'Отображается на платформе онлайн' : 'Скрыто с платформы онлайн'}</span>
+                  {!isSuperAdminOwner && (
+                    <span className="inline-flex items-center gap-0.5 text-[9px] font-semibold px-1.5 py-0.5 text-slate-500 bg-slate-200/70 dark:bg-slate-700/70 dark:text-slate-400 rounded">
+                      <Lock className="w-2.5 h-2.5" /> Только Суперюзер
+                    </span>
+                  )}
                 </div>
                 <div className="text-[10px] text-slate-400">
                   {showOnFrontend ? 'Организация активна в графе и поиске' : 'Временно отключено от показа пользователям'}
                 </div>
               </div>
             </div>
-            {permissions.canChangeStructure && (
+            {isSuperAdminOwner ? (
               <button
                 type="button"
                 onClick={() => setShowOnFrontend(!showOnFrontend)}
                 className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
                   showOnFrontend ? 'bg-emerald-600' : 'bg-slate-300 dark:bg-slate-700'
                 }`}
-                title="Переключить видимость на платформе"
+                title="Переключить видимость на платформе (только Суперюзер)"
               >
                 <span
                   className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
@@ -545,6 +550,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   }`}
                 />
               </button>
+            ) : (
+              <div
+                className="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-[10px] text-slate-400 border border-slate-200/50 dark:border-slate-700 select-none cursor-not-allowed"
+                title="Редактирование отображения карточки разрешено только Главному администратору (Суперюзеру АП РК)"
+              >
+                <Lock className="w-3 h-3 text-slate-400" />
+                <span>Заблокировано</span>
+              </div>
             )}
           </div>
         </div>
