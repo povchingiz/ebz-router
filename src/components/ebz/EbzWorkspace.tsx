@@ -57,6 +57,18 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
     }
   }, [userOrgId]);
 
+  // Загрузка актуального реестра статей с бэкенда
+  useEffect(() => {
+    fetch('/api/ebz')
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          setArticles(json.data);
+        }
+      })
+      .catch((err) => console.warn('Using bundled EBZ articles fallback:', err));
+  }, []);
+
   // Сбор всех уникальных тегов
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
@@ -166,9 +178,11 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
     setIsEditing(true);
   };
 
-  const saveArticle = () => {
+  const saveArticle = async () => {
     if (!editForm.id) return;
     const updated = editForm as EbzArticle;
+
+    // Оптимистичное обновление UI
     setArticles((prev) => {
       const idx = prev.findIndex((a) => a.id === updated.id);
       if (idx >= 0) {
@@ -182,13 +196,32 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
     setIsEditing(false);
     setSaveSuccessMsg(true);
     setTimeout(() => setSaveSuccessMsg(false), 2500);
+
+    // Персистентное сохранение на сервере и диске
+    try {
+      await fetch('/api/ebz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ article: updated }),
+      });
+    } catch (err) {
+      console.error('Failed to persist EBZ article:', err);
+    }
   };
 
-  const deleteArticle = (id: string) => {
+  const deleteArticle = async (id: string) => {
     if (!confirm('Вы уверены, что хотите удалить эту статью из базы знаний?')) return;
     setArticles((prev) => prev.filter((a) => a.id !== id));
     if (selectedArticleId === id) {
       setSelectedArticleId(null);
+    }
+
+    try {
+      await fetch(`/api/ebz?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+      });
+    } catch (err) {
+      console.error('Failed to delete EBZ article from server:', err);
     }
   };
 

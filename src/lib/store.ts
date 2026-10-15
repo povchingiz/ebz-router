@@ -1,5 +1,7 @@
 import { GovOrg, OrgQuestion, User, OrgDepartment } from '../types';
 import ALL_566_ORGS from '../data/all_566_orgs.json';
+import fs from 'fs';
+import path from 'path';
 
 class OrgStore {
   private orgs: Map<string, GovOrg> = new Map();
@@ -13,6 +15,19 @@ class OrgStore {
         status: hasHumanTouch ? (org.status || 'in_progress') : 'unfilled',
       });
     });
+  }
+
+  /**
+   * Сброс изменений в локальный файл хранилища (Fallback без БД)
+   */
+  private persistToDisk(): void {
+    try {
+      const filePath = path.join(process.cwd(), 'src', 'data', 'all_566_orgs.json');
+      const allList = Array.from(this.orgs.values());
+      fs.writeFileSync(filePath, JSON.stringify(allList, null, 2), 'utf-8');
+    } catch (err) {
+      console.warn('Failed to persist orgStore to disk:', err);
+    }
   }
 
   public getAll(): GovOrg[] {
@@ -136,6 +151,8 @@ class OrgStore {
     org.version += 1;
     org.lockedBy = null; // сбрасываем soft lock после сохранения
 
+    this.persistToDisk();
+
     return { success: true, org: { ...org } };
   }
 
@@ -180,6 +197,7 @@ class OrgStore {
     };
 
     this.orgs.set(id, newOrg);
+    this.persistToDisk();
     return { success: true, org: { ...newOrg } };
   }
 
@@ -223,6 +241,8 @@ class OrgStore {
     org.parentId = newParentId;
     org.version += 1;
     org.lockedBy = null;
+
+    this.persistToDisk();
 
     return { success: true, org: { ...org } };
   }
