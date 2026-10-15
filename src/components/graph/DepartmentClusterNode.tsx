@@ -30,7 +30,10 @@ export const DepartmentClusterNode: React.FC<{ data: DepartmentClusterNodeData }
   }, [departments, search]);
 
   return (
-    <div className="w-[380px] h-[440px] rounded-3xl border-2 border-indigo-400/90 dark:border-indigo-600/80 bg-white/95 dark:bg-slate-900/95 shadow-2xl p-4 flex flex-col justify-between select-none text-left backdrop-blur-md">
+    <div
+      onWheel={(e) => e.stopPropagation()}
+      className="nowheel nodrag w-[380px] h-[440px] rounded-3xl border-2 border-indigo-400/90 dark:border-indigo-600/80 bg-white/95 dark:bg-slate-900/95 shadow-2xl p-4 flex flex-col justify-between select-none text-left backdrop-blur-md"
+    >
       <Handle
         type="target"
         position={targetPosition}
@@ -80,7 +83,10 @@ export const DepartmentClusterNode: React.FC<{ data: DepartmentClusterNodeData }
       </div>
 
       {/* Список подразделений без технических кодов и путей */}
-      <div className="flex-1 overflow-y-auto my-2 pr-1 space-y-2">
+      <div
+        onWheel={(e) => e.stopPropagation()}
+        className="nowheel nodrag flex-1 overflow-y-auto my-2 pr-1 space-y-2 overscroll-contain"
+      >
         {filtered.length === 0 ? (
           <div className="p-6 text-center text-xs text-slate-400">
             Подразделения не найдены

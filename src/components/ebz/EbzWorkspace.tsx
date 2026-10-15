@@ -192,6 +192,33 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
     }
   };
 
+  // Интеллектуальный переход к органу на графе по ID или названию
+  const handleOrgJump = (targetOrgId?: string, targetOrgName?: string) => {
+    if (!onSelectOrg) return;
+    if (targetOrgId && targetOrgId !== 'other') {
+      const directMatch = allOrgs.find((o) => o.id === targetOrgId);
+      if (directMatch) {
+        onSelectOrg(directMatch.id);
+        return;
+      }
+    }
+    if (targetOrgName) {
+      const nameLower = targetOrgName.toLowerCase();
+      const nameMatch = allOrgs.find(
+        (o) =>
+          o.name.toLowerCase().includes(nameLower) ||
+          (nameLower.length > 3 && nameLower.includes(o.name.toLowerCase()))
+      );
+      if (nameMatch) {
+        onSelectOrg(nameMatch.id);
+        return;
+      }
+    }
+    if (targetOrgId) {
+      onSelectOrg(targetOrgId);
+    }
+  };
+
   return (
     <div className="w-full flex flex-col gap-4">
       {/* Шапка ЕБЗ: Заголовок, переключатель ведомства, язык, поиск */}
@@ -372,9 +399,10 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
                   }`}
                 >
                   <div className="space-y-1">
-                    <div className="flex items-center justify-between gap-1 flex-wrap">
-                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 truncate max-w-[200px]">
-                        {orgName || 'Госорган'}
+                    <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase px-2.5 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-900/50 truncate max-w-[240px]">
+                        <Building2 className="w-3 h-3 text-indigo-500 shrink-0" />
+                        <span className="truncate">{orgName || 'Госорган'}</span>
                       </span>
                       <span className="text-[10px] font-mono text-slate-400">
                         {article.id}
@@ -443,6 +471,49 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
                     <Save className="w-3.5 h-3.5" />
                     <span>Сохранить</span>
                   </button>
+                </div>
+              </div>
+
+              {/* Ответственный государственный орган (исполнитель регламента) */}
+              <div className="p-3.5 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-900/60 space-y-2">
+                <label className="text-[10px] font-bold uppercase text-indigo-900 dark:text-indigo-300 flex items-center gap-1.5">
+                  <Building2 className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                  <span>Ответственный государственный орган (кто выполняет / ведет регламент):</span>
+                </label>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
+                  <div className="md:col-span-8">
+                    <select
+                      value={editForm.orgId || ''}
+                      onChange={(e) => {
+                        const targetId = e.target.value;
+                        const selected = allOrgs.find((o) => o.id === targetId);
+                        setEditForm({
+                          ...editForm,
+                          orgId: targetId,
+                          orgNameRu: selected ? selected.name : editForm.orgNameRu,
+                          orgNameKk: selected ? (selected.orgNameKk || selected.name) : editForm.orgNameKk,
+                        });
+                      }}
+                      className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 outline-none font-bold text-slate-800 dark:text-slate-200 cursor-pointer"
+                    >
+                      <option value="">-- Выберите ответственный госорган из реестра ({allOrgs.length} ведомств) --</option>
+                      {allOrgs.map((org) => (
+                        <option key={org.id} value={org.id}>
+                          {org.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="md:col-span-4">
+                    <input
+                      type="text"
+                      value={editForm.orgNameRu || ''}
+                      onChange={(e) => setEditForm({ ...editForm, orgNameRu: e.target.value })}
+                      placeholder="Отображаемое наименование..."
+                      className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 outline-none font-medium text-slate-800 dark:text-slate-200"
+                      title="Краткое или альтернативное наименование органа"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -563,26 +634,9 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
           ) : currentArticle ? (
             /* Просмотр статьи в красивом полноэкранном виде */
             <div className="space-y-5">
-              {/* Шапка статьи: ведомство, действия, теги */}
-              <div className="flex items-start justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-xs font-black px-2.5 py-1 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                      {lang === 'kk' ? currentArticle.orgNameKk || currentArticle.orgNameRu : currentArticle.orgNameRu}
-                    </span>
-                    {onSelectOrg && currentArticle.orgId && (
-                      <button
-                        type="button"
-                        onClick={() => onSelectOrg(currentArticle.orgId!)}
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:underline"
-                        title="Показать ведомство на графе"
-                      >
-                        <span>Найти орган на графе</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </button>
-                    )}
-                  </div>
-
+              {/* Шапка статьи: заголовок и действия */}
+              <div className="flex items-start justify-between gap-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+                <div className="space-y-1 flex-1 min-w-0">
                   <h2 className="text-lg font-black text-slate-900 dark:text-white leading-tight">
                     {lang === 'kk' ? currentArticle.titleKk || currentArticle.titleRu : currentArticle.titleRu}
                   </h2>
@@ -609,6 +663,37 @@ export const EbzWorkspace: React.FC<EbzWorkspaceProps> = ({ allOrgs, onSelectOrg
                     </button>
                   )}
                 </div>
+              </div>
+
+              {/* Блок ответственного государственного органа (кто выполняет регламент) */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-900/60 shadow-xs">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] uppercase font-black tracking-wider text-indigo-600 dark:text-indigo-400">
+                      Ответственный государственный орган (исполнитель):
+                    </div>
+                    <div className="text-sm font-black text-slate-900 dark:text-white truncate">
+                      {lang === 'kk'
+                        ? currentArticle.orgNameKk || currentArticle.orgNameRu
+                        : currentArticle.orgNameRu || 'Орган не назначен'}
+                    </div>
+                  </div>
+                </div>
+
+                {onSelectOrg && (
+                  <button
+                    type="button"
+                    onClick={() => handleOrgJump(currentArticle.orgId, currentArticle.orgNameRu)}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-800 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 text-xs font-black transition-all shrink-0 shadow-xs active:scale-95"
+                    title="Показать ведомство на интерактивном графе"
+                  >
+                    <span>Орган на графе</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </button>
+                )}
               </div>
 
               {/* Теги статьи */}
