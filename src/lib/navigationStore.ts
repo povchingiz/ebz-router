@@ -8,6 +8,8 @@ export interface NavigationState {
   focusedOrgId: string;
   // Раскрытые родительские узлы (цепочка предков до корня + выбранные ветви)
   expandedIds: Set<string>;
+  // Родители, для которых раскрыты ВСЕ дочерние узлы на графе
+  showAllChildrenIds?: Set<string>;
   // Ключевой выбранный потомок для каждого родителя (parentId -> featuredChildId)
   featuredChildMap: Map<string, string>;
   // Боковая панель инспектора
@@ -74,6 +76,7 @@ export function computeVisibleGraph(
   allOrgs: GovOrg[],
   expandedIds: Set<string>,
   featuredChildMap: Map<string, string>,
+  showAllChildrenIds?: Set<string>,
   maxDefaultChildren = 6
 ): {
   visibleNodeIds: Set<string>;
@@ -115,6 +118,12 @@ export function computeVisibleGraph(
 
         const hidden = allChildren.filter((c) => c.id !== featuredChildId);
         hiddenChildrenMap.set(parentId, hidden);
+      } else if (showAllChildrenIds && showAllChildrenIds.has(parentId)) {
+        // Раскрываем ВСЕ дочерние организации на графе
+        allChildren.forEach((c) => {
+          visibleNodeIds.add(c.id);
+          queue.push(c.id);
+        });
       } else {
         // Показываем первые N детей
         const primary = allChildren.slice(0, maxDefaultChildren);

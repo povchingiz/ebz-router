@@ -607,37 +607,37 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         </div>
 
         {/* Навигационные вкладки */}
-        <div className="flex border-b border-slate-200 dark:border-slate-800 px-5 gap-4 text-xs font-bold bg-white dark:bg-slate-900 shrink-0">
+        <div className="flex border-b border-slate-200 dark:border-slate-800 px-4 sm:px-5 gap-3 sm:gap-4 text-xs font-bold bg-white dark:bg-slate-900 shrink-0 overflow-x-auto no-scrollbar">
           <button
             type="button"
             onClick={() => setActiveTab('router')}
-            className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
+            className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
               activeTab === 'router' || activeTab === 'competencies'
                 ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <ShieldCheck className="w-4 h-4" />
-            Для маршрутизатора
+            Маршрутизатор
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('ebz')}
-            className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
+            className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
               activeTab === 'ebz' || activeTab === 'questions'
                 ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <HelpCircle className="w-4 h-4" />
-            Для ЕБЗ ({questions.length})
+            ЕБЗ ({questions.length})
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('info')}
-            className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
+            className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
               activeTab === 'info'
                 ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
@@ -651,14 +651,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             <button
               type="button"
               onClick={() => setActiveTab('admin')}
-              className={`py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors ${
+              className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
                 activeTab === 'admin'
                   ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                   : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <GitFork className="w-4 h-4" />
-              Подчинение и структура
+              Структура
             </button>
           )}
         </div>

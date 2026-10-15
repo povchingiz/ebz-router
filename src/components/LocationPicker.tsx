@@ -235,7 +235,7 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
             </div>
             <div>
               <div className="text-[10px] font-black text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">
-                Закрепленная локация по классификатору (КАТО)
+                Закрепленная локация
               </div>
               <div className="text-xs font-bold text-slate-900 dark:text-white mt-0.5 leading-snug">
                 {currentLocationAddress}

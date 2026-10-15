@@ -9,6 +9,7 @@ export interface MoreChildrenNodeData {
   hiddenChildren: GovOrg[];
   layoutDirection?: 'TB' | 'LR';
   onSelectChild: (org: GovOrg) => void;
+  onShowAll?: () => void;
 }
 
 export const MoreChildrenCard = ({ data }: any) => {
@@ -17,6 +18,7 @@ export const MoreChildrenCard = ({ data }: any) => {
     hiddenChildren = [],
     layoutDirection = 'TB',
     onSelectChild,
+    onShowAll,
   } = data as MoreChildrenNodeData;
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -28,7 +30,7 @@ export const MoreChildrenCard = ({ data }: any) => {
   );
 
   return (
-    <div className="relative w-[270px] min-h-[120px] rounded-2xl border-2 border-dashed border-blue-400/70 dark:border-blue-600/60 bg-blue-50/50 dark:bg-blue-950/20 backdrop-blur-xs p-3.5 flex flex-col justify-between items-center text-center shadow-xs transition-all hover:border-blue-500 hover:bg-blue-50/80">
+    <div className="relative w-[280px] min-h-[125px] rounded-2xl border-2 border-dashed border-blue-400/70 dark:border-blue-600/60 bg-blue-50/50 dark:bg-blue-950/20 backdrop-blur-xs p-3.5 flex flex-col justify-between items-center text-center shadow-xs transition-all hover:border-blue-500 hover:bg-blue-50/80">
       {/* Ручка связи: сверху при TB, слева при LR */}
       <Handle
         type="target"
@@ -41,24 +43,38 @@ export const MoreChildrenCard = ({ data }: any) => {
       <div className="flex flex-col items-center">
         <div className="inline-flex items-center gap-1 text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-1 bg-blue-100/60 dark:bg-blue-900/40 px-2 py-0.5 rounded-md">
           <Layers className="w-3 h-3" />
-          <span>Еще подотчетные</span>
+          <span>Еще организации</span>
         </div>
         <h4 className="text-sm font-black text-slate-800 dark:text-slate-200">
-          +{hiddenChildren.length} ведомств
+          +{hiddenChildren.length} организаций
         </h4>
         <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">
           {parentName}
         </p>
       </div>
 
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all"
-      >
-        <span>Показать список</span>
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
+      <div className="mt-2.5 flex items-center gap-1.5 justify-center flex-wrap">
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all"
+        >
+          <span>Список ({hiddenChildren.length})</span>
+          <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+
+        {onShowAll && (
+          <button
+            type="button"
+            onClick={onShowAll}
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-black bg-white dark:bg-slate-900 hover:bg-blue-50 dark:hover:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 shadow-xs transition-all"
+            title="Развернуть все скрытые организации на графе"
+          >
+            <PlusCircle className="w-3.5 h-3.5" />
+            <span>Все на граф</span>
+          </button>
+        )}
+      </div>
 
       {/* Выпадающее окно выбора конкретного ведомства на доске */}
       {isOpen && (

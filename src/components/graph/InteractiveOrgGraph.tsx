@@ -43,6 +43,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
     hiddenChildrenMap,
     toggleExpandParent,
     selectChildInCenter,
+    showAllChildren,
     openInspector,
     collapseAll,
   } = useNavigation();
@@ -117,30 +118,9 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
       }
     });
 
-    // Добавляем «полупрозрачную» карточку-компаньон для остальных подотчетных (только на нижнем активном уровне)
+    // Добавляем карточку «Еще организации» для остальных подчиненных ведомств
     hiddenChildrenMap.forEach((hiddenChildren, parentId) => {
       if (hiddenChildren.length === 0 || !navState.expandedIds.has(parentId)) return;
-
-      // Проверяем, является ли parentId промежуточным вышестоящим уровнем:
-      // 1. Если выбран конкретный потомок в центр (транзитный проход к целевому органу)
-      const isTransitAncestor = navState.featuredChildMap.has(parentId);
-
-      // 2. Если в ветке ниже уже раскрыты другие дочерние узлы
-      const hasDeeperExpansion = Array.from(navState.expandedIds).some((expId) => {
-        if (expId === parentId) return false;
-        let cur = orgMap.get(expId);
-        while (cur && cur.parentId) {
-          if (cur.parentId === parentId) return true;
-          cur = orgMap.get(cur.parentId);
-        }
-        return false;
-      });
-
-      // Не показываем карточку "ЕЩЕ" на вышестоящих уровнях (АП, КПМ),
-      // она должна появляться только на самом нижнем активном уровне просмотра (например, МИИЦР)
-      if (isTransitAncestor || hasDeeperExpansion) {
-        return;
-      }
 
       const parentOrg = orgMap.get(parentId);
       const moreNodeId = `more-${parentId}`;
@@ -156,6 +136,9 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
           layoutDirection,
           onSelectChild: (child: GovOrg) => {
             selectChildInCenter(parentId, child.id);
+          },
+          onShowAll: () => {
+            showAllChildren(parentId);
           },
         },
       });
@@ -187,6 +170,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
     toggleExpandParent,
     openInspector,
     selectChildInCenter,
+    showAllChildren,
   ]);
 
   const layouted = useMemo(() => {

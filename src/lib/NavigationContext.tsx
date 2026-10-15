@@ -20,6 +20,7 @@ interface NavigationContextType {
   navigateToOrg: (orgId: string, openInspector?: boolean) => void;
   toggleExpandParent: (parentId: string) => void;
   selectChildInCenter: (parentId: string, childId: string) => void;
+  showAllChildren: (parentId: string) => void;
   openInspector: (orgId: string) => void;
   closeInspector: () => void;
   collapseAll: () => void;
@@ -152,6 +153,25 @@ export const NavigationProvider: React.FC<{
     });
   }, [allOrgs, updateUrl]);
 
+  // 3b. Раскрыть ВСЕ дочерние узлы родителя на графе
+  const showAllChildren = useCallback((parentId: string) => {
+    setNavState((prev) => {
+      const nextShowAll = new Set(prev.showAllChildrenIds || []);
+      nextShowAll.add(parentId);
+      const nextFeatured = new Map(prev.featuredChildMap);
+      nextFeatured.delete(parentId);
+      const nextExpanded = new Set(prev.expandedIds);
+      nextExpanded.add(parentId);
+
+      return {
+        ...prev,
+        showAllChildrenIds: nextShowAll,
+        featuredChildMap: nextFeatured,
+        expandedIds: nextExpanded,
+      };
+    });
+  }, []);
+
   // 4. Открыть инспектор (Сведения)
   const openInspector = useCallback((orgId: string) => {
     setNavState((prev) => ({
@@ -197,8 +217,13 @@ export const NavigationProvider: React.FC<{
 
   // Расчет видимых узлов: строго по дереву BFS
   const { visibleNodeIds, hiddenChildrenMap } = useMemo(() => {
-    return computeVisibleGraph(allOrgs, navState.expandedIds, navState.featuredChildMap);
-  }, [allOrgs, navState.expandedIds, navState.featuredChildMap]);
+    return computeVisibleGraph(
+      allOrgs,
+      navState.expandedIds,
+      navState.featuredChildMap,
+      navState.showAllChildrenIds
+    );
+  }, [allOrgs, navState.expandedIds, navState.featuredChildMap, navState.showAllChildrenIds]);
 
   // Гарантия: фокус ТОЛЬКО на видимом органе
   const activeOrg = useMemo(() => {
@@ -223,6 +248,7 @@ export const NavigationProvider: React.FC<{
       navigateToOrg,
       toggleExpandParent,
       selectChildInCenter,
+      showAllChildren,
       openInspector,
       closeInspector,
       collapseAll,
@@ -237,6 +263,7 @@ export const NavigationProvider: React.FC<{
       navigateToOrg,
       toggleExpandParent,
       selectChildInCenter,
+      showAllChildren,
       openInspector,
       closeInspector,
       collapseAll,
