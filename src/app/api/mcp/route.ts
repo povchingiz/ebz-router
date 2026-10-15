@@ -221,7 +221,15 @@ export async function POST(req: NextRequest) {
 
       // Tool 5: route_citizen_appeal
       if (toolName === 'route_citizen_appeal') {
-        const text = String(args.appealText || '').toLowerCase();
+        const rawAppeal = String(args.appealText || '');
+        if (rawAppeal.length > 15000) {
+          return NextResponse.json({
+            jsonrpc: '2.0',
+            id,
+            error: { code: -32602, message: 'Invalid params: appealText превышает допустимый лимит в 15 000 символов' },
+          });
+        }
+        const text = rawAppeal.toLowerCase();
         let bestMatch: any = null;
         let highestScore = 0;
 

@@ -18,15 +18,20 @@ export async function POST(req: NextRequest) {
       version?: number;
     };
 
-    // Если нет куки, но передан bodyUser (для совместимости)
-    const effectiveUser = sessionUser || (bodyUser ? {
-      userId: bodyUser.id,
-      username: bodyUser.id,
-      fullName: bodyUser.name,
-      role: bodyUser.role === 'superadmin' ? ('GLOBAL_ADMIN' as const) : ('VIEWER' as const),
-      orgId: null,
-      expiresAt: Date.now() + 3600000,
-    } : null);
+    // 12-Factor & Security: Приоритет всегда у криптографически подписанной сессии (HttpOnly cookie)
+    let effectiveUser = sessionUser;
+
+    // Режим разработки: fallback допускается ТОЛЬКО вне продакшена
+    if (!effectiveUser && process.env.NODE_ENV !== 'production' && bodyUser) {
+      effectiveUser = {
+        userId: bodyUser.id,
+        username: bodyUser.id,
+        fullName: bodyUser.name,
+        role: bodyUser.role === 'superadmin' ? ('GLOBAL_ADMIN' as const) : ('VIEWER' as const),
+        orgId: null,
+        expiresAt: Date.now() + 3600000,
+      };
+    }
 
     if (!effectiveUser) {
       return NextResponse.json(

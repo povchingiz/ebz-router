@@ -18,15 +18,17 @@ class OrgStore {
   }
 
   /**
-   * Сброс изменений в локальный файл хранилища (Fallback без БД)
+   * Сброс изменений в локальный файл хранилища (Fallback без БД с атомарной записью)
    */
   private persistToDisk(): void {
     try {
       const filePath = path.join(process.cwd(), 'src', 'data', 'all_566_orgs.json');
+      const tempPath = `${filePath}.tmp.${Date.now()}`;
       const allList = Array.from(this.orgs.values());
-      fs.writeFileSync(filePath, JSON.stringify(allList, null, 2), 'utf-8');
+      fs.writeFileSync(tempPath, JSON.stringify(allList, null, 2), 'utf-8');
+      fs.renameSync(tempPath, filePath);
     } catch (err) {
-      console.warn('Failed to persist orgStore to disk:', err);
+      console.warn('Failed to persist orgStore to disk atomically:', err);
     }
   }
 

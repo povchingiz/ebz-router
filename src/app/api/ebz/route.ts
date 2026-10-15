@@ -26,10 +26,12 @@ function loadArticles(): EbzArticle[] {
 function saveArticles(articles: EbzArticle[]): boolean {
   articlesCache = articles;
   try {
-    fs.writeFileSync(EBZ_FILE_PATH, JSON.stringify(articles, null, 2), 'utf-8');
+    const tempPath = `${EBZ_FILE_PATH}.tmp.${Date.now()}`;
+    fs.writeFileSync(tempPath, JSON.stringify(articles, null, 2), 'utf-8');
+    fs.renameSync(tempPath, EBZ_FILE_PATH);
     return true;
   } catch (err) {
-    console.error('Failed to write ebz_articles.json:', err);
+    console.error('Failed to write ebz_articles.json atomically:', err);
     return false;
   }
 }
@@ -94,6 +96,20 @@ export async function POST(req: NextRequest) {
     const token = req.cookies.get(authService.COOKIE_NAME)?.value;
     const sessionUser = token ? authService.verifySessionToken(token) : null;
 
+    if (!sessionUser && process.env.NODE_ENV === 'production') {
+      return NextResponse.json(
+        { success: false, error: 'Требуется авторизация для изменения базы знаний' },
+        { status: 401 }
+      );
+    }
+
+    if (sessionUser && sessionUser.role === 'VIEWER') {
+      return NextResponse.json(
+        { success: false, error: 'У вас нет прав на редактирование статей ЕБЗ' },
+        { status: 403 }
+      );
+    }
+
     const body = await req.json();
     const article: EbzArticle = body.article || body;
 
@@ -147,6 +163,23 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
+    const token = req.cookies.get(authService.COOKIE_NAME)?.value;
+    const sessionUser = token ? authService.verifySessionToken(token) : null;
+
+    if (!sessionUser && process.env.NODE_ENV === 'production') {
+      return NextResponse.json(
+        { success: false, error: 'Требуется авторизация для удаления статей ЕБЗ' },
+        { status: 401 }
+      );
+    }
+
+    if (sessionUser && sessionUser.role !== 'GLOBAL_ADMIN') {
+      return NextResponse.json(
+        { success: false, error: 'Только Супер-администратор имеет право удалять статьи из ЕБЗ' },
+        { status: 403 }
+      );
+    }
+
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
 
