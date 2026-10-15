@@ -13,6 +13,7 @@ import { ExecutiveDashboardModal } from '../components/ExecutiveDashboardModal';
 import { ConflictDetectorModal } from '../components/ConflictDetectorModal';
 import { UserBadge } from '../components/auth/UserBadge';
 import { EbzWorkspace } from '../components/ebz/EbzWorkspace';
+import { McpChatModal } from '../components/mcp/McpChatModal';
 import Link from 'next/link';
 import {
   Network,
@@ -26,6 +27,7 @@ import {
   ArrowLeftRight,
   ArrowDownUp,
   Terminal,
+  Sparkles,
 } from 'lucide-react';
 
 function HomeContent({
@@ -46,6 +48,7 @@ function HomeContent({
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false);
   const [isConflictModalOpen, setIsConflictModalOpen] = useState(false);
+  const [isMcpChatOpen, setIsMcpChatOpen] = useState(false);
 
   const { inspectorOrg, inspectorDepartmentId, closeInspector, openInspector, navigateToOrg, collapseAll } = useNavigation();
   const { user: authUser, canManageOrg } = useAuth();
@@ -249,18 +252,21 @@ function HomeContent({
 
           {/* Правая часть: ИИ-Маршрутизатор и Профиль */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* ИИ-Маршрутизатор: виден строго главному супер-админу */}
+            {/* ИИ-Маршрутизатор: активен строго для главного супер-админа */}
             {isSuperAdminOwner && (
-              <div
-                className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-bold bg-slate-100 dark:bg-slate-800/80 text-slate-400 dark:text-slate-500 border border-slate-200/60 dark:border-slate-800 cursor-not-allowed select-none"
-                title="ИИ-маршрутизатор (в разработке)"
+              <button
+                type="button"
+                onClick={() => setIsMcpChatOpen((prev) => !prev)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-black transition-all shadow-md active:scale-95 ${
+                  isMcpChatOpen
+                    ? 'bg-indigo-700 text-white ring-2 ring-indigo-400'
+                    : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white'
+                }`}
+                title="Открыть ИИ-Маршрутизатор на базе Model Context Protocol (MCP)"
               >
-                <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
-                <span>⚡ ИИ-Маршрутизатор</span>
-                <span className="text-[10px] font-medium bg-slate-200/70 dark:bg-slate-700/70 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded-md">
-                  Скоро
-                </span>
-              </div>
+                <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+                <span>⚡ ИИ-Маршрутизатор (MCP)</span>
+              </button>
             )}
 
             {/* Спецификация OpenAPI 3.0 и документация шлюза */}
@@ -460,6 +466,19 @@ function HomeContent({
           openInspector(resolvedId);
         }}
       />
+
+      {/* Интерактивный ИИ-Маршрутизатор на базе MCP (Только для супер-админа) */}
+      {isSuperAdminOwner && (
+        <McpChatModal
+          isOpen={isMcpChatOpen}
+          onClose={() => setIsMcpChatOpen(false)}
+          onSelectOrg={(targetOrgId) => {
+            const resolvedId = targetOrgId.startsWith('org-') ? targetOrgId : targetOrgId;
+            navigateToOrg(resolvedId, true);
+            openInspector(resolvedId);
+          }}
+        />
+      )}
     </div>
   );
 }
