@@ -18,6 +18,7 @@ import { GovOrg } from '../../types';
 import { OrgFlowCard } from './OrgFlowCard';
 import { MoreChildrenCard } from './MoreChildrenCard';
 import { DepartmentNode } from './DepartmentNode';
+import { DepartmentClusterNode } from './DepartmentClusterNode';
 import { getDagreLayout, NODE_WIDTH, NODE_HEIGHT } from './layout';
 import { useNavigation } from '../../lib/NavigationContext';
 import { RotateCcw, ArrowDownUp, ArrowLeftRight } from 'lucide-react';
@@ -32,6 +33,7 @@ const nodeTypes = {
   orgCard: OrgFlowCard,
   moreChildren: MoreChildrenCard,
   departmentCard: DepartmentNode,
+  deptCluster: DepartmentClusterNode,
 };
 
 function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: InteractiveOrgGraphProps) {
@@ -186,6 +188,51 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
       });
     });
 
+    // Добавляем кластер подразделений (DepartmentClusterNode) для ведомств с открытыми подразделениями
+    expandedDeptOrgIds.forEach((orgId) => {
+      if (!visibleNodeIds.has(orgId)) return;
+      const org = orgMap.get(orgId);
+      if (!org?.departments || org.departments.length === 0) return;
+
+      const clusterNodeId = `dept-cluster-${orgId}`;
+      nodes.push({
+        id: clusterNodeId,
+        type: 'deptCluster',
+        position: { x: 0, y: 0 },
+        data: {
+          parentOrgName: org.name,
+          departments: org.departments,
+          layoutDirection,
+          onClose: () => {
+            setExpandedDeptOrgIds((prev) => {
+              const next = new Set(prev);
+              next.delete(orgId);
+              return next;
+            });
+          },
+          onSelectDepartment: () => {
+            openInspector(org.id);
+          },
+        },
+      });
+
+      edges.push({
+        id: `e-dept-${orgId}-cluster`,
+        source: orgId,
+        sourceHandle: 'dept-source',
+        target: clusterNodeId,
+        type: 'smoothstep',
+        animated: true,
+        style: { stroke: '#6366f1', strokeWidth: 2, strokeDasharray: '4 4' },
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          width: 14,
+          height: 14,
+          color: '#6366f1',
+        },
+      });
+    });
+
     return { flowNodes: nodes, flowEdges: edges };
   }, [
     allOrgs,
@@ -202,122 +249,8 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
   ]);
 
   const layouted = useMemo(() => {
-    const base = getDagreLayout(flowNodes, flowEdges, layoutDirection);
-    const posMap = new Map(base.nodes.map((n) => [n.id, n.position]));
-
-    const deptNodes: Node[] = [];
-    const deptEdges: Edge[] = [];
-
-    const DEPT_WIDTH = 260;
-    const DEPT_HEIGHT = 100;
-    const GAP_X = 20;
-    const GAP_Y = 16;
-
-    expandedDeptOrgIds.forEach((orgId) => {
-      if (!visibleNodeIds.has(orgId)) return;
-      const org = allOrgs.find((o) => o.id === orgId);
-      if (!org?.departments || org.departments.length === 0) return;
-
-      const parentPos = posMap.get(orgId);
-      if (!parentPos) return;
-
-      // Если основной граф расположен вертикально (TB):
-      // Подразделения выходят перпендикулярно — по горизонтали вправо!
-      // Формируем аккуратную сетку из 2 колонок вправо
-      if (layoutDirection === 'TB') {
-        const cols = 2;
-        org.departments.forEach((dept, idx) => {
-          const col = idx % cols;
-          const row = Math.floor(idx / cols);
-          const x = parentPos.x + NODE_WIDTH + 70 + col * (DEPT_WIDTH + GAP_X);
-          const y = parentPos.y + row * (DEPT_HEIGHT + GAP_Y);
-
-          deptNodes.push({
-            id: `dept-${dept.id}`,
-            type: 'departmentCard',
-            position: { x, y },
-            data: {
-              department: dept,
-              parentOrgName: org.name,
-              layoutDirection,
-              onSelect: () => {
-                openInspector(org.id);
-              },
-            },
-          });
-
-          // Соединяем только первое подразделение каждого ряда или общее звено,
-          // чтобы избежать паутины из 57 стрелок:
-          // стрелка идет от dept-source к каждому подразделению в первой колонке
-          if (col === 0) {
-            deptEdges.push({
-              id: `e-dept-${org.id}-${dept.id}`,
-              source: org.id,
-              sourceHandle: 'dept-source',
-              target: `dept-${dept.id}`,
-              type: 'smoothstep',
-              animated: false,
-              style: { stroke: '#6366f1', strokeWidth: 1.5, strokeDasharray: '3 3' },
-              markerEnd: {
-                type: MarkerType.ArrowClosed,
-                width: 10,
-                height: 10,
-                color: '#6366f1',
-              },
-            });
-          }
-        });
-      } else {
-        // Если основной граф расположен горизонтально (LR):
-        // Подразделения выходят перпендикулярно — по вертикали вниз!
-        // Формируем аккуратную сетку из 2 рядов вниз
-        const rows = 2;
-        org.departments.forEach((dept, idx) => {
-          const row = idx % rows;
-          const col = Math.floor(idx / rows);
-          const x = parentPos.x + col * (DEPT_WIDTH + GAP_X);
-          const y = parentPos.y + NODE_HEIGHT + 70 + row * (DEPT_HEIGHT + GAP_Y);
-
-          deptNodes.push({
-            id: `dept-${dept.id}`,
-            type: 'departmentCard',
-            position: { x, y },
-            data: {
-              department: dept,
-              parentOrgName: org.name,
-              layoutDirection,
-              onSelect: () => {
-                openInspector(org.id);
-              },
-            },
-          });
-
-          if (row === 0) {
-            deptEdges.push({
-              id: `e-dept-${org.id}-${dept.id}`,
-              source: org.id,
-              sourceHandle: 'dept-source',
-              target: `dept-${dept.id}`,
-              type: 'smoothstep',
-              animated: false,
-              style: { stroke: '#6366f1', strokeWidth: 1.5, strokeDasharray: '3 3' },
-              markerEnd: {
-                type: MarkerType.ArrowClosed,
-                width: 10,
-                height: 10,
-                color: '#6366f1',
-              },
-            });
-          }
-        });
-      }
-    });
-
-    return {
-      nodes: [...base.nodes, ...deptNodes],
-      edges: [...base.edges, ...deptEdges],
-    };
-  }, [flowNodes, flowEdges, layoutDirection, expandedDeptOrgIds, visibleNodeIds, allOrgs, openInspector]);
+    return getDagreLayout(flowNodes, flowEdges, layoutDirection);
+  }, [flowNodes, flowEdges, layoutDirection]);
 
   const [nodes, setNodes, onNodesChange] = useNodesState(layouted.nodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(layouted.edges);

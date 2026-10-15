@@ -973,19 +973,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="space-y-0.5">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
-                                #{dept.id}
-                              </span>
-                              <h5 className="text-xs font-black text-slate-900 dark:text-white leading-snug">
-                                {dept.name}
-                              </h5>
-                            </div>
-                            {dept.path && (
-                              <div className="text-[10px] text-slate-400 font-medium truncate max-w-[360px]" title={dept.path}>
-                                {dept.path}
-                              </div>
-                            )}
+                            <h5 className="text-xs font-black text-slate-900 dark:text-white leading-snug">
+                              {dept.name}
+                            </h5>
                           </div>
 
                           {permissions.canEditContent && !isLockedByOther && (
