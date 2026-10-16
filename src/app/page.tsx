@@ -250,22 +250,20 @@ function HomeContent({
 
           {/* Правая часть: ИИ-Маршрутизатор и Профиль */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* ИИ-Маршрутизатор: активен строго для главного супер-админа */}
-            {isSuperAdminOwner && (
-              <button
-                type="button"
-                onClick={() => setIsMcpChatOpen((prev) => !prev)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-black transition-all shadow-md active:scale-95 ${
-                  isMcpChatOpen
-                    ? 'bg-indigo-700 text-white ring-2 ring-indigo-400'
-                    : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white'
-                }`}
-                title="Открыть ИИ-Маршрутизатор на базе Model Context Protocol (MCP)"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-                <span>⚡ ИИ-Маршрутизатор (MCP)</span>
-              </button>
-            )}
+            {/* ИИ-Маршрутизатор: доступен для просмотра и тестирования */}
+            <button
+              type="button"
+              onClick={() => setIsMcpChatOpen((prev) => !prev)}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-black transition-all shadow-md active:scale-95 ${
+                isMcpChatOpen
+                  ? 'bg-indigo-700 text-white ring-2 ring-indigo-400'
+                  : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white'
+              }`}
+              title="Открыть Умный ИИ-Маршрутизатор обращений на базе ЕБЗ и протокола MCP"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+              <span>⚡ ИИ-Маршрутизатор</span>
+            </button>
 
             {/* Авторизация и переключатель профилей */}
             <UserBadge />
@@ -455,18 +453,17 @@ function HomeContent({
         }}
       />
 
-      {/* Интерактивный ИИ-Маршрутизатор на базе MCP (Только для супер-админа) */}
-      {isSuperAdminOwner && (
-        <McpChatModal
-          isOpen={isMcpChatOpen}
-          onClose={() => setIsMcpChatOpen(false)}
-          onSelectOrg={(targetOrgId) => {
-            const resolvedId = targetOrgId.startsWith('org-') ? targetOrgId : targetOrgId;
-            navigateToOrg(resolvedId, true);
-            openInspector(resolvedId);
-          }}
-        />
-      )}
+      {/* Интерактивный ИИ-Маршрутизатор на базе MCP и базы знаний ЕБЗ */}
+      <McpChatModal
+        isOpen={isMcpChatOpen}
+        onClose={() => setIsMcpChatOpen(false)}
+        allOrgs={orgs}
+        onSelectOrg={(targetOrgId) => {
+          const resolvedId = targetOrgId.startsWith('org-') ? targetOrgId : targetOrgId;
+          navigateToOrg(resolvedId, true);
+          openInspector(resolvedId);
+        }}
+      />
     </div>
   );
 }

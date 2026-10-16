@@ -15,7 +15,11 @@ import {
   Minimize2,
   Maximize2,
   RefreshCw,
+  Search,
+  CheckCircle2,
+  ArrowRight,
 } from 'lucide-react';
+import { GovOrg } from '../../types';
 
 interface ChatMessage {
   id: string;
@@ -46,6 +50,7 @@ interface McpChatModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectOrg: (orgId: string) => void;
+  allOrgs?: GovOrg[];
 }
 
 const QUICK_PROMPTS = [
@@ -55,7 +60,15 @@ const QUICK_PROMPTS = [
   'Какие подразделения есть у Министерства транспорта?',
 ];
 
-export const McpChatModal: React.FC<McpChatModalProps> = ({ isOpen, onClose, onSelectOrg }) => {
+export const McpChatModal: React.FC<McpChatModalProps> = ({ isOpen, onClose, onSelectOrg, allOrgs = [] }) => {
+  const [activeTab, setActiveTab] = useState<'mcp' | 'express'>('mcp');
+  const [expressText, setExpressText] = useState('');
+  const [expressResult, setExpressResult] = useState<{
+    org: GovOrg;
+    reason: string;
+    matchedKeywords: string[];
+  } | null>(null);
+
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome',
@@ -69,6 +82,70 @@ export const McpChatModal: React.FC<McpChatModalProps> = ({ isOpen, onClose, onS
   const [isLoading, setIsLoading] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const handleExpressRoute = (presetText?: string) => {
+    const text = (presetText || expressText).trim();
+    if (!text || allOrgs.length === 0) return;
+    if (presetText) setExpressText(presetText);
+
+    const lower = text.toLowerCase();
+    let bestOrg: GovOrg | null = null;
+    let bestScore = 0;
+    let matchedWords: string[] = [];
+    let bestReason = '';
+
+    for (const org of allOrgs) {
+      let score = 0;
+      const currentMatched: string[] = [];
+
+      // Проверка ключевых слов в вопросах
+      for (const q of org.questions || []) {
+        for (const kw of q.keywords || []) {
+          if (lower.includes(kw.toLowerCase())) {
+            score += 3;
+            currentMatched.push(kw);
+          }
+        }
+        if (q.topic && lower.includes(q.topic.toLowerCase())) {
+          score += 4;
+          currentMatched.push(q.topic);
+        }
+      }
+
+      // Проверка совпадения в описании сферы
+      if (org.scope) {
+        const words = org.scope.toLowerCase().split(/\s+/);
+        for (const w of words) {
+          if (w.length > 4 && lower.includes(w)) {
+            score += 1;
+            currentMatched.push(w);
+          }
+        }
+      }
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestOrg = org;
+        matchedWords = currentMatched;
+        bestReason = `Компетенция определена по закрепленной тематике ведомства: ${currentMatched.slice(0, 3).join(', ')}`;
+      }
+    }
+
+    if (bestOrg && bestScore > 0) {
+      setExpressResult({
+        org: bestOrg,
+        reason: bestReason,
+        matchedKeywords: Array.from(new Set(matchedWords)),
+      });
+    } else {
+      const fallback = allOrgs.find((o) => o.id === 'org-kpm' || o.id === 'gov') || allOrgs[0];
+      setExpressResult({
+        org: fallback,
+        reason: 'Прямых совпадений по компетенциям не найдено. Рекомендуется рассмотрение сводным органом (Аппарат Правительства).',
+        matchedKeywords: [],
+      });
+    }
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -274,8 +351,39 @@ export const McpChatModal: React.FC<McpChatModalProps> = ({ isOpen, onClose, onS
         </div>
       </div>
 
-      {/* История сообщений */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs overscroll-contain">
+      {/* Переключатель режимов: MCP Ассистент и Экспресс-роутер */}
+      <div className="px-4 py-2 border-b border-indigo-100 dark:border-indigo-900/40 bg-slate-50/70 dark:bg-slate-800/50 flex items-center gap-1.5 shrink-0">
+        <button
+          type="button"
+          onClick={() => setActiveTab('mcp')}
+          className={`flex-1 py-1.5 px-3 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-1.5 ${
+            activeTab === 'mcp'
+              ? 'bg-indigo-600 text-white shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-700/60'
+          }`}
+        >
+          <Bot className="w-3.5 h-3.5" />
+          <span>Диалог с ИИ (MCP)</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab('express')}
+          className={`flex-1 py-1.5 px-3 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-1.5 ${
+            activeTab === 'express'
+              ? 'bg-indigo-600 text-white shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-700/60'
+          }`}
+        >
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Экспресс-роутер</span>
+        </button>
+      </div>
+
+      {/* Контент: либо MCP Чат, либо Экспресс-роутер */}
+      {activeTab === 'mcp' ? (
+        <>
+          {/* История сообщений */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs overscroll-contain">
         {messages.map((msg) => {
           const isBot = msg.role === 'assistant';
           return (
@@ -459,6 +567,115 @@ export const McpChatModal: React.FC<McpChatModalProps> = ({ isOpen, onClose, onS
           </button>
         </form>
       </div>
+    </>
+  ) : (
+    /* Экспресс-роутер */
+    <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs overscroll-contain">
+      <div>
+        <label className="block text-[11px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+          Текст обращения или жалобы гражданина
+        </label>
+        <textarea
+          rows={4}
+          value={expressText}
+          onChange={(e) => setExpressText(e.target.value)}
+          placeholder="Опишите суть вопроса заявителя (например: В селе третий день нет электричества из-за аварии на трансформаторе, напряжение скачет...)"
+          className="w-full p-3 text-xs rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:ring-2 focus:ring-indigo-500 outline-none leading-relaxed transition-all shadow-2xs"
+        />
+      </div>
+
+      {/* Быстрые типовые примеры обращений */}
+      <div className="flex flex-wrap gap-1.5 items-center">
+        <span className="text-[11px] font-bold text-slate-400">Примеры:</span>
+        <button
+          type="button"
+          onClick={() => handleExpressRoute('На АЗС города образовались огромные очереди, пропал бензин АИ-92 и дизельное топливо, нарушены поставки ГСМ')}
+          className="px-2.5 py-1 rounded-xl text-[10px] font-bold bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors"
+        >
+          Топливо / ГСМ
+        </button>
+        <button
+          type="button"
+          onClick={() => handleExpressRoute('В поликлинике отказали в бесплатном выдаче инсулина и препаратов по квоте ОСМС')}
+          className="px-2.5 py-1 rounded-xl text-[10px] font-bold bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors"
+        >
+          ОСМС / Лекарства
+        </button>
+        <button
+          type="button"
+          onClick={() => handleExpressRoute('Автобусы маршрута 48 в Алматы ходят с интервалом в 50 минут, в салоне не работает кондиционер')}
+          className="px-2.5 py-1 rounded-xl text-[10px] font-bold bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors"
+        >
+          Автобусы Алматы
+        </button>
+        <button
+          type="button"
+          onClick={() => handleExpressRoute('Ямы и выбоины на республиканской автодороге Астана - Караганда - Алматы')}
+          className="px-2.5 py-1 rounded-xl text-[10px] font-bold bg-slate-100 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors"
+        >
+          Дороги
+        </button>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => handleExpressRoute()}
+        disabled={!expressText.trim()}
+        className="w-full py-2.5 px-4 rounded-2xl font-black text-xs bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white flex items-center justify-center gap-2 transition-all shadow-md active:scale-95"
+      >
+        <Search className="w-3.5 h-3.5" />
+        <span>Определить целевой госорган</span>
+      </button>
+
+      {/* Результат сопоставления */}
+      {expressResult && (
+        <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 space-y-2.5 animate-fadeIn">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-black text-indigo-900 dark:text-indigo-200 flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              Рекомендуемый госорган:
+            </span>
+            <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-indigo-200/80 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">
+              {expressResult.org.jurisdiction}
+            </span>
+          </div>
+
+          <div className="text-xs font-black text-slate-900 dark:text-white">
+            {expressResult.org.fullName || expressResult.org.name}
+          </div>
+
+          <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+            {expressResult.reason}
+          </p>
+
+          {expressResult.matchedKeywords.length > 0 && (
+            <div className="flex flex-wrap gap-1 pt-1">
+              {expressResult.matchedKeywords.map((kw, idx) => (
+                <span
+                  key={idx}
+                  className="px-2 py-0.5 text-[9px] font-bold bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 rounded-md"
+                >
+                  {kw}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <button
+            type="button"
+            onClick={() => {
+              onSelectOrg(expressResult.org.id);
+              if (!isExpanded) onClose();
+            }}
+            className="w-full mt-2 py-2 px-3 text-xs font-bold rounded-xl bg-white dark:bg-slate-900 border border-indigo-300 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950 flex items-center justify-center gap-1.5 transition-colors shadow-2xs"
+          >
+            <span>Показать ведомство в структуре графа</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
     </div>
+  )}
+</div>
   );
 };
