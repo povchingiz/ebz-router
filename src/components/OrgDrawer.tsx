@@ -188,6 +188,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [isAddDeptModalOpen, setIsAddDeptModalOpen] = useState(false);
   const [editingDeptId, setEditingDeptId] = useState<number | string | null>(null);
   const [newDeptName, setNewDeptName] = useState('');
+  const [newDeptTheme, setNewDeptTheme] = useState('');
   const [newDeptResponsible, setNewDeptResponsible] = useState('');
   const [newDeptPath, setNewDeptPath] = useState('');
 
@@ -217,7 +218,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     setDepartments((prev) =>
       prev.map((d) => {
         if (String(d.id) !== String(deptId)) return d;
-        const text = d.responsible || '';
+        const text = `${d.theme ? d.theme + '. ' : ''}${d.responsible || ''}`;
         const rawClauses = text
           .split(/(?:\r?\n|\d+[\)\.]\s*)/g)
           .map((s) => s.trim().replace(/^;+|;+$/g, '').replace(/\s+/g, ' '))
@@ -375,13 +376,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     });
   }, [org, questions, questionSearch]);
 
-  // Поиск подразделений по названию, компетенциям и пути
+  // Поиск подразделений по названию, тематике, компетенциям и пути
   const filteredDepartments = useMemo(() => {
     if (!deptSearch.trim()) return departments;
     const q = deptSearch.toLowerCase();
     return departments.filter(
       (d) =>
         d.name.toLowerCase().includes(q) ||
+        (d.theme && d.theme.toLowerCase().includes(q)) ||
         (d.responsible && d.responsible.toLowerCase().includes(q)) ||
         (d.path && d.path.toLowerCase().includes(q))
     );
@@ -1280,6 +1282,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                       onClick={() => {
                         setEditingDeptId(null);
                         setNewDeptName('');
+                        setNewDeptTheme('');
                         setNewDeptResponsible('');
                         setNewDeptPath(org.fullName || org.name);
                         setIsAddDeptModalOpen(true);
@@ -1325,10 +1328,16 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                         className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/50 shadow-xs space-y-1.5"
                       >
                         <div className="flex items-start justify-between gap-2">
-                          <div className="space-y-0.5">
+                          <div className="space-y-1 flex-1">
                             <h5 className="text-xs font-black text-slate-900 dark:text-white leading-snug">
                               {dept.name}
                             </h5>
+                            {dept.theme && (
+                              <div className="inline-flex items-center gap-1.5 text-[10px] font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded-md border border-indigo-150 dark:border-indigo-900/50">
+                                <span className="opacity-70">Тематика:</span>
+                                <span>{dept.theme}</span>
+                              </div>
+                            )}
                           </div>
 
                           {permissions.canEditContent && !isLockedByOther && (
@@ -1338,6 +1347,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                                 onClick={() => {
                                   setEditingDeptId(dept.id);
                                   setNewDeptName(dept.name);
+                                  setNewDeptTheme(dept.theme || '');
                                   setNewDeptResponsible(dept.responsible || '');
                                   setNewDeptPath(dept.path || '');
                                   setIsAddDeptModalOpen(true);
@@ -2110,6 +2120,19 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
 
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase text-slate-500">
+                  Тематика / Предметная сфера:
+                </label>
+                <input
+                  type="text"
+                  value={newDeptTheme}
+                  onChange={(e) => setNewDeptTheme(e.target.value)}
+                  placeholder="Например: Пассажирский транспорт, автодороги, маршрутные сети"
+                  className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none font-medium"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-bold uppercase text-slate-500">
                   Зона ответственности и компетенции:
                 </label>
                 <textarea
@@ -2155,6 +2178,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                           ? {
                               ...d,
                               name: newDeptName.trim(),
+                              theme: newDeptTheme.trim(),
                               responsible: newDeptResponsible.trim(),
                               path: newDeptPath.trim(),
                             }
@@ -2165,6 +2189,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                     const newDept: OrgDepartment = {
                       id: String(Date.now()),
                       name: newDeptName.trim(),
+                      theme: newDeptTheme.trim(),
                       responsible: newDeptResponsible.trim(),
                       path: newDeptPath.trim(),
                       orgId: org.id,
