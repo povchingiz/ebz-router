@@ -29,7 +29,8 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
-  output: 'standalone',
+  // Режим standalone нужен для Docker / Air-Gap, а на Vercel должен быть отключен (Vercel сам оптимизирует Serverless)
+  output: process.env.VERCEL ? undefined : 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,

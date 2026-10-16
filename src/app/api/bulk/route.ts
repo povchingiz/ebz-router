@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { pool } from '@/lib/db';
 import { authService, canUserManageOrg } from '@/lib/auth';
+import { orgStore } from '@/lib/store';
 import { GovOrg } from '@/types';
 
 import * as XLSX from 'xlsx';
@@ -88,7 +89,30 @@ export async function GET(req: NextRequest) {
 
     query += ` ORDER BY m.org_id ASC LIMIT ${limit}`;
 
-    const { rows } = await pool.query(query, params);
+    let rows: any[] = [];
+    try {
+      const res = await pool.query(query, params);
+      rows = res.rows;
+    } catch (dbErr) {
+      // Режим отказоустойчивости для облака (Vercel) без локального PostgreSQL
+      const all = orgStore.getAll();
+      rows = all.slice(0, limit).map((o) => ({
+        org_id: o.org_id || parseInt(o.id.replace(/\D/g, ''), 10) || 1,
+        short_name_ru: o.name,
+        org_name_ru: o.fullName || o.name,
+        org_name_kk: o.orgNameKk || '',
+        org_type_ru: o.orgType || '',
+        location_name_ru: o.locationAddress || '',
+        scope: o.scope || '',
+        show_on_frontend: o.showOnFrontend !== false,
+        competencies_excluded: o.competenciesExcluded || '',
+        forward_to_guidance: o.forwardToGuidance || '',
+        phone_chancellery: o.contacts?.phoneChancellery || '',
+        phone_hotline: o.contacts?.phoneHotline || '',
+        email_official: o.contacts?.emailOfficial || '',
+        website_url: o.contacts?.websiteUrl || '',
+      }));
+    }
 
     // Формируем структурированные данные для листа Excel
     const excelRows = rows.map((row) => {
@@ -128,8 +152,9 @@ export async function GET(req: NextRequest) {
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Реестр ведомств');
 
     const buffer = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
+    const uint8 = new Uint8Array(buffer);
 
-    return new NextResponse(buffer, {
+    return new NextResponse(uint8, {
       status: 200,
       headers: {
         'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',

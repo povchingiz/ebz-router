@@ -52,8 +52,9 @@ export async function GET(req: NextRequest) {
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Вопросы компетенций');
 
     const buffer = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
+    const uint8 = new Uint8Array(buffer);
 
-    return new NextResponse(buffer, {
+    return new NextResponse(uint8, {
       status: 200,
       headers: {
         'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
