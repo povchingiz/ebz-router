@@ -1,3 +1,7 @@
 node_modules
 .next
 *.tsbuildinfo
+dist_airgap/
+*.dump
+.env.local
+.env.*.local
