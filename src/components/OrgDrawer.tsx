@@ -2105,6 +2105,23 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
 
             <div className="space-y-3">
+              {/* Автоматическая привязка к активной организации */}
+              <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/90 dark:border-slate-700/80 space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold uppercase text-slate-500">
+                    Ведомство привязки:
+                  </span>
+                  <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-950/80 px-1.5 py-0.5 rounded">
+                    Привязано автоматически
+                  </span>
+                </div>
+                <div className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate flex items-center gap-1.5">
+                  <Building2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                  <span>{org.name || org.fullName}</span>
+                </div>
+              </div>
+
+              {/* Наименование подразделения */}
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase text-slate-500">
                   Наименование подразделения:
@@ -2118,9 +2135,10 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 />
               </div>
 
+              {/* Тематика и сфера деятельности (название совпадает с вкладкой организации) */}
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase text-slate-500">
-                  Тематика / Предметная сфера:
+                  Тематика и сфера деятельности:
                 </label>
                 <input
                   type="text"
@@ -2129,31 +2147,36 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   placeholder="Например: Пассажирский транспорт, автодороги, маршрутные сети"
                   className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none font-medium"
                 />
+                <p className="text-[10px] text-slate-400">
+                  Отраслевая сфера для первичной маршрутизации обращений граждан.
+                </p>
               </div>
 
+              {/* Компетенции и полномочия (название совпадает с карточкой подразделения) */}
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase text-slate-500">
-                  Зона ответственности и компетенции:
+                  Компетенции и полномочия:
                 </label>
                 <textarea
                   rows={4}
                   value={newDeptResponsible}
                   onChange={(e) => setNewDeptResponsible(e.target.value)}
-                  placeholder="Опишите предметную сферу, полномочия и функции данного подразделения..."
+                  placeholder="Опишите предметные задачи, полномочия и функции подразделения для сопоставления с текстом обращений..."
                   className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none leading-relaxed"
                 />
               </div>
 
+              {/* Внутренняя подчиненность / Иерархический путь */}
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase text-slate-500">
-                  Иерархический путь / Подчиненность внутри ведомства:
+                  Подчиненность внутри ведомства (опционально):
                 </label>
                 <input
                   type="text"
                   value={newDeptPath}
                   onChange={(e) => setNewDeptPath(e.target.value)}
-                  placeholder="Например: Министерство транспорта РК > Комитет автомобильных дорог"
-                  className="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none text-slate-600"
+                  placeholder={`Например: ${org.name} > Комитет автомобильных дорог`}
+                  className="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none text-slate-600 dark:text-slate-300"
                 />
               </div>
             </div>
