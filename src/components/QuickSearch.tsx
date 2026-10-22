@@ -40,18 +40,18 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
 
   const results = useMemo(() => {
     if (!query.trim()) return [];
-    const tokens = query
-      .toLowerCase()
-      .split(/\s+/)
-      .filter((t) => t.length > 0);
-
-    return allOrgs
-      .filter((org) => {
-        const aliasesText = org.aliases ? org.aliases.join(' ') : '';
-        const target = `${org.name} ${org.fullName} ${aliasesText} ${org.scope || ''}`.toLowerCase();
-        return tokens.every((token) => target.includes(token));
-      })
-      .slice(0, 10);
+    const tokens = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const orgResults = allOrgs.flatMap((org) => {
+      const aliasesText = org.aliases ? org.aliases.join(' ') : '';
+      const target = `${org.name} ${org.fullName} ${aliasesText} ${org.scope || ''}`.toLowerCase();
+      const matches = tokens.every((token) => target.includes(token));
+      const departments = (org.departments || []).filter((dept) => {
+        const text = `${dept.name} ${dept.theme || ''} ${dept.responsible || ''} ${dept.path || ''}`.toLowerCase();
+        return tokens.every((token) => text.includes(token));
+      }).map((dept) => ({ kind: 'department' as const, org, dept, title: dept.name, subtitle: `📁 Отдел в: ${org.name}` }));
+      return [...(matches ? [{ kind: 'org' as const, org, title: org.name, subtitle: org.fullName }] : []), ...departments];
+    });
+    return orgResults.slice(0, 10);
   }, [allOrgs, query]);
 
   return (
@@ -90,12 +90,13 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
       {isOpen && query.trim() && (
         <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800 animate-fadeIn min-w-[480px]">
           {results.length > 0 ? (
-            results.map((org) => (
+            results.map((result) => (
               <div
-                key={org.id}
+                key={result.kind === 'org' ? result.org.id : `${result.org.id}-dept-${result.dept.id}`}
                 onClick={() => {
-                  navigateToOrg(org.id, false);
-                  if (onSelectOrg) onSelectOrg(org);
+                  navigateToOrg(result.org.id, false);
+                  if (result.kind === 'department') openInspector(result.org.id, result.dept.id);
+                  else if (onSelectOrg) onSelectOrg(result.org);
                   setQuery('');
                   setIsOpen(false);
                 }}
@@ -104,11 +105,11 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-black text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors truncate">
-                      {org.name}
+                      {result.title}
                     </span>
                   </div>
                   <p className="text-[11px] text-slate-500 truncate mt-0.5">
-                    {org.fullName}
+                    {result.subtitle}
                   </p>
                 </div>
 
@@ -116,8 +117,9 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    navigateToOrg(org.id, true);
-                    if (onOpenDetails) onOpenDetails(org);
+                    navigateToOrg(result.org.id, true);
+                    if (result.kind === 'department') openInspector(result.org.id, result.dept.id);
+                    else if (onOpenDetails) onOpenDetails(result.org);
                     setQuery('');
                     setIsOpen(false);
                   }}
@@ -131,7 +133,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
             ))
           ) : (
             <div className="p-4 text-center text-xs text-slate-400">
-              Организаций не найдено
+              Организаций и подразделений не найдено
             </div>
           )}
         </div>

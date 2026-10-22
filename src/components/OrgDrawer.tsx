@@ -38,6 +38,9 @@ import {
   Sparkles,
   ArrowRight,
   ArrowLeft,
+  ChevronDown,
+  ChevronUp,
+  History,
 } from 'lucide-react';
 
 interface OrgDrawerProps {
@@ -168,6 +171,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   // Подразделения ведомства (Управления / Департаменты)
   const [departments, setDepartments] = useState<OrgDepartment[]>([]);
   const [deptSearch, setDeptSearch] = useState('');
+  const [expandedDeptIds, setExpandedDeptIds] = useState<Set<string | number>>(new Set());
   const [isAddDeptModalOpen, setIsAddDeptModalOpen] = useState(false);
   const [editingDeptId, setEditingDeptId] = useState<number | string | null>(null);
   const [newDeptName, setNewDeptName] = useState('');
@@ -280,11 +284,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [parentSearchQuery, setParentSearchQuery] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [auditOpen, setAuditOpen] = useState(false);
+  const [auditEntries, setAuditEntries] = useState<any[]>([]);
+  const [auditLoading, setAuditLoading] = useState(false);
+  const [conversionBusy, setConversionBusy] = useState<string | null>(null);
+  const [localVersion, setLocalVersion] = useState(org?.version ?? 1);
   const [statusMsg, setStatusMsg] = useState<{ text: string; error?: boolean } | null>(null);
 
   // Синхронизация при открытии карточки
   useEffect(() => {
     if (org) {
+      setLocalVersion(org.version || 1);
       setOrgName(org.name || '');
       setOrgFullName(org.fullName || '');
       setIsEditingNames(false);
@@ -415,6 +425,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
   const handleSaveContent = async () => {
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setStatusMsg(null);
     try {
@@ -451,6 +462,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   };
 
   const handleReparent = async () => {
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setStatusMsg(null);
     try {
@@ -461,6 +473,26 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const convertStructure = async (action: 'convert_dept_to_org' | 'convert_org_to_dept', payload: Record<string, unknown>, busyKey: string) => {
+    if (isSubmitting || conversionBusy) return;
+    setConversionBusy(busyKey);
+    setStatusMsg(null);
+    try {
+      const response = await fetch('/api/mutate', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action, payload, user: currentUser, version: localVersion }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error(result.error || 'Не удалось преобразовать структуру');
+      const updatedParent = result.parentOrg;
+      if (updatedParent?.version) setLocalVersion(updatedParent.version);
+      if (updatedParent?.departments) setDepartments(updatedParent.departments);
+      setStatusMsg({ text: 'Структура успешно преобразована!' });
+    } catch (error: any) {
+      setStatusMsg({ text: error.message || 'Ошибка преобразования', error: true });
+    } finally { setConversionBusy(null); }
   };
 
   // Редактирование вопроса
@@ -480,6 +512,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
 
   return (
     <>
+      {auditOpen && (
+        <div className="fixed inset-0 z-[70] bg-slate-950/30 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setAuditOpen(false)}>
+          <section role="dialog" aria-modal="true" aria-label="История изменений" onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl max-h-[82vh] overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl flex flex-col">
+            <header className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between"><div><h2 className="text-lg font-black">История изменений</h2><p className="text-xs text-slate-500">Журнал правок · {org.name}</p></div><button type="button" onClick={() => setAuditOpen(false)}><X className="w-4 h-4" /></button></header>
+            <div className="p-5 overflow-y-auto space-y-4">{auditLoading ? <p>Загрузка журнала…</p> : auditEntries.length ? auditEntries.map((entry, index) => <article key={entry.id || index} className="relative border-l-2 border-blue-200 pl-4 pb-2"><time className="text-[11px] text-slate-400">{new Date(entry.timestamp || entry.created_at || entry.createdAt).toLocaleString('ru-RU')}</time><div className="mt-1 flex items-center gap-2"><strong className="text-sm">{entry.userName || entry.user_name || 'Система'}</strong><span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100">{entry.userRole || entry.user_role || 'Пользователь'}</span></div><p className="text-xs mt-1">{entry.action}</p>{entry.changes && <div className="mt-2 space-y-1">{Object.entries(entry.changes).map(([field, diff]: [string, any]) => <div key={field} className="text-xs"><b className="mr-2">{field}:</b><span className="line-through text-rose-600 bg-rose-50 px-1 rounded">{String(diff?.oldValue ?? diff?.old ?? '—')}</span><span className="mx-1">→</span><span className="text-emerald-700 bg-emerald-50 px-1 rounded">{String(diff?.newValue ?? diff?.new ?? '—')}</span></div>)}</div>}</article>) : <p className="text-sm text-slate-500">Записей пока нет.</p>}</div>
+          </section>
+        </div>
+      )}
       {/* 
         Интерактивная боковая панель без блокирующего затемнения (No dark backdrop)!
         Пользователь может свободно перемещать и масштабировать граф слева,
@@ -512,6 +552,24 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
 
             <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={async () => {
+                  setAuditOpen(true);
+                  setAuditLoading(true);
+                  try {
+                    const response = await fetch(`/api/audit?orgId=${encodeURIComponent(org.id)}`);
+                    const result = await response.json();
+                    if (!response.ok) throw new Error(result.error || 'Не удалось загрузить журнал');
+                    setAuditEntries(result.data || []);
+                  } catch (error: any) {
+                    setAuditEntries([]);
+                    setStatusMsg({ text: error.message || 'Ошибка загрузки журнала', error: true });
+                  } finally { setAuditLoading(false); }
+                }}
+                className="p-1.5 text-slate-400 hover:text-blue-600 rounded-xl hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors"
+                title="История изменений"
+              ><History className="w-4 h-4" /></button>
               <button
                 type="button"
                 onClick={onClose}
@@ -551,6 +609,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           ) : isEditingNames ? (
             <div className="space-y-2 mt-1">
               <label className="text-[10px] font-bold text-slate-500 uppercase">Редактирование названий органа:</label>
+              <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">Поменяется краткое наименование</label>
               <input
                 type="text"
                 value={orgName}
@@ -558,6 +617,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 placeholder="Краткое наименование"
                 className="w-full p-2 text-sm font-black rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 outline-none"
               />
+              <label className="text-[10px] font-bold text-slate-500 uppercase block mb-1">Поменяется полное наименование</label>
               <input
                 type="text"
                 value={orgFullName}
@@ -1126,8 +1186,11 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                       value={deptSearch}
                       onChange={(e) => setDeptSearch(e.target.value)}
                       placeholder="Поиск по названию подразделения или компетенциям..."
-                      className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none font-medium"
+                      className="w-full pl-9 pr-36 py-1.5 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 outline-none font-medium"
                     />
+                    <span className="absolute right-2 top-1.5 text-[10px] font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">
+                      Показано {filteredDepartments.length} из {departments.length}
+                    </span>
                   </div>
                 )}
 
@@ -1143,21 +1206,21 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                     filteredDepartments.map((dept) => (
                       <div
                         key={dept.id}
-                        className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/50 shadow-xs space-y-1.5"
+                        className="px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-indigo-100 dark:border-indigo-900/50 shadow-xs"
                       >
-                        <div className="flex items-start justify-between gap-2">
-                          <div className="space-y-1 flex-1">
-                            <h5 className="text-xs font-black text-slate-900 dark:text-white leading-snug">
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 min-w-0 flex-1">
+                            <h5 className="text-xs font-black text-slate-900 dark:text-white leading-snug truncate">
                               {dept.name}
                             </h5>
                             {dept.theme && (
-                              <div className="inline-flex items-center gap-1.5 text-[10px] font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded-md border border-indigo-150 dark:border-indigo-900/50">
-                                <span className="opacity-70">Тематика:</span>
-                                <span>{dept.theme}</span>
-                              </div>
+                              <span className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded-md border border-indigo-150 dark:border-indigo-900/50 truncate max-w-[180px]" title={dept.theme}>{dept.theme}</span>
                             )}
                           </div>
 
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 shrink-0">
+                            {dept.questions?.length || 0} вопр.
+                          </span>
                           {permissions.canEditContent && !isLockedByOther && (
                             <div className="flex items-center gap-1 shrink-0">
                               <button
@@ -1187,33 +1250,35 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                               </button>
                             </div>
                           )}
+                          {permissions.canChangeStructure && (
+                            <button type="button" disabled={!!conversionBusy || isSubmitting} onClick={() => convertStructure('convert_dept_to_org', { parentOrgId: org.id, deptId: dept.id }, `dept-${dept.id}`)} className="px-2 py-1 text-[10px] font-bold rounded-lg text-indigo-700 bg-indigo-50 hover:bg-indigo-100 disabled:opacity-50" title="Преобразовать в подотчетную организацию">
+                              {conversionBusy === `dept-${dept.id}` ? 'Преобразование…' : 'В организацию'}
+                            </button>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => setSelectedDeptId(dept.id)}
+                            className="p-1 text-slate-400 hover:text-indigo-600 rounded transition-colors shrink-0"
+                            title="Открыть вопросы и компетенции этого подразделения"
+                            aria-label="Открыть подразделение"
+                          >
+                            <Layers className="w-3.5 h-3.5" />
+                          </button>
+                          <button type="button" onClick={() => setExpandedDeptIds((prev) => {
+                            const next = new Set(prev);
+                            if (next.has(dept.id)) next.delete(dept.id); else next.add(dept.id);
+                            return next;
+                          })} className="p-1 text-slate-400 hover:text-indigo-600 rounded transition-colors shrink-0" aria-label={expandedDeptIds.has(dept.id) ? 'Свернуть подразделение' : 'Развернуть подразделение'} aria-expanded={expandedDeptIds.has(dept.id)}>
+                            {expandedDeptIds.has(dept.id) ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                          </button>
                         </div>
 
-                        {dept.responsible && (
+                        {expandedDeptIds.has(dept.id) && dept.responsible && (
                           <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-wrap bg-slate-50 dark:bg-slate-850 p-2 rounded-lg border border-slate-100 dark:border-slate-800">
                             {dept.responsible}
                           </p>
                         )}
 
-                        <div className="flex items-center justify-between pt-1">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setSelectedDeptId(dept.id);
-                            }}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800 transition-all active:scale-95 shadow-2xs"
-                            title="Открыть вопросы и компетенции этого подразделения"
-                          >
-                            <Layers className="w-3.5 h-3.5 text-indigo-600" />
-                            <span>Вопросы и компетенции отдела</span>
-                            <ArrowRight className="w-3 h-3" />
-                          </button>
-                          {dept.questions && dept.questions.length > 0 && (
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
-                              {dept.questions.length} вопр.
-                            </span>
-                          )}
-                        </div>
                       </div>
                     ))
                   )}
@@ -1618,9 +1683,12 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                             {c.fullName}
                           </span>
                         </div>
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 shrink-0">
-                          Дочерний орган
-                        </span>
+                        {permissions.canChangeStructure && (
+                          <button type="button" disabled={!!conversionBusy || isSubmitting} onClick={() => convertStructure('convert_org_to_dept', { orgId: c.id, targetParentId: org.id }, `org-${c.id}`)} className="px-2 py-1 text-[10px] font-bold rounded-lg text-indigo-700 bg-indigo-50 hover:bg-indigo-100 disabled:opacity-50 shrink-0" title="Преобразовать во внутренний отдел">
+                            {conversionBusy === `org-${c.id}` ? 'Преобразование…' : 'Во внутренний отдел'}
+                          </button>
+                        )}
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 shrink-0">Дочерний орган</span>
                       </div>
                     ))}
                   </div>

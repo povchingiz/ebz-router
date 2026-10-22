@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
     const { action, orgId, user: bodyUser, payload, version } = body as {
-      action: 'lock' | 'unlock' | 'update_content' | 'reparent' | 'create_org' | 'import_csv';
+      action: 'lock' | 'unlock' | 'update_content' | 'reparent' | 'create_org' | 'import_csv' | 'convert_dept_to_org' | 'convert_org_to_dept';
       orgId?: string;
       user?: User;
       payload?: any;
@@ -153,7 +153,22 @@ export async function POST(req: NextRequest) {
       if (!result.success) {
         return NextResponse.json({ error: result.error }, { status: 409 }); // 409 Conflict
       }
-      return NextResponse.json({ success: true, org: result.org || dbResult?.org });
+      return NextResponse.json({ success: true, org: result.org || dbResult?.org, version: (result.org || dbResult?.org)?.version });
+    }
+
+    if (action === 'convert_dept_to_org') {
+      const access = canUserManageOrg(effectiveUser, payload?.parentOrgId, allOrgs);
+      if (!access.allowed) return NextResponse.json({ error: access.reason || 'Действие запрещено' }, { status: 403 });
+      const result = orgStore.convertDeptToOrg(payload.parentOrgId, payload.deptId, userForStore);
+      return NextResponse.json(result, { status: result.success ? 200 : 400 });
+    }
+    if (action === 'convert_org_to_dept') {
+      const child = orgStore.getById(payload?.orgId);
+      const parentId = payload?.targetParentId || child?.parentId;
+      const access = canUserManageOrg(effectiveUser, parentId, allOrgs);
+      if (!access.allowed) return NextResponse.json({ error: access.reason || 'Действие запрещено' }, { status: 403 });
+      const result = orgStore.convertOrgToDept(payload.orgId, payload.targetParentId, userForStore);
+      return NextResponse.json(result, { status: result.success ? 200 : 400 });
     }
 
     if (action === 'reparent' && orgId) {

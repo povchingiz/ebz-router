@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuditLogsForOrg } from '../../../lib/db';
+import { orgStore } from '../../../lib/store';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -10,7 +11,9 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const logs = await getAuditLogsForOrg(orgId);
+    const dbLogs = await getAuditLogsForOrg(orgId);
+    const memoryLogs = orgStore.getAuditLogs(orgId);
+    const logs = [...memoryLogs, ...dbLogs];
     return NextResponse.json({ status: 'ok', data: logs });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

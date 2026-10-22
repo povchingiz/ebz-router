@@ -133,35 +133,6 @@ export const OrgFlowCard = ({ data, selected }: any) => {
         )}
       </div>
 
-      {/* Нижняя плашка карточки: Светофор жизненного цикла (без процентов) + количество вопросов */}
-      <div className="mt-1 pt-1.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px]">
-        {isVerified ? (
-          <span className="inline-flex items-center gap-1.5 font-bold text-emerald-600 dark:text-emerald-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span>Верифицировано</span>
-          </span>
-        ) : isHumanReview ? (
-          <span className="inline-flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400">
-            <span className="w-2 h-2 rounded-full bg-amber-500" />
-            <span>Ожидает проверки</span>
-          </span>
-        ) : isLlmCheck ? (
-          <span className="inline-flex items-center gap-1.5 font-bold text-pink-600 dark:text-pink-400">
-            <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
-            <span>Проверка ИИ</span>
-          </span>
-        ) : (
-          <span className="inline-flex items-center gap-1.5 font-bold text-rose-600 dark:text-rose-400">
-            <span className="w-2 h-2 rounded-full bg-rose-500" />
-            <span>Не проверено</span>
-          </span>
-        )}
-
-        <span className="font-bold text-slate-500 dark:text-slate-400">
-          вопросов: {org.questions?.length || 0}
-        </span>
-      </div>
-
       {/* Кнопка показа/скрытия внутренних подразделений */}
       {org.departments && org.departments.length > 0 && (
         <div className="pt-1.5 mt-1.5 border-t border-slate-100 dark:border-slate-800/80">

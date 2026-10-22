@@ -5,6 +5,15 @@ import path from 'path';
 
 class OrgStore {
   private orgs: Map<string, GovOrg> = new Map();
+  private auditLogs: Map<string, any[]> = new Map();
+
+  private appendAudit(orgId: string, user: User, action: string, changes: any[] = []): void {
+    const logs = this.auditLogs.get(orgId) || [];
+    logs.unshift({ id: `audit-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, orgId, timestamp: new Date().toISOString(), userId: user.id, userName: user.name, userRole: user.role, action, changes });
+    this.auditLogs.set(orgId, logs);
+  }
+
+  public getAuditLogs(orgId: string): any[] { return [...(this.auditLogs.get(orgId) || [])]; }
 
   constructor() {
     (ALL_566_ORGS as GovOrg[]).forEach((org) => {
@@ -128,6 +137,8 @@ class OrgStore {
       };
     }
 
+    const changes: any[] = [];
+    const before = { ...org };
     if (updates.name !== undefined && updates.name.trim()) org.name = updates.name.trim();
     if (updates.fullName !== undefined) org.fullName = updates.fullName.trim();
     if (updates.orgNameKk !== undefined) org.orgNameKk = updates.orgNameKk.trim();
@@ -150,12 +161,39 @@ class OrgStore {
     if (updates.hasHumanTouch !== undefined) org.hasHumanTouch = updates.hasHumanTouch;
     if (updates.llmNotes !== undefined) org.llmNotes = updates.llmNotes;
 
-    org.version += 1;
+    const labels: Record<string, string> = { name: 'Краткое наименование', fullName: 'Полное наименование', orgNameKk: 'Наименование на казахском', shortNameKk: 'Краткое наименование на казахском', scope: 'Сфера ответственности', theme: 'Тематика', locationAddress: 'Адрес', jurisdiction: 'Юрисдикция', legalBasis: 'Правовая основа', competenciesExcluded: 'Исключенные компетенции', forwardToGuidance: 'Перенаправление', showOnFrontend: 'Отображение', contacts: 'Контакты', questions: 'Вопросы', departments: 'Отделы', status: 'Статус', katoCode: 'Код КАТО', katoNameRu: 'Населенный пункт', locationId: 'Локация', hasHumanTouch: 'Проверено человеком', llmNotes: 'Заметки' };
+    for (const field of Object.keys(updates) as Array<keyof typeof updates>) {
+      const oldValue = (before as any)[field]; const newValue = (org as any)[field];
+      if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) changes.push({ field, fieldLabel: labels[field] || field, oldValue, newValue });
+    }
+    org.version = (org.version || 1) + 1;
+    this.appendAudit(orgId, user, 'update_content', changes);
     org.lockedBy = null; // сбрасываем soft lock после сохранения
 
     this.persistToDisk();
 
     return { success: true, org: { ...org } };
+  }
+
+  public convertDeptToOrg(parentOrgId: string, deptId: string | number, user: User): { success: boolean; parentOrg?: GovOrg; newOrg?: GovOrg; error?: string } {
+    const parent = this.orgs.get(parentOrgId);
+    if (!parent) return { success: false, error: 'Родительская организация не найдена' };
+    const index = (parent.departments || []).findIndex(d => String(d.id) === String(deptId));
+    if (index < 0) return { success: false, error: 'Отдел не найден' };
+    const [dept] = parent.departments!.splice(index, 1);
+    const newOrg: GovOrg = { id: `org-from-dept-${Date.now()}`, name: dept.name, fullName: dept.name, parentId: parent.id, level: 'district', scope: dept.responsible || dept.theme || '', theme: dept.theme || '', questions: dept.questions || [], departments: [], version: 1, createdAt: new Date().toISOString() } as GovOrg;
+    this.orgs.set(newOrg.id, newOrg); parent.version = (parent.version || 1) + 1;
+    this.appendAudit(parent.id, user, `Отдел ${dept.name} преобразован в подотчетную организацию`, [{ field: 'departments', fieldLabel: 'Отделы', oldValue: dept, newValue: null }]);
+    this.persistToDisk(); return { success: true, parentOrg: { ...parent }, newOrg: { ...newOrg } };
+  }
+
+  public convertOrgToDept(orgId: string, targetParentId: string | undefined, user: User): { success: boolean; parentOrg?: GovOrg; error?: string } {
+    const org = this.orgs.get(orgId); if (!org) return { success: false, error: 'Организация не найдена' };
+    const parent = this.orgs.get(targetParentId || org.parentId || ''); if (!parent) return { success: false, error: 'Родительская организация не найдена' };
+    const dept: OrgDepartment = { id: Date.now(), name: org.name, theme: org.theme || '', responsible: org.scope || '', orgId: parent.id, questions: org.questions || [] };
+    parent.departments = [...(parent.departments || []), dept]; parent.version = (parent.version || 1) + 1; this.orgs.delete(orgId);
+    this.appendAudit(parent.id, user, `Подотчетная организация ${org.name} преобразована во внутренний отдел`, [{ field: 'departments', fieldLabel: 'Отделы', oldValue: null, newValue: dept }]);
+    this.persistToDisk(); return { success: true, parentOrg: { ...parent } };
   }
 
   /**

@@ -70,7 +70,8 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
   // Рендер строки организации
   const renderOrgRow = (org: GovOrg, depth = 0) => {
     const children = allOrgs.filter((o) => o.parentId === org.id);
-    const hasChildren = children.length > 0 && !activeQuery;
+    const departments = org.departments || [];
+    const hasChildren = (children.length > 0 || departments.length > 0) && !activeQuery;
     const isExpanded = navState.expandedIds.has(org.id);
     const isFocused = navState.focusedOrgId === org.id;
 
@@ -88,11 +89,12 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
           onClick={() => {
             navigateToOrg(org.id);
           }}
-          className={`group flex items-center justify-between p-4 my-1.5 rounded-2xl border-2 transition-all cursor-pointer ${
+          style={{ paddingLeft: `${depth * 28}px` }}
+          className={`group relative flex items-center justify-between p-4 my-1.5 rounded-2xl border-2 transition-all cursor-pointer ${
             isFocused
               ? 'border-blue-600 bg-blue-50/70 dark:bg-blue-950/50 shadow-md ring-4 ring-blue-500/20'
               : 'border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-400 hover:shadow-xs'
-          } ${depth > 0 && !activeQuery ? 'ml-6 sm:ml-10 border-l-4 border-l-blue-500' : ''}`}
+          } ${depth > 0 && !activeQuery ? 'border-l-4 border-l-blue-500' : ''}`}
         >
           <div className="flex items-center gap-3 min-w-0">
             {/* Кнопка раскрытия детей */}
@@ -167,8 +169,14 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
 
         {/* Дочерние ведомства при раскрытии родителя */}
         {hasChildren && isExpanded && (
-          <div className="flex flex-col">
+          <div className="relative flex flex-col border-l border-slate-200 dark:border-slate-700 ml-3">
             {children.map((child) => renderOrgRow(child, depth + 1))}
+            {departments.map((dept) => (
+              <div key={`dept-${dept.id}`} style={{ paddingLeft: `${(depth + 1) * 28}px` }} className="relative flex items-center justify-between gap-3 p-3 my-1 rounded-xl border border-indigo-100 dark:border-indigo-900/60 bg-indigo-50/60 dark:bg-indigo-950/20 before:absolute before:left-0 before:top-1/2 before:w-3 before:border-t before:border-slate-200 dark:before:border-slate-700">
+                <div className="min-w-0"><span className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300">📁 Подразделение</span><div className="text-xs font-bold truncate">{dept.name}</div></div>
+                <button type="button" onClick={() => { navigateToOrg(org.id); openInspector(org.id, dept.id); }} className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-indigo-700 bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-600 hover:text-white"><FileText className="w-3 h-3"/>Проверить</button>
+              </div>
+            ))}
           </div>
         )}
       </div>
