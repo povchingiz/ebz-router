@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { orgStore } from '../../../lib/store';
+import { getOrgsFromDb, getOrgByIdFromDb } from '../../../lib/db';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,6 +12,22 @@ export async function GET(req: NextRequest) {
   const rootOnly = searchParams.get('root_only') === 'true';
 
   try {
+    try {
+      let dbOrgs = await getOrgsFromDb({ parentId, search, rootOnly, id });
+      if (id && dbOrgs.length === 0) {
+        const singleOrg = await getOrgByIdFromDb(id);
+        if (singleOrg) dbOrgs = [singleOrg];
+      }
+      if (dbOrgs.length > 0) {
+        return NextResponse.json({
+          status: 'ok', source: 'db', data: dbOrgs,
+          meta: { count: dbOrgs.length, cachedAt: new Date().toISOString() },
+        });
+      }
+    } catch (dbError) {
+      console.warn('Postgres org lookup unavailable; using orgStore fallback:', dbError);
+    }
+
     // 1. Если запрошен конкретный орган по ID / slug
     if (id) {
       const org = orgStore.getById(id);

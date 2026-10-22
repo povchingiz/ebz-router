@@ -34,6 +34,7 @@ function mapDbRowToGovOrg(row: any, questions: OrgQuestion[] = []): GovOrg {
   return {
     id,
     org_id: row.org_id,
+    directChildrenCount: Number(row.direct_children_count ?? 0),
     path: row.path,
     name: row.short_name_ru || (row.org_name_ru && row.org_name_ru.length <= 30 ? row.org_name_ru : `${row.org_name_ru?.substring(0, 28)}...`),
     fullName: row.org_name_ru || row.short_name_ru || '',
@@ -81,11 +82,13 @@ export async function getOrgsFromDb(options?: {
   search?: string;
   limit?: number;
   rootOnly?: boolean;
+  id?: string | number;
 }): Promise<GovOrg[]> {
   try {
     let query = `
       SELECT 
         m.*,
+        (SELECT COUNT(*) FROM platform.gov_organizations_master c WHERE c.parent_id = m.org_id AND c.deleted = FALSE)::int AS direct_children_count,
         p.slug as parent_slug,
         ks.status as knowledge_status,
         ks.has_human_touch,
@@ -105,7 +108,13 @@ export async function getOrgsFromDb(options?: {
     `;
     const params: any[] = [];
 
-    if (options?.search && options.search.trim()) {
+    if (options?.id !== undefined && options.id !== null) {
+      const id = String(options.id);
+      const numericId = id.startsWith('org-') ? id.slice(4) : id;
+      params.push(/^\\d+$/.test(numericId) ? Number(numericId) : id);
+      query += ` AND (m.org_id = $${params.length} OR m.slug = $${params.length})`;
+      query += ' ORDER BY m.org_id ASC LIMIT 1';
+    } else if (options?.search && options.search.trim()) {
       params.push(`%${options.search.trim()}%`);
       query += ` AND (m.org_name_ru ILIKE $${params.length} OR m.short_name_ru ILIKE $${params.length} OR m.slug ILIKE $${params.length} OR array_to_string(m.aliases, ' ') ILIKE $${params.length})`;
       query += ` ORDER BY 
@@ -119,34 +128,20 @@ export async function getOrgsFromDb(options?: {
         LENGTH(m.org_name_ru) ASC
         LIMIT ${options.limit || 50}`;
     } else if (options?.parentId !== undefined && options?.parentId !== null) {
-      // Ищем по родительскому числовому ID или slug
-      let parentNumericId: number | null = null;
-      if (typeof options.parentId === 'number') {
-        parentNumericId = options.parentId;
-      } else if (options.parentId.startsWith('org-')) {
-        parentNumericId = parseInt(options.parentId.replace('org-', ''), 10);
+      const parentValue = String(options.parentId);
+      const numericValue = parentValue.startsWith('org-') ? parentValue.slice(4) : parentValue;
+      if (/^\\d+$/.test(numericValue)) {
+        params.push(Number(numericValue));
+        query += ` AND (m.parent_id = $${params.length} OR p.slug = $${params.length + 1})`;
+        params.push(parentValue);
       } else {
-        // Поиск по slug
-        const parentRow = await pool.query(
-          'SELECT org_id FROM platform.gov_organizations_master WHERE slug = $1 LIMIT 1',
-          [options.parentId]
-        );
-        if (parentRow.rows.length > 0) {
-          parentNumericId = parentRow.rows[0].org_id;
-        }
-      }
-
-      if (parentNumericId) {
-        params.push(parentNumericId);
-        query += ` AND m.parent_id = $${params.length}`;
-      } else {
-        return [];
+        params.push(parentValue);
+        query += ` AND (m.parent_id = (SELECT org_id FROM platform.gov_organizations_master WHERE slug = $${params.length} LIMIT 1) OR p.slug = $${params.length})`;
       }
       query += ` ORDER BY m.org_id ASC LIMIT ${options.limit || 100}`;
     } else if (options?.rootOnly) {
-      // Только верхний эшелон: глубина <= 2
-      query += ` AND (m.org_id = 77 OR m.parent_id = 77 OR m.parent_id = 30400 OR m.slug IS NOT NULL)`;
-      query += ` ORDER BY m.org_id ASC LIMIT ${options.limit || 150}`;
+      query += ` AND (m.parent_id IS NULL OR m.parent_id = 77 OR m.parent_id = 30400 OR m.org_id IN (77, 30400))`;
+      query += ` ORDER BY m.org_id ASC LIMIT 100`;
     } else {
       // По умолчанию: верхние 500 органов с заполненными slug или верхнего уровня
       query += ` AND (m.slug IS NOT NULL OR m.parent_id IS NULL OR m.parent_id IN (77, 30400))`;
@@ -204,6 +199,7 @@ export async function getOrgByIdFromDb(id: string | number): Promise<GovOrg | nu
 
     const selectFields = `
       m.*,
+      (SELECT COUNT(*) FROM platform.gov_organizations_master c WHERE c.parent_id = m.org_id AND c.deleted = FALSE)::int AS direct_children_count,
       p.slug as parent_slug,
       ks.status as knowledge_status,
       ks.has_human_touch,

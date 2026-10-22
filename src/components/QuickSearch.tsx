@@ -17,6 +17,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
   const { navigateToOrg, openInspector } = useNavigation();
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [serverResults, setServerResults] = useState<GovOrg[] | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,7 +39,19 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
     };
   }, []);
 
-  const results = useMemo(() => {
+  useEffect(() => {
+    if (!query.trim()) { setServerResults(null); return; }
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/orgs?search=${encodeURIComponent(query.trim())}`);
+        const json = await response.json();
+        setServerResults(Array.isArray(json.data) ? json.data : []);
+      } catch { setServerResults([]); }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  const localResults = useMemo(() => {
     if (!query.trim()) return [];
     const tokens = query.toLowerCase().split(/\s+/).filter(Boolean);
     const orgResults = allOrgs.flatMap((org) => {
@@ -53,6 +66,10 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
     });
     return orgResults.slice(0, 10);
   }, [allOrgs, query]);
+  const results = useMemo(() => {
+    if (serverResults === null) return localResults;
+    return serverResults.slice(0, 10).map((org) => ({ kind: 'org' as const, org, title: org.name, subtitle: org.fullName }));
+  }, [serverResults, localResults]);
 
   return (
     <div ref={wrapperRef} className="relative w-full">

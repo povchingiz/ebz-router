@@ -13,14 +13,17 @@ import {
   Building2,
   Search,
   CornerDownRight,
+  Loader2,
 } from 'lucide-react';
 
 interface ListViewProps {
   allOrgs: GovOrg[];
   searchQuery?: string;
+  loadSubtree?: (parentId: string) => Promise<GovOrg[]>;
+  onSelectOrg?: (org: GovOrg) => void;
 }
 
-export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' }) => {
+export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '', loadSubtree, onSelectOrg }) => {
   const {
     navState,
     openInspector,
@@ -30,6 +33,8 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
   } = useNavigation();
 
   const [localSearch, setLocalSearch] = useState('');
+  const [searchResults, setSearchResults] = useState<GovOrg[] | null>(null);
+  const [loadingIds, setLoadingIds] = useState<Set<string>>(new Set());
   const focusedRowRef = useRef<HTMLDivElement>(null);
 
   // Карта всех организаций для мгновенного поиска предков
@@ -49,6 +54,18 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
 
   const activeQuery = localSearch.trim() || searchQuery.trim();
 
+  useEffect(() => {
+    if (!activeQuery) { setSearchResults(null); return; }
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/orgs?search=${encodeURIComponent(activeQuery)}`);
+        const json = await response.json();
+        setSearchResults(Array.isArray(json.data) ? json.data : []);
+      } catch { setSearchResults([]); }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [activeQuery]);
+
   // Детерминированная фильтрация по токенам
   const isMatchSearch = (org: GovOrg) => {
     if (!activeQuery) return true;
@@ -61,17 +78,17 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
   const rootOrgs = useMemo(() => {
     if (activeQuery) {
       // При активном локальном поиске показываем все совпавшие ведомства
-      return allOrgs.filter(isMatchSearch);
+      return searchResults ?? allOrgs.filter(isMatchSearch);
     }
     // В древовидном режиме показываем только корень (АП)
     return allOrgs.filter((org) => !org.parentId);
-  }, [allOrgs, activeQuery]);
+  }, [allOrgs, activeQuery, searchResults]);
 
   // Рендер строки организации
   const renderOrgRow = (org: GovOrg, depth = 0) => {
     const children = allOrgs.filter((o) => o.parentId === org.id);
     const departments = org.departments || [];
-    const hasChildren = (children.length > 0 || departments.length > 0) && !activeQuery;
+    const hasChildren = ((org.directChildrenCount ?? 0) > 0 || children.length > 0 || departments.length > 0) && !activeQuery;
     const isExpanded = navState.expandedIds.has(org.id);
     const isFocused = navState.focusedOrgId === org.id;
 
@@ -87,7 +104,9 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
         <div
           ref={isFocused ? focusedRowRef : null}
           onClick={() => {
+            onSelectOrg?.(org);
             navigateToOrg(org.id);
+            if (activeQuery) openInspector(org.id);
           }}
           style={{ paddingLeft: `${depth * 28}px` }}
           className={`group relative flex items-center justify-between p-4 my-1.5 rounded-2xl border-2 transition-all cursor-pointer ${
@@ -103,6 +122,10 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
+                  if (!isExpanded && !children.length && (org.directChildrenCount ?? 0) > 0 && loadSubtree) {
+                    setLoadingIds((prev) => new Set(prev).add(org.id));
+                    void loadSubtree(org.id).finally(() => setLoadingIds((prev) => { const next = new Set(prev); next.delete(org.id); return next; }));
+                  }
                   toggleExpandParent(org.id);
                 }}
                 className={`p-1.5 rounded-xl transition-colors ${
@@ -112,7 +135,7 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '' })
                 }`}
                 title={isExpanded ? 'Свернуть подотчетных' : 'Развернуть подотчетных'}
               >
-                {isExpanded ? (
+                {loadingIds.has(org.id) ? <Loader2 className="w-4 h-4 animate-spin" /> : isExpanded ? (
                   <ChevronDown className="w-4 h-4" />
                 ) : (
                   <ChevronRight className="w-4 h-4" />

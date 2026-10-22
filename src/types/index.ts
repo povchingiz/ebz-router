@@ -58,6 +58,7 @@ export type JurisdictionLevel = 'republican' | 'regional' | 'district' | 'local'
 export interface GovOrg {
   id: string;
   org_id?: number;          // Внутренний технический код из БД (напр. 77, 30400) - НЕ отображается в UI
+  directChildrenCount?: number;
   path?: string;            // Внутренний материализованный путь (напр. 77/30400/...) - НЕ отображается в UI
   classifierPath?: string;  // Системный путь по классификатору
   name: string;             // Краткое (Минэнерго РК)

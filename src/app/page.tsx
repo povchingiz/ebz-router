@@ -32,12 +32,14 @@ function HomeContent({
   orgs,
   setOrgs,
   loadOrgs,
+  loadSubtree,
   currentUser,
   setCurrentUser,
 }: {
   orgs: GovOrg[];
   setOrgs: React.Dispatch<React.SetStateAction<GovOrg[]>>;
   loadOrgs: () => Promise<void>;
+  loadSubtree: (parentId: string) => Promise<GovOrg[]>;
   currentUser: User;
   setCurrentUser: React.Dispatch<React.SetStateAction<User>>;
 }) {
@@ -245,7 +247,17 @@ function HomeContent({
 
           {/* Быстрый сквозной поиск организаций по центру - МАКСИМАЛЬНО ШИРОКАЯ ПЛАШКА */}
           <div className="flex-1 max-w-3xl mx-4">
-            <QuickSearch allOrgs={orgs} />
+            <QuickSearch
+              allOrgs={orgs}
+              onSelectOrg={(org) => {
+                setOrgs((prev) => prev.some((item) => item.id === org.id) ? prev : [...prev, org]);
+                openInspector(org.id);
+              }}
+              onOpenDetails={(org) => {
+                setOrgs((prev) => prev.some((item) => item.id === org.id) ? prev : [...prev, org]);
+                openInspector(org.id);
+              }}
+            />
           </div>
 
           {/* Правая часть: ИИ-Маршрутизатор и Профиль */}
@@ -398,7 +410,7 @@ function HomeContent({
             {viewMode === 'graph' ? (
               <InteractiveOrgGraph allOrgs={orgs} layoutDirection={layoutDirection} />
             ) : viewMode === 'list' ? (
-              <ListView allOrgs={orgs} />
+              <ListView allOrgs={orgs} loadSubtree={loadSubtree} onSelectOrg={(org) => setOrgs((prev) => prev.some((item) => item.id === org.id) ? prev : [...prev, org])} />
             ) : (
               <EbzWorkspace
                 allOrgs={orgs}
@@ -486,7 +498,7 @@ export default function HomePage() {
   const loadOrgs = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/orgs');
+      const res = await fetch('/api/orgs?root_only=true');
       const json = await res.json();
       if (json.data) {
         setOrgs(json.data);
@@ -496,6 +508,17 @@ export default function HomePage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const loadSubtree = async (parentId: string) => {
+    const res = await fetch(`/api/orgs?parent_id=${encodeURIComponent(parentId)}`);
+    const json = await res.json();
+    const children: GovOrg[] = Array.isArray(json.data) ? json.data : [];
+    setOrgs((prev) => {
+      const existing = new Set(prev.map((org) => org.id));
+      return [...prev, ...children.filter((org) => !existing.has(org.id))];
+    });
+    return children;
   };
 
   useEffect(() => {
@@ -518,6 +541,7 @@ export default function HomePage() {
           orgs={orgs}
           setOrgs={setOrgs}
           loadOrgs={loadOrgs}
+          loadSubtree={loadSubtree}
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
         />
