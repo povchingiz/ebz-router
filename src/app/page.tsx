@@ -10,7 +10,6 @@ import { QuickSearch } from '../components/QuickSearch';
 import { OrgDrawer } from '../components/OrgDrawer';
 import { BulkExcelModal } from '../components/BulkExcelModal';
 import { ExecutiveDashboardModal } from '../components/ExecutiveDashboardModal';
-import { ConflictDetectorModal } from '../components/ConflictDetectorModal';
 import { UserBadge } from '../components/auth/UserBadge';
 import { EbzWorkspace } from '../components/ebz/EbzWorkspace';
 import { McpChatModal } from '../components/mcp/McpChatModal';
@@ -20,7 +19,6 @@ import {
   BookOpen,
   FileSpreadsheet,
   BarChart3,
-  ShieldAlert,
   RotateCw,
   RotateCcw,
   ArrowLeftRight,
@@ -47,7 +45,6 @@ function HomeContent({
   const [layoutDirection, setLayoutDirection] = useState<'TB' | 'LR'>('TB');
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false);
-  const [isConflictModalOpen, setIsConflictModalOpen] = useState(false);
   const [isMcpChatOpen, setIsMcpChatOpen] = useState(false);
 
   const { inspectorOrg, inspectorDepartmentId, closeInspector, openInspector, navigateToOrg, collapseAll } = useNavigation();
@@ -57,16 +54,9 @@ function HomeContent({
     ? {
         id: authUser.userId,
         name: authUser.fullName,
-        role: authUser.role === 'GLOBAL_ADMIN' || authUser.role === 'ORG_ADMIN' ? 'superadmin' : 'viewer',
+        role: authUser.role === 'GLOBAL_ADMIN' ? 'superadmin' : 'viewer',
       }
     : currentUser;
-
-  // Права доступа к сводному дашборду (Администраторы)
-  const isAdminUser = Boolean(
-    authUser
-      ? authUser.role === 'GLOBAL_ADMIN' || authUser.role === 'ORG_ADMIN'
-      : false
-  );
 
   // Детектор коллизий «Пересечения» строго конфиденциален только для главного супер-админа
   const isSuperAdminOwner = Boolean(
@@ -365,7 +355,7 @@ function HomeContent({
           </div>
 
           {/* Сводный дашборд заполненности (Для администраторов) */}
-          {isAdminUser && (
+          {(effectiveUser.role === 'superadmin' || authUser?.role === 'GLOBAL_ADMIN') && (
             <button
               type="button"
               onClick={() => setIsDashboardModalOpen(true)}
@@ -374,19 +364,6 @@ function HomeContent({
             >
               <BarChart3 className="w-4 h-4 text-blue-600 shrink-0" />
               <span>Заполненность</span>
-            </button>
-          )}
-
-          {/* Предупреждения о пересечениях (Строго для главного супер-админа) */}
-          {isSuperAdminOwner && (
-            <button
-              type="button"
-              onClick={() => setIsConflictModalOpen(true)}
-              className="flex items-center gap-2 px-2.5 py-2 rounded-xl text-xs font-bold text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-all active:scale-95 border border-transparent hover:border-rose-200 dark:hover:border-rose-800"
-              title="Предупреждения о пересечениях компетенций (только АП РК)"
-            >
-              <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0" />
-              <span>Пересечения</span>
             </button>
           )}
 
@@ -453,17 +430,6 @@ function HomeContent({
         onSelectOrg={(targetOrgId) => {
           const resolvedId = targetOrgId.startsWith('org-') ? targetOrgId : `org-${targetOrgId}`;
           navigateToOrg(resolvedId, true);
-        }}
-      />
-
-      {/* Модальное окно детектора коллизий (Только для главного супер-админа) */}
-      <ConflictDetectorModal
-        isOpen={isConflictModalOpen}
-        onClose={() => setIsConflictModalOpen(false)}
-        onOpenOrgDrawer={(targetOrgId) => {
-          const resolvedId = targetOrgId.startsWith('org-') ? targetOrgId : `org-${targetOrgId}`;
-          navigateToOrg(resolvedId, true);
-          openInspector(resolvedId);
         }}
       />
 

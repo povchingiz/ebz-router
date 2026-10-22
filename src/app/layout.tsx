@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className="min-h-screen antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-500 selection:text-white">
+      <body className="min-h-screen antialiased bg-slate-50 text-slate-900 selection:bg-blue-500 selection:text-white">
         <SiteGate>{children}</SiteGate>
       </body>
     </html>

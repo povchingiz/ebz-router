@@ -9,9 +9,9 @@ export async function GET(req: NextRequest) {
     const token = req.cookies.get(authService.COOKIE_NAME)?.value;
     const user = token ? authService.verifySessionToken(token) : null;
 
-    // Сводный дашборд доступен администраторам
-    if (user && user.role === 'VIEWER') {
-      return NextResponse.json({ error: 'Доступ ограничен для роли Наблюдатель' }, { status: 403 });
+    const isSuperadmin = user?.role === 'GLOBAL_ADMIN' || user?.username === 'superadmin';
+    if (!isSuperadmin) {
+      return NextResponse.json({ error: 'Доступ разрешен только Супер-администратору' }, { status: 403 });
     }
 
     const allOrgs = orgStore.getAll();
@@ -24,6 +24,7 @@ export async function GET(req: NextRequest) {
     let withAntiCompetencies = 0;
     let withPhones = 0;
     let withKazakhName = 0;
+    let withScope = 0;
     let totalScore = 0;
 
     for (const org of allOrgs) {
@@ -39,6 +40,7 @@ export async function GET(req: NextRequest) {
       }
 
       if (org.showOnFrontend === false) hiddenOnline++;
+      if (org.scope && org.scope.trim().length > 0) withScope++;
       if (org.competenciesExcluded && org.competenciesExcluded.trim().length > 0) withAntiCompetencies++;
       if (org.contacts?.phoneChancellery || org.contacts?.phoneHotline) withPhones++;
       if (org.orgNameKk && org.orgNameKk.trim().length > 0) withKazakhName++;
@@ -98,6 +100,7 @@ export async function GET(req: NextRequest) {
         withAntiCompetencies,
         withPhones,
         withKazakhName,
+        withScope,
         avgScore,
       },
       ministries,
