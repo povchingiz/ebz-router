@@ -29,12 +29,9 @@ import {
   FileSpreadsheet,
   Edit3,
   CheckCircle2,
-  Phone,
   Mail,
   Ban,
-  PhoneCall,
   Eye,
-  EyeOff,
   ExternalLink,
   Layers,
   BookOpen,
@@ -53,8 +50,6 @@ interface OrgDrawerProps {
   onSaveContent: (updatedData: {
     name?: string;
     fullName?: string;
-    orgNameKk?: string;
-    shortNameKk?: string;
     scope: string;
     theme?: string;
     locationAddress?: string;
@@ -62,9 +57,7 @@ interface OrgDrawerProps {
     legalBasis?: string;
     competenciesExcluded?: string;
     forwardToGuidance?: string;
-    showOnFrontend?: boolean;
     contacts?: {
-      phoneHotline?: string;
       phoneChancellery?: string;
       emailOfficial?: string;
       websiteUrl?: string;
@@ -72,12 +65,10 @@ interface OrgDrawerProps {
     };
     questions: OrgQuestion[];
     departments?: OrgDepartment[];
-    status?: 'unfilled' | 'llm_check' | 'human_review' | 'verified' | 'in_progress';
     katoCode?: string;
     katoNameRu?: string;
     locationId?: string;
     hasHumanTouch?: boolean;
-    llmNotes?: string;
   }) => Promise<void>;
   onReparent: (newParentId: string | null) => Promise<void>;
   onCreateOrg?: (newOrgData: {
@@ -139,13 +130,11 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   onCreateOrg,
 }) => {
   const { user: authUser, canManageOrg } = useAuth();
-  const [activeTab, setActiveTab] = useState<'router' | 'ebz' | 'info' | 'admin' | 'competencies' | 'questions'>('router');
+  const [activeTab, setActiveTab] = useState<'ebz' | 'info' | 'admin' | 'questions'>('info');
 
   // Наименования
   const [orgName, setOrgName] = useState('');
   const [orgFullName, setOrgFullName] = useState('');
-  const [orgNameKk, setOrgNameKk] = useState('');
-  const [shortNameKk, setShortNameKk] = useState('');
   const [isEditingNames, setIsEditingNames] = useState(false);
 
   // Поля сведений
@@ -158,17 +147,11 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [jurisdiction, setJurisdiction] = useState<JurisdictionLevel>('republican');
   const [legalBasis, setLegalBasis] = useState('');
 
-  // Жизненный цикл верификации данных
-  const [verificationStatus, setVerificationStatus] = useState<'unfilled' | 'llm_check' | 'human_review' | 'verified'>('unfilled');
-  const [isLlmTesting, setIsLlmTesting] = useState(false);
-
   // Исключения компетенций (Схема knowledge)
   const [competenciesExcluded, setCompetenciesExcluded] = useState('');
   const [forwardToGuidance, setForwardToGuidance] = useState('');
-  const [showOnFrontend, setShowOnFrontend] = useState(true);
 
   // Контакты и реквизиты (Схема knowledge)
-  const [phoneHotline, setPhoneHotline] = useState('');
   const [phoneChancellery, setPhoneChancellery] = useState('');
   const [emailOfficial, setEmailOfficial] = useState('');
   const [websiteUrl, setWebsiteUrl] = useState('');
@@ -202,7 +185,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   useEffect(() => {
     if (initialDepartmentId) {
       setSelectedDeptId(initialDepartmentId);
-      setActiveTab('router');
+      setActiveTab('info');
     } else {
       setSelectedDeptId(null);
     }
@@ -304,8 +287,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     if (org) {
       setOrgName(org.name || '');
       setOrgFullName(org.fullName || '');
-      setOrgNameKk(org.orgNameKk || '');
-      setShortNameKk(org.shortNameKk || '');
       setIsEditingNames(false);
       setScope(org.scope || '');
       setTheme(org.theme || '');
@@ -315,15 +296,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setKatoNameRu(org.katoNameRu || '');
       setDepartments(org.departments ? JSON.parse(JSON.stringify(org.departments)) : []);
       setDeptSearch('');
-      const initStatus = org.hasHumanTouch
-        ? ((org.status as any) === 'verified'
-          ? 'verified'
-          : (org.status as any) === 'llm_check'
-          ? 'llm_check'
-          : 'human_review')
-        : 'unfilled';
-      setVerificationStatus(initStatus);
-      
       // Автоматическое предзаполнение масштаба юрисдикции по структуре органа
       let resolvedJurisdiction: JurisdictionLevel = 'republican';
       if (org.jurisdiction) {
@@ -342,8 +314,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       setLegalBasis(org.legalBasis || '');
       setCompetenciesExcluded(org.competenciesExcluded || '');
       setForwardToGuidance(org.forwardToGuidance || '');
-      setShowOnFrontend(org.showOnFrontend !== false);
-      setPhoneHotline(org.contacts?.phoneHotline || '');
       setPhoneChancellery(org.contacts?.phoneChancellery || '');
       setEmailOfficial(org.contacts?.emailOfficial || '');
       setWebsiteUrl(org.contacts?.websiteUrl || '');
@@ -451,8 +421,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       await onSaveContent({
         name: orgName,
         fullName: orgFullName,
-        orgNameKk,
-        shortNameKk,
         scope,
         theme,
         locationAddress,
@@ -460,14 +428,11 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         katoNameRu,
         locationId,
         jurisdiction,
-        status: verificationStatus === 'unfilled' ? 'llm_check' : verificationStatus,
         hasHumanTouch: true,
         legalBasis,
         competenciesExcluded,
         forwardToGuidance,
-        showOnFrontend: isSuperAdminOwner ? showOnFrontend : (org.showOnFrontend !== false),
         contacts: {
-          phoneHotline,
           phoneChancellery,
           emailOfficial,
           websiteUrl,
@@ -647,7 +612,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 value={selectedDeptId ? String(selectedDeptId) : ''}
                 onChange={(e) => {
                   setSelectedDeptId(e.target.value ? e.target.value : null);
-                  setActiveTab('router');
+                  setActiveTab('info');
                 }}
                 className="flex-1 bg-white dark:bg-slate-900 text-xs font-bold text-slate-800 dark:text-slate-200 py-1 px-2 rounded-lg border border-slate-200 dark:border-slate-700 outline-none truncate cursor-pointer shadow-2xs"
               >
@@ -661,62 +626,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {parentOrg && (
-            <div className="flex items-center gap-1.5 mt-2.5 text-xs text-slate-600 dark:text-slate-300 font-medium bg-blue-50/50 dark:bg-blue-950/40 p-2 rounded-xl border border-blue-100 dark:border-blue-900/50">
-              <span className="text-slate-400">Вышестоящий орган:</span>
-              <span className="font-bold text-blue-600 dark:text-blue-400">
-                {parentOrg.name}
-              </span>
-            </div>
-          )}
 
-          {/* Переключатель видимости на платформе (show_on_frontend) - доступен СТРОГО Суперюзеру */}
-          <div className="flex items-center justify-between mt-2.5 p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80">
-            <div className="flex items-center gap-2">
-              {showOnFrontend ? (
-                <Eye className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              ) : (
-                <EyeOff className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-              )}
-              <div>
-                <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                  <span>{showOnFrontend ? 'Отображается на платформе онлайн' : 'Скрыто с платформы онлайн'}</span>
-                  {!isSuperAdminOwner && (
-                    <span className="inline-flex items-center gap-0.5 text-[9px] font-semibold px-1.5 py-0.5 text-slate-500 bg-slate-200/70 dark:bg-slate-700/70 dark:text-slate-400 rounded">
-                      <Lock className="w-2.5 h-2.5" /> Только Суперюзер
-                    </span>
-                  )}
-                </div>
-                <div className="text-[10px] text-slate-400">
-                  {showOnFrontend ? 'Организация активна в графе и поиске' : 'Временно отключено от показа пользователям'}
-                </div>
-              </div>
-            </div>
-            {isSuperAdminOwner ? (
-              <button
-                type="button"
-                onClick={() => setShowOnFrontend(!showOnFrontend)}
-                className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                  showOnFrontend ? 'bg-emerald-600' : 'bg-slate-300 dark:bg-slate-700'
-                }`}
-                title="Переключить видимость на платформе (только Суперюзер)"
-              >
-                <span
-                  className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
-                    showOnFrontend ? 'translate-x-4' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            ) : (
-              <div
-                className="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-[10px] text-slate-400 border border-slate-200/50 dark:border-slate-700 select-none cursor-not-allowed"
-                title="Редактирование отображения карточки разрешено только Главному администратору (Суперюзеру АП РК)"
-              >
-                <Lock className="w-3 h-3 text-slate-400" />
-                <span>Заблокировано</span>
-              </div>
-            )}
-          </div>
         </div>
 
         {/* Баннер ведомственной юрисдикции при ограничении прав */}
@@ -730,118 +640,28 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           </div>
         )}
 
-        {/* Статус проверки (4 этапа жизненного цикла данных) */}
-        <div className="mx-5 mt-2.5 p-3 rounded-2xl border flex items-center justify-between gap-3 text-xs shrink-0 transition-all bg-slate-50/70 dark:bg-slate-850 border-slate-200 dark:border-slate-800">
-          <div className="flex items-center gap-2.5">
-            {verificationStatus === 'verified' ? (
-              <span className="w-3.5 h-3.5 rounded-full bg-emerald-500 shrink-0" />
-            ) : verificationStatus === 'human_review' ? (
-              <span className="w-3.5 h-3.5 rounded-full bg-amber-500 shrink-0" />
-            ) : verificationStatus === 'llm_check' ? (
-              <span className="w-3.5 h-3.5 rounded-full bg-pink-500 animate-pulse shrink-0" />
-            ) : (
-              <span className="w-3.5 h-3.5 rounded-full bg-rose-500 shrink-0" />
-            )}
-            <div>
-              <div className="font-black text-xs flex items-center gap-1.5 text-slate-900 dark:text-white">
-                <span>Статус ведомства:</span>
-                {verificationStatus === 'verified' ? (
-                  <span className="text-emerald-600 dark:text-emerald-400 font-black">🟢 Верифицировано (ИИ + Человек)</span>
-                ) : verificationStatus === 'human_review' ? (
-                  <span className="text-amber-600 dark:text-amber-400 font-black">🟡 Ожидает верификации человеком</span>
-                ) : verificationStatus === 'llm_check' ? (
-                  <span className="text-pink-600 dark:text-pink-400 font-black">🌸 Проверка ИИ (валидация LLM)</span>
-                ) : (
-                  <span className="text-rose-600 dark:text-rose-400 font-black">🔴 Не проверено (исходный импорт)</span>
-                )}
-              </div>
-              <div className="text-[10px] text-slate-400 mt-0.5">
-                {verificationStatus === 'verified'
-                  ? 'Сведения верифицированы LLM и утверждены оператором'
-                  : verificationStatus === 'human_review'
-                  ? 'Проверка LLM пройдена, ожидается окончательное подтверждение человеком'
-                  : verificationStatus === 'llm_check'
-                  ? 'Человек дополнил сведения, запущен анализ адекватности нейросетью'
-                  : 'Сведения предзаполнены нами автоматически, человек не редактировал'}
-              </div>
-            </div>
-          </div>
-
-          {permissions.canEditContent && !isLockedByOther && (
-            <div className="flex items-center gap-1.5 shrink-0">
-              {verificationStatus === 'unfilled' && (
-                <button
-                  type="button"
-                  onClick={() => setVerificationStatus('llm_check')}
-                  className="px-2.5 py-1.5 rounded-xl text-[10px] font-bold bg-pink-50 hover:bg-pink-100 text-pink-700 dark:bg-pink-950/60 dark:text-pink-300 border border-pink-200 dark:border-pink-800 transition-all"
-                  title="Отправить дополненные сведения на проверку нейросетью"
-                >
-                  ⚡ Проверить в ИИ
-                </button>
-              )}
-              {verificationStatus === 'llm_check' && (
-                <button
-                  type="button"
-                  onClick={() => setVerificationStatus('human_review')}
-                  className="px-2.5 py-1.5 rounded-xl text-[10px] font-bold bg-amber-50 hover:bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800 transition-all"
-                  title="Подтвердить успешность проверки ИИ и направить человеку"
-                >
-                  ✓ ИИ одобрено
-                </button>
-              )}
-              {(verificationStatus === 'human_review' || verificationStatus === 'llm_check') && (
-                <button
-                  type="button"
-                  onClick={() => setVerificationStatus('verified')}
-                  className="px-2.5 py-1.5 rounded-xl text-[10px] font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all"
-                  title="Утвердить и верифицировать карточку"
-                >
-                  ✓ Утвердить
-                </button>
-              )}
-            </div>
-          )}
-        </div>
-
         {/* Навигационные вкладки */}
         <div className="flex border-b border-slate-200 dark:border-slate-800 px-4 sm:px-5 gap-3 sm:gap-4 text-xs font-bold bg-white dark:bg-slate-900 shrink-0 overflow-x-auto no-scrollbar">
           <button
             type="button"
-            onClick={() => setActiveTab('router')}
+            onClick={() => setActiveTab('info')}
             className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
-              activeTab === 'router' || activeTab === 'competencies'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
-                : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
+              activeTab === 'info' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <ShieldCheck className="w-4 h-4" />
-            Маршрутизатор
+            <Building2 className="w-4 h-4" />
+            Информация
           </button>
 
           <button
             type="button"
             onClick={() => setActiveTab('ebz')}
             className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
-              activeTab === 'ebz' || activeTab === 'questions'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
-                : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
+              activeTab === 'ebz' || activeTab === 'questions' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <HelpCircle className="w-4 h-4" />
             ЕБЗ ({questions.length})
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab('info')}
-            className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
-              activeTab === 'info'
-                ? 'border-blue-600 text-blue-600 dark:text-blue-400'
-                : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            <Building2 className="w-4 h-4" />
-            Информация
           </button>
 
           {permissions.canChangeStructure && (
@@ -849,9 +669,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
               type="button"
               onClick={() => setActiveTab('admin')}
               className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
-                activeTab === 'admin'
-                  ? 'border-blue-600 text-blue-600 dark:text-blue-400'
-                  : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
+                activeTab === 'admin' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <GitFork className="w-4 h-4" />
@@ -876,7 +694,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           )}
 
           {/* ВКЛАДКА 1: Для маршрутизатора */}
-          {(activeTab === 'router' || activeTab === 'competencies') && (
+          {activeTab === 'info' && (
             currentDept ? (
               /* РЕЖИМ ФОКУСА НА ПОДРАЗДЕЛЕНИИ */
               <div className="space-y-4">
@@ -911,7 +729,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                     <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                       <span className="text-[10px] text-slate-400 block font-medium">Канцелярия / Контакты:</span>
                       <span className="font-bold text-slate-800 dark:text-slate-200 truncate block">
-                        {phoneChancellery || phoneHotline || 'Центральный аппарат'}
+                        {phoneChancellery || 'Центральный аппарат'}
                       </span>
                     </div>
                   </div>
@@ -1063,14 +881,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
               </div>
             ) : (
               <div className="space-y-4">
-              {/* 1. Тематика и сфера деятельности (для ИИ-маршрутизатора) */}
+              {/* 1. Сфера ведения и основные компетенции */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                   <FileText className="w-4 h-4 text-blue-600" />
-                  <span>Тематика и сфера деятельности (для маршрутизатора)</span>
+                  <span>Сфера ведения и основные компетенции</span>
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Отраслевая сфера и предметные задачи ведомства, используемые ИИ-маршрутизатором для автоматического распределения обращений граждан.
+                  Основные направления деятельности и полномочия государственного органа.
                 </p>
                 {permissions.canEditContent && !isLockedByOther ? (
                   <textarea
@@ -1090,12 +908,12 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* 2. НАД масштабом юрисдикции: Город / Регион расположения */}
+              {/* 2. НАД масштабом юрисдикции: Юридический адрес / фактическое местонахождение органа */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                     <MapPin className="w-4 h-4 text-emerald-600" />
-                    <span>Город / Регион расположения</span>
+                    <span>Юридический адрес / фактическое местонахождение органа</span>
                   </div>
                   <span className="text-[10px] text-slate-400 font-medium">Для региональной маршрутизации</span>
                 </div>
@@ -1118,7 +936,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   {/* Фактический адрес (улица, дом - опционально) */}
                   <div>
                     <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Фактический адрес (улица, здание — опционально):
+                      Юридический адрес / фактическое местонахождение органа:
                     </label>
                     {permissions.canEditContent && !isLockedByOther ? (
                       <input
@@ -1137,14 +955,14 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </div>
               </div>
 
-              {/* 3. Масштаб юрисдикции (компактный выпадающий список) */}
+              {/* 3. Территориальный уровень полномочий (компактный выпадающий список) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                     <Globe className="w-4 h-4 text-teal-600" />
-                    <span>Масштаб юрисдикции</span>
+                    <span>Территориальный уровень полномочий</span>
                   </div>
-                  <span className="text-[10px] text-slate-400 font-medium">Предзаполнено</span>
+                  <span className="text-[10px] text-slate-400 font-medium">Республиканский / областной / районный уровень</span>
                 </div>
                 {permissions.canEditContent && !isLockedByOther ? (
                   <select
@@ -1653,218 +1471,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             </div>
           )}
 
-          {/* ВКЛАДКА 3: Информация об организации */}
-          {activeTab === 'info' && (
-            <div className="space-y-4">
-              {/* Официальные наименования (Редактируемые) */}
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                    <Building2 className="w-4 h-4 text-blue-600" />
-                    <span>Официальные наименования</span>
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-medium">Редактируемые поля</span>
-                </div>
-
-                <div className="space-y-3">
-                  {/* Краткое наименование RU */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Краткое наименование (на русском языке):
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <input
-                        type="text"
-                        value={orgName}
-                        onChange={(e) => setOrgName(e.target.value)}
-                        placeholder="Например: Минэнерго"
-                        className="w-full mt-1 p-2.5 text-xs font-black rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none"
-                      />
-                    ) : (
-                      <div className="text-xs font-black text-slate-900 dark:text-white bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {orgName || org.name}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Полное наименование RU */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Официальное полное наименование (на русском языке):
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <textarea
-                        rows={2}
-                        value={orgFullName}
-                        onChange={(e) => setOrgFullName(e.target.value)}
-                        placeholder="Полное официальное наименование органа"
-                        className="w-full mt-1 p-2.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 outline-none leading-relaxed"
-                      />
-                    ) : (
-                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {orgFullName || org.fullName}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Ресми толық атауы KZ */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Мемлекеттік тілдегі толық ресми атауы (Қазақ тілінде):
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <textarea
-                        rows={2}
-                        value={orgNameKk}
-                        onChange={(e) => setOrgNameKk(e.target.value)}
-                        placeholder="Қазақ тіліндегі ресми толық атауы"
-                        className="w-full mt-1 p-2.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:border-blue-500 outline-none leading-relaxed"
-                      />
-                    ) : (
-                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {orgNameKk || org.orgNameKk || org.fullName || 'Көрсетілмеген'}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Қысқаша атауы KZ и Тип ведомства */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div>
-                      <label className="text-[10px] font-bold text-slate-500 uppercase">
-                        Қысқаша атауы (Қазақ тілінде):
-                      </label>
-                      {permissions.canEditContent && !isLockedByOther ? (
-                        <input
-                          type="text"
-                          value={shortNameKk}
-                          onChange={(e) => setShortNameKk(e.target.value)}
-                          placeholder="Қысқаша атауы"
-                          className="w-full mt-1 p-2 text-xs font-bold rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 outline-none"
-                        />
-                      ) : (
-                        <div className="text-xs font-bold text-slate-900 dark:text-white bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                          {shortNameKk || org.shortNameKk || 'Көрсетілмеген'}
-                        </div>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="text-[10px] font-bold text-slate-500 uppercase">
-                        Тип госоргана:
-                      </label>
-                      <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100 dark:border-slate-800 mt-1 truncate">
-                        {org.orgType || 'Государственный орган'}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Контакты канцелярии и горячей линии */}
-              <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
-                    <PhoneCall className="w-4 h-4 text-blue-600" />
-                    <span>Контакты канцелярии и горячей линии</span>
-                  </div>
-                  <span className="text-[10px] text-slate-400 font-medium">Для граждан</span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {/* Горячая линия */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
-                      <Phone className="w-3 h-3 text-emerald-600" />
-                      <span>Единый контакт-центр / Горячая линия:</span>
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <input
-                        type="text"
-                        value={phoneHotline}
-                        onChange={(e) => setPhoneHotline(e.target.value)}
-                        placeholder="Например: 1414 или +7 (7172) 74-00-00"
-                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
-                      />
-                    ) : (
-                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800">
-                        {phoneHotline || 'Не указан'}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Телефон канцелярии */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
-                      <PhoneCall className="w-3 h-3 text-indigo-600" />
-                      <span>Телефон канцелярии / приемной:</span>
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <input
-                        type="text"
-                        value={phoneChancellery}
-                        onChange={(e) => setPhoneChancellery(e.target.value)}
-                        placeholder="Например: +7 (7172) 74-11-22"
-                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
-                      />
-                    ) : (
-                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800">
-                        {phoneChancellery || 'Не указан'}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Официальный Email */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
-                      <Mail className="w-3 h-3 text-amber-600" />
-                      <span>Официальный email канцелярии:</span>
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <input
-                        type="email"
-                        value={emailOfficial}
-                        onChange={(e) => setEmailOfficial(e.target.value)}
-                        placeholder="kense@gov.kz"
-                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
-                      />
-                    ) : (
-                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800">
-                        {emailOfficial || 'Не указан'}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Веб-сайт */}
-                  <div>
-                    <label className="text-[10px] font-bold text-slate-500 uppercase flex items-center gap-1">
-                      <Globe className="w-3 h-3 text-teal-600" />
-                      <span>Официальный сайт ведомства:</span>
-                    </label>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <input
-                        type="text"
-                        value={websiteUrl}
-                        onChange={(e) => setWebsiteUrl(e.target.value)}
-                        placeholder="https://www.gov.kz/memleket/entities/..."
-                        className="w-full mt-1 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none"
-                      />
-                    ) : (
-                      <div className="mt-1 p-2 text-xs font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 truncate">
-                        {websiteUrl ? (
-                          <a href={websiteUrl} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
-                            {websiteUrl}
-                          </a>
-                        ) : (
-                          'Не указан'
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
           {/* ВКЛАДКА 4: Подчинение и структура (Вышестоящий орган + Подведомственные дочерние структуры) */}
           {activeTab === 'admin' && permissions.canChangeStructure && (
             <div className="space-y-5">
@@ -2135,10 +1741,10 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 />
               </div>
 
-              {/* Тематика и сфера деятельности (название совпадает с вкладкой организации) */}
+              {/* Сфера ведения и основные компетенции */}
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase text-slate-500">
-                  Тематика и сфера деятельности:
+                  Сфера ведения и основные компетенции:
                 </label>
                 <input
                   type="text"
