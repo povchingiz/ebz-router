@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { GovOrg } from '../types';
 import { useNavigation } from '../lib/NavigationContext';
-import { Search, Building2, X, Sparkles, FileText } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { CreateOrgUserModal } from './auth/CreateOrgUserModal';
+import { Search, Building2, X, Sparkles, FileText, UserPlus } from 'lucide-react';
 
 interface QuickSearchProps {
   allOrgs: GovOrg[];
@@ -15,9 +17,11 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
   onOpenDetails,
 }) => {
   const { navigateToOrg, openInspector } = useNavigation();
+  const { user } = useAuth();
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [serverResults, setServerResults] = useState<GovOrg[] | null>(null);
+  const [userOrg, setUserOrg] = useState<GovOrg | null>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -85,7 +89,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
               setIsOpen(true);
             }}
             onFocus={() => setIsOpen(true)}
-            placeholder="Быстрый поиск: введите ведомство (Минэнерго, Телерадиокомплекс, Акимат)..."
+            placeholder="Поиск: напр. Минздрав"
             className="w-full pl-10 pr-9 py-2.5 text-xs font-bold bg-transparent text-slate-900 dark:text-white placeholder:text-slate-400 outline-none"
           />
           {query && (
@@ -146,6 +150,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
                   <FileText className="w-3.5 h-3.5" />
                   <span>Сведения</span>
                 </button>
+                {result.kind === 'org' && (user?.role === 'GLOBAL_ADMIN' || user?.username === 'superadmin') && <button type="button" onClick={(event) => { event.stopPropagation(); setUserOrg(result.org); }} className="rounded-lg border border-slate-200 p-2 text-slate-600 hover:bg-slate-100" title="Создать пользователя"><UserPlus className="h-4 w-4"/></button>}
               </div>
             ))
           ) : (
@@ -155,6 +160,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
           )}
         </div>
       )}
+      {userOrg && <CreateOrgUserModal isOpen org={userOrg} onClose={() => setUserOrg(null)} />}
     </div>
   );
 };

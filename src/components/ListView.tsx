@@ -216,7 +216,7 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '', l
             type="text"
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
-            placeholder="Фильтр по списку ведомств..."
+            placeholder="Поиск: напр. Минздрав"
             className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl bg-slate-100 dark:bg-slate-800 font-bold outline-none"
           />
         </div>

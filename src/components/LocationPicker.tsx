@@ -217,7 +217,7 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
           <span className="text-xs font-bold text-slate-800 dark:text-slate-100">
-            {currentLocationAddress || 'Географическая привязка не указана'}
+            {currentLocationAddress || 'Региональная юрисдикция не указана'}
           </span>
         </div>
       </div>
@@ -235,7 +235,7 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
             </div>
             <div>
               <div className="text-[10px] font-black text-emerald-800 dark:text-emerald-300 uppercase tracking-wider">
-                Закрепленная локация
+                Региональная юрисдикция
               </div>
               <div className="text-xs font-bold text-slate-900 dark:text-white mt-0.5 leading-snug">
                 {currentLocationAddress}
@@ -271,7 +271,7 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
           }`}
         >
           <Search className="w-3.5 h-3.5" />
-          <span>Быстрый поиск города/села</span>
+          <span>Поиск города или области</span>
         </button>
         <button
           type="button"
@@ -299,7 +299,7 @@ export const LocationPicker: React.FC<LocationPickerProps> = ({
               onFocus={() => {
                 if (searchResults.length > 0) setIsOpenDropdown(true);
               }}
-              placeholder="Введите город, район или село (напр. Каскелен, Есиль, Семей, Талгар)..."
+              placeholder="Поиск: напр. г. Астана"
               className="w-full pl-9 pr-8 py-2.5 text-xs font-medium rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-blue-500 outline-none shadow-2xs"
             />
             {isSearching && (

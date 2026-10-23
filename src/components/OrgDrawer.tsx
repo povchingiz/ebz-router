@@ -4,6 +4,7 @@ import { useAuth } from '@/context/AuthContext';
 import { QuestionModal } from './QuestionModal';
 import { QuestionCsvModal } from './QuestionCsvModal';
 import { CreateChildOrgModal } from './CreateChildOrgModal';
+import { CreateOrgUserModal } from './auth/CreateOrgUserModal';
 import { LocationPicker } from './LocationPicker';
 import {
   X,
@@ -167,6 +168,9 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [isAddQuestionModalOpen, setIsAddQuestionModalOpen] = useState(false);
   const [isCsvQuestionModalOpen, setIsCsvQuestionModalOpen] = useState(false);
   const [isCreateChildModalOpen, setIsCreateChildModalOpen] = useState(false);
+  const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState(false);
+  const [compareOrgId, setCompareOrgId] = useState('');
+  const [isCompareOpen, setIsCompareOpen] = useState(false);
 
   // Подразделения ведомства (Управления / Департаменты)
   const [departments, setDepartments] = useState<OrgDepartment[]>([]);
@@ -422,6 +426,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       : false
   );
   const parentOrg = allOrgs.find((o) => o.id === org.parentId);
+  const comparedOrg = allOrgs.find((o) => o.id === compareOrgId);
   const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
   const handleSaveContent = async () => {
@@ -543,6 +548,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   <Plus className="w-3.5 h-3.5" /> Создать дочку
                 </button>
               )}
+              {isSuperAdminOwner && <button type="button" onClick={() => setIsCreateUserModalOpen(true)} className="rounded-xl border border-blue-200 bg-white px-2.5 py-1 text-xs font-bold text-blue-700 hover:bg-blue-50">Создать пользователя</button>}
+              <button type="button" onClick={() => setIsCompareOpen((open) => !open)} className="rounded-xl border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-100">Сравнить</button>
 
               {isLockedByOther && (
                 <span className="flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-100 dark:bg-amber-950 px-2 py-0.5 rounded-lg">
@@ -710,36 +717,15 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
             }`}
           >
             <Building2 className="w-4 h-4" />
-            Информация
+            Сведения
           </button>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('ebz')}
-            className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
-              activeTab === 'ebz' || activeTab === 'questions' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            <HelpCircle className="w-4 h-4" />
-            ЕБЗ ({questions.length})
-          </button>
-
-          {permissions.canChangeStructure && (
-            <button
-              type="button"
-              onClick={() => setActiveTab('admin')}
-              className={`whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 transition-colors shrink-0 ${
-                activeTab === 'admin' ? 'border-blue-600 text-blue-600 dark:text-blue-400' : 'border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white'
-              }`}
-            >
-              <GitFork className="w-4 h-4" />
-              Структура
-            </button>
-          )}
+          <button type="button" onClick={async () => { setAuditOpen(true); setAuditLoading(true); try { const response = await fetch(`/api/audit?orgId=${encodeURIComponent(org.id)}`); const result = await response.json(); setAuditEntries(result.data || []); } catch { setAuditEntries([]); } finally { setAuditLoading(false); } }} className="whitespace-nowrap py-3.5 border-b-2 -mb-px flex items-center gap-1.5 text-slate-500 hover:text-blue-600"><History className="w-4 h-4"/>Журнал изменений</button>
         </div>
 
         {/* Содержимое панели со скроллом */}
         <div className="flex-1 overflow-y-auto p-5 space-y-4">
+          {isCompareOpen && <section className="rounded-2xl border border-blue-200 bg-blue-50/60 p-4 dark:bg-blue-950/20"><div className="mb-3 flex items-center justify-between"><h3 className="text-sm font-black">Сравнение ведомств</h3><select value={compareOrgId} onChange={(event) => setCompareOrgId(event.target.value)} className="max-w-[60%] rounded-xl border bg-white p-2 text-xs dark:bg-slate-900"><option value="">Выберите ведомство</option>{allOrgs.filter((candidate) => candidate.id !== org.id).map((candidate) => <option key={candidate.id} value={candidate.id}>{candidate.name}</option>)}</select></div>{comparedOrg && <div className="grid gap-3 md:grid-cols-2">{[org, comparedOrg].map((candidate) => <div key={candidate.id} className="rounded-xl border bg-white p-3 text-xs dark:bg-slate-900"><h4 className="font-black">{candidate.name}</h4><b className="mt-2 block">Сфера компетенций</b><p className="whitespace-pre-wrap text-slate-600">{candidate.scope || candidate.theme || 'Не указана'}</p><b className="mt-2 block">Исключенные вопросы</b><p className="whitespace-pre-wrap text-slate-600">{candidate.competenciesExcluded || 'Не указаны'}</p><b className="mt-2 block">Контакты</b><p>{candidate.contacts?.phoneChancellery || '—'} · {candidate.contacts?.emailOfficial || '—'} · {candidate.contacts?.websiteUrl || '—'}</p></div>)}</div>}</section>}
           {statusMsg && (
             <div
               className={`p-3 rounded-2xl text-xs font-bold flex items-center gap-2 ${
@@ -968,17 +954,18 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* 2. НАД масштабом юрисдикции: Юридический адрес / фактическое местонахождение органа */}
+              {/* 2. НАД масштабом юрисдикции: Адрес ведомства */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-black text-slate-800 dark:text-slate-200">
                     <MapPin className="w-4 h-4 text-emerald-600" />
-                    <span>Юридический адрес / фактическое местонахождение органа</span>
+                    <span>Адрес ведомства</span>
                   </div>
                   <span className="text-[10px] text-slate-400 font-medium">Для региональной маршрутизации</span>
                 </div>
 
                 <div className="space-y-3">
+                  <label className="block text-[10px] font-bold uppercase text-slate-500">Региональная юрисдикция</label>
                   <LocationPicker
                     currentKatoCode={katoCode}
                     currentLocationId={locationId}
@@ -989,26 +976,25 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                       setKatoNameRu(loc.katoNameRu);
                       setLocationId(loc.locationId);
                       setLocationAddress(loc.locationAddress);
-                      setPhysicalAddress(loc.locationAddress);
                     }}
                   />
 
                   {/* Фактический адрес (улица, дом - опционально) */}
                   <div>
                     <label className="text-[10px] font-bold text-slate-500 uppercase">
-                      Юридический адрес / фактическое местонахождение органа:
+                      Фактический адрес
                     </label>
                     {permissions.canEditContent && !isLockedByOther ? (
                       <input
                         type="text"
-                        value={physicalAddress || locationAddress}
+                        value={physicalAddress}
                         onChange={(e) => setPhysicalAddress(e.target.value)}
-                        placeholder="Например: пр. Мәңгілік Ел, 8"
+                        placeholder="Напр. г. Астана, пр. Мәңгілік Ел, 8"
                         className="w-full mt-1 p-2.5 text-xs font-medium rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-blue-500 outline-none text-slate-900 dark:text-white"
                       />
                     ) : (
                       <div className="text-xs text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mt-1">
-                        {physicalAddress || locationAddress || 'Адрес не указан'}
+                        {physicalAddress || 'Адрес не указан'}
                       </div>
                     )}
                   </div>
@@ -1289,7 +1275,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         )}
 
           {/* ВКЛАДКА 2: Для ЕБЗ (База знаний вопросов и тем) */}
-          {(activeTab === 'ebz' || activeTab === 'questions') && (
+          {activeTab === 'info' && (
             <div className="space-y-4">
               {/* Баннер перехода в полноэкранный реестр статей ЕБЗ */}
               <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 flex items-center justify-between gap-3 text-xs">
@@ -1537,7 +1523,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           )}
 
           {/* ВКЛАДКА 4: Подчинение и структура (Вышестоящий орган + Подведомственные дочерние структуры) */}
-          {activeTab === 'admin' && permissions.canChangeStructure && (
+          {activeTab === 'info' && permissions.canChangeStructure && (
             <div className="space-y-5">
               {/* КАРТОЧКА 1: ВЫШЕСТОЯЩИЙ ОРГАН */}
               <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border-2 border-indigo-100 dark:border-indigo-900/60 space-y-3.5">
@@ -1758,6 +1744,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
           onCreate={onCreateOrg}
         />
       )}
+      <CreateOrgUserModal isOpen={isCreateUserModalOpen} org={org} onClose={() => setIsCreateUserModalOpen(false)} />
       {/* Модальное окно создания / редактирования внутреннего подразделения */}
       {isAddDeptModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-fadeIn">

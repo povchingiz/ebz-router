@@ -110,6 +110,31 @@ PRESET_USERS_CONFIG.forEach((cfg) => {
 });
 
 export const authService = {
+  createUser(data: {
+    username: string;
+    password: string;
+    fullName: string;
+    role: UserRole;
+    orgId?: string;
+    orgName?: string;
+  }): UserAccount {
+    const salt = generateSalt();
+    const account: UserAccount = {
+      id: `user-${crypto.randomUUID()}`,
+      username: data.username,
+      passwordHash: hashPassword(data.password, salt),
+      salt,
+      fullName: data.fullName,
+      role: data.role,
+      orgId: data.orgId ?? null,
+      orgName: data.orgName,
+      createdAt: new Date().toISOString(),
+    };
+
+    userStore.set(data.username, account);
+    return account;
+  },
+
   getPresetCredentialsInfo() {
     return PRESET_USERS_CONFIG.map((u) => ({
       username: u.username,

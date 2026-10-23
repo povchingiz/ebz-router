@@ -78,7 +78,7 @@ export function computeVisibleGraph(
   expandedIds: Set<string>,
   featuredChildMap: Map<string, string>,
   showAllChildrenIds?: Set<string>,
-  maxDefaultChildren = 6
+  maxDefaultChildren = Number.POSITIVE_INFINITY
 ): {
   visibleNodeIds: Set<string>;
   hiddenChildrenMap: Map<string, GovOrg[]>;

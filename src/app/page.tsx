@@ -363,7 +363,7 @@ function HomeContent({
               title="Сводная заполненность базы знаний по всем ведомствам республики"
             >
               <BarChart3 className="w-4 h-4 text-blue-600 shrink-0" />
-              <span>Заполненность</span>
+              <span>Готовность и наполненность</span>
             </button>
           )}
 
