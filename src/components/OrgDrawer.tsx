@@ -3,6 +3,8 @@ import { GovOrg, OrgQuestion, User, ROLE_PERMISSIONS, JurisdictionLevel, OrgDepa
 import { useAuth } from '@/context/AuthContext';
 import { QuestionModal } from './QuestionModal';
 import { QuestionCsvModal } from './QuestionCsvModal';
+import { CompareModal } from './CompareModal';
+import { useNavigation } from '@/lib/NavigationContext';
 import { CreateChildOrgModal } from './CreateChildOrgModal';
 import { CreateOrgUserModal } from './auth/CreateOrgUserModal';
 import { LocationPicker } from './LocationPicker';
@@ -134,6 +136,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   onCreateOrg,
 }) => {
   const { user: authUser, canManageOrg } = useAuth();
+  const { pinChildrenBeside } = useNavigation();
   const [activeTab, setActiveTab] = useState<'ebz' | 'info' | 'admin' | 'questions'>('info');
 
   // Наименования
@@ -169,7 +172,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [isCsvQuestionModalOpen, setIsCsvQuestionModalOpen] = useState(false);
   const [isCreateChildModalOpen, setIsCreateChildModalOpen] = useState(false);
   const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState(false);
-  const [compareOrgId, setCompareOrgId] = useState('');
   const [isCompareOpen, setIsCompareOpen] = useState(false);
 
   // Подразделения ведомства (Управления / Департаменты)
@@ -415,18 +417,16 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const effectiveUserId = authUser?.userId || currentUser.id;
   const isLockedByOther = org.lockedBy && org.lockedBy.userId !== effectiveUserId;
 
-  const permissions = {
-    canEditContent: access.allowed && !isLockedByOther,
-    canChangeStructure: access.allowed && !isLockedByOther,
-  };
-
   const isSuperAdminOwner = Boolean(
     authUser
       ? authUser.username === 'superadmin' || authUser.role === 'GLOBAL_ADMIN'
       : false
   );
+  const permissions = {
+    canEditContent: access.allowed && !isLockedByOther,
+    canChangeStructure: isSuperAdminOwner && access.allowed && !isLockedByOther,
+  };
   const parentOrg = allOrgs.find((o) => o.id === org.parentId);
-  const comparedOrg = allOrgs.find((o) => o.id === compareOrgId);
   const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
   const handleSaveContent = async () => {
@@ -549,7 +549,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </button>
               )}
               {isSuperAdminOwner && <button type="button" onClick={() => setIsCreateUserModalOpen(true)} className="rounded-xl border border-blue-200 bg-white px-2.5 py-1 text-xs font-bold text-blue-700 hover:bg-blue-50">Создать пользователя</button>}
-              <button type="button" onClick={() => setIsCompareOpen((open) => !open)} className="rounded-xl border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-100">Сравнить</button>
+              <button type="button" onClick={() => setIsCompareOpen(true)} className="rounded-xl border border-slate-200 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-100">Сравнить</button>
 
               {isLockedByOther && (
                 <span className="flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-100 dark:bg-amber-950 px-2 py-0.5 rounded-lg">
@@ -725,7 +725,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
 
         {/* Содержимое панели со скроллом */}
         <div className="flex-1 overflow-y-auto p-5 space-y-4">
-          {isCompareOpen && <section className="rounded-2xl border border-blue-200 bg-blue-50/60 p-4 dark:bg-blue-950/20"><div className="mb-3 flex items-center justify-between"><h3 className="text-sm font-black">Сравнение ведомств</h3><select value={compareOrgId} onChange={(event) => setCompareOrgId(event.target.value)} className="max-w-[60%] rounded-xl border bg-white p-2 text-xs dark:bg-slate-900"><option value="">Выберите ведомство</option>{allOrgs.filter((candidate) => candidate.id !== org.id).map((candidate) => <option key={candidate.id} value={candidate.id}>{candidate.name}</option>)}</select></div>{comparedOrg && <div className="grid gap-3 md:grid-cols-2">{[org, comparedOrg].map((candidate) => <div key={candidate.id} className="rounded-xl border bg-white p-3 text-xs dark:bg-slate-900"><h4 className="font-black">{candidate.name}</h4><b className="mt-2 block">Сфера компетенций</b><p className="whitespace-pre-wrap text-slate-600">{candidate.scope || candidate.theme || 'Не указана'}</p><b className="mt-2 block">Исключенные вопросы</b><p className="whitespace-pre-wrap text-slate-600">{candidate.competenciesExcluded || 'Не указаны'}</p><b className="mt-2 block">Контакты</b><p>{candidate.contacts?.phoneChancellery || '—'} · {candidate.contacts?.emailOfficial || '—'} · {candidate.contacts?.websiteUrl || '—'}</p></div>)}</div>}</section>}
+          <CompareModal
+            isOpen={isCompareOpen}
+            onClose={() => setIsCompareOpen(false)}
+            orgA={org}
+            allOrgs={allOrgs}
+            onPinBesideOnGraph={(orgA, orgB) => {
+              pinChildrenBeside(orgA.parentId || orgA.id, [orgA.id, orgB.id]);
+              setIsCompareOpen(false);
+              onClose();
+            }}
+          />
           {statusMsg && (
             <div
               className={`p-3 rounded-2xl text-xs font-bold flex items-center gap-2 ${

@@ -12,7 +12,6 @@ import {
   MarkerType,
   useReactFlow,
   ReactFlowProvider,
-  Panel,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { GovOrg, OrgDepartment } from '../../types';
@@ -22,7 +21,7 @@ import { DepartmentNode } from './DepartmentNode';
 import { DepartmentClusterNode } from './DepartmentClusterNode';
 import { getDagreLayout, NODE_WIDTH, NODE_HEIGHT } from './layout';
 import { useNavigation } from '../../lib/NavigationContext';
-import { RotateCcw, ArrowDownUp, ArrowLeftRight, Trash2 } from 'lucide-react';
+import { ArrowDownUp, ArrowLeftRight } from 'lucide-react';
 import { dropdownCoordinator } from './dropdownCoordinator';
 
 interface InteractiveOrgGraphProps {
@@ -48,10 +47,9 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
     visibleNodeIds,
     hiddenChildrenMap,
     toggleExpandParent,
-    selectChildInCenter,
+    addFeaturedChild,
     showAllChildren,
     openInspector,
-    collapseAll,
   } = useNavigation();
 
   // Автоматически раскрываем подразделения, когда фокус падает на ведомство с подразделениями
@@ -165,7 +163,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
           hiddenChildren,
           layoutDirection,
           onSelectChild: (child: GovOrg) => {
-            selectChildInCenter(parentId, child.id);
+            addFeaturedChild(parentId, child.id);
           },
           onShowAll: () => {
             showAllChildren(parentId);
@@ -245,7 +243,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
     layoutDirection,
     toggleExpandParent,
     openInspector,
-    selectChildInCenter,
+    addFeaturedChild,
     showAllChildren,
   ]);
 
@@ -294,7 +292,6 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
         panOnDrag={true}
         elementsSelectable={true}
       >
-        <Panel position="top-right"><button type="button" onClick={() => { collapseAll(); setExpandedDeptOrgIds(new Set()); }} className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 shadow-md hover:bg-rose-50 hover:text-rose-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"><Trash2 className="h-3.5 w-3.5"/>Очистить доску</button></Panel>
         <Background color="#cbd5e1" gap={24} size={1.5} />
         <Controls className="!bg-white dark:!bg-slate-900 !border-slate-200 dark:!border-slate-800 !rounded-2xl !shadow-md" />
       </ReactFlow>

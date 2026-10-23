@@ -20,6 +20,8 @@ interface NavigationContextType {
   navigateToOrg: (orgId: string, openInspector?: boolean) => void;
   toggleExpandParent: (parentId: string) => void;
   selectChildInCenter: (parentId: string, childId: string) => void;
+  addFeaturedChild: (parentId: string, childId: string) => void;
+  pinChildrenBeside: (parentId: string, childIds: string[]) => void;
   showAllChildren: (parentId: string) => void;
   openInspector: (orgId: string, departmentId?: string | number | null) => void;
   closeInspector: () => void;
@@ -37,7 +39,7 @@ export const NavigationProvider: React.FC<{
   const [navState, setNavState] = useState<NavigationState>(() => ({
     focusedOrgId: 'ap',
     expandedIds: new Set<string>(),
-    featuredChildMap: new Map<string, string>(),
+    featuredChildMap: new Map<string, string[]>(),
     inspector: {
       isOpen: false,
       orgId: null,
@@ -126,21 +128,11 @@ export const NavigationProvider: React.FC<{
       const nextExpanded = new Set(prev.expandedIds);
 
       // Если ранее у этого родителя был выбран ДРУГОЙ ребенок — отсекаем его и всех его потомков!
-      const oldFeaturedId = prev.featuredChildMap.get(parentId);
-      if (oldFeaturedId && oldFeaturedId !== childId) {
-        nextExpanded.delete(oldFeaturedId);
-        nextFeatured.delete(oldFeaturedId);
-        const oldDescendants = getDescendantIds(oldFeaturedId, allOrgs);
-        oldDescendants.forEach((dId) => {
-          nextExpanded.delete(dId);
-          nextFeatured.delete(dId);
-        });
-      }
-
       // Родитель гарантированно открыт
       nextExpanded.add(parentId);
       // Устанавливаем нового ребенка в центр
-      nextFeatured.set(parentId, childId);
+      const pinned = nextFeatured.get(parentId) || [];
+      nextFeatured.set(parentId, pinned.indexOf(childId) === -1 ? [...pinned, childId] : pinned);
 
       updateUrl(childId);
 
@@ -153,6 +145,34 @@ export const NavigationProvider: React.FC<{
       };
     });
   }, [allOrgs, updateUrl]);
+
+  const pinChildrenBeside = useCallback((parentId: string, childIds: string[]) => {
+    setNavState((prev) => {
+      const orgMap = new Map(allOrgs.map((org) => [org.id, org]));
+      const nextExpanded = new Set(prev.expandedIds);
+      const nextFeatured = new Map(prev.featuredChildMap);
+      let focusId = childIds[0] || parentId;
+      childIds.forEach((childId) => {
+        const child = orgMap.get(childId);
+        if (!child) return;
+        const actualParentId = child.parentId || parentId;
+        nextExpanded.add(actualParentId);
+        const pinned = nextFeatured.get(actualParentId) || [];
+        nextFeatured.set(actualParentId, pinned.indexOf(childId) === -1 ? [...pinned, childId] : pinned);
+        // Expand the full ancestry so organizations from different branches can be shown together.
+        let ancestor = orgMap.get(actualParentId);
+        while (ancestor?.parentId) {
+          nextExpanded.add(ancestor.parentId);
+          ancestor = orgMap.get(ancestor.parentId);
+        }
+      });
+      return { ...prev, expandedIds: nextExpanded, featuredChildMap: nextFeatured, focusedOrgId: focusId, cameraTargetId: focusId };
+    });
+  }, [allOrgs]);
+
+  const addFeaturedChild = useCallback((parentId: string, childId: string) => {
+    pinChildrenBeside(parentId, [childId]);
+  }, [pinChildrenBeside]);
 
   // 3b. Раскрыть ВСЕ дочерние узлы родителя на графе
   const showAllChildren = useCallback((parentId: string) => {
@@ -252,6 +272,8 @@ export const NavigationProvider: React.FC<{
       navigateToOrg,
       toggleExpandParent,
       selectChildInCenter,
+      addFeaturedChild,
+      pinChildrenBeside,
       showAllChildren,
       openInspector,
       closeInspector,
@@ -267,6 +289,8 @@ export const NavigationProvider: React.FC<{
       navigateToOrg,
       toggleExpandParent,
       selectChildInCenter,
+      addFeaturedChild,
+      pinChildrenBeside,
       showAllChildren,
       openInspector,
       closeInspector,

@@ -243,35 +243,34 @@ export function canUserManageOrg(
       };
     }
 
-    // Если это сама организация пользователя
-    if (targetOrgId === user.orgId) {
-      return { allowed: true };
-    }
-
-    // Проверяем, является ли targetOrgId потомком user.orgId
     const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
-    const targetOrg = orgMap.get(targetOrgId);
-    const userOrg = orgMap.get(user.orgId);
-
-    // 1. Мгновенная проверка по Materialized Path (каскад по иерархии)
-    if (targetOrg?.path && userOrg?.path) {
-      if (targetOrg.path.startsWith(userOrg.path)) {
-        return { allowed: true };
-      }
+    const idMatches = (org: GovOrg, id: string) => {
+      const normalized = id.toLowerCase();
+      return org.id.toLowerCase() === normalized || String(org.org_id || '') === normalized ||
+        ((normalized === 'apr' || normalized === 'gov' || normalized === '30400') &&
+          (org.id.toLowerCase() === 'apr' || org.id.toLowerCase() === 'gov' || String(org.org_id || '') === '30400'));
+    };
+    const userOrg = allOrgs.find((org) => idMatches(org, user.orgId!));
+    const targetOrg = allOrgs.find((org) => idMatches(org, targetOrgId));
+    if (targetOrg && userOrg && targetOrg.id === userOrg.id) return { allowed: true };
+    if (!userOrg || !targetOrg) {
+      return { allowed: false, reason: `Организация находится вне юрисдикции вашего ведомства (${user.orgName || user.orgId})` };
+    }
+    if (targetOrg.parentId === userOrg.parentId) {
+      return { allowed: false, reason: 'Организация находится на одном уровне с вашим ведомством. Редактирование смежных ведомств запрещено.' };
     }
 
-    let currId: string | null = targetOrgId;
+    if (targetOrg.path && userOrg.path) {
+      const parentPath = userOrg.path.endsWith('/') ? userOrg.path : `${userOrg.path}/`;
+      if (targetOrg.path.startsWith(parentPath)) return { allowed: true };
+    }
+
+    let currId: string | null = targetOrg.parentId;
     const visited = new Set<string>();
-
     while (currId && !visited.has(currId)) {
+      if (currId === userOrg.id) return { allowed: true };
       visited.add(currId);
-      const org = orgMap.get(currId);
-      if (!org) break;
-
-      if (org.parentId === user.orgId) {
-        return { allowed: true };
-      }
-      currId = org.parentId;
+      currId = orgMap.get(currId)?.parentId || null;
     }
 
     return {

@@ -10,8 +10,8 @@ export interface NavigationState {
   expandedIds: Set<string>;
   // Родители, для которых раскрыты ВСЕ дочерние узлы на графе
   showAllChildrenIds?: Set<string>;
-  // Ключевой выбранный потомок для каждого родителя (parentId -> featuredChildId)
-  featuredChildMap: Map<string, string>;
+  // Закрепленные дочерние узлы для каждого родителя
+  featuredChildMap: Map<string, string[]>;
   // Боковая панель инспектора
   inspector: {
     isOpen: boolean;
@@ -76,9 +76,9 @@ export function getDescendantIds(nodeId: string, allOrgs: GovOrg[]): Set<string>
 export function computeVisibleGraph(
   allOrgs: GovOrg[],
   expandedIds: Set<string>,
-  featuredChildMap: Map<string, string>,
+  featuredChildMap: Map<string, string[]>,
   showAllChildrenIds?: Set<string>,
-  maxDefaultChildren = Number.POSITIVE_INFINITY
+  maxDefaultChildren = 6
 ): {
   visibleNodeIds: Set<string>;
   hiddenChildrenMap: Map<string, GovOrg[]>;
@@ -110,14 +110,18 @@ export function computeVisibleGraph(
       const allChildren = childrenMap.get(parentId) || [];
       if (allChildren.length === 0) continue;
 
-      const featuredChildId = featuredChildMap.get(parentId);
+      const featuredChildIds = (featuredChildMap.get(parentId) || []).filter((id) =>
+        allChildren.some((child) => child.id === id)
+      );
 
-      if (featuredChildId && orgMap.has(featuredChildId)) {
-        // Выбран конкретный ребенок в центр — показываем ТОЛЬКО его!
-        visibleNodeIds.add(featuredChildId);
-        queue.push(featuredChildId);
+      if (featuredChildIds.length > 0) {
+        featuredChildIds.forEach((id) => {
+          visibleNodeIds.add(id);
+          queue.push(id);
+        });
 
-        const hidden = allChildren.filter((c) => c.id !== featuredChildId);
+        const featured = new Set(featuredChildIds);
+        const hidden = allChildren.filter((child) => !featured.has(child.id));
         hiddenChildrenMap.set(parentId, hidden);
       } else if (showAllChildrenIds && showAllChildrenIds.has(parentId)) {
         // Раскрываем ВСЕ дочерние организации на графе
@@ -167,13 +171,13 @@ export function navigateToOrgAction(
   // Строим чистый путь: разворачиваем исключительно родителей искомого ведомства
   const ancestry = getAncestryPath(targetOrgId, orgMap);
   const nextExpanded = new Set<string>();
-  const nextFeatured = new Map<string, string>();
+  const nextFeatured = new Map<string, string[]>();
 
   for (let i = 0; i < ancestry.length - 1; i++) {
     const parentId = ancestry[i];
     const childId = ancestry[i + 1];
     nextExpanded.add(parentId);
-    nextFeatured.set(parentId, childId);
+    nextFeatured.set(parentId, [childId]);
   }
 
   return {
@@ -194,7 +198,7 @@ export function collapseToRootAction(): NavigationState {
   return {
     focusedOrgId: 'ap',
     expandedIds: new Set<string>(),
-    featuredChildMap: new Map<string, string>(),
+    featuredChildMap: new Map<string, string[]>(),
     inspector: {
       isOpen: false,
       orgId: null,

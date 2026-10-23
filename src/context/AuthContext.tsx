@@ -97,22 +97,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             reason: 'Создание корневых ведомств доступно только администраторам республиканского уровня',
           };
         }
-        if (targetOrgId === user.orgId) {
-          return { allowed: true };
+        const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
+        const idMatches = (org: GovOrg, id: string) => {
+          const normalized = id.toLowerCase();
+          return org.id.toLowerCase() === normalized || String(org.org_id || '') === normalized ||
+            ((normalized === 'apr' || normalized === 'gov' || normalized === '30400') &&
+              (org.id.toLowerCase() === 'apr' || org.id.toLowerCase() === 'gov' || String(org.org_id || '') === '30400'));
+        };
+        const userOrg = allOrgs.find((org) => idMatches(org, user.orgId!));
+        const targetOrg = allOrgs.find((org) => idMatches(org, targetOrgId));
+        if (targetOrg && userOrg && targetOrg.id === userOrg.id) return { allowed: true };
+        if (!targetOrg || !userOrg) return { allowed: false, reason: `Организация вне вашей юрисдикции (${user.orgName || user.orgId})` };
+        if (targetOrg.parentId === userOrg.parentId) {
+          return { allowed: false, reason: 'Организация находится на одном уровне с вашим ведомством. Редактирование смежных ведомств запрещено.' };
+        }
+        if (targetOrg.path && userOrg.path) {
+          const parentPath = userOrg.path.endsWith('/') ? userOrg.path : `${userOrg.path}/`;
+          if (targetOrg.path.startsWith(parentPath)) return { allowed: true };
         }
 
-        const orgMap = new Map<string, GovOrg>(allOrgs.map((o) => [o.id, o]));
-        let currId: string | null = targetOrgId;
+        let currId: string | null = targetOrg.parentId;
         const visited = new Set<string>();
 
         while (currId && !visited.has(currId)) {
+          if (currId === userOrg.id) return { allowed: true };
           visited.add(currId);
-          const org = orgMap.get(currId);
-          if (!org) break;
-          if (org.parentId === user.orgId) {
-            return { allowed: true };
-          }
-          currId = org.parentId;
+          currId = orgMap.get(currId)?.parentId || null;
         }
 
         return {
