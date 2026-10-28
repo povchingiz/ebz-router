@@ -8,14 +8,22 @@
     "model": "claude-3-7-sonnet",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["tests/e2e/api/audit_logging.test.ts"],
+    "files": [
+      "tests/e2e/api/audit_logging.test.ts"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T15:50:00+05:00",
     "started_at": "2026-10-28T15:50:20+05:00",
     "done_at": "2026-10-28T15:57:49+05:00",
-    "comments": ["Verified pass on org 10226"],
-    "qa": {"verdict": "pass", "by": "antigravity_worker", "notes": "Commit verified in DB"}
+    "comments": [
+      "Verified pass on org 10226"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "antigravity_worker",
+      "notes": "Commit verified in DB"
+    }
   },
   {
     "id": "t2_backend_fix",
@@ -26,14 +34,23 @@
     "model": "deepseek-ai/DeepSeek-V4-Pro",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["src/lib/db.ts", "src/app/api/mutate/route.ts"],
+    "files": [
+      "src/lib/db.ts",
+      "src/app/api/mutate/route.ts"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T16:09:00+05:00",
     "started_at": "2026-10-28T16:09:00+05:00",
     "done_at": "2026-10-28T16:45:00+05:00",
-    "comments": ["Audit payload and cache sync completed"],
-    "qa": {"verdict": "pass", "by": "antigravity_worker", "notes": "Verified"}
+    "comments": [
+      "Audit payload and cache sync completed"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "antigravity_worker",
+      "notes": "Verified"
+    }
   },
   {
     "id": "t3_ui_improvements",
@@ -44,14 +61,24 @@
     "model": "gpt-4o",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["src/app/page.tsx", "src/components/ListView.tsx", "src/components/OrgDrawer.tsx"],
+    "files": [
+      "src/app/page.tsx",
+      "src/components/ListView.tsx",
+      "src/components/OrgDrawer.tsx"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T16:09:00+05:00",
     "started_at": "2026-10-28T16:09:35+05:00",
     "done_at": "2026-10-28T16:11:15+05:00",
-    "comments": ["Build passes; UI changes verified"],
-    "qa": {"verdict": "pass", "by": "codex_worker", "notes": "Production build passed"}
+    "comments": [
+      "Build passes; UI changes verified"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "codex_worker",
+      "notes": "Production build passed"
+    }
   },
   {
     "id": "t4_subordination_unify",
@@ -62,14 +89,22 @@
     "model": "gpt-4o",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["src/components/OrgDrawer.tsx"],
+    "files": [
+      "src/components/OrgDrawer.tsx"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T16:46:00+05:00",
     "started_at": "2026-10-28T16:46:00+05:00",
     "done_at": "2026-10-28T16:48:03+05:00",
-    "comments": ["Unified to 'Добавить подчиненную структуру' and reparenting picker"],
-    "qa": {"verdict": "pass", "by": "codex_worker", "notes": "Build passed"}
+    "comments": [
+      "Unified to 'Добавить подчиненную структуру' and reparenting picker"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "codex_worker",
+      "notes": "Build passed"
+    }
   },
   {
     "id": "t5_security_and_stress_suite",
@@ -80,14 +115,23 @@
     "model": "claude-3-7-sonnet",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["scripts/setup_least_privilege_user.sql", "tests/load/k6_mutate_stress.js"],
+    "files": [
+      "scripts/setup_least_privilege_user.sql",
+      "tests/load/k6_mutate_stress.js"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T16:51:30+05:00",
     "started_at": "2026-10-28T16:51:36+05:00",
     "done_at": "2026-10-28T16:52:40+05:00",
-    "comments": ["SQL role script and k6 script created; Vitest 5/5 concurrency tests passed"],
-    "qa": {"verdict": "pass", "by": "claude_worker", "notes": "5/5 concurrency tests passed"}
+    "comments": [
+      "SQL role script and k6 script created; Vitest 5/5 concurrency tests passed"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "claude_worker",
+      "notes": "5/5 concurrency tests passed"
+    }
   },
   {
     "id": "t6_deploy_gitlab_prep",
@@ -98,14 +142,25 @@
     "model": "claude-3-7-sonnet",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["Dockerfile", "docker-compose.prod.yml", ".gitlab-ci.test.yml", "public/.gitkeep"],
+    "files": [
+      "Dockerfile",
+      "docker-compose.prod.yml",
+      ".gitlab-ci.test.yml",
+      "public/.gitkeep"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T16:59:00+05:00",
     "started_at": "2026-10-28T17:10:23+05:00",
     "done_at": "2026-10-28T17:11:44+05:00",
-    "comments": [".gitlab-ci.test.yml, public/.gitkeep, .gitignore updated; build exit 0"],
-    "qa": {"verdict": "pass", "by": "claude_worker", "notes": "Build passed"}
+    "comments": [
+      ".gitlab-ci.test.yml, public/.gitkeep, .gitignore updated; build exit 0"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "claude_worker",
+      "notes": "Build passed"
+    }
   },
   {
     "id": "t7_orgdrawer_layout_reorder",
@@ -116,14 +171,22 @@
     "model": "gpt-4o",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["src/components/OrgDrawer.tsx"],
+    "files": [
+      "src/components/OrgDrawer.tsx"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T17:07:50+05:00",
     "started_at": "2026-10-28T17:07:55+05:00",
     "done_at": "2026-10-28T17:09:54+05:00",
-    "comments": ["Parent moved up; questions bounded to 420px; depts/children to 360px; build passed"],
-    "qa": {"verdict": "pass", "by": "codex_worker", "notes": "Build passed"}
+    "comments": [
+      "Parent moved up; questions bounded to 420px; depts/children to 360px; build passed"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "codex_worker",
+      "notes": "Build passed"
+    }
   },
   {
     "id": "t8_audit_diff_human_readable",
@@ -134,14 +197,22 @@
     "model": "gpt-4o",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["src/components/OrgDrawer.tsx"],
+    "files": [
+      "src/components/OrgDrawer.tsx"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T17:18:30+05:00",
     "started_at": "2026-10-28T17:18:34+05:00",
     "done_at": "2026-10-28T17:19:43+05:00",
-    "comments": ["Human-readable labels and formatting applied; build 0"],
-    "qa": {"verdict": "pass", "by": "codex_worker", "notes": "Build passed"}
+    "comments": [
+      "Human-readable labels and formatting applied; build 0"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "codex_worker",
+      "notes": "Build passed"
+    }
   },
   {
     "id": "t9_db_users_migration",
@@ -152,14 +223,23 @@
     "model": "claude-3-7-sonnet",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["scripts/migrations/02_create_ebz_users.sql", "src/lib/auth.ts"],
+    "files": [
+      "scripts/migrations/02_create_ebz_users.sql",
+      "src/lib/auth.ts"
+    ],
     "depends_on": [],
     "status": "done",
     "created_at": "2026-10-28T17:50:00+05:00",
     "started_at": "2026-10-28T17:50:00+05:00",
     "done_at": "2026-10-28T17:55:41+05:00",
-    "comments": ["Users moved to PostgreSQL ebz_book.users with last_login_at tracking"],
-    "qa": {"verdict": "pass", "by": "claude_worker", "notes": "Live login and PG write verified"}
+    "comments": [
+      "Users moved to PostgreSQL ebz_book.users with last_login_at tracking"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "claude_worker",
+      "notes": "Live login and PG write verified"
+    }
   },
   {
     "id": "t11_save_dbeaver_init_script",
@@ -170,13 +250,52 @@
     "model": "deepseek-ai/DeepSeek-V4-Pro",
     "fallback_engine": "coder_worker",
     "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
-    "files": ["scripts/init_production_db_dbeaver.sql"],
+    "files": [
+      "scripts/init_production_db_dbeaver.sql"
+    ],
     "depends_on": [],
-    "status": "running",
+    "status": "done",
     "created_at": "2026-10-28T18:56:00+05:00",
     "started_at": "2026-10-28T18:56:00+05:00",
-    "done_at": null,
-    "comments": ["Assigned to coder_worker (terminal: 7df40fdd)"],
-    "qa": {"verdict": null, "by": "antigravity_worker", "notes": ""}
+    "done_at": "2026-10-28T14:02:26.551Z",
+    "comments": [
+      "Assigned to coder_worker (terminal: 7df40fdd)"
+    ],
+    "qa": {
+      "verdict": null,
+      "by": "antigravity_worker",
+      "notes": ""
+    }
+  },
+  {
+    "id": "t12_schema_ebz_book_consolidation",
+    "title": "Consolidate extra tables into ebz_book schema (no knowledge schema)",
+    "detail": "Adapt init_production_db_dbeaver.sql and application queries to use ebz_book for org_details_extra and org_readiness_status",
+    "role": "architect",
+    "engine": "claude_worker",
+    "model": "claude-3-7-sonnet",
+    "fallback_engine": "coder_worker",
+    "fallback_model": "deepseek-ai/DeepSeek-V4-Pro",
+    "files": [
+      "scripts/init_production_db_dbeaver.sql",
+      "src/lib/db.ts",
+      "src/app/api/bulk/route.ts",
+      "src/app/api/analytics/conflicts/route.ts"
+    ],
+    "depends_on": [
+      "t11_save_dbeaver_init_script"
+    ],
+    "status": "done",
+    "created_at": "2026-10-28T14:02:26.551Z",
+    "started_at": "2026-10-28T14:02:26.551Z",
+    "done_at": "2026-10-28T14:05:24.418Z",
+    "comments": [
+      "Assigned to claude_worker (terminal: 8917aeaa)"
+    ],
+    "qa": {
+      "verdict": "pass",
+      "by": "claude_worker",
+      "notes": "Build clean, production default ebz_book verified"
+    }
   }
 ]

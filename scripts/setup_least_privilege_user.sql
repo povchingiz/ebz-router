@@ -13,14 +13,14 @@ $$;
 
 GRANT CONNECT ON DATABASE eotinish_ai_demo TO eotinish_app_user;
 
-GRANT USAGE ON SCHEMA platform, knowledge TO eotinish_app_user;
+GRANT USAGE ON SCHEMA platform, ebz_book TO eotinish_app_user;
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA platform, knowledge TO eotinish_app_user;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA platform, knowledge TO eotinish_app_user;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA platform, ebz_book TO eotinish_app_user;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA platform, ebz_book TO eotinish_app_user;
 
-ALTER DEFAULT PRIVILEGES IN SCHEMA platform, knowledge
+ALTER DEFAULT PRIVILEGES IN SCHEMA platform, ebz_book
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO eotinish_app_user;
-ALTER DEFAULT PRIVILEGES IN SCHEMA platform, knowledge
+ALTER DEFAULT PRIVILEGES IN SCHEMA platform, ebz_book
     GRANT USAGE, SELECT ON SEQUENCES TO eotinish_app_user;
 
 -- Учётные записи ЕБЗ-роутера (scripts/migrations/02_create_ebz_users.sql)

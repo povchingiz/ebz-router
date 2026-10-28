@@ -83,8 +83,8 @@ describe('Lazy-Load, Search Correctness and Performance on 27k Orgs', () => {
           ex.physical_address
         FROM platform.gov_organizations_master m
         LEFT JOIN platform.gov_organizations_master p ON m.parent_id = p.org_id
-        LEFT JOIN knowledge.org_readiness_status ks ON m.org_id = ks.org_id
-        LEFT JOIN knowledge.org_details_extra ex ON m.org_id = ex.org_id
+        LEFT JOIN ${process.env.EBZ_EXTRA_SCHEMA || "ebz_book"}.org_readiness_status ks ON m.org_id = ks.org_id
+        LEFT JOIN ${process.env.EBZ_EXTRA_SCHEMA || "ebz_book"}.org_details_extra ex ON m.org_id = ex.org_id
         WHERE m.deleted = FALSE
         AND (m.org_name_ru ILIKE '%транспорт%' OR m.short_name_ru ILIKE '%транспорт%' OR m.slug ILIKE '%транспорт%' OR array_to_string(m.aliases, ' ') ILIKE '%транспорт%')
         LIMIT 50

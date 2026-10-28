@@ -12,6 +12,13 @@ const pool = new Pool({
   connectionTimeoutMillis: 5000,
 });
 
+// Схема таблиц org_details_extra / org_readiness_status (на проде — ebz_book).
+// Имя интерполируется в SQL, поэтому допускаем только простой идентификатор.
+const rawExtraSchema = process.env.EBZ_EXTRA_SCHEMA || 'ebz_book';
+export const EBZ_EXTRA_SCHEMA = /^[a-z_][a-z0-9_]*$/i.test(rawExtraSchema) ? rawExtraSchema : 'ebz_book';
+export const T_ORG_EXTRA = `${EBZ_EXTRA_SCHEMA}.org_details_extra`;
+export const T_ORG_READINESS = `${EBZ_EXTRA_SCHEMA}.org_readiness_status`;
+
 export const db = pool;
 export { pool };
 
@@ -102,8 +109,8 @@ export async function getOrgsFromDb(options?: {
         ex.physical_address
       FROM platform.gov_organizations_master m
       LEFT JOIN platform.gov_organizations_master p ON m.parent_id = p.org_id
-      LEFT JOIN knowledge.org_readiness_status ks ON m.org_id = ks.org_id
-      LEFT JOIN knowledge.org_details_extra ex ON m.org_id = ex.org_id
+      LEFT JOIN ${T_ORG_READINESS} ks ON m.org_id = ks.org_id
+      LEFT JOIN ${T_ORG_EXTRA} ex ON m.org_id = ex.org_id
       WHERE m.deleted = FALSE
     `;
     const params: any[] = [];
@@ -213,8 +220,8 @@ export async function getOrgByIdFromDb(id: string | number): Promise<GovOrg | nu
       ex.physical_address
       FROM platform.gov_organizations_master m
       LEFT JOIN platform.gov_organizations_master p ON m.parent_id = p.org_id
-      LEFT JOIN knowledge.org_readiness_status ks ON m.org_id = ks.org_id
-      LEFT JOIN knowledge.org_details_extra ex ON m.org_id = ex.org_id
+      LEFT JOIN ${T_ORG_READINESS} ks ON m.org_id = ks.org_id
+      LEFT JOIN ${T_ORG_EXTRA} ex ON m.org_id = ex.org_id
     `;
     const query = numericId
       ? `SELECT ${selectFields} WHERE m.org_id = $1`
@@ -341,10 +348,10 @@ export async function updateOrgContentInDb(
       }
     }
 
-    // 3.5 Обновление статуса в knowledge.org_readiness_status
+    // 3.5 Обновление статуса в org_readiness_status
     await client.query(
       `
-      INSERT INTO knowledge.org_readiness_status (org_id, status, has_human_touch, completeness_score, last_touched_by, last_touched_at, updated_at)
+      INSERT INTO ${T_ORG_READINESS} (org_id, status, has_human_touch, completeness_score, last_touched_by, last_touched_at, updated_at)
       VALUES ($1, 'in_progress', TRUE, 75, $2, NOW(), NOW())
       ON CONFLICT (org_id) DO UPDATE
       SET status = 'in_progress', has_human_touch = TRUE, completeness_score = 75, last_touched_by = EXCLUDED.last_touched_by, last_touched_at = NOW(), updated_at = NOW()
@@ -352,22 +359,22 @@ export async function updateOrgContentInDb(
       [numericId, user.name || user.id]
     );
 
-    // 3.6 Обновление knowledge.org_details_extra если переданы
+    // 3.6 Обновление org_details_extra если переданы
     if ((updates as any).competenciesExcluded !== undefined || (updates as any).contacts) {
       const u = updates as any;
       await client.query(
         `
-        INSERT INTO knowledge.org_details_extra (org_id, competencies_excluded, forward_to_guidance, phone_hotline, phone_chancellery, email_official, website_url, physical_address, updated_at)
+        INSERT INTO ${T_ORG_EXTRA} (org_id, competencies_excluded, forward_to_guidance, phone_hotline, phone_chancellery, email_official, website_url, physical_address, updated_at)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
         ON CONFLICT (org_id) DO UPDATE
         SET 
-          competencies_excluded = COALESCE(EXCLUDED.competencies_excluded, knowledge.org_details_extra.competencies_excluded),
-          forward_to_guidance = COALESCE(EXCLUDED.forward_to_guidance, knowledge.org_details_extra.forward_to_guidance),
-          phone_hotline = COALESCE(EXCLUDED.phone_hotline, knowledge.org_details_extra.phone_hotline),
-          phone_chancellery = COALESCE(EXCLUDED.phone_chancellery, knowledge.org_details_extra.phone_chancellery),
-          email_official = COALESCE(EXCLUDED.email_official, knowledge.org_details_extra.email_official),
-          website_url = COALESCE(EXCLUDED.website_url, knowledge.org_details_extra.website_url),
-          physical_address = COALESCE(EXCLUDED.physical_address, knowledge.org_details_extra.physical_address),
+          competencies_excluded = COALESCE(EXCLUDED.competencies_excluded, ${T_ORG_EXTRA}.competencies_excluded),
+          forward_to_guidance = COALESCE(EXCLUDED.forward_to_guidance, ${T_ORG_EXTRA}.forward_to_guidance),
+          phone_hotline = COALESCE(EXCLUDED.phone_hotline, ${T_ORG_EXTRA}.phone_hotline),
+          phone_chancellery = COALESCE(EXCLUDED.phone_chancellery, ${T_ORG_EXTRA}.phone_chancellery),
+          email_official = COALESCE(EXCLUDED.email_official, ${T_ORG_EXTRA}.email_official),
+          website_url = COALESCE(EXCLUDED.website_url, ${T_ORG_EXTRA}.website_url),
+          physical_address = COALESCE(EXCLUDED.physical_address, ${T_ORG_EXTRA}.physical_address),
           updated_at = NOW()
         `,
         [

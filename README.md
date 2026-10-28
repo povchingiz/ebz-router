@@ -82,13 +82,13 @@ docker compose -f docker-compose.prod.yml up -d --build
 psql -d eotinish_ai_demo -f scripts/setup_least_privilege_user.sql
 ```
 
-Скрипт создаёт роль `eotinish_app_user` только с `SELECT/INSERT/UPDATE/DELETE` на схемы `platform` и `knowledge`, без доступа к `public`. Перед применением **замените пароль роли** в скрипте и переключите `DATABASE_URL` приложения на эту роль.
+Скрипт создаёт роль `eotinish_app_user` только с `SELECT/INSERT/UPDATE/DELETE` на схемы `platform` и `ebz_book`, без доступа к `public`. Перед применением **замените пароль роли** в скрипте и переключите `DATABASE_URL` приложения на эту роль.
 
 ## Архитектура production
 
 **Хранилище — PostgreSQL:**
 - `platform.gov_organizations_master` — мастер-таблица, ~27 тыс. государственных организаций.
-- `knowledge.org_details_extra` — расширенные карточки: компетенции, регламенты, FAQ.
+- `ebz_book.org_details_extra` — расширенные карточки: компетенции, регламенты, FAQ.
 - `platform.org_audit_log` — журнал аудита всех мутаций.
 
 **Единое подчинение и интерактивное переподчинение:** у каждой организации один родитель; `superadmin` меняет его через интерфейс (`/api/mutate`), циклические ссылки отклоняются.

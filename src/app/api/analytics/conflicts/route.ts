@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { pool } from '@/lib/db';
+import { pool, T_ORG_EXTRA } from '@/lib/db';
 import { authService } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
@@ -91,7 +91,7 @@ export async function GET(req: NextRequest) {
         ex.competencies_excluded,
         ex.forward_to_guidance
       FROM platform.gov_organizations_master m
-      LEFT JOIN knowledge.org_details_extra ex ON m.org_id = ex.org_id
+      LEFT JOIN ${T_ORG_EXTRA} ex ON m.org_id = ex.org_id
       WHERE m.org_id = ANY($1)
       `,
       [orgIds]

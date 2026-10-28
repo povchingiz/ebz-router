@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { pool } from '@/lib/db';
+import { pool, T_ORG_EXTRA, T_ORG_READINESS } from '@/lib/db';
 import { authService, canUserManageOrg } from '@/lib/auth';
 import { orgStore } from '@/lib/store';
 import { GovOrg } from '@/types';
@@ -77,7 +77,7 @@ export async function GET(req: NextRequest) {
         ex.email_official,
         ex.website_url
       FROM platform.gov_organizations_master m
-      LEFT JOIN knowledge.org_details_extra ex ON m.org_id = ex.org_id
+      LEFT JOIN ${T_ORG_EXTRA} ex ON m.org_id = ex.org_id
       WHERE m.deleted = FALSE
     `;
     const params: any[] = [];
@@ -317,10 +317,10 @@ export async function POST(req: NextRequest) {
             [shortNameRu, orgNameRu, orgNameKk, orgTypeRu, locationNameRu, scope, effectiveShowOnFrontend, orgId]
           );
 
-          // Обновляем knowledge.org_readiness_status
+          // Обновляем org_readiness_status
           await client.query(
             `
-            INSERT INTO knowledge.org_readiness_status (org_id, status, has_human_touch, completeness_score, last_touched_by, last_touched_at, updated_at)
+            INSERT INTO ${T_ORG_READINESS} (org_id, status, has_human_touch, completeness_score, last_touched_by, last_touched_at, updated_at)
             VALUES ($1, 'in_progress', TRUE, 70, $2, NOW(), NOW())
             ON CONFLICT (org_id) DO UPDATE
             SET status = 'in_progress', has_human_touch = TRUE, completeness_score = 70, last_touched_by = EXCLUDED.last_touched_by, last_touched_at = NOW(), updated_at = NOW()
@@ -328,19 +328,19 @@ export async function POST(req: NextRequest) {
             [orgId, `Пакетный импорт (${user.fullName})`]
           );
 
-          // Обновляем knowledge.org_details_extra
+          // Обновляем org_details_extra
           await client.query(
             `
-            INSERT INTO knowledge.org_details_extra (org_id, competencies_excluded, forward_to_guidance, phone_chancellery, phone_hotline, email_official, website_url, updated_at)
+            INSERT INTO ${T_ORG_EXTRA} (org_id, competencies_excluded, forward_to_guidance, phone_chancellery, phone_hotline, email_official, website_url, updated_at)
             VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())
             ON CONFLICT (org_id) DO UPDATE
             SET 
-              competencies_excluded = COALESCE(NULLIF(EXCLUDED.competencies_excluded, ''), knowledge.org_details_extra.competencies_excluded),
-              forward_to_guidance = COALESCE(NULLIF(EXCLUDED.forward_to_guidance, ''), knowledge.org_details_extra.forward_to_guidance),
-              phone_chancellery = COALESCE(NULLIF(EXCLUDED.phone_chancellery, ''), knowledge.org_details_extra.phone_chancellery),
-              phone_hotline = COALESCE(NULLIF(EXCLUDED.phone_hotline, ''), knowledge.org_details_extra.phone_hotline),
-              email_official = COALESCE(NULLIF(EXCLUDED.email_official, ''), knowledge.org_details_extra.email_official),
-              website_url = COALESCE(NULLIF(EXCLUDED.website_url, ''), knowledge.org_details_extra.website_url),
+              competencies_excluded = COALESCE(NULLIF(EXCLUDED.competencies_excluded, ''), ${T_ORG_EXTRA}.competencies_excluded),
+              forward_to_guidance = COALESCE(NULLIF(EXCLUDED.forward_to_guidance, ''), ${T_ORG_EXTRA}.forward_to_guidance),
+              phone_chancellery = COALESCE(NULLIF(EXCLUDED.phone_chancellery, ''), ${T_ORG_EXTRA}.phone_chancellery),
+              phone_hotline = COALESCE(NULLIF(EXCLUDED.phone_hotline, ''), ${T_ORG_EXTRA}.phone_hotline),
+              email_official = COALESCE(NULLIF(EXCLUDED.email_official, ''), ${T_ORG_EXTRA}.email_official),
+              website_url = COALESCE(NULLIF(EXCLUDED.website_url, ''), ${T_ORG_EXTRA}.website_url),
               updated_at = NOW()
             `,
             [orgId, competenciesExcluded, forwardToGuidance, phoneChancellery, phoneHotline, emailOfficial, websiteUrl]

@@ -13,7 +13,6 @@
 
 -- 1. Схемы
 CREATE SCHEMA IF NOT EXISTS ebz_book;
-CREATE SCHEMA IF NOT EXISTS knowledge;
 CREATE SCHEMA IF NOT EXISTS platform;
 
 -- 2. Учётные записи ЕБЗ-роутера
@@ -42,7 +41,7 @@ INSERT INTO ebz_book.users (id, username, password_hash, role, full_name, org_id
 ON CONFLICT (username) DO NOTHING;
 
 -- 4. Расширенные карточки организаций (контакты, компетенции, переадресация)
-CREATE TABLE IF NOT EXISTS knowledge.org_details_extra (
+CREATE TABLE IF NOT EXISTS ebz_book.org_details_extra (
   org_id                BIGINT PRIMARY KEY,
   competencies_excluded TEXT,
   forward_to_guidance   TEXT,
@@ -56,7 +55,7 @@ CREATE TABLE IF NOT EXISTS knowledge.org_details_extra (
 );
 
 -- 5. Статус наполненности карточек
-CREATE TABLE IF NOT EXISTS knowledge.org_readiness_status (
+CREATE TABLE IF NOT EXISTS ebz_book.org_readiness_status (
   org_id             BIGINT PRIMARY KEY,
   status             VARCHAR(32) NOT NULL DEFAULT 'unfilled',
   has_human_touch    BOOLEAN NOT NULL DEFAULT FALSE,
