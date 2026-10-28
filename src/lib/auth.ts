@@ -2,6 +2,7 @@ import crypto from 'crypto';
 import { UserAccount, UserSession, UserRole } from '../types/auth';
 import { GovOrg } from '../types';
 import { getSessionSecret } from './secrets';
+import { pool } from './db';
 
 const COOKIE_NAME = 'ebz_session';
 
@@ -90,15 +91,84 @@ function getUserStore(): Map<string, UserAccount> {
   return store;
 }
 
+interface DbUserRow {
+  id: string;
+  username: string;
+  password_hash: string;
+  role: UserRole;
+  full_name: string;
+  org_id: string | null;
+  org_name: string | null;
+  is_active: boolean;
+  created_at: Date | string;
+}
+
+function rowToAccount(r: DbUserRow): UserAccount {
+  return {
+    id: r.id,
+    username: r.username,
+    passwordHash: r.password_hash,
+    salt: '',
+    fullName: r.full_name,
+    role: r.role,
+    orgId: r.org_id,
+    orgName: r.org_name ?? undefined,
+    createdAt: new Date(r.created_at).toISOString(),
+  };
+}
+
+const PRIMARY_USERS_TABLE = 'ebz_book.users';
+const LEGACY_USERS_TABLE = 'platform.ebz_users';
+
+// Запрос к таблице учёток: сначала ebz_book.users, при 42P01 (relation does not exist) — platform.ebz_users.
+async function queryUsersTable<T extends object = any>(sql: (table: string) => string, params: unknown[]) {
+  try {
+    return await pool.query<T>(sql(PRIMARY_USERS_TABLE), params);
+  } catch (err) {
+    if ((err as { code?: string }).code !== '42P01') throw err;
+    return await pool.query<T>(sql(LEGACY_USERS_TABLE), params);
+  }
+}
+
+type DbLookup = { source: 'db'; user: UserAccount | null; isActive: boolean } | { source: 'fallback' };
+
+// Основной источник — ebz_book.users. Fallback на EBZ_PRESET_USERS при недоступной БД или пустой таблице.
+async function lookupDbUser(login: string): Promise<DbLookup> {
+  try {
+    const res = await queryUsersTable<DbUserRow>(
+      (t) => `SELECT id, username, password_hash, role, full_name, org_id, org_name, is_active, created_at
+         FROM ${t} WHERE lower(username) = $1`,
+      [login]
+    );
+    if (res.rows[0]) {
+      return { source: 'db', user: rowToAccount(res.rows[0]), isActive: res.rows[0].is_active };
+    }
+    const cnt = await queryUsersTable((t) => `SELECT 1 FROM ${t} LIMIT 1`, []);
+    if (cnt.rowCount === 0) return { source: 'fallback' };
+    return { source: 'db', user: null, isActive: false };
+  } catch (err) {
+    console.warn('[auth] ebz_book.users/platform.ebz_users недоступны, fallback на EBZ_PRESET_USERS:', (err as Error).message);
+    return { source: 'fallback' };
+  }
+}
+
+async function touchLastLogin(id: string): Promise<void> {
+  try {
+    await queryUsersTable((t) => `UPDATE ${t} SET last_login_at = NOW() WHERE id = $1`, [id]);
+  } catch (err) {
+    console.warn('[auth] не удалось обновить last_login_at:', (err as Error).message);
+  }
+}
+
 export const authService = {
-  createUser(data: {
+  async createUser(data: {
     username: string;
     password: string;
     fullName: string;
     role: UserRole;
     orgId?: string;
     orgName?: string;
-  }): UserAccount {
+  }): Promise<UserAccount> {
     const account: UserAccount = {
       id: `user-${crypto.randomUUID()}`,
       username: data.username,
@@ -111,17 +181,36 @@ export const authService = {
       createdAt: new Date().toISOString(),
     };
 
-    getUserStore().set(data.username.trim().toLowerCase(), account);
+    const login = data.username.trim().toLowerCase();
+    account.username = login;
+    try {
+      await queryUsersTable(
+        (t) => `INSERT INTO ${t} (id, username, password_hash, role, full_name, org_id, org_name)
+         VALUES ($1, $2, $3, $4, $5, $6, $7)
+         ON CONFLICT (username) DO UPDATE SET password_hash = EXCLUDED.password_hash, role = EXCLUDED.role,
+           full_name = EXCLUDED.full_name, org_id = EXCLUDED.org_id, org_name = EXCLUDED.org_name`,
+        [account.id, login, account.passwordHash, account.role, account.fullName, account.orgId, account.orgName ?? null]
+      );
+    } catch (err) {
+      console.warn('[auth] createUser: БД недоступна, учётка только в памяти:', (err as Error).message);
+    }
+    getUserStore().set(login, account);
     return account;
   },
 
-  authenticate(username: string, password: string): UserSession | null {
-    const user = getUserStore().get(username.trim().toLowerCase());
+  async authenticate(username: string, password: string): Promise<UserSession | null> {
+    const login = username.trim().toLowerCase();
+    const found = await lookupDbUser(login);
+    const user = found.source === 'db' ? found.user ?? undefined : getUserStore().get(login);
     if (!user) {
       verifyPassword(password, DUMMY_HASH); // выравниваем время ответа
       return null;
     }
     if (!verifyPassword(password, user.passwordHash)) return null;
+    if (found.source === 'db') {
+      if (!found.isActive) return null;
+      await touchLastLogin(user.id);
+    }
 
     // Срок действия сессии: 7 дней
     const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000;

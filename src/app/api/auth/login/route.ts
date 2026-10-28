@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     );
     if (wait > 0) return tooMany(wait);
 
-    const session = authService.authenticate(String(username), String(password));
+    const session = await authService.authenticate(String(username), String(password));
     if (!session) {
       recordFailure(ipKey, WINDOW_MS);
       recordFailure(userKey, WINDOW_MS);

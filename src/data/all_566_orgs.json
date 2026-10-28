@@ -13208,6 +13208,22 @@
     "jurisdiction": "republican",
     "legalBasis": "",
     "questions": [],
+    "version": 1,
+    "hasHumanTouch": false,
+    "status": "unfilled"
+  },
+  {
+    "id": "org-1793191967236-sziz",
+    "name": "RBAC Probe Org",
+    "fullName": "RBAC Probe Org",
+    "parentId": "me",
+    "level": "district",
+    "scope": "",
+    "theme": "",
+    "locationAddress": "",
+    "jurisdiction": "republican",
+    "legalBasis": "",
+    "questions": [],
     "version": 1
   }
 ]

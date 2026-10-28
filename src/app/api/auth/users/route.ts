@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const user = authService.createUser({
+    const user = await authService.createUser({
       username,
       password,
       fullName: fullName ?? username,

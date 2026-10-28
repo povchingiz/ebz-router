@@ -23,4 +23,8 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA platform, knowledge
 ALTER DEFAULT PRIVILEGES IN SCHEMA platform, knowledge
     GRANT USAGE, SELECT ON SEQUENCES TO eotinish_app_user;
 
+-- Учётные записи ЕБЗ-роутера (scripts/migrations/02_create_ebz_users.sql)
+GRANT USAGE ON SCHEMA ebz_book TO eotinish_app_user;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ebz_book.users TO eotinish_app_user;
+
 REVOKE ALL ON SCHEMA public FROM eotinish_app_user;

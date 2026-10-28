@@ -1,17 +1,15 @@
-# План E2E-пайплайна проверки мутаций (Фронт ➔ Бэк ➔ PostgreSQL)
+# План аудита и укрепления надежности (Claude Opus Deep Audit)
 
-## 1. Подключение к БД для мониторинга (DBeaver)
-- Host: `localhost` | Port: `5432` | DB: `eotinish_ai_demo`
-- User: `eotinish_platform` | Password: `BFhekbn2026`
-- Контрольные таблицы:
-  * `platform.gov_organizations_master`
-  * `knowledge.org_details_extra`
-  * `platform.org_audit_log`
-  * `platform.gov_organization_faq`
+## 1. Архитектура настроек и данных
+- Перенос настроек шлюза и окружения в `platform.settings` (с обратной совместимостью с .env).
+- Аудит тяжелых статических данных (locations_data.json 5.4MB, ebz_articles.json 1.9MB) и стратегия их выноса в PostgreSQL с ленивой подгрузкой.
 
-## 2. Сквозной E2E-пайплайн проверки
-- Фиксация состояния до мутации в PG.
-- Выполнение мутации через API/UI (`/api/mutate`) с токеном `superadmin`.
-- Фиксация состояния после мутации в PG.
-- Проверка генерации записи в `platform.org_audit_log` (diff_payload, user_id, action).
-- Проверка инкремента `version` в `platform.gov_organizations_master`.
+## 2. Отказоустойчивость и безопасность
+- Валидация пула соединений PostgreSQL (timeouts, pool exhaustion, retry logic).
+- Защита от DoS, брутфорса и перегрузки (Rate limiting на /api/gate, /api/auth/login, /api/mutate).
+- Проверка параметризации всех SQL-запросов (SQL Injection immunity).
+- Безопасное логирование ошибок без утечки внутренних стеков в production.
+
+## 3. Производительность на 27k записях
+- Наличие и покрытие B-Tree и GIN индексов (path, parent_id, org_id, deleted, search trigrams).
+- Проверка потребления RAM и сборки мусора Node.js при частых мутациях.
