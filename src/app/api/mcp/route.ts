@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { orgStore } from '../../../lib/store';
+import { routeAppeal } from '../../../lib/routing';
 import fs from 'fs';
 import path from 'path';
 import { EbzArticle } from '../../../types';
@@ -229,38 +230,47 @@ export async function POST(req: NextRequest) {
             error: { code: -32602, message: 'Invalid params: appealText превышает допустимый лимит в 15 000 символов' },
           });
         }
-        const text = rawAppeal.toLowerCase();
-        let bestMatch: any = null;
-        let highestScore = 0;
+        const outcome = await routeAppeal(rawAppeal, allOrgs, { katoCode: args.katoCode });
 
-        for (const org of allOrgs) {
-          let score = 0;
-          const searchSpace = `${org.name} ${org.fullName || ''} ${org.scope || ''} ${org.theme || ''}`.toLowerCase();
-
-          const words = text.split(/\s+/).filter((w: string) => w.length > 3);
-          for (const word of words) {
-            if (searchSpace.includes(word)) score += 2;
-          }
-
-          if (score > highestScore) {
-            highestScore = score;
-            bestMatch = org;
-          }
-        }
-
-        const routingResult = bestMatch
+        const routingResult: Record<string, unknown> = outcome.best && outcome.org
           ? {
-              suggestedOrgId: bestMatch.id,
-              suggestedOrgName: bestMatch.name,
-              jurisdiction: bestMatch.jurisdiction,
-              matchScore: highestScore,
-              suggestedDepartments: bestMatch.departments || [],
-              rationale: `Обращение относится к компетенции "${bestMatch.name}" в связи с совпадением тематик сферы деятельности.`,
+              suggestedOrgId: outcome.best.orgId,
+              suggestedOrgName: outcome.best.name,
+              jurisdiction: outcome.org.jurisdiction,
+              matchScore: Math.round(outcome.best.score * 100) / 100,
+              suggestedDepartments: outcome.org.departments || [],
+              rationale:
+                `Обращение относится к компетенции «${outcome.best.fullName}»` +
+                (outcome.best.lineage.length ? ` (в системе: ${outcome.best.lineage.slice(0, 2).map((n) => `«${n}»`).join(' → ')})` : '') +
+                (outcome.matchedTerms.length ? ` — совпали понятия: ${outcome.matchedTerms.map((t) => `«${t}»`).join(', ')}` : '') +
+                (outcome.regionNote ? `; ${outcome.regionNote}` : '') +
+                (outcome.org.id === 'akimat-astana' && !outcome.region
+                  ? '. Вопрос местного значения (акимат); регион в обращении не указан — по умолчанию г. Астана, для точной маршрутизации передайте katoCode'
+                  : '') +
+                '.',
+              matchedTerms: outcome.matchedTerms,
+              basis: outcome.basis,
+              confidence: outcome.confidence,
+              suggestedDepartment: outcome.department || null,
+              region: outcome.region ? { katoPrefix: outcome.region.prefix, name: outcome.region.name, source: outcome.region.source } : null,
+              alternatives: outcome.alternatives.map((a) => ({
+                orgId: a.orgId,
+                name: a.name,
+                fullName: a.fullName,
+                matchScore: Math.round(a.score * 100) / 100,
+                matchedTerms: a.matchedTerms,
+              })),
             }
           : {
               suggestedOrgId: 'ap',
               suggestedOrgName: 'Администрация Президента РК',
               rationale: 'Не удалось однозначно классифицировать ведомство, направлено на общее рассмотрение.',
+              matchScore: 0,
+              confidence: 'low',
+              matchedTerms: [],
+              basis: [],
+              region: outcome.region ? { katoPrefix: outcome.region.prefix, name: outcome.region.name, source: outcome.region.source } : null,
+              alternatives: outcome.alternatives.map((a) => ({ orgId: a.orgId, name: a.name, fullName: a.fullName, matchScore: Math.round(a.score * 100) / 100, matchedTerms: a.matchedTerms })),
             };
 
         return NextResponse.json({

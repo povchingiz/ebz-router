@@ -1,5 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { authService } from '@/lib/auth';
+import { blockedFor, clientIp, recordFailure, reset } from '@/lib/rateLimit';
+
+const WINDOW_MS = 15 * 60 * 1000;
+const MAX_FAILURES_PER_IP = 20;
+const MAX_FAILURES_PER_USER = 8;
+
+function tooMany(retryAfter: number) {
+  return NextResponse.json(
+    { ok: false, error: 'Слишком много попыток входа. Повторите позже.' },
+    { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+  );
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,14 +25,25 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const session = authService.authenticate(username, password);
+    const ipKey = `login:ip:${clientIp(req)}`;
+    const userKey = `login:user:${String(username).trim().toLowerCase()}`;
+    const wait = Math.max(
+      blockedFor(ipKey, MAX_FAILURES_PER_IP, WINDOW_MS),
+      blockedFor(userKey, MAX_FAILURES_PER_USER, WINDOW_MS)
+    );
+    if (wait > 0) return tooMany(wait);
+
+    const session = authService.authenticate(String(username), String(password));
     if (!session) {
+      recordFailure(ipKey, WINDOW_MS);
+      recordFailure(userKey, WINDOW_MS);
       return NextResponse.json(
         { ok: false, error: 'Неверное имя пользователя или пароль' },
         { status: 401 }
       );
     }
 
+    reset(userKey);
     const token = authService.createSignedSessionToken(session);
 
     const response = NextResponse.json({

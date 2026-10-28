@@ -12,7 +12,7 @@ const securityHeaders = [
   },
   {
     key: 'X-Frame-Options',
-    value: 'SAMEORIGIN',
+    value: 'DENY',
   },
   {
     key: 'X-Content-Type-Options',
@@ -28,6 +28,15 @@ const securityHeaders = [
   },
 ];
 
+// HSTS только в production (в dev по http браузер запомнил бы его для localhost).
+// CSP, CORS (ALLOWED_ORIGINS) и frame-ancestors выставляет src/middleware.ts.
+if (process.env.NODE_ENV === 'production') {
+  securityHeaders.push({
+    key: 'Strict-Transport-Security',
+    value: 'max-age=31536000; includeSubDomains',
+  });
+}
+
 const nextConfig = {
   // Режим standalone нужен для Docker / Air-Gap, а на Vercel должен быть отключен (Vercel сам оптимизирует Serverless)
   output: process.env.VERCEL ? undefined : 'standalone',
@@ -40,18 +49,6 @@ const nextConfig = {
       {
         source: '/:path*',
         headers: securityHeaders,
-      },
-      {
-        source: '/api/:path*',
-        headers: [
-          { key: 'Access-Control-Allow-Origin', value: '*' },
-          { key: 'Access-Control-Allow-Methods', value: 'GET,DELETE,PATCH,POST,PUT,OPTIONS' },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value:
-              'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization',
-          },
-        ],
       },
     ];
   },

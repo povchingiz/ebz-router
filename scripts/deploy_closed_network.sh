@@ -27,10 +27,20 @@ if [ ! -f ".env" ]; then
     if [ -f ".env.production.example" ]; then
         echo "--- Создание .env из шаблона .env.production.example ---"
         cp .env.production.example .env
+        chmod 600 .env
+        echo "[!] Создан .env из шаблона. Заполните секреты (SESSION_SECRET, SITE_GATE_PASSWORD,"
+        echo "    DB_PASSWORD, EBZ_PRESET_USERS) и запустите скрипт повторно."
+        echo "    Хеши паролей: node scripts/hash_password.mjs ; SESSION_SECRET: openssl rand -hex 32"
+        exit 1
     else
         echo "[!] Ошибка: отсутствует файл .env"
         exit 1
     fi
+fi
+
+if grep -q "CHANGE_ME" .env; then
+    echo "[!] В .env остались значения CHANGE_ME — замените их на реальные секреты."
+    exit 1
 fi
 
 # 3. Запуск контейнеров через Docker Compose
@@ -42,7 +52,7 @@ elif command -v docker-compose &> /dev/null; then
 else
     echo "[!] Docker / docker-compose не обнаружен. Запуск в режиме прямого Node.js процесса..."
     if [ -d "standalone" ]; then
-        export $(grep -v '^#' .env | xargs)
+        set -a; . ./.env; set +a
         cd standalone
         PORT=${APP_PORT:-3050} node server.js &
         echo "Приложение запущено в фоновом режиме на порту ${APP_PORT:-3050}"
@@ -75,7 +85,8 @@ if [ "$READY" -eq 1 ]; then
     echo "  Веб-интерфейс:   http://localhost:3050"
     echo "  Документация:    http://localhost:3050/docs"
     echo "  Healthcheck:     http://localhost:3050/api/health"
-    echo "  Пароль доступа:  localastana1!"
+    echo "  Пароль доступа к контуру и учётные записи задаются в .env (SITE_GATE_PASSWORD, EBZ_PRESET_USERS)"
+    echo "  Доступ только по HTTPS (за reverse proxy): cookie сессии помечены Secure"
     echo "=========================================================="
 else
     echo ""

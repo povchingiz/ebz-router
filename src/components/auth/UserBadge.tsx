@@ -40,6 +40,7 @@ export const UserBadge: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsLoginOpen(true)}
+          aria-label="Войти"
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-black transition-all shadow-md active:scale-95"
         >
           <Lock className="w-3.5 h-3.5" />
@@ -81,12 +82,13 @@ export const UserBadge: React.FC = () => {
       <button
         type="button"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-2xl border-2 text-xs font-bold transition-all shadow-xs ${badgeInfo.bg}`}
+        aria-label={`${user.fullName}: ${badgeInfo.label}`}
+        className={`inline-flex min-w-0 items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-2xl border-2 text-xs font-bold transition-all shadow-xs ${badgeInfo.bg}`}
       >
         <div className="w-5 h-5 rounded-full bg-white dark:bg-slate-900 shadow-xs flex items-center justify-center">
           {badgeInfo.icon}
         </div>
-        <div className="flex flex-col text-left leading-tight">
+        <div className="hidden sm:flex flex-col text-left leading-tight">
           <span className="font-extrabold truncate max-w-[130px]">{user.fullName}</span>
           <span className="text-[10px] opacity-75">{badgeInfo.label}</span>
         </div>

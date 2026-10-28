@@ -23,7 +23,6 @@ import {
   LayoutGrid,
   MapPin,
   Globe,
-  Scale,
   FileText,
   Check,
   ChevronRight,
@@ -33,9 +32,6 @@ import {
   Edit3,
   CheckCircle2,
   Mail,
-  Ban,
-  Eye,
-  ExternalLink,
   Layers,
   BookOpen,
   Sparkles,
@@ -124,6 +120,50 @@ const JURISDICTION_OPTIONS: {
   },
 ];
 
+const FIELD_LABELS: Record<string, string> = {
+  name: 'Наименование', fullName: 'Полное наименование', scope: 'Компетенция',
+  theme: 'Тема', locationAddress: 'Адрес', jurisdiction: 'Уровень юрисдикции',
+  legalBasis: 'Правовое основание', competenciesExcluded: 'Исключения компетенций',
+  forwardToGuidance: 'Перенаправление', questions: 'Вопросы', departments: 'Подразделения',
+  contacts: 'Контакты', phoneChancellery: 'Телефон канцелярии', emailOfficial: 'Официальная почта',
+  websiteUrl: 'Сайт', physicalAddress: 'Физический адрес', katoNameRu: 'Населённый пункт',
+};
+
+const INTERNAL_AUDIT_FIELDS = new Set(['katoCode', 'locationId', 'version', 'hasHumanTouch', 'status']);
+
+const auditValueText = (field: string, value: any): string => {
+  if (value == null || value === '') return '—';
+  if (Array.isArray(value)) {
+    if (field === 'questions') return String(value.length);
+    if (field === 'departments') return String(value.length);
+    return value.map((item) => typeof item === 'object' && item !== null
+      ? Object.values(item).filter((part) => part != null && typeof part !== 'object').join(': ')
+      : String(item)).filter(Boolean).join('; ') || '—';
+  }
+  if (typeof value === 'object') {
+    if (field === 'contacts') {
+      return Object.entries(value).map(([key, item]) => `${FIELD_LABELS[key] || key}: ${auditValueText(key, item)}`).join('; ') || '—';
+    }
+    return Object.entries(value).map(([key, item]) => `${FIELD_LABELS[key] || key}: ${auditValueText(key, item)}`).join('; ') || '—';
+  }
+  return String(value);
+};
+
+const auditChanges = (entry: any): Array<{ field: string; label: string; oldValue: any; newValue: any }> => {
+  const changes = entry.changes ?? entry.diff_payload;
+  if (!changes || typeof changes !== 'object') return [];
+  const items = Array.isArray(changes)
+    ? changes.map((item) => ({ field: item?.field, label: item?.fieldLabel, oldValue: item?.oldValue ?? item?.old, newValue: item?.newValue ?? item?.new }))
+    : Object.entries(changes).map(([field, diff]: [string, any]) => ({ field, label: diff?.fieldLabel, oldValue: diff?.oldValue ?? diff?.old, newValue: diff?.newValue ?? diff?.new }));
+  return items.filter(({ field, oldValue, newValue }) => {
+    if (!field || INTERNAL_AUDIT_FIELDS.has(field) || /^\d+$/.test(field)) return false;
+    const empty = (value: any) => value == null || value === '';
+    const identical = oldValue === newValue || (typeof oldValue === 'object' && typeof newValue === 'object'
+      && JSON.stringify(oldValue) === JSON.stringify(newValue));
+    return !(empty(oldValue) && empty(newValue)) && !identical;
+  }).map(({ field, label, oldValue, newValue }) => ({ field, label: label || FIELD_LABELS[field] || field, oldValue, newValue }));
+};
+
 export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   org,
   allOrgs,
@@ -171,6 +211,8 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
   const [isAddQuestionModalOpen, setIsAddQuestionModalOpen] = useState(false);
   const [isCsvQuestionModalOpen, setIsCsvQuestionModalOpen] = useState(false);
   const [isCreateChildModalOpen, setIsCreateChildModalOpen] = useState(false);
+  const [isAddStructureChoiceOpen, setIsAddStructureChoiceOpen] = useState(false);
+  const [isReparentEditorOpen, setIsReparentEditorOpen] = useState(false);
   const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState(false);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
 
@@ -427,6 +469,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
     canChangeStructure: isSuperAdminOwner && access.allowed && !isLockedByOther,
   };
   const parentOrg = allOrgs.find((o) => o.id === org.parentId);
+  const parentHierarchy = (() => {
+    const chain: GovOrg[] = [];
+    let current = parentOrg;
+    const seen = new Set<string>();
+    while (current && !seen.has(current.id)) {
+      seen.add(current.id);
+      chain.unshift(current);
+      current = allOrgs.find((item) => item.id === current?.parentId);
+    }
+    return chain;
+  })();
   const candidateParent = allOrgs.find((o) => o.id === selectedParentId);
 
   const handleSaveContent = async () => {
@@ -521,7 +574,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         <div className="fixed inset-0 z-[70] bg-slate-950/30 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setAuditOpen(false)}>
           <section role="dialog" aria-modal="true" aria-label="История изменений" onClick={(e) => e.stopPropagation()} className="w-full max-w-2xl max-h-[82vh] overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl flex flex-col">
             <header className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between"><div><h2 className="text-lg font-black">История изменений</h2><p className="text-xs text-slate-500">Журнал правок · {org.name}</p></div><button type="button" onClick={() => setAuditOpen(false)}><X className="w-4 h-4" /></button></header>
-            <div className="p-5 overflow-y-auto space-y-4">{auditLoading ? <p>Загрузка журнала…</p> : auditEntries.length ? auditEntries.map((entry, index) => <article key={entry.id || index} className="relative border-l-2 border-blue-200 pl-4 pb-2"><time className="text-[11px] text-slate-400">{new Date(entry.timestamp || entry.created_at || entry.createdAt).toLocaleString('ru-RU')}</time><div className="mt-1 flex items-center gap-2"><strong className="text-sm">{entry.userName || entry.user_name || 'Система'}</strong><span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100">{entry.userRole || entry.user_role || 'Пользователь'}</span></div><p className="text-xs mt-1">{entry.action}</p>{entry.changes && <div className="mt-2 space-y-1">{Object.entries(entry.changes).map(([field, diff]: [string, any]) => <div key={field} className="text-xs"><b className="mr-2">{field}:</b><span className="line-through text-rose-600 bg-rose-50 px-1 rounded">{String(diff?.oldValue ?? diff?.old ?? '—')}</span><span className="mx-1">→</span><span className="text-emerald-700 bg-emerald-50 px-1 rounded">{String(diff?.newValue ?? diff?.new ?? '—')}</span></div>)}</div>}</article>) : <p className="text-sm text-slate-500">Записей пока нет.</p>}</div>
+            <div className="p-5 overflow-y-auto space-y-4">{auditLoading ? <p>Загрузка журнала…</p> : auditEntries.length ? auditEntries.map((entry, index) => <article key={entry.id || index} className="relative border-l-2 border-blue-200 pl-4 pb-2"><time className="text-[11px] text-slate-400">{new Date(entry.timestamp || entry.created_at || entry.createdAt).toLocaleString('ru-RU')}</time><div className="mt-1 flex items-center gap-2"><strong className="text-sm">{entry.userName || entry.user_name || 'Система'}</strong><span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100">{entry.userRole || entry.user_role || 'Пользователь'}</span></div><p className="text-xs mt-1">{entry.action}</p>{auditChanges(entry).length > 0 && <div className="mt-2 space-y-1">{auditChanges(entry).map(({ field, label, oldValue, newValue }) => <div key={field} className="text-xs py-1"><span className="font-bold text-slate-800 dark:text-slate-200 mr-2">{label}:</span> {field === 'questions' || field === 'departments' ? <span className="text-slate-700 dark:text-slate-300">{field === 'questions' ? `Обновлен список вопросов (было: ${Array.isArray(oldValue) ? oldValue.length : 0} ➔ стало: ${Array.isArray(newValue) ? newValue.length : 0})` : `Обновлены подразделения (было: ${Array.isArray(oldValue) ? oldValue.length : 0} ➔ стало: ${Array.isArray(newValue) ? newValue.length : 0})`}</span> : <><span className="line-through text-rose-600 bg-rose-50 px-1 rounded">{auditValueText(field, oldValue)}</span> <span className="mx-1.5 text-slate-400">➔</span> <span className="text-emerald-700 bg-emerald-50 px-1 rounded font-medium">{auditValueText(field, newValue)}</span></>}</div>)}</div>}</article>) : <p className="text-sm text-slate-500">Записей пока нет.</p>}</div>
           </section>
         </div>
       )}
@@ -532,20 +585,15 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       */}
       <aside
         aria-label="Сведения об организации"
-        className="fixed top-20 right-4 bottom-4 z-40 w-[95vw] sm:w-[540px] lg:w-[580px] bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-3xl border-2 border-slate-200/90 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden animate-slideLeft transition-all"
+        className="fixed top-20 right-4 bottom-4 z-[60] w-[95vw] sm:w-[540px] lg:w-[580px] bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-3xl border-2 border-slate-200/90 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden animate-slideLeft transition-all"
       >
         {/* Шапка карточки */}
-        <div className="p-5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-850 shrink-0">
+        <div className="p-3 sm:p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-850 shrink-0">
           <div className="flex items-center justify-between gap-3 mb-2.5">
             <div className="flex items-center gap-2">
-              {permissions.canChangeStructure && onCreateOrg && (
-                <button
-                  type="button"
-                  onClick={() => setIsCreateChildModalOpen(true)}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs"
-                  title="Создать подотчетную организацию под этим ведомством"
-                >
-                  <Plus className="w-3.5 h-3.5" /> Создать дочку
+              {(permissions.canChangeStructure && onCreateOrg || permissions.canEditContent) && (
+                <button type="button" onClick={() => setIsAddStructureChoiceOpen(true)} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs">
+                  <Plus className="w-3.5 h-3.5" /> Добавить подчиненную структуру
                 </button>
               )}
               {isSuperAdminOwner && <button type="button" onClick={() => setIsCreateUserModalOpen(true)} className="rounded-xl border border-blue-200 bg-white px-2.5 py-1 text-xs font-bold text-blue-700 hover:bg-blue-50">Создать пользователя</button>}
@@ -639,18 +687,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 <h2 className="text-lg font-black text-slate-900 dark:text-white leading-tight">
                   {orgName || org.name}
                 </h2>
-                {org.aliases && org.aliases.length > 0 && (
-                  <div className="flex items-center gap-1 flex-wrap">
-                    {org.aliases.slice(0, 3).map((alias, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800"
-                      >
-                        {alias}
-                      </span>
-                    ))}
-                  </div>
-                )}
                 {permissions.canChangeStructure && (
                   <button
                     type="button"
@@ -724,7 +760,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
         </div>
 
         {/* Содержимое панели со скроллом */}
-        <div className="flex-1 overflow-y-auto p-5 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 text-sm">
           <CompareModal
             isOpen={isCompareOpen}
             onClose={() => setIsCompareOpen(false)}
@@ -1011,6 +1047,124 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </div>
               </div>
 
+              {permissions.canChangeStructure && (
+                <div className="space-y-5">
+              {/* КАРТОЧКА 1: ВЫШЕСТОЯЩИЙ ОРГАН */}
+              <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border-2 border-indigo-100 dark:border-indigo-900/60 space-y-3.5">
+                <div className="flex items-center gap-2 text-xs font-black text-indigo-950 dark:text-indigo-200">
+                  <span className="text-base">⬆️</span>
+                  <span className="uppercase tracking-wide">Вышестоящий орган (Кому подчиняется ведомство)</span>
+                </div>
+
+                {/* Текущий вышестоящий орган */}
+                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800 flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wider">Текущее подчинение:</span>
+                    <span className="text-sm font-black text-slate-900 dark:text-white block">
+                      {parentOrg ? parentOrg.name : 'Корневой уровень (Без вышестоящего органа)'}
+                    </span>
+                    {parentOrg && (
+                      <span className="text-[11px] text-slate-500 block mt-0.5">
+                        {parentOrg.fullName || parentOrg.name}
+                      </span>
+                    )}
+                    {parentOrg && <span className="text-[10px] text-indigo-500 block mt-1">{[...parentHierarchy.map((item) => item.name), org.name].join(' › ')}</span>}
+                  </div>
+                  {parentOrg && (
+                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 shrink-0">
+                      Вышестоящий
+                    </span>
+                  )}
+                </div>
+
+                <button type="button" onClick={() => setIsReparentEditorOpen((open) => !open)} className="inline-flex items-center gap-2 rounded-xl border border-indigo-200 dark:border-indigo-800 bg-white dark:bg-slate-900 px-3 py-2 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40">
+                  <GitFork className="w-3.5 h-3.5" /> {isReparentEditorOpen ? 'Скрыть выбор вышестоящего органа' : 'Изменить подчиненность'}
+                  {isReparentEditorOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                </button>
+
+                {/* Поиск и выбор нового вышестоящего органа */}
+                {isReparentEditorOpen && <div className="space-y-2 pt-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+                    Сменить вышестоящий орган:
+                  </label>
+
+                  <div className="relative">
+                    <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="text"
+                      value={parentSearchQuery}
+                      onChange={(e) => setParentSearchQuery(e.target.value)}
+                      placeholder="Поиск родителя (Правительство, Министерство, Агентство)..."
+                      className="w-full pl-9 pr-3 py-2 text-xs font-bold rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-indigo-500 outline-none"
+                    />
+                  </div>
+
+                  {/* Быстрая опция: Корневой уровень (Без вышестоящего) */}
+                  <div
+                    onClick={() => setSelectedParentId(null)}
+                    className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between text-xs font-bold ${
+                      selectedParentId === null
+                        ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300'
+                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 bg-white dark:bg-slate-900'
+                    }`}
+                  >
+                    <div>
+                      <span>Корневой уровень (Без вышестоящего)</span>
+                      <span className="block text-[10px] text-slate-400 font-normal">
+                        Организация подчиняется напрямую высшему руководству страны
+                      </span>
+                    </div>
+                    {selectedParentId === null && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
+                  </div>
+
+                  {/* Список подходящих органов (без дочерних структур!) */}
+                  <div className="max-h-52 overflow-y-auto space-y-1.5 pr-1">
+                    {filteredParentCandidates.map((cand) => {
+                      const isSelected = selectedParentId === cand.id;
+                      return (
+                        <div
+                          key={cand.id}
+                          onClick={() => setSelectedParentId(cand.id)}
+                          className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between gap-2 ${
+                            isSelected
+                              ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 shadow-xs'
+                              : 'border-slate-200/90 dark:border-slate-800 hover:border-slate-300 bg-white dark:bg-slate-900'
+                          }`}
+                        >
+                          <div className="min-w-0">
+                            <div className="text-xs font-black text-slate-900 dark:text-white truncate">
+                              {cand.name}
+                            </div>
+                            <div className="text-[10px] text-slate-500 truncate">
+                              {cand.fullName}
+                            </div>
+                          </div>
+
+                          {isSelected && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Кнопка подтверждения смены вышестоящего */}
+                  <button
+                    type="button"
+                    onClick={handleReparent}
+                    disabled={isSubmitting || selectedParentId === org.parentId}
+                    className="w-full mt-2 py-2.5 px-4 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-md disabled:opacity-40"
+                  >
+                    {isSubmitting
+                      ? 'Применение изменений...'
+                      : selectedParentId === org.parentId
+                      ? 'Вышестоящий орган не изменен'
+                      : `Утвердить вышестоящим: ${candidateParent ? candidateParent.name : 'Корневой уровень'}`}
+                  </button>
+                </div>}
+              </div>
+
+                </div>
+              )}
+
               {/* 3. Территориальный уровень полномочий (компактный выпадающий список) */}
               <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-800 space-y-2">
                 <div className="flex items-center justify-between">
@@ -1041,108 +1195,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
-              {/* Превью-блок: только для главного администратора */}
-              {isSuperAdminOwner && (
-                <div className="mt-8 pt-6 border-t-2 border-dashed border-slate-300/80 dark:border-slate-700/80 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-300/60 dark:border-slate-700 flex items-center gap-1.5">
-                        <Eye className="w-3.5 h-3.5 text-slate-500" />
-                        Превью (видно только главному администратору)
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-medium text-slate-400 dark:text-slate-500">
-                      Скрыто от ведомств
-                    </span>
-                  </div>
-
-                  <p className="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed">
-                    Данные разделы находятся на этапе утверждения регламентов и доступны для предварительного заполнения только вам.
-                  </p>
-
-                  {/* 1. Нормативно-правовая основа (Положение об органе) */}
-                  <div className="p-4 rounded-2xl bg-slate-100/50 dark:bg-slate-850/40 border border-slate-200/60 dark:border-slate-800/60 space-y-2 opacity-90">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-xs font-black text-slate-700 dark:text-slate-300">
-                        <Scale className="w-4 h-4 text-slate-500 dark:text-slate-400" />
-                        <span>Нормативно-правовая основа (Положение об органе)</span>
-                      </div>
-                      {legalBasis && (legalBasis.startsWith('http://') || legalBasis.startsWith('https://')) && (
-                        <a
-                          href={legalBasis}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-[10px] font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:underline flex items-center gap-1"
-                        >
-                          <span>Открыть в Әділет</span>
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
-                      )}
-                    </div>
-                    <p className="text-[11px] text-slate-400 dark:text-slate-500">
-                      Постановление Правительства РК / Указ Президента / Решение маслихата об утверждении Положения о ведомстве.
-                    </p>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <input
-                        type="text"
-                        value={legalBasis}
-                        onChange={(e) => setLegalBasis(e.target.value)}
-                        placeholder="Например: Положение утверждено Постановлением Правительства РК от ... № ... (ссылка на adilet.zan.kz)"
-                        className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 focus:border-slate-400 outline-none font-medium text-slate-700 dark:text-slate-300"
-                      />
-                    ) : (
-                      <div className="text-xs text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/80 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
-                        {legalBasis || 'Нормативно-правовой акт не указан.'}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* 2. Анти-темы (организация точно НЕ рассматривает) */}
-                  <div className="p-4 rounded-2xl bg-slate-100/50 dark:bg-slate-850/40 border border-slate-200/60 dark:border-slate-800/60 space-y-3 opacity-90">
-                    <div className="flex items-center gap-2 text-xs font-black text-slate-700 dark:text-slate-300">
-                      <Ban className="w-4 h-4 text-slate-500 dark:text-slate-400" />
-                      <span>Анти-темы (организация точно НЕ рассматривает)</span>
-                    </div>
-                    <p className="text-[11px] text-slate-400 dark:text-slate-500">
-                      Круг вопросов, по которым орган не имеет полномочий принимать решения (для исключения ошибочных и нецелевых обращений).
-                    </p>
-                    {permissions.canEditContent && !isLockedByOther ? (
-                      <textarea
-                        rows={3}
-                        value={competenciesExcluded}
-                        onChange={(e) => setCompetenciesExcluded(e.target.value)}
-                        placeholder="Например: трудовые споры в коммерческих структурах, уголовное судопроизводство, обжалование судебных решений..."
-                        className="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 focus:border-slate-400 outline-none leading-relaxed text-slate-700 dark:text-slate-300"
-                      />
-                    ) : (
-                      <div className="text-xs text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/80 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 whitespace-pre-wrap">
-                        {competenciesExcluded || 'Исключения не указаны.'}
-                      </div>
-                    )}
-
-                    {/* Куда перенаправлять типовые ошибки */}
-                    <div className="pt-1 space-y-1">
-                      <label className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">
-                        Рекомендация по перенаправлению / Маршрут пересылки:
-                      </label>
-                      {permissions.canEditContent && !isLockedByOther ? (
-                        <input
-                          type="text"
-                          value={forwardToGuidance}
-                          onChange={(e) => setForwardToGuidance(e.target.value)}
-                          placeholder="Например: перенаправлять в Министерство юстиции РК или судебные органы"
-                          className="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 focus:border-slate-400 outline-none font-medium text-slate-700 dark:text-slate-300"
-                        />
-                      ) : (
-                        <div className="p-2 text-xs text-slate-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/80 rounded-xl border border-slate-100 dark:border-slate-800">
-                          {forwardToGuidance || 'Маршрут перенаправления не указан.'}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
-
               {/* 4. Внутренние подразделения ведомства (Управления / Департаменты) */}
               <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-slate-800/50 border border-indigo-200/80 dark:border-indigo-900/60 space-y-3">
                 <div className="flex items-center justify-between gap-2">
@@ -1150,23 +1202,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                     <Layers className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                     <span>Внутренние подразделения ведомства ({departments.length})</span>
                   </div>
-                  {permissions.canEditContent && !isLockedByOther && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setEditingDeptId(null);
-                        setNewDeptName('');
-                        setNewDeptTheme('');
-                        setNewDeptResponsible('');
-                        setNewDeptPath(org.fullName || org.name);
-                        setIsAddDeptModalOpen(true);
-                      }}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-all active:scale-95"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                      <span>Добавить подразделение</span>
-                    </button>
-                  )}
                 </div>
 
                 <p className="text-[11px] text-slate-500 leading-snug">
@@ -1191,11 +1226,11 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
 
                 {/* Список подразделений */}
-                <div className="space-y-2 max-h-[380px] overflow-y-auto pr-1">
+                <div className="space-y-1.5 max-h-[360px] overflow-y-auto pr-1.5 border rounded-2xl p-2 bg-white/50 dark:bg-slate-900/30 border-indigo-100 dark:border-indigo-900/50">
                   {filteredDepartments.length === 0 ? (
                     <div className="p-4 text-center text-xs text-slate-400 bg-white/60 dark:bg-slate-900/40 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
                       {departments.length === 0
-                        ? 'Подразделения пока не внесены. Нажмите «Добавить подразделение», чтобы зарегистрировать структуру.'
+                        ? 'Подразделения пока не внесены. Используйте действие «Добавить подчиненную структуру».'
                         : 'Подразделения не найдены по запросу.'}
                     </div>
                   ) : (
@@ -1364,6 +1399,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 )}
               </div>
 
+              <div className="max-h-[420px] overflow-y-auto pr-1.5 border rounded-2xl p-3 bg-slate-50/50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800">
               {filteredQuestions.length === 0 ? (
                 <div className="p-8 text-center text-xs text-slate-400 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
                   {questions.length === 0
@@ -1441,7 +1477,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 filteredQuestions.map((q, idx) => (
                   <div
                     key={q.id}
-                    className="p-3.5 rounded-2xl border-2 border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 space-y-2.5"
+                    className="p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 space-y-2.5"
                   >
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-[11px] font-black text-blue-600 dark:text-blue-400">
@@ -1529,119 +1565,13 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 ))
               )}
+              </div>
             </div>
           )}
 
           {/* ВКЛАДКА 4: Подчинение и структура (Вышестоящий орган + Подведомственные дочерние структуры) */}
           {activeTab === 'info' && permissions.canChangeStructure && (
             <div className="space-y-5">
-              {/* КАРТОЧКА 1: ВЫШЕСТОЯЩИЙ ОРГАН */}
-              <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border-2 border-indigo-100 dark:border-indigo-900/60 space-y-3.5">
-                <div className="flex items-center gap-2 text-xs font-black text-indigo-950 dark:text-indigo-200">
-                  <span className="text-base">⬆️</span>
-                  <span className="uppercase tracking-wide">Вышестоящий орган (Кому подчиняется ведомство)</span>
-                </div>
-
-                {/* Текущий вышестоящий орган */}
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800 flex items-center justify-between gap-2">
-                  <div className="min-w-0">
-                    <span className="text-[10px] text-slate-400 block font-bold uppercase tracking-wider">Текущее подчинение:</span>
-                    <span className="text-sm font-black text-slate-900 dark:text-white truncate block">
-                      {parentOrg ? parentOrg.name : 'Корневой уровень (Без вышестоящего органа)'}
-                    </span>
-                    {parentOrg && (
-                      <span className="text-[11px] text-slate-500 truncate block mt-0.5">
-                        {parentOrg.fullName}
-                      </span>
-                    )}
-                  </div>
-                  {parentOrg && (
-                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 shrink-0">
-                      Вышестоящий
-                    </span>
-                  )}
-                </div>
-
-                {/* Поиск и выбор нового вышестоящего органа */}
-                <div className="space-y-2 pt-1">
-                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Сменить вышестоящий орган:
-                  </label>
-
-                  <div className="relative">
-                    <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
-                    <input
-                      type="text"
-                      value={parentSearchQuery}
-                      onChange={(e) => setParentSearchQuery(e.target.value)}
-                      placeholder="Поиск родителя (Правительство, Министерство, Агентство)..."
-                      className="w-full pl-9 pr-3 py-2 text-xs font-bold rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus:border-indigo-500 outline-none"
-                    />
-                  </div>
-
-                  {/* Быстрая опция: Корневой уровень (Без вышестоящего) */}
-                  <div
-                    onClick={() => setSelectedParentId(null)}
-                    className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between text-xs font-bold ${
-                      selectedParentId === null
-                        ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300'
-                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 bg-white dark:bg-slate-900'
-                    }`}
-                  >
-                    <div>
-                      <span>Корневой уровень (Без вышестоящего)</span>
-                      <span className="block text-[10px] text-slate-400 font-normal">
-                        Организация подчиняется напрямую высшему руководству страны
-                      </span>
-                    </div>
-                    {selectedParentId === null && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
-                  </div>
-
-                  {/* Список подходящих органов (без дочерних структур!) */}
-                  <div className="max-h-52 overflow-y-auto space-y-1.5 pr-1">
-                    {filteredParentCandidates.map((cand) => {
-                      const isSelected = selectedParentId === cand.id;
-                      return (
-                        <div
-                          key={cand.id}
-                          onClick={() => setSelectedParentId(cand.id)}
-                          className={`p-2.5 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between gap-2 ${
-                            isSelected
-                              ? 'border-indigo-600 bg-indigo-50 dark:bg-indigo-950/60 shadow-xs'
-                              : 'border-slate-200/90 dark:border-slate-800 hover:border-slate-300 bg-white dark:bg-slate-900'
-                          }`}
-                        >
-                          <div className="min-w-0">
-                            <div className="text-xs font-black text-slate-900 dark:text-white truncate">
-                              {cand.name}
-                            </div>
-                            <div className="text-[10px] text-slate-500 truncate">
-                              {cand.fullName}
-                            </div>
-                          </div>
-
-                          {isSelected && <Check className="w-4 h-4 text-indigo-600 shrink-0" />}
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Кнопка подтверждения смены вышестоящего */}
-                  <button
-                    type="button"
-                    onClick={handleReparent}
-                    disabled={isSubmitting || selectedParentId === org.parentId}
-                    className="w-full mt-2 py-2.5 px-4 rounded-xl text-xs font-black bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-md disabled:opacity-40"
-                  >
-                    {isSubmitting
-                      ? 'Применение изменений...'
-                      : selectedParentId === org.parentId
-                      ? 'Вышестоящий орган не изменен'
-                      : `Утвердить вышестоящим: ${candidateParent ? candidateParent.name : 'Корневой уровень'}`}
-                  </button>
-                </div>
-              </div>
-
               {/* КАРТОЧКА 2: ПОДВЕДОМСТВЕННЫЕ ОРГАНИЗАЦИИ (ДОЧЕРНИЕ СТРУКТУРЫ) */}
               <div className="p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border-2 border-slate-200/90 dark:border-slate-800 space-y-3">
                 <div className="flex items-center justify-between gap-2">
@@ -1649,15 +1579,6 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                     <span className="text-base">⬇️</span>
                     <span className="uppercase tracking-wide">Подведомственные организации ({directChildren.length})</span>
                   </div>
-                  {onCreateOrg && (
-                    <button
-                      type="button"
-                      onClick={() => setIsCreateChildModalOpen(true)}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-all"
-                    >
-                      <Plus className="w-3.5 h-3.5" /> Создать дочку
-                    </button>
-                  )}
                 </div>
 
                 <p className="text-[11px] text-slate-500 dark:text-slate-400">
@@ -1665,7 +1586,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                 </p>
 
                 {directChildren.length > 0 ? (
-                  <div className="max-h-60 overflow-y-auto space-y-2 pr-1">
+                  <div className="max-h-[360px] overflow-y-auto space-y-1.5 pr-1.5 border rounded-2xl p-2 bg-white/50 dark:bg-slate-900/30 border-slate-200 dark:border-slate-700">
                     {directChildren.map((c) => (
                       <div
                         key={c.id}
@@ -1690,7 +1611,7 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
                   </div>
                 ) : (
                   <div className="p-4 text-center text-xs text-slate-400 bg-white dark:bg-slate-900 rounded-xl border border-dashed border-slate-200 dark:border-slate-800">
-                    У данной организации пока нет подотчетных дочерних структур. Нажмите «Создать дочку», чтобы добавить.
+                    У данной организации пока нет подотчетных организаций.
                   </div>
                 )}
               </div>
@@ -1745,6 +1666,17 @@ export const OrgDrawer: React.FC<OrgDrawerProps> = ({
       />
 
       {/* Модальное окно создания дочерней организации */}
+      {isAddStructureChoiceOpen && (
+        <div className="fixed inset-0 z-[75] flex items-center justify-center bg-slate-950/40 p-4 backdrop-blur-sm" onClick={() => setIsAddStructureChoiceOpen(false)}>
+          <section role="dialog" aria-modal="true" aria-labelledby="add-structure-title" onClick={(event) => event.stopPropagation()} className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+            <div className="mb-4 flex items-start justify-between gap-3"><div><h2 id="add-structure-title" className="text-base font-black text-slate-900 dark:text-white">Добавить подчиненную структуру</h2><p className="mt-1 text-xs text-slate-500">Выберите тип структуры для «{org.name}».</p></div><button type="button" onClick={() => setIsAddStructureChoiceOpen(false)} aria-label="Закрыть" className="rounded-lg p-1 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"><X className="h-4 w-4" /></button></div>
+            <div className="grid gap-2">
+              {onCreateOrg && permissions.canChangeStructure && <button type="button" onClick={() => { setIsAddStructureChoiceOpen(false); setIsCreateChildModalOpen(true); }} className="flex items-center gap-3 rounded-xl border border-blue-200 p-3 text-left hover:bg-blue-50 dark:border-blue-900 dark:hover:bg-blue-950/40"><Building2 className="h-5 w-5 text-blue-600" /><span><strong className="block text-sm">Подведомственная организация</strong><span className="text-xs text-slate-500">Отдельный орган в общей иерархии</span></span><ChevronRight className="ml-auto h-4 w-4 text-slate-400" /></button>}
+              {permissions.canEditContent && !isLockedByOther && <button type="button" onClick={() => { setEditingDeptId(null); setNewDeptName(''); setNewDeptTheme(''); setNewDeptResponsible(''); setNewDeptPath(org.fullName || org.name); setIsAddStructureChoiceOpen(false); setIsAddDeptModalOpen(true); }} className="flex items-center gap-3 rounded-xl border border-indigo-200 p-3 text-left hover:bg-indigo-50 dark:border-indigo-900 dark:hover:bg-indigo-950/40"><Layers className="h-5 w-5 text-indigo-600" /><span><strong className="block text-sm">Внутреннее подразделение</strong><span className="text-xs text-slate-500">Управление или департамент внутри органа</span></span><ChevronRight className="ml-auto h-4 w-4 text-slate-400" /></button>}
+            </div>
+          </section>
+        </div>
+      )}
       {onCreateOrg && (
         <CreateChildOrgModal
           isOpen={isCreateChildModalOpen}

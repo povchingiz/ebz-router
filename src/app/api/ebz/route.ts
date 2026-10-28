@@ -96,14 +96,14 @@ export async function POST(req: NextRequest) {
     const token = req.cookies.get(authService.COOKIE_NAME)?.value;
     const sessionUser = token ? authService.verifySessionToken(token) : null;
 
-    if (!sessionUser && process.env.NODE_ENV === 'production') {
+    if (!sessionUser) {
       return NextResponse.json(
         { success: false, error: 'Требуется авторизация для изменения базы знаний' },
         { status: 401 }
       );
     }
 
-    if (sessionUser && sessionUser.role === 'VIEWER') {
+    if (sessionUser.role === 'VIEWER') {
       return NextResponse.json(
         { success: false, error: 'У вас нет прав на редактирование статей ЕБЗ' },
         { status: 403 }
@@ -184,14 +184,14 @@ export async function DELETE(req: NextRequest) {
     const token = req.cookies.get(authService.COOKIE_NAME)?.value;
     const sessionUser = token ? authService.verifySessionToken(token) : null;
 
-    if (!sessionUser && process.env.NODE_ENV === 'production') {
+    if (!sessionUser) {
       return NextResponse.json(
         { success: false, error: 'Требуется авторизация для удаления статей ЕБЗ' },
         { status: 401 }
       );
     }
 
-    if (sessionUser && sessionUser.role !== 'GLOBAL_ADMIN') {
+    if (sessionUser.role !== 'GLOBAL_ADMIN') {
       return NextResponse.json(
         { success: false, error: 'Только Супер-администратор имеет право удалять статьи из ЕБЗ' },
         { status: 403 }

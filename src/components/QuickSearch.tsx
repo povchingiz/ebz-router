@@ -83,6 +83,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
           <Search className="w-4 h-4 text-blue-600 dark:text-blue-400 absolute left-3.5" />
           <input
             type="text"
+            aria-label="Поиск организаций"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -95,6 +96,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
           {query && (
             <button
               type="button"
+              aria-label="Очистить поиск"
               onClick={() => {
                 setQuery('');
                 setIsOpen(false);
@@ -109,7 +111,7 @@ export const QuickSearch: React.FC<QuickSearchProps> = ({
 
       {/* Выпадающий список результатов */}
       {isOpen && query.trim() && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800 animate-fadeIn min-w-[480px]">
+        <div className="absolute top-full left-0 right-0 mt-2 max-w-[calc(100vw-1.5rem)] bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-800 shadow-2xl z-50 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800 animate-fadeIn sm:min-w-[480px]">
           {results.length > 0 ? (
             results.map((result) => (
               <div

@@ -4,39 +4,62 @@ import { updateOrgContentInDb, reparentOrgInDb } from '../../../lib/db';
 import { authService, canUserManageOrg } from '../../../lib/auth';
 import { User } from '../../../types';
 
+const ROLE_FOR_STORE: Record<string, User['role']> = {
+  GLOBAL_ADMIN: 'superadmin',
+  ORG_ADMIN: 'methodologist',
+  VIEWER: 'viewer',
+};
+
+const HTML_ESCAPES: Record<string, string> = { '<': '&lt;', '>': '&gt;' };
+
+/**
+ * Рекурсивно экранирует угловые скобки во всех строках (идемпотентно: '&' не трогаем,
+ * чтобы повторное сохранение уже экранированного текста не удваивало сущности).
+ */
+function sanitize<T>(value: T): T {
+  if (typeof value === 'string') {
+    return value.replace(/[<>]/g, (c) => HTML_ESCAPES[c]) as unknown as T;
+  }
+  if (Array.isArray(value)) return value.map(sanitize) as unknown as T;
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) out[k] = sanitize(v);
+    return out as T;
+  }
+  return value;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const token = req.cookies.get(authService.COOKIE_NAME)?.value;
-    let sessionUser = token ? authService.verifySessionToken(token) : null;
+    const sessionUser = token ? authService.verifySessionToken(token) : null;
 
     const body = await req.json();
-    const { action, orgId, user: bodyUser, payload, version } = body as {
+    const { action, orgId, payload: rawPayload, version } = body as {
       action: 'lock' | 'unlock' | 'update_content' | 'reparent' | 'create_org' | 'import_csv' | 'convert_dept_to_org' | 'convert_org_to_dept';
       orgId?: string;
-      user?: User;
       payload?: any;
       version?: number;
     };
 
-    // 12-Factor & Security: Приоритет всегда у криптографически подписанной сессии (HttpOnly cookie)
-    let effectiveUser = sessionUser;
+    const payload = sanitize(rawPayload);
 
-    // Режим разработки: fallback допускается ТОЛЬКО вне продакшена
-    if (!effectiveUser && process.env.NODE_ENV !== 'production' && bodyUser) {
-      effectiveUser = {
-        userId: bodyUser.id,
-        username: bodyUser.id,
-        fullName: bodyUser.name,
-        role: bodyUser.role === 'superadmin' ? ('GLOBAL_ADMIN' as const) : ('VIEWER' as const),
-        orgId: null,
-        expiresAt: Date.now() + 3600000,
-      };
-    }
+    // Единственный источник идентичности — подписанная HttpOnly-кука сессии
+    const effectiveUser = sessionUser;
 
     if (!effectiveUser) {
       return NextResponse.json(
         { error: 'Требуется авторизация в системе' },
         { status: 401 }
+      );
+    }
+
+    // Структурные операции — только республиканский администратор
+    const SUPERADMIN_ONLY = ['reparent', 'create_org', 'import_csv', 'convert_dept_to_org', 'convert_org_to_dept'];
+    if (SUPERADMIN_ONLY.includes(action) && effectiveUser.role !== 'GLOBAL_ADMIN') {
+      return NextResponse.json(
+        { error: 'Изменение структуры (подчиненность, создание, конвертация, импорт) доступно только Супер-администратору' },
+        { status: 403 }
       );
     }
 
@@ -72,7 +95,7 @@ export async function POST(req: NextRequest) {
     const userForStore: User = {
       id: effectiveUser.userId,
       name: effectiveUser.fullName,
-      role: effectiveUser.role === 'GLOBAL_ADMIN' || effectiveUser.role === 'ORG_ADMIN' ? 'superadmin' : 'viewer',
+      role: ROLE_FOR_STORE[effectiveUser.role] ?? 'viewer',
     };
 
     if (action === 'lock' && orgId) {

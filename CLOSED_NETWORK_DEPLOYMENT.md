@@ -13,7 +13,7 @@
 | **Сетевые CDN / Шрифты**| Внешние CDN (Google Fonts) | Локально / Кэш | **100% автономные локальные бандлы** |
 | **ИИ-маршрутизация** | Внешний API / Fallback | Локальный эмулятор | **Локальный On-Prem LLM (vLLM/Ollama) + Rule Engine** |
 | **Конкурентность (Race Condition)** | Базовая | Файловая блокировка | **PostgreSQL OCC (Optimistic Concurrency Control) + FOR UPDATE** |
-| **Безопасность** | Демо-пароль | Локальный | **Шлюз-пароль, JWT, RBAC, аудит действий в PG** |
+| **Безопасность** | Демо-пароль | Локальный | **Шлюз-пароль, подпись сессий, RBAC, аудит действий в PG** |
 
 ---
 
@@ -103,7 +103,7 @@ python3 scripts/export_production_db.py
 tar -xzf eotinish_ebz_bundle_*.tar.gz
 cd ebz_payload
 
-# 2. Проверить или скорректировать параметры
+# 2. Заполнить секреты в .env (см. раздел 7; значения CHANGE_ME заменить обязательно)
 nano .env
 
 # 3. Запустить одной командой
@@ -157,6 +157,15 @@ curl http://localhost:3050/api/health
 ## 7. Параметры доступа и безопасность
 
 - **Порт веб-интерфейса**: `3050` (http://<IP_СЕРВЕРА>:3050)
-- **Экранный пароль доступа**: `localastana1!`
+- **Экранный пароль доступа**: задаётся администратором в `SITE_GATE_PASSWORD` (в поставку не входит, значений по умолчанию нет).
+- **Обязательные переменные `.env`** (без них приложение/compose не стартует):
+  - `SESSION_SECRET` — ключ подписи сессий и gate-cookie (`openssl rand -hex 32`);
+  - `SITE_GATE_PASSWORD` — пароль экрана входа;
+  - `DB_PASSWORD` — пароль PostgreSQL;
+  - `EBZ_PRESET_USERS` — учётные записи JSON `[{login, role, passwordHash, fullName?, orgId?, orgName?}]`, роли `GLOBAL_ADMIN` / `ORG_ADMIN` / `VIEWER`; хеш пароля: `node scripts/hash_password.mjs`.
+- **Необязательные**: `ALLOWED_ORIGINS` — CORS-источники через запятую (пусто = только same-origin); `TRUST_PROXY=true` — только за доверенным reverse proxy (учёт `X-Forwarded-For` в ограничении попыток входа).
+- **HTTPS**: в production cookie сессии и gate выставляются с флагом `Secure`, поэтому сервис нужно публиковать по HTTPS (reverse proxy); по обычному HTTP вход работать не будет. Включены HSTS и CSP.
+- **Ротация паролей**: сгенерировать новый хеш (`node scripts/hash_password.mjs`), обновить `EBZ_PRESET_USERS` / `SITE_GATE_PASSWORD` / `DB_PASSWORD` в `.env`, выполнить `docker compose up -d`. Смена `SESSION_SECRET` завершает все активные сессии. Пароль БД при ротации нужно сменить и внутри PostgreSQL (`ALTER USER`).
+- `.env` содержит секреты: права `600`, не хранить в репозитории.
 - **Интерактивная документация API**: `http://<IP_СЕРВЕРА>:3050/docs` (скрыта из навигации, доступна по прямой ссылке для разработчиков интеграций).
 - **MCP Endpoint**: `POST /api/mcp` (JSON-RPC 2.0 протокол для интеграции с государственными ИИ-агентами).

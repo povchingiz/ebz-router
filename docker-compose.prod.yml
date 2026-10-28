@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER:-eotinish_platform}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-BFhekbn2026}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
       POSTGRES_DB: ${DB_NAME:-eotinish_ai_demo}
     volumes:
       - ebz_pgdata:/var/lib/postgresql/data
@@ -36,9 +36,12 @@ services:
       - "${APP_PORT:-3050}:3000"
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgresql://${DB_USER:-eotinish_platform}:${DB_PASSWORD:-BFhekbn2026}@ebz-db:5432/${DB_NAME:-eotinish_ai_demo}
-      SITE_GATE_PASSWORD: ${SITE_GATE_PASSWORD:-localastana1!}
-      JWT_SECRET: ${JWT_SECRET:-eotinish-super-secure-jwt-secret-key-2026}
+      DATABASE_URL: postgresql://${DB_USER:-eotinish_platform}:${DB_PASSWORD:?Set DB_PASSWORD in .env}@ebz-db:5432/${DB_NAME:-eotinish_ai_demo}
+      SITE_GATE_PASSWORD: ${SITE_GATE_PASSWORD:?Set SITE_GATE_PASSWORD in .env}
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in .env (openssl rand -hex 32)}
+      EBZ_PRESET_USERS: ${EBZ_PRESET_USERS:?Set EBZ_PRESET_USERS in .env (see scripts/hash_password.mjs)}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-}
+      TRUST_PROXY: ${TRUST_PROXY:-false}
       AI_GATEWAY_URL: ${AI_GATEWAY_URL:-http://localhost:11434}
       NEXT_TELEMETRY_DISABLED: 1
     healthcheck:

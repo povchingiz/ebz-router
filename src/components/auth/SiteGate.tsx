@@ -15,25 +15,37 @@ export const SiteGate: React.FC<SiteGateProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // 1. Проверяем localStorage для быстрого старта без мигания
-    const cached = localStorage.getItem('site_gate_pass');
-    if (cached === 'unlocked_2026') {
-      setIsUnlocked(true);
-      return;
-    }
+    const handleGateExpired = () => {
+      setErrorMsg('Срок доступа истёк. Введите пароль повторно.');
+      setIsUnlocked(false);
+    };
+    window.addEventListener('site-gate-expired', handleGateExpired);
 
-    // 2. Проверяем серверную cookie
+    // Доступ определяет только подписанная серверная cookie
     fetch('/api/gate')
       .then((res) => res.json())
       .then((data) => {
         if (data.unlocked) {
           setIsUnlocked(true);
-          localStorage.setItem('site_gate_pass', 'unlocked_2026');
         } else {
           setIsUnlocked(false);
         }
       })
       .catch(() => setIsUnlocked(false));
+    return () => window.removeEventListener('site-gate-expired', handleGateExpired);
+  }, []);
+
+  useEffect(() => {
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = async (...args) => {
+      const response = await originalFetch(...args);
+      if (response.status === 401) {
+        const body = await response.clone().json().catch(() => null);
+        if (body?.error === 'Site gate locked') window.dispatchEvent(new Event('site-gate-expired'));
+      }
+      return response;
+    };
+    return () => { window.fetch = originalFetch; };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,8 +64,8 @@ export const SiteGate: React.FC<SiteGateProps> = ({ children }) => {
 
       const data = await res.json();
       if (res.ok && data.success) {
-        setIsUnlocked(true);
-        localStorage.setItem('site_gate_pass', 'unlocked_2026');
+        // Перезагружаем страницу: middleware подменял её заглушкой, пока гейт был закрыт
+        window.location.reload();
       } else {
         setErrorMsg(data.error || 'Неверный пароль доступа');
       }
@@ -125,12 +137,13 @@ export const SiteGate: React.FC<SiteGateProps> = ({ children }) => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+              <label htmlFor="site-gate-password" className="text-[10px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
                 <KeyRound className="w-3.5 h-3.5 text-indigo-400" />
                 <span>Пароль доступа к сайту:</span>
               </label>
               <div className="relative">
                 <input
+                  id="site-gate-password"
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -141,6 +154,7 @@ export const SiteGate: React.FC<SiteGateProps> = ({ children }) => {
                 />
                 <button
                   type="button"
+                  aria-label={showPassword ? 'Скрыть пароль' : 'Показать пароль'}
                   onClick={() => setShowPassword(!showPassword)}
                   className="p-2 text-slate-500 hover:text-slate-300 absolute right-2 top-2 rounded-xl transition-colors"
                   title={showPassword ? 'Скрыть пароль' : 'Показать пароль'}

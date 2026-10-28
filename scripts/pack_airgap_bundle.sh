@@ -73,7 +73,13 @@ cat << 'EOF' > "$PAYLOAD_DIR/README_DEPLOY.md"
    tar -xzf eotinish_ebz_bundle_*.tar.gz
    cd ebz_payload
 
-2. Настройте конфигурацию (при необходимости):
+2. Заполните секреты в .env (значения CHANGE_ME обязательно заменить):
+   - SESSION_SECRET      : openssl rand -hex 32
+   - SITE_GATE_PASSWORD  : пароль экрана входа
+   - DB_PASSWORD         : пароль PostgreSQL
+   - EBZ_PRESET_USERS    : учётные записи; хеш пароля: node scripts/hash_password.mjs
+   - ALLOWED_ORIGINS     : CORS-источники через запятую (пусто = только same-origin)
+   - TRUST_PROXY         : true только за доверенным reverse proxy
    nano .env
 
 3. Запустите одной командой:
@@ -85,7 +91,10 @@ cat << 'EOF' > "$PAYLOAD_DIR/README_DEPLOY.md"
    # Ожидаемый ответ: {"status":"pass", "database":{"totalOrganizations":27164}}
 
 Платформа доступна по адресу: http://<IP_СЕРВЕРА>:3050
-Пароль экрана входа: localastana1!
+Пароли не входят в поставку: SITE_GATE_PASSWORD и хеши учётных записей задаёт администратор в .env.
+Публиковать сервис нужно по HTTPS (reverse proxy): cookie сессии выставляются с флагом Secure,
+по обычному HTTP вход работать не будет. Ротация паролей: сгенерировать новый хеш
+(node scripts/hash_password.mjs), обновить .env и перезапустить контейнер (docker compose up -d).
 EOF
 
 echo "--- Compressing complete delivery package to $DIST_DIR/$BUNDLE_NAME ---"

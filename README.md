@@ -44,6 +44,21 @@ npm run dev # или npm run build && npm start
 ```
 Сервис доступен по адресу: `http://localhost:3050` (или настроенному порту).
 
+### Конфигурация и секреты
+
+Для `npm run dev` создайте `.env.local` (в git не попадает):
+
+```bash
+SESSION_SECRET=<openssl rand -hex 32>
+SITE_GATE_PASSWORD=<пароль экрана входа>
+EBZ_PRESET_USERS='[{"login":"superadmin","role":"GLOBAL_ADMIN","passwordHash":"<вывод scripts/hash_password.mjs>","fullName":"Супер-администратор","orgId":"ap"}]'
+# необязательно: ALLOWED_ORIGINS=http://localhost:3000  TRUST_PROXY=true
+```
+
+- Хеш пароля: `node scripts/hash_password.mjs` (scrypt, без зависимостей). Роли: `GLOBAL_ADMIN`, `ORG_ADMIN`, `VIEWER`.
+- В production `SESSION_SECRET`, `SITE_GATE_PASSWORD` и `EBZ_PRESET_USERS` обязательны — без них вход/запуск завершится ошибкой. Cookie выставляются с флагом `Secure`, нужен HTTPS.
+- Ротация: новый хеш → обновить переменную → перезапуск. Деплой в закрытом контуре: `CLOSED_NETWORK_DEPLOYMENT.md`.
+
 ## Деплой на Vercel
 
 Проект полностью оптимизирован под Vercel:

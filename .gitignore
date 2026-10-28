@@ -5,3 +5,20 @@ dist_airgap/
 *.dump
 .env.local
 .env.*.local
+
+# env (keep .env.production.example tracked)
+.env
+.env.local
+.env.*.local
+
+# logs
+*.log
+npm-debug.log*
+
+# test reports / artifacts
+test-results/
+playwright-report/
+reports/playwright-html/
+reports/screenshots/
+reports/*.log
+coverage/

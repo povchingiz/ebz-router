@@ -1,113 +1,94 @@
 import crypto from 'crypto';
 import { UserAccount, UserSession, UserRole } from '../types/auth';
 import { GovOrg } from '../types';
+import { getSessionSecret } from './secrets';
 
-const SESSION_SECRET = process.env.SESSION_SECRET || 'ebz-router-super-secret-key-2026-auth';
 const COOKIE_NAME = 'ebz_session';
 
-// Хеширование пароля через pbkdf2
-export function hashPassword(password: string, salt: string): string {
-  return crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+// Формат хеша: scrypt:<salt hex>:<hash hex> (без '$', чтобы не ломать подстановки в .env).
+// Генерация: node scripts/hash_password.mjs
+const SCRYPT_KEYLEN = 64;
+
+export function hashPassword(password: string): string {
+  const salt = crypto.randomBytes(16);
+  const hash = crypto.scryptSync(password, salt, SCRYPT_KEYLEN);
+  return `scrypt:${salt.toString('hex')}:${hash.toString('hex')}`;
 }
 
-export function generateSalt(): string {
-  return crypto.randomBytes(16).toString('hex');
+export function verifyPassword(password: string, encoded: string): boolean {
+  const [scheme, saltHex, hashHex] = encoded.split(':');
+  if (scheme !== 'scrypt' || !saltHex || !hashHex) return false;
+  const expected = Buffer.from(hashHex, 'hex');
+  const actual = crypto.scryptSync(password, Buffer.from(saltHex, 'hex'), expected.length);
+  return actual.length === expected.length && crypto.timingSafeEqual(actual, expected);
 }
 
-// Предварительно созданные учетные записи
-const PRESET_USERS_CONFIG = [
-  {
-    id: 'user-superadmin',
-    username: 'superadmin',
-    password: 'admin8391',
-    fullName: 'Супер-администратор (АП РК)',
-    role: 'GLOBAL_ADMIN' as UserRole,
-    orgId: 'ap',
-    orgName: 'Администрация Президента (Вся республика)',
-  },
-  {
-    id: 'user-curator-apr',
-    username: 'curator_apr',
-    password: 'apr2026',
-    fullName: 'Инспектор Аппарата Правительства (АПр)',
-    role: 'ORG_ADMIN' as UserRole,
-    orgId: 'apr',
-    orgName: 'Аппарат Правительства РК (АПр)',
-  },
-  {
-    id: 'user-admin-minenergo',
-    username: 'admin_minenergo',
-    password: 'energo2026',
-    fullName: 'Методолог Минэнерго РК (МЭ)',
-    role: 'ORG_ADMIN' as UserRole,
-    orgId: 'me',
-    orgName: 'Минэнерго РК',
-  },
-  {
-    id: 'user-admin-mvd',
-    username: 'admin_mvd',
-    password: 'mvd2026',
-    fullName: 'Методолог МВД РК',
-    role: 'ORG_ADMIN' as UserRole,
-    orgId: 'mvd',
-    orgName: 'МВД РК',
-  },
-  {
-    id: 'user-admin-miicr',
-    username: 'admin_miicr',
-    password: 'miicr7419',
-    fullName: 'Администратор МИИЦР',
-    role: 'ORG_ADMIN' as UserRole,
-    orgId: 'miicr',
-    orgName: 'МИИЦР',
-  },
-  {
-    id: 'user-admin-mt',
-    username: 'admin_mt',
-    password: 'mt2026',
-    fullName: 'Куратор Министерства транспорта (МТ)',
-    role: 'ORG_ADMIN' as UserRole,
-    orgId: 'mt',
-    orgName: 'Министерство транспорта РК',
-  },
-  {
-    id: 'user-admin-astana',
-    username: 'admin_astana',
-    password: 'astana5283',
-    fullName: 'Администратор Акимата г. Астаны',
-    role: 'ORG_ADMIN' as UserRole,
-    orgId: 'akimat-astana',
-    orgName: 'Акимат Астана',
-  },
-  {
-    id: 'user-viewer',
-    username: 'viewer',
-    password: 'guest1048',
-    fullName: 'Наблюдатель (Аналитик)',
-    role: 'VIEWER' as UserRole,
-    orgId: null,
-    orgName: 'Режим чтения',
-  },
-];
+const DUMMY_HASH = hashPassword(crypto.randomUUID());
+const VALID_ROLES: UserRole[] = ['GLOBAL_ADMIN', 'ORG_ADMIN', 'VIEWER'];
 
-// Инициализируем хранилище пользователей в памяти
-const userStore = new Map<string, UserAccount>();
+interface PresetUserEntry {
+  login: string;
+  role: UserRole;
+  passwordHash: string;
+  id?: string;
+  fullName?: string;
+  orgId?: string | null;
+  orgName?: string;
+}
 
-PRESET_USERS_CONFIG.forEach((cfg) => {
-  const salt = generateSalt();
-  const passwordHash = hashPassword(cfg.password, salt);
-  userStore.set(cfg.username, {
-    id: cfg.id,
-    username: cfg.username,
-    passwordHash,
-    salt,
-    fullName: cfg.fullName,
-    role: cfg.role,
-    orgId: cfg.orgId,
-    orgName: cfg.orgName,
-    createdAt: new Date().toISOString(),
+function parsePresetUsers(): PresetUserEntry[] {
+  const raw = (process.env.EBZ_PRESET_USERS || '').trim();
+  if (!raw) {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('[config] EBZ_PRESET_USERS обязателен в production (JSON-массив {login, role, passwordHash})');
+    }
+    console.warn('[config] EBZ_PRESET_USERS не задан — вход по предустановленным учётным записям недоступен (задайте в .env.local)');
+    return [];
+  }
+  let list: unknown;
+  try {
+    list = JSON.parse(raw);
+  } catch {
+    throw new Error('[config] EBZ_PRESET_USERS: невалидный JSON');
+  }
+  if (!Array.isArray(list)) throw new Error('[config] EBZ_PRESET_USERS должен быть JSON-массивом');
+  return list.map((e: any, i) => {
+    if (!e || typeof e.login !== 'string' || !e.login.trim()) {
+      throw new Error(`[config] EBZ_PRESET_USERS[${i}]: нет login`);
+    }
+    if (!VALID_ROLES.includes(e.role)) {
+      throw new Error(`[config] EBZ_PRESET_USERS[${i}]: role должен быть один из ${VALID_ROLES.join(', ')}`);
+    }
+    if (typeof e.passwordHash !== 'string' || !e.passwordHash.startsWith('scrypt:')) {
+      throw new Error(`[config] EBZ_PRESET_USERS[${i}]: passwordHash должен быть получен через scripts/hash_password.mjs`);
+    }
+    return e as PresetUserEntry;
   });
-});
+}
+
+// Хранилище пользователей в памяти; предустановленные учётки загружаются лениво из окружения
+let userStore: Map<string, UserAccount> | null = null;
+
+function getUserStore(): Map<string, UserAccount> {
+  if (userStore) return userStore;
+  const store = new Map<string, UserAccount>();
+  for (const e of parsePresetUsers()) {
+    const login = e.login.trim().toLowerCase();
+    store.set(login, {
+      id: e.id || `user-${login}`,
+      username: login,
+      passwordHash: e.passwordHash,
+      salt: '',
+      fullName: e.fullName || login,
+      role: e.role,
+      orgId: e.orgId ?? null,
+      orgName: e.orgName,
+      createdAt: new Date().toISOString(),
+    });
+  }
+  userStore = store;
+  return store;
+}
 
 export const authService = {
   createUser(data: {
@@ -118,12 +99,11 @@ export const authService = {
     orgId?: string;
     orgName?: string;
   }): UserAccount {
-    const salt = generateSalt();
     const account: UserAccount = {
       id: `user-${crypto.randomUUID()}`,
       username: data.username,
-      passwordHash: hashPassword(data.password, salt),
-      salt,
+      passwordHash: hashPassword(data.password),
+      salt: '',
       fullName: data.fullName,
       role: data.role,
       orgId: data.orgId ?? null,
@@ -131,26 +111,17 @@ export const authService = {
       createdAt: new Date().toISOString(),
     };
 
-    userStore.set(data.username, account);
+    getUserStore().set(data.username.trim().toLowerCase(), account);
     return account;
   },
 
-  getPresetCredentialsInfo() {
-    return PRESET_USERS_CONFIG.map((u) => ({
-      username: u.username,
-      password: u.password,
-      role: u.role,
-      fullName: u.fullName,
-      orgName: u.orgName,
-    }));
-  },
-
   authenticate(username: string, password: string): UserSession | null {
-    const user = userStore.get(username.trim().toLowerCase());
-    if (!user) return null;
-
-    const hash = hashPassword(password, user.salt);
-    if (hash !== user.passwordHash) return null;
+    const user = getUserStore().get(username.trim().toLowerCase());
+    if (!user) {
+      verifyPassword(password, DUMMY_HASH); // выравниваем время ответа
+      return null;
+    }
+    if (!verifyPassword(password, user.passwordHash)) return null;
 
     // Срок действия сессии: 7 дней
     const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000;
@@ -169,7 +140,7 @@ export const authService = {
   createSignedSessionToken(session: UserSession): string {
     const payload = Buffer.from(JSON.stringify(session)).toString('base64');
     const signature = crypto
-      .createHmac('sha256', SESSION_SECRET)
+      .createHmac('sha256', getSessionSecret())
       .update(payload)
       .digest('hex');
     return `${payload}.${signature}`;
@@ -181,11 +152,13 @@ export const authService = {
     if (!payload || !signature) return null;
 
     const expectedSignature = crypto
-      .createHmac('sha256', SESSION_SECRET)
+      .createHmac('sha256', getSessionSecret())
       .update(payload)
       .digest('hex');
 
-    if (signature !== expectedSignature) return null;
+    const a = Buffer.from(signature);
+    const b = Buffer.from(expectedSignature);
+    if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
 
     try {
       const session: UserSession = JSON.parse(

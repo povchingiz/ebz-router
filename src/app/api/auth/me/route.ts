@@ -9,13 +9,9 @@ export async function GET(req: NextRequest) {
       user = authService.verifySessionToken(token);
     }
 
-    // Для удобства тестирования и демонстраций возвращаем также список демо-учеток
-    const testAccounts = authService.getPresetCredentialsInfo();
-
     return NextResponse.json({
       ok: true,
       user,
-      testAccounts,
     });
   } catch (err: any) {
     return NextResponse.json(

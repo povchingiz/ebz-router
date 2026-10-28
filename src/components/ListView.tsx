@@ -74,19 +74,33 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '', l
     return tokens.every((t) => text.includes(t));
   };
 
-  // Корневые ведомства (АП)
+  // В обычном режиме показываем только ветку активного узла: его путь от корня и его потомков.
+  const branchPathIds = useMemo(() => {
+    if (activeQuery || !navState.focusedOrgId || navState.focusedOrgId === 'ap') return null;
+    return new Set(getAncestryPath(navState.focusedOrgId, orgMap));
+  }, [activeQuery, navState.focusedOrgId, orgMap]);
+
+  // Корневые ведомства (АП), либо корень ветки активного ведомства.
   const rootOrgs = useMemo(() => {
     if (activeQuery) {
       // При активном локальном поиске показываем все совпавшие ведомства
       return searchResults ?? allOrgs.filter(isMatchSearch);
     }
-    // В древовидном режиме показываем только корень (АП)
+    // В древовидном режиме ограничиваем список веткой текущего фокуса.
+    if (branchPathIds && branchPathIds.size > 0) {
+      const focused = allOrgs.find((org) => org.id === navState.focusedOrgId);
+      if (focused) {
+        const rootId = getAncestryPath(focused.id, orgMap)[0];
+        const root = allOrgs.find((org) => org.id === rootId);
+        return root ? [root] : [];
+      }
+    }
     return allOrgs.filter((org) => !org.parentId);
-  }, [allOrgs, activeQuery, searchResults]);
+  }, [allOrgs, activeQuery, searchResults, branchPathIds, navState.focusedOrgId, orgMap]);
 
   // Рендер строки организации
   const renderOrgRow = (org: GovOrg, depth = 0) => {
-    const children = allOrgs.filter((o) => o.parentId === org.id);
+    const children = allOrgs.filter((o) => o.parentId === org.id && (!branchPathIds || !branchPathIds.has(org.id) || o.id === navState.focusedOrgId || getAncestryPath(navState.focusedOrgId, orgMap).includes(o.id) || org.id === navState.focusedOrgId));
     const departments = org.departments || [];
     const hasChildren = ((org.directChildrenCount ?? 0) > 0 || children.length > 0 || departments.length > 0) && !activeQuery;
     const isExpanded = navState.expandedIds.has(org.id);
@@ -108,7 +122,7 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '', l
             navigateToOrg(org.id);
             if (activeQuery) openInspector(org.id);
           }}
-          style={{ paddingLeft: `${depth * 28}px` }}
+          style={{ paddingLeft: `${depth * 56}px` }}
           className={`group relative flex items-center justify-between p-4 my-1.5 rounded-2xl border-2 transition-all cursor-pointer ${
             isFocused
               ? 'border-blue-600 bg-blue-50/70 dark:bg-blue-950/50 shadow-md ring-4 ring-blue-500/20'
@@ -180,6 +194,7 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '', l
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
+                onSelectOrg?.(org);
                 openInspector(org.id);
               }}
               className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-xl text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-600 hover:text-white transition-all shadow-xs"
@@ -195,7 +210,7 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '', l
           <div className="relative flex flex-col border-l border-slate-200 dark:border-slate-700 ml-3">
             {children.map((child) => renderOrgRow(child, depth + 1))}
             {departments.map((dept) => (
-              <div key={`dept-${dept.id}`} style={{ paddingLeft: `${(depth + 1) * 28}px` }} className="relative flex items-center justify-between gap-3 p-3 my-1 rounded-xl border border-indigo-100 dark:border-indigo-900/60 bg-indigo-50/60 dark:bg-indigo-950/20 before:absolute before:left-0 before:top-1/2 before:w-3 before:border-t before:border-slate-200 dark:before:border-slate-700">
+              <div key={`dept-${dept.id}`} style={{ paddingLeft: `${(depth + 1) * 56}px` }} className="relative flex items-center justify-between gap-3 p-3 my-1 rounded-xl border border-indigo-100 dark:border-indigo-900/60 bg-indigo-50/60 dark:bg-indigo-950/20 before:absolute before:left-0 before:top-1/2 before:w-3 before:border-t before:border-slate-200 dark:before:border-slate-700">
                 <div className="min-w-0"><span className="text-[10px] font-bold text-indigo-700 dark:text-indigo-300">📁 Подразделение</span><div className="text-xs font-bold truncate">{dept.name}</div></div>
                 <button type="button" onClick={() => { navigateToOrg(org.id); openInspector(org.id, dept.id); }} className="shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-indigo-700 bg-white dark:bg-slate-900 border border-indigo-200 dark:border-indigo-800 hover:bg-indigo-600 hover:text-white"><FileText className="w-3 h-3"/>Проверить</button>
               </div>
@@ -214,6 +229,7 @@ export const ListView: React.FC<ListViewProps> = ({ allOrgs, searchQuery = '', l
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
           <input
             type="text"
+            aria-label="Поиск по списку организаций"
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
             placeholder="Поиск: напр. Минздрав"

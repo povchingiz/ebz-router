@@ -286,7 +286,7 @@ function GraphInner({ allOrgs, layoutDirection: propLayoutDirection }: Interacti
         minZoom={0.15}
         maxZoom={2.5}
         panOnScroll={true}
-        zoomOnScroll={false}
+        zoomOnScroll={true}
         zoomActivationKeyCode="Control"
         zoomOnPinch={true}
         panOnDrag={true}

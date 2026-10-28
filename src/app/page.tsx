@@ -220,23 +220,23 @@ function HomeContent({
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Верхняя панель навигации */}
-      <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b-2 border-slate-200/80 dark:border-slate-800">
-        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 h-18 py-3 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-50 overflow-x-clip bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b-2 border-slate-200/80 dark:border-slate-800">
+        <div className="max-w-[1700px] mx-auto min-w-0 px-3 sm:px-6 min-h-18 py-2 sm:py-3 flex flex-wrap items-center justify-between gap-2 sm:gap-4">
           {/* Логотип */}
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-md">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-md">
               ЕБЗ
             </div>
             <div>
-              <h1 className="text-sm font-black text-slate-900 dark:text-white leading-tight">
+              <h1 className="hidden sm:block text-sm font-black text-slate-900 dark:text-white leading-tight">
                 Единая база знаний
               </h1>
-              <p className="text-[11px] text-slate-500 font-medium">Организационная структура госорганов</p>
+              <p className="hidden sm:block text-[11px] text-slate-500 font-medium">Организационная структура госорганов</p>
             </div>
           </div>
 
           {/* Быстрый сквозной поиск организаций по центру - МАКСИМАЛЬНО ШИРОКАЯ ПЛАШКА */}
-          <div className="flex-1 max-w-3xl mx-4">
+          <div className="order-3 sm:order-none w-full sm:w-auto flex-1 min-w-0 max-w-3xl mx-0 sm:mx-4">
             <QuickSearch
               allOrgs={orgs}
               onSelectOrg={(org) => {
@@ -251,7 +251,7 @@ function HomeContent({
           </div>
 
           {/* Правая часть: ИИ-Маршрутизатор и Профиль */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-1 sm:gap-3 shrink-0 min-w-0">
             {/* ИИ-Маршрутизатор: активен строго для главного супер-админа */}
             {isSuperAdminOwner && (
               <button
@@ -265,7 +265,7 @@ function HomeContent({
                 title="Открыть ИИ-Маршрутизатор на базе Model Context Protocol (MCP) — доступно только супер-админу"
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-                <span>⚡ ИИ-Маршрутизатор</span>
+                <span className="hidden sm:inline">⚡ ИИ</span>
               </button>
             )}
 
@@ -363,7 +363,7 @@ function HomeContent({
               title="Сводная заполненность базы знаний по всем ведомствам республики"
             >
               <BarChart3 className="w-4 h-4 text-blue-600 shrink-0" />
-              <span>Готовность и наполненность</span>
+              <span>Наполненность</span>
             </button>
           )}
 
